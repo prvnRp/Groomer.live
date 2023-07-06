@@ -19,9 +19,8 @@ function Bookings() {
                 <div className="flex2">
                     <div className='book'>
                         <div className="salonname">{filteroption !== "Booked" ? filteroption : ""} Bookings</div>
-                        <div className="filtering" onMouseEnter={() => setElementVisible(true)}
-                            onMouseLeave={() => setElementVisible(false)}>
-                            <div className='options' style={{ display: elementVisible ? 'flex' : 'none' }}>
+                        <div className="filtering" onClick={() => setElementVisible(true)}>
+                            <div onMouseLeave={() => setElementVisible(false)} className='options' style={{ display: elementVisible ? 'flex' : 'none' }}>
                                 <div className='row1' onClick={() => setFilteroption("Completed")}><div className='circle1 green'></div>Completed</div>
                                 <div className='row1' onClick={() => setFilteroption("Booked")}><div className='circle1 yellow'></div>Booked</div>
                                 <div className='row1' onClick={() => setFilteroption("Cancelled")}><div className='circle1 red'></div>Cancelled</div>
