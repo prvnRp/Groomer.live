@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import '../App.css';
 import LeftNav from './LeftNav';
 import '../styles/mySalon.css';
+import BottomNav from './BottomNav';
 
 function MySalon() {
     const data = ['Slot 1', 'Slot 2'];
@@ -50,6 +51,7 @@ function MySalon() {
                     </table>
                 </div>
             </div>
+            <BottomNav />
         </div>
     );
 }

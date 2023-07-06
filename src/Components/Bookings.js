@@ -3,6 +3,7 @@ import LeftNav from './LeftNav';
 import React, { useState } from 'react';
 import TableRow from './TableRow';
 import '../styles/Bookings.css';
+import BottomNav from './BottomNav';
 // import { useLocation } from 'react-router-dom'
 
 function Bookings() {
@@ -50,6 +51,7 @@ function Bookings() {
                     </div>
                 </div >
             </div>
+            <BottomNav />
         </div>
     );
 }

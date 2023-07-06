@@ -252,7 +252,7 @@ input:checked+.slider1:before {
         padding-right: 0px;
         padding-left: 0px;
         /* padding-top: 90px; */
-        order: 1;
+        /* order: 1; */
     }
 
     .flex22 {

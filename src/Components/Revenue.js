@@ -1,18 +1,23 @@
 import '../App.css';
 import LeftNav from './LeftNav';
 import '../styles/Revenue.css';
+import BottomNav from './BottomNav';
 
 function Revenue() {
     return (
         <div className="flexcontainer" style={{ paddingRight: "5%" }}>
             <LeftNav />
             <div className='Container'>
-                <div style={{ minHeight: "500px", justifyContent: "space-evenly", height: "72vh" }} className="flex-2">
+                <div className="flex-2">
                     <div className="datefilter">
-                        <label style={{ color: "#FFF", fontWeight: "500" }} htmlFor="fromdate">From</label>
-                        <input type="date" id="datepicker" />
-                        <label style={{ color: "#FFF", fontWeight: "500" }} htmlFor="todate">To</label>
-                        <input type="date" id="todate" />
+                        <div>
+                            <label style={{ color: "#FFF", fontWeight: "500" }} htmlFor="fromdate">From</label>
+                            <input type="date" id="datepicker" />
+                        </div>
+                        <div>
+                            <label style={{ color: "#FFF", fontWeight: "500" }} htmlFor="todate">To</label>
+                            <input type="date" id="todate" />
+                        </div>
                         <div className='go'>GO</div>
                     </div>
                     <div className='Today'>
@@ -22,6 +27,7 @@ function Revenue() {
                     <div className='TandC'>Money will be credited to groomer.live financials. Your money will be distributed twice in a week directly to your bank account provided to groomer. <b>Terms and conditions</b></div>
                 </div>
             </div>
+            <BottomNav />
         </div>
     );
 }
