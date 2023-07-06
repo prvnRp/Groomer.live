@@ -1,0 +1,14 @@
+.popup {
+    position: fixed;
+    top: 14vh;
+    right: 30vw;
+    width: 30vw;
+    padding-top: 0.7vw;
+    padding-bottom: 0.7vw;
+    background: #211E1E;
+    border-radius: 45px;
+    text-align: center;
+    color: #FFF;
+    /* font-size: 20px; */
+    /* line-height: 35vh; */
+}

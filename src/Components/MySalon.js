@@ -3,6 +3,10 @@ import '../App.css';
 import LeftNav from './LeftNav';
 import '../styles/mySalon.css';
 import BottomNav from './BottomNav';
+// import PopUp from './PopUp';
+import Display from './Display';
+import Popup from 'reactjs-popup';
+
 
 function MySalon() {
     const data = ['Slot 1', 'Slot 2'];
@@ -11,13 +15,15 @@ function MySalon() {
     const handleToggleDisplay = () => {
         setDisplayOpen(!displayOpen);
     };
-    console.log("Hello");
+    // console.log("Hello");
+
 
     return (
 
         <div className="flex-containerr">
             <LeftNav />
             <div className='containerr'>
+                {/* <Popup /> */}
                 <div className="flex22">
                     <table id="mysalontable">
                         <thead>
@@ -26,7 +32,10 @@ function MySalon() {
                                 <th className='status right'>
                                     <div>
                                         <label className="switch">
-                                            <input type="checkbox" onChange={handleToggleDisplay} checked={displayOpen} />
+                                            <Popup trigger=
+                                                {<input type="checkbox" onChange={handleToggleDisplay} checked={displayOpen} />}>
+                                                <Display displayOpen={displayOpen} />
+                                            </Popup>
                                             <span className="slider"></span>
                                         </label>
                                         <span className='sepe'>{displayOpen ? "OPEN" : "CLOSED"}</span>
