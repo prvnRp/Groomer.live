@@ -1,0 +1,258 @@
+.flex-container {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    padding-right: 5%;
+    /* padding-bottom: 150px; */
+}
+
+.container {
+    width: 100%;
+    padding-top: 60px;
+    padding-right: 80px;
+    padding-left: 2%;
+}
+
+.flex2 {
+    background-color: #211E1E;
+    width: 100%;
+    /* min-height: 420px; */
+    /* height: 55vh; */
+    /* margin: 10px; */
+    /* text-align: center; */
+    padding: 38px;
+    /* padding-left: 57px; */
+    /* padding-right: 70px; */
+    /* padding-bottom: 50px; */
+    border-radius: 45px;
+    background: #211E1E;
+    display: flex;
+    flex-direction: column;
+
+    /* justify-content: space-between; */
+    /* align-items: center; */
+    padding-left: 40px;
+    padding-top: 40px;
+    padding-right: 40px;
+    height: 70vh;
+}
+
+.salonname {
+    float: left;
+    color: #FFF;
+    font-size: 25px;
+    /* font-size: clamp(1rem, 1vw + 0.75rem, 2rem); */
+    font-family: Segoe UI;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    padding-bottom: 50px;
+    padding-bottom: 10px;
+}
+
+.filtering {
+    float: right;
+    padding-bottom: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding-right: 30px;
+    gap: 10px;
+}
+
+.options {
+    display: flex;
+    flex-direction: row;
+    padding: 1px;
+    padding-right: 30px;
+    padding-left: 30px;
+    gap: 20px;
+    color: #FFF;
+    font-size: 12px;
+    /* font-family: Noto Sans Symbols; */
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    background: rgba(123, 123, 123, 0.25);
+    border-radius: 8px;
+}
+
+.row1 {
+    display: flex;
+    flex-direction: row;
+    cursor: pointer;
+}
+
+.filter {
+    background-color: white;
+    color: black;
+    text-align: center;
+    padding-left: 32px;
+    padding-right: 27px;
+    height: 25px;
+    border-radius: 25px;
+    background: #D9D9D9;
+    font-size: 16px;
+    font-weight: 700;
+    display: flex;
+    flex-direction: row;
+    cursor: pointer;
+}
+
+.circle {
+    width: 10px;
+    height: 10px;
+    /* background: rgba(252, 211, 67, 0.80); */
+    border-radius: 10px;
+    position: relative;
+    top: 7px;
+    left: 15px;
+}
+
+.circle1 {
+    width: 6px;
+    height: 6px;
+    border-radius: 6px;
+    position: relative;
+    top: 5px;
+    left: -2px;
+}
+
+.arrow {
+    display: inline-block;
+    position: relative;
+    top: 7px;
+    left: -20px;
+    width: 8px;
+    height: 8px;
+    border-top: 2px solid #000;
+    border-right: 2px solid #000;
+}
+
+.arrow-left {
+    transform: rotate(-135deg);
+}
+
+.arrow-right {
+    transform: rotate(45deg);
+}
+
+.green {
+    background: rgba(0, 255, 0, 0.80);
+}
+
+.yellow {
+    background: rgba(252, 211, 67, 0.80);
+}
+
+.red {
+    background: rgba(255, 33, 33, 0.80);
+}
+
+table {
+    border-collapse: separate;
+    border-spacing: 0 12px;
+    width: 100%;
+    /* overflow-x: auto; */
+    /* margin-top: -11px; */
+}
+
+.tableContainer {
+    /* background-color: #1E1F25; */
+    /* border-radius: 20px; */
+    height: 72vh;
+    /* padding: 0 10px 10px 10px; */
+    overflow-y: auto;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* div.tableContainer::-webkit-scrollbar {
+    position: relative;
+    right: 50px;
+  } */
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #757575;
+    border-radius: 25px;
+    /* margin-top: 30px;
+    margin-bottom: 30px; */
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #1A1717;
+    border: 1px solid #757575;
+    border-radius: 25px;
+}
+
+table {
+    padding-right: 20px
+}
+
+#bookings thead {
+    position: sticky;
+    top: 0px;
+    margin: 0 0 0 0;
+    background: #211E1E;
+}
+
+#bookings th {
+    text-decoration: underline;
+    color: #FFF;
+    font-weight: normal;
+}
+
+#bookings td {
+    /* border: 2px solid Chartreuse; */
+    /* border-style: solid none; */
+    color: #FFF;
+    padding: 11px;
+    background-color: rgba(123, 123, 123, 0.25);
+}
+
+#bookings td:first-child {
+    /* border-left-style: solid; */
+    border-top-left-radius: 11px;
+    border-bottom-left-radius: 11px;
+}
+
+#bookings td:last-child {
+    /* border-right-style: solid; */
+    border-bottom-right-radius: 11px;
+    border-top-right-radius: 11px;
+}
+
+@media only screen and (max-width: 600px) {
+
+
+    .flex-container {
+        flex-wrap: wrap;
+        padding-left: 20px;
+        padding-right: 40px;
+        padding-top: 20px;
+        /* gap: 10px; */
+    }
+
+    .container {
+        padding-right: 0px;
+        padding-left: 0px;
+        /* padding-top: 90px; */
+        order: 1;
+    }
+
+    .flex2 {
+        padding: 20px;
+        width: 100%;
+    }
+
+    .salonname {
+        font-size: 20px;
+        width: 50%;
+    }
+
+}

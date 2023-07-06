@@ -1,0 +1,351 @@
+.flex-containerr {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    padding-right: 12%;
+    /* padding-bottom: 150px; */
+}
+
+.column1 {
+    /* display: flex; */
+    /* flex-direction: row; */
+    text-align: left;
+    /* gap: 30px; */
+    color: rgba(255, 255, 255, 0.25);
+    /* width: 100%; */
+    font-size: 21px;
+    font-family: Segoe UI;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    /* justify-content: space-between; */
+}
+
+.column2 {
+    /* display: flex; */
+    /* flex-direction: row; */
+    text-align: left;
+    /* width: 100%; */
+    /* justify-content: space-between; */
+    /* gap: 32px; */
+    color: rgba(255, 255, 255, 0.25);
+    font-size: 18px;
+    font-family: Segoe UI;
+    font-style: normal;
+    font-weight: bold;
+    line-height: normal;
+}
+
+.containerr {
+    width: 100%;
+    padding-top: 90px;
+    padding-right: 90px;
+    padding-left: 5%;
+}
+
+.flex22 {
+    background-color: #211E1E;
+    width: 100%;
+    height: 55vh;
+    padding: 38px;
+    padding-left: 57px;
+    /* padding-right: 50px; */
+    border-radius: 45px;
+    background: #211E1E;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+}
+
+thead {
+    position: sticky;
+    top: 0;
+    background: #211E1E;
+}
+
+.salon-name {
+    /* float: left; */
+    color: #FFF;
+    font-size: 25px;
+    width: 75%;
+    /* font-size: clamp(1rem, 1vw + 0.75rem, 2rem); */
+    font-family: Segoe UI;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    padding-bottom: 50px;
+}
+
+.sepe {
+    padding-left: 20px;
+}
+
+th,
+td {
+    padding: 10px;
+}
+
+table {
+    padding-right: 10px;
+}
+
+.status {
+    /* float: right; */
+    color: rgba(255, 33, 33, 0.80);
+    font-size: 28px;
+    /* font-size: clamp(2rem, 2vw + 0.75rem, 1rem); */
+    font-family: Segoe UI;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    padding-bottom: 50px;
+    display: flex;
+    flex-direction: row;
+}
+
+#mysalontable {
+    text-align: left;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 70px;
+    height: 37px;
+    /* top: 5px; */
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    /* background-color: #1A1717; */
+    -webkit-transition: .4s;
+    transition: .4s;
+    border-radius: 34px;
+    border: 4px solid white;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 29px;
+    width: 29px;
+    left: -3px;
+    bottom: -4px;
+    /* background-color: #1A1717; */
+    -webkit-transition: .4s;
+    transition: .4s;
+    border: 4px solid white;
+    border-radius: 34px;
+}
+
+input:checked+.slider {
+    background-color: white;
+}
+
+input:checked+.slider:before {
+    -webkit-transform: translateX(32px);
+    -ms-transform: translateX(32px);
+    transform: translateX(32px);
+    background-color: #211E1E;
+}
+
+.switch1 {
+    position: relative;
+    display: inline-block;
+    width: 38px;
+    height: 22px;
+    top: 2px;
+}
+
+.switch1 input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider1 {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    /* background-color: #1A1717; */
+    -webkit-transition: .4s;
+    transition: .4s;
+    border-radius: 34px;
+    border: 3px solid #FFF;
+}
+
+.slider1:before {
+    position: absolute;
+    content: "";
+    height: 17px;
+    width: 17px;
+    left: -2.5px;
+    bottom: -2.5px;
+    /* background-color: #1A1717; */
+    -webkit-transition: .4s;
+    transition: .4s;
+    border: 3px solid #FFF;
+    border-radius: 34px;
+}
+
+input:checked+.slider1 {
+    background-color: #FFF;
+}
+
+input:disabled+.slider1 {
+    /* cursor: not-allowed; */
+    background-color: rgb(164, 162, 162);
+    border: 3px solid rgb(164, 162, 162);
+}
+
+input:disabled+.slider1:before {
+    background-color: #211e1e;
+    border: 3px solid rgb(164, 162, 162);
+}
+
+input:checked+.slider1:before {
+    -webkit-transform: translateX(17px);
+    -ms-transform: translateX(17px);
+    transform: translateX(17px);
+    background-color: #211E1E;
+}
+
+@media only screen and (max-width: 600px) {
+    /* .flex1 {
+        flex-direction: row;
+        width: 100%;
+        justify-content: center;
+        text-align: center;
+        gap: 10px;
+        font-size: 10px;
+        height: 20px;
+        padding: 0px;
+        padding-top: 30px;
+        position: relative;
+        left: 6%;
+        order: 2;
+        /* display: block; */
+    /* }  */
+
+    .flex-containerr {
+        flex-wrap: wrap;
+        padding-left: 20px;
+        padding-right: 40px;
+        /* gap: 10px; */
+    }
+
+    .containerr {
+        padding-right: 0px;
+        padding-left: 0px;
+        /* padding-top: 90px; */
+        order: 1;
+    }
+
+    .flex22 {
+        padding: 10px;
+        width: 100%;
+    }
+
+    .salon-name {
+        font-size: 20px;
+        width: 50%;
+    }
+
+    .right {
+        float: right;
+    }
+
+    .status {
+        font-size: 20px;
+        text-align: right;
+        flex-wrap: nowrap;
+    }
+
+    .sepe {
+        padding-left: 10px;
+    }
+
+    /* 
+    .flex31 {
+        display: none;
+    } */
+
+    .switch {
+        position: relative;
+        display: inline-block;
+        width: 50px;
+        /* 70px */
+        height: 27px;
+        /* 37px */
+    }
+
+    .switch input {
+        opacity: 0;
+        width: 0;
+        height: 0;
+    }
+
+    .slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        /* background-color: #1A1717; */
+        -webkit-transition: .4s;
+        transition: .4s;
+        border-radius: 45px;
+        /* 34px */
+        border: 3px solid white;
+        /* 4px */
+    }
+
+    .slider:before {
+        position: absolute;
+        content: "";
+        height: 22px;
+        /* 29px */
+        width: 22px;
+        /* 29px */
+        left: -2px;
+        /* -3px */
+        bottom: -2px;
+        /* -4px */
+        /* background-color: #1A1717; */
+        -webkit-transition: .4s;
+        transition: .4s;
+        border: 3px solid white;
+        /* 4px */
+        border-radius: 34px;
+    }
+
+    input:checked+.slider {
+        background-color: white;
+    }
+
+    input:checked+.slider:before {
+        -webkit-transform: translateX(22px);
+        /* 32px */
+        -ms-transform: translateX(22px);
+        /* 32px */
+        transform: translateX(22px);
+        /* 32px */
+        background-color: #211E1E;
+    }
+
+}

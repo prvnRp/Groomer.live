@@ -1,0 +1,156 @@
+.flexcontainer {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    padding-right: 5%;
+    /* padding-bottom: 150px; */
+}
+
+.Container {
+    width: 100%;
+    padding-top: 40px;
+    padding-right: 80px;
+    padding-left: 2%;
+}
+
+.flex-2 {
+    background-color: #211E1E;
+    width: 100%;
+    /* min-height: 420px; */
+    /* height: 55vh; */
+    /* margin: 10px; */
+    /* text-align: center; */
+    padding: 38px;
+    /* padding-left: 57px; */
+    /* padding-right: 70px; */
+    /* padding-bottom: 50px; */
+    border-radius: 45px;
+    background: #211E1E;
+    display: flex;
+    flex-direction: column;
+
+    /* justify-content: space-between; */
+    /* align-items: center; */
+    /* padding-left: 40px; */
+    /* padding-top: 40px; */
+    /* padding-right: 40px; */
+    height: 70vh;
+    /* gap: 50px; */
+}
+
+.datefilter {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    flex-wrap: wrap;
+    /* padding-top: 40px; */
+    /* padding-bottom: 20px; */
+}
+
+.Today {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    /* padding: 50px; */
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.TandC {
+    font-size: 12px;
+    color: #FFF;
+    text-align: center;
+    padding-top: 20px;
+}
+
+.Today1 {
+    display: flex;
+    font-size: 30px;
+    color: #FFF;
+    flex-direction: column;
+    gap: 20px;
+    font-weight: 500;
+}
+
+.RevenueNum {
+    color: rgba(0, 255, 71, 0.80);
+    font-size: 70px;
+    /* padding: 5px; */
+    padding-left: 50px;
+    padding-right: 100px;
+    background: rgba(123, 123, 123, 0.25);
+    border-radius: 35px;
+}
+
+.BookingsNum {
+    color: rgba(252, 211, 67, 0.80);
+    font-size: 70px;
+    /* padding: 5px; */
+    text-align: center;
+    /* padding-left: 50px; */
+    /* padding-right: 25px; */
+    background: rgba(123, 123, 123, 0.25);
+    border-radius: 35px;
+}
+
+.go {
+    background: #FF6548;
+    padding: 0.6px;
+    color: #FFF;
+    text-align: center;
+    padding-left: 45px;
+    padding-right: 45px;
+    border-radius: 30px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+td,
+th {
+    text-align: left;
+    font-size: 15px;
+    padding: 8px;
+}
+
+table {
+    border-collapse: separate;
+    border-spacing: 0 12px;
+    width: 100%;
+    /* overflow-x: auto; */
+    /* margin-top: -11px; */
+}
+
+@media only screen and (max-width: 600px) {
+
+
+    .flexcontainer {
+        flex-wrap: wrap;
+        padding-left: 20px;
+        padding-right: 40px;
+        padding-top: 20px;
+        /* gap: 10px; */
+    }
+
+    .Container {
+        padding-right: 30px;
+        padding-left: 0px;
+        /* padding-top: 90px; */
+        order: 1;
+    }
+
+    .flex-2 {
+        padding: 20px;
+        width: 100%;
+    }
+
+    .Today {
+        flex-direction: column;
+        gap: 45px;
+        justify-content: center;
+        text-align: center;
+        font-size: cap(20px, 2vw, 30px);
+    }
+
+}
