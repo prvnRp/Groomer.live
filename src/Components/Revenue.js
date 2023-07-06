@@ -5,7 +5,7 @@ import BottomNav from './BottomNav';
 
 function Revenue() {
     return (
-        <div className="flexcontainer" style={{ paddingRight: "5%" }}>
+        <div className="flexcontainer">
             <LeftNav />
             <div className='Container'>
                 <div className="flex-2">
