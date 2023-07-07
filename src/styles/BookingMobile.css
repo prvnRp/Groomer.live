@@ -1,0 +1,84 @@
+.Card1 {
+    display: none;
+}
+
+
+@media screen and (max-width: 600px) {
+    .Card1 {
+        display: block;
+    }
+
+    .Card {
+        padding: 20px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+
+    .Card-item {
+        background-color: rgba(123, 123, 123, 0.25);
+        ;
+        border-radius: 25px;
+        padding: 10px;
+        padding-top: 2px;
+        padding-bottom: 2px;
+        border-radius: 20px;
+        display: flex;
+        flex-direction: row;
+        padding-right: 9vw;
+        gap: 20px;
+        color: #FFF;
+    }
+
+    .circle3 {
+        width: 13px;
+        height: 13px;
+        /* background: rgba(252, 211, 67, 0.80); */
+        border-radius: 13px;
+        position: relative;
+        top: 10px;
+        left: 15px;
+    }
+
+
+    .Carditem {
+        display: flex;
+        flex-direction: column;
+        /* padding-left: 10px; */
+        font-family: Segoe UI;
+        font-style: normal;
+        padding-top: 6px;
+        padding-bottom: 6px;
+        padding-left: 0px;
+        gap: 4px;
+        width: 100%;
+        /* font-weight: bold; */
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        border-spacing: 0;
+        /* padding-top: 0px; */
+        /* color: #FFF; */
+        font-size: 12px;
+        /* font-family: Noto Sans Symbols; */
+        font-style: normal;
+        /* font-weight: 400; */
+        /* line-height: normal; */
+        /* background: rgba(123, 123, 123, 0.25); */
+        border-radius: 8px;
+    }
+
+    td,
+    th {
+        text-align: left;
+    }
+
+    tr {
+        padding-top: 0px;
+    }
+
+    tr td {
+        padding-top: 0em;
+    }
+}
