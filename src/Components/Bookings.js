@@ -76,7 +76,9 @@ function Bookings() {
                                 }
                             </tbody>
                         </table>
-                        <BookingMobile BookingDetails={BookingDetails} Color={Status[filterOption]} filterOption={filterOption} />
+                        <div className='MobileView'>
+                            <BookingMobile BookingDetails={BookingDetails} Color={Status[filterOption]} filterOption={filterOption} />
+                        </div>
                     </div>
                 </div >
             </div>

@@ -1,13 +1,5 @@
-.Card1 {
-    display: none;
-}
-
 
 @media screen and (max-width: 600px) {
-    .Card1 {
-        display: block;
-    }
-
     .Card {
         padding: 20px;
         padding-top: 10px;

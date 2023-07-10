@@ -111,6 +111,10 @@
     left: 15px;
 }
 
+.MobileView {
+    display: none;
+}
+
 .circle1 {
     width: 6px;
     height: 6px;
@@ -276,4 +280,7 @@ table {
         display: none;
     }
 
+    .MobileView {
+        display: block;
+    }
 }
