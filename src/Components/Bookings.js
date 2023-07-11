@@ -14,7 +14,7 @@ function Bookings() {
         { Date: "June 11", BookingID: "234344", CustomerName: "1110100", SlotDetails: "5 july", Services: "Haircut", Pricing: "₹300", Status: "Booked" },
         { Date: "June 12", BookingID: "343243", CustomerName: "1110100", SlotDetails: "6 july", Services: "Haircut", Pricing: "₹300", Status: "Booked" },
         { Date: "June 12", BookingID: "145452", CustomerName: "1110100", SlotDetails: "1 july", Services: "Haircut", Pricing: "₹300", Status: "Completed" },
-        { Date: "June 12", BookingID: "145452", CustomerName: "1110100", SlotDetails: "1 july", Services: "Haircut", Pricing: "₹300", Status: "Completed" },
+        { Date: "June 12", BookingID: "145455", CustomerName: "1110100", SlotDetails: "1 july", Services: "Haircut", Pricing: "₹300", Status: "Completed" },
         { Date: "June 13", BookingID: "875165", CustomerName: "1110100", SlotDetails: "2 july", Services: "Haircut", Pricing: "₹300", Status: "Completed" },
         { Date: "June 13", BookingID: "741555", CustomerName: "1110100", SlotDetails: "6 july", Services: "Haircut", Pricing: "₹300", Status: "Cancelled" },
         { Date: "June 13", BookingID: "586588", CustomerName: "1110100", SlotDetails: "4 july", Services: "Haircut", Pricing: "₹300", Status: "Booked" },

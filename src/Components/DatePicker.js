@@ -32,9 +32,9 @@ const DatePicker = () => {
           let buttonContainer = buttonPane.find('.custom-datepicker-buttons');
 
           if (buttonContainer.length === 0) {
-            buttonContainer = $('<div className="custom-datepicker-buttons"></div>');
-            buttonContainer.append('<button type="button" className="ui-datepicker-cancel">Cancel</button>');
-            buttonContainer.append('<button type="button" className="ui-datepicker-setdate">Set Date</button>');
+            buttonContainer = $('<div class="custom-datepicker-buttons"></div>');
+            buttonContainer.append('<button type="button" class="ui-datepicker-cancel">Cancel</button>');
+            buttonContainer.append('<button type="button" class="ui-datepicker-setdate">Set Date</button>');
             buttonPane.append(buttonContainer);
           }
 
@@ -63,9 +63,9 @@ const DatePicker = () => {
           let buttonContainer = buttonPane.find('.custom-datepicker-buttons');
 
           if (buttonContainer.length === 0) {
-            buttonContainer = $('<div className="custom-datepicker-buttons"></div>');
-            buttonContainer.append('<button type="button" className="ui-datepicker-cancel">Cancel</button>');
-            buttonContainer.append('<button type="button" className="ui-datepicker-setdate">Set Date</button>');
+            buttonContainer = $('<div class="custom-datepicker-buttons"></div>');
+            buttonContainer.append('<button type="button" class="ui-datepicker-cancel">Cancel</button>');
+            buttonContainer.append('<button type="button" class="ui-datepicker-setdate">Set Date</button>');
             buttonPane.append(buttonContainer);
 
             // Handle Cancel button click event
