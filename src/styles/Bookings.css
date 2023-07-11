@@ -283,4 +283,11 @@ table {
     .MobileView {
         display: block;
     }
+
+    .container {
+        height: 60vh;
+    }
+    .flex2 {
+        height: 72vh;
+    }
 }

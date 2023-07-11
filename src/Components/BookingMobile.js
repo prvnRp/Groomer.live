@@ -28,7 +28,7 @@ function BookingMobile(props) {
                             <div className={'circle3 ' + props.Color}></div>
                         )}
                         <div style={{ paddingTop: isExpanded ? "15px" : "6px", paddingLeft: isExpanded ? "8px" : "0px" }} className='Carditem'>
-                            <div style={{ fontSize: "14px", fontWeight: "700" }}>Booking ID: {item.BookingID}{!isExpanded ? null : (<span style={{ float: "right" }}>Status: {props.filterOption}</span>)}</div>
+                            <div style={{ fontSize: "14px", fontWeight: "700" }}>Booking ID: {item.BookingID}{!isExpanded ? null : (<span style={{ float: "right" }}>Status: <span style={{color:props.Color}}>{props.filterOption}</span></span>)}</div>
                             {isExpanded ? null : (
                                 <React.Fragment>
                                     <div><span style={{ paddingRight: "15px" }}>{item.CustomerName}</span> <span>{item.SlotDetails}</span></div>
