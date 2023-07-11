@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../App.css';
 import LeftNav from './LeftNav';
 import '../styles/mySalon.css';
@@ -10,6 +10,14 @@ function MySalon() {
     const data = ['Slot 1', 'Slot 2'];
     const [mainToggle, setMainToggle] = useState(false);
     const [toggleStatuses, setToggleStatuses] = useState(data.map(() => mainToggle));
+
+    // when all of the toggles are off, the main toggle should be off
+    useEffect(() => {
+    if (toggleStatuses.every((status) => !status)) {
+        setMainToggle(false);
+    }
+    }, [toggleStatuses]);
+
 
     const handleToggleDisplay = () => {
         const updatedMainToggle = !mainToggle;
