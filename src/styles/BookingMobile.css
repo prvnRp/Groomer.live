@@ -24,7 +24,6 @@
     .circle3 {
         width: 13px;
         height: 13px;
-        /* background: rgba(252, 211, 67, 0.80); */
         border-radius: 13px;
         position: relative;
         top: 10px;
@@ -35,7 +34,6 @@
     .Carditem {
         display: flex;
         flex-direction: column;
-        /* padding-left: 10px; */
         font-family: Segoe UI;
         font-style: normal;
         padding-top: 6px;
@@ -43,21 +41,14 @@
         padding-left: 0px;
         gap: 4px;
         width: 100%;
-        /* font-weight: bold; */
     }
 
     table {
         width: 100%;
         border-collapse: collapse;
         border-spacing: 0;
-        /* padding-top: 0px; */
-        /* color: #FFF; */
         font-size: 12px;
-        /* font-family: Noto Sans Symbols; */
         font-style: normal;
-        /* font-weight: 400; */
-        /* line-height: normal; */
-        /* background: rgba(123, 123, 123, 0.25); */
         border-radius: 8px;
     }
 

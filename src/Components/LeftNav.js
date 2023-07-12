@@ -1,9 +1,8 @@
 import '../App.css';
-import mySalon from '../images/salon.png';
-import Bookings from '../images/calendar.png';
-import Revenue from '../images/rupee.png';
+import mySalon from '../images/Salon1.svg';
+import Bookings from '../images/Calendar.svg';
+import Revenue from '../images/Rupee.svg';
 import { NavLink } from "react-router-dom";
-// import { useLocation } from 'react-router-dom';
 import '../styles/LeftNav.css';
 
 function LeftNav() {

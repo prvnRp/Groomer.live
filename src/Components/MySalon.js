@@ -11,7 +11,6 @@ function MySalon() {
     const [mainToggle, setMainToggle] = useState(false);
     const [toggleStatuses, setToggleStatuses] = useState(data.map(() => mainToggle));
 
-    // when all of the toggles are off, the main toggle should be off
     useEffect(() => {
     if (toggleStatuses.every((status) => !status)) {
         setMainToggle(false);

@@ -3,7 +3,6 @@
     height: 100%;
     align-items: center;
     padding-right: 5%;
-    /* padding-bottom: 150px; */
 }
 
 .Container {
@@ -17,29 +16,14 @@
 .flex-2 {
     background-color: #211E1E;
     width: 100%;
-    /* min-height: 420px; */
-    /* height: 55vh; */
-    /* margin: 10px; */
-    /* text-align: center; */
     padding: 38px;
-    /* padding-left: 57px; */
-    /* padding-right: 70px; */
-    /* padding-bottom: 50px; */
     border-radius: 45px;
     background: #211E1E;
     display: flex;
     flex-direction: column;
-
-    /* justify-content: space-between; */
-    /* align-items: center; */
-    /* padding-left: 40px; */
-    /* padding-top: 40px; */
-    /* padding-right: 40px; */
-    /* height: 70vh; */
     min-height: 500px;
     justify-content: space-evenly;
     min-height: 72vh;
-    /* gap: 50px; */
 }
 
 .datefilter {
@@ -49,15 +33,12 @@
     align-items: center;
     gap: 40px;
     flex-wrap: wrap;
-    /* padding-top: 40px; */
-    /* padding-bottom: 20px; */
 }
 
 .Today {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
-    /* padding: 50px; */
     align-items: center;
     flex-wrap: wrap;
 }
@@ -81,7 +62,6 @@
 .RevenueNum {
     color: rgba(0, 255, 71, 0.80);
     font-size: 70px;
-    /* padding: 5px; */
     padding-left: 50px;
     padding-right: 100px;
     background: rgba(123, 123, 123, 0.25);
@@ -91,10 +71,7 @@
 .BookingsNum {
     color: rgba(252, 211, 67, 0.80);
     font-size: 70px;
-    /* padding: 5px; */
     text-align: center;
-    /* padding-left: 50px; */
-    /* padding-right: 25px; */
     background: rgba(123, 123, 123, 0.25);
     border-radius: 35px;
 }
@@ -122,8 +99,6 @@ table {
     border-collapse: separate;
     border-spacing: 0 12px;
     width: 100%;
-    /* overflow-x: auto; */
-    /* margin-top: -11px; */
 }
 
 @media only screen and (max-width: 600px) {
@@ -131,18 +106,15 @@ table {
 
     .flexcontainer {
         padding-top: 3vh;
-
         flex-wrap: wrap;
         padding-left: 7px;
         padding-right: 0px;
-        /* gap: 10px; */
     }
 
     .Container {
 
         padding-right: 0px;
         padding-left: 0px;
-        /* padding-top: 90px; */
         order: 1;
     }
 
@@ -153,10 +125,8 @@ table {
 
     .Today {
         flex-direction: column;
-        /* gap: 0px; */
         justify-content: center;
         text-align: center;
-        /* font-size: 20px; */
     }
 
     .BookingsNum {

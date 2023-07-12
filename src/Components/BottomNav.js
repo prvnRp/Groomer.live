@@ -1,17 +1,15 @@
 import { NavLink } from 'react-router-dom';
 import '../App.css';
-import mySalon from '../images/salon.png';
-import Bookings from '../images/calendar.png';
-import Revenue from '../images/rupee.png';
-// import { NavLink } from "react-router-dom";
-// import { useLocation } from 'react-router-dom';
+import mySalon from '../images/Salon1.svg';
+import Bookings from '../images/Calendar.svg';
+import Revenue from '../images/Rupee.svg';
 import '../styles/LeftNav.css';
 import '../styles/BottomNav.css'
 
 function BottomNav() {
     return (
         <nav class="mobile-nav">
-            <NavLink to="/" class="bloc-icon">
+            <NavLink to="/" class="bloc-icon iconi">
                 <img src={mySalon} alt="" />
             </NavLink>
             <NavLink to="/bookings" class="bloc-icon">

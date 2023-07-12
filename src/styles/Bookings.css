@@ -3,7 +3,6 @@
     height: 100%;
     align-items: center;
     padding-right: 5%;
-    /* padding-bottom: 150px; */
 }
 
 .container {
@@ -17,21 +16,11 @@
 .flex2 {
     background-color: #211E1E;
     width: 100%;
-    /* min-height: 420px; */
-    /* height: 55vh; */
-    /* margin: 10px; */
-    /* text-align: center; */
     padding: 38px;
-    /* padding-left: 57px; */
-    /* padding-right: 70px; */
-    /* padding-bottom: 50px; */
     border-radius: 45px;
     background: #211E1E;
     display: flex;
     flex-direction: column;
-
-    /* justify-content: space-between; */
-    /* align-items: center; */
     padding-left: 40px;
     padding-top: 40px;
     padding-right: 40px;
@@ -42,7 +31,6 @@
     float: left;
     color: #FFF;
     font-size: 25px;
-    /* font-size: clamp(1rem, 1vw + 0.75rem, 2rem); */
     font-family: Segoe UI;
     font-style: normal;
     font-weight: 400;
@@ -71,7 +59,6 @@
     gap: 20px;
     color: #FFF;
     font-size: 12px;
-    /* font-family: Noto Sans Symbols; */
     font-style: normal;
     font-weight: 400;
     line-height: normal;
@@ -104,7 +91,6 @@
 .circle {
     width: 10px;
     height: 10px;
-    /* background: rgba(252, 211, 67, 0.80); */
     border-radius: 10px;
     position: relative;
     top: 7px;
@@ -159,15 +145,10 @@ table {
     border-collapse: separate;
     border-spacing: 0 12px;
     width: 100%;
-    /* overflow-x: auto; */
-    /* margin-top: -11px; */
 }
 
 .tableContainer {
-    /* background-color: #1E1F25; */
-    /* border-radius: 20px; */
     height: 72vh;
-    /* padding: 0 10px 10px 10px; */
     overflow-y: auto;
 }
 
@@ -175,20 +156,11 @@ table {
     width: 10px;
 }
 
-/* div.tableContainer::-webkit-scrollbar {
-    position: relative;
-    right: 50px;
-  } */
-
-/* Track */
 ::-webkit-scrollbar-track {
     background: #757575;
     border-radius: 25px;
-    /* margin-top: 30px;
-    margin-bottom: 30px; */
 }
 
-/* Handle */
 ::-webkit-scrollbar-thumb {
     background: #1A1717;
     border: 1px solid #757575;
@@ -213,21 +185,17 @@ table {
 }
 
 #bookings td {
-    /* border: 2px solid Chartreuse; */
-    /* border-style: solid none; */
     color: #FFF;
     padding: 11px;
     background-color: rgba(123, 123, 123, 0.25);
 }
 
 #bookings td:first-child {
-    /* border-left-style: solid; */
     border-top-left-radius: 11px;
     border-bottom-left-radius: 11px;
 }
 
 #bookings td:last-child {
-    /* border-right-style: solid; */
     border-bottom-right-radius: 11px;
     border-top-right-radius: 11px;
 }
@@ -240,23 +208,17 @@ table {
         padding-left: 0px;
         padding-right: 0px;
         padding-top: 0px;
-        /* width: 100vw; */
-        /* height: */
-        /* gap: 10px; */
     }
 
     .container {
         padding-right: 0px;
         padding-left: 0px;
-        /* padding-top: 90px; */
-        /* order: 1; */
     }
 
     .flex2 {
         padding: 0px;
         width: 100%;
         height: 75vh;
-        /* height: 65vh; */
     }
 
     .salonname {

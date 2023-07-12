@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="40px" height="35px" viewBox="0 0 29 26" version="1.1">
+<defs>
+<image id="image6" width="41" height="35" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACkAAAAjCAYAAAAJ+yOQAAAABmJLR0QA/wD/AP+gvaeTAAABU0lEQVRYhe2Yy1XDMBAAZ/VyJyW4g5gKUAnpAEqADighJSQVhA4IHZgOoAJIBcsBy2zkD2CCJXiZk9ZrSfNsay0bDKq61fS8qOrSeokR9MA9efAgIj4EziQqYD+5TjeVDcQGqjoHykl1OhCRXWqH/0l8u0vgLJGL5VFEXkMwC4162W+TKLWpgPMQ2NW9bJ+bjFJVixBYyYvpXQbxoeGgKT1FIpk+mlLo4gMZ0ZL0aTwGaR6/nCXDfqKRXKRTGaQEcHUBnyeW6cPD+5XMcdEEFpC/ZKGqc0d+RTzG534lAUoHbFJbDLAH7gSgfpkXHH7j3BBt47/BmHFWfJTCDbAGKrtlAyD6avMjBUeNo6o70+fW5lxPn6w4SR6Lk+SxOEkeiz8hORvIXapqFpuPIcmrqSQ+I77dz78wx9OIPgfv665/QasfCMWsRWT9lRPN3JWIXNvcGyqGABCBsXTsAAAAAElFTkSuQmCC"/>
+<clipPath id="clip1">
+  <rect x="0" y="0" width="29" height="26"/>
+</clipPath>
+<g id="surface7" clip-path="url(#clip1)">
+<use xlink:href="#image6" transform="matrix(0.725,0,0,0.742856,-0.3625,0)"/>
+</g>
+<pattern id="pattern0" patternUnits="userSpaceOnUse" width="29" height="26">
+<use xlink:href="#surface7"/>
+</pattern>
+</defs>
+<g id="surface2">
+<rect x="0" y="0" width="29" height="26" style="fill:url(#pattern0);stroke:none;"/>
+</g>
+</svg>

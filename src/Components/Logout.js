@@ -1,5 +1,5 @@
 import '../App.css';
-import LogoutR from '../images/logout-rounded.png';
+import LogoutR from '../images/LogoutRounded.svg';
 import '../styles/logout.css';
 
 function Logout() {

@@ -1,8 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import $ from 'jquery';
 import 'jquery-ui/ui/widgets/datepicker';
-import '../styles/style.css'; // Import the CSS file
-// import tearOffCalendar from '../images/tear-off-calendar.png';
+import '../styles/style.css';
 
 const DatePicker = () => {
   const datePickerRef = useRef(null);

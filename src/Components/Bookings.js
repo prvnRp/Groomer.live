@@ -5,7 +5,6 @@ import TableRow from './TableRow';
 import '../styles/Bookings.css';
 import BottomNav from './BottomNav';
 import BookingMobile from './BookingMobile';
-// import { useLocation } from 'react-router-dom'
 
 function Bookings() {
 

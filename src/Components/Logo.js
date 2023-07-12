@@ -1,6 +1,5 @@
 import '../App.css';
-import logo from '../images/groomerpsd-1.png';
-// import { useLocation } from 'react-router-dom';
+import logo from '../images/groomerpsd.svg';
 import '../styles/logo.css'
 
 function Logo() {

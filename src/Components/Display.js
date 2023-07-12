@@ -7,7 +7,6 @@ function Popup({ displayOpen }) {
 
     useEffect(() => {
         const timeId = setTimeout(() => {
-            // After 3 seconds set the show value to false
             setShow(false)
         }, 3000)
 
