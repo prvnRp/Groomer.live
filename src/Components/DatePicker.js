@@ -8,23 +8,22 @@ const DatePicker = () => {
   const inputId = `datepicker-input-${Math.random().toString(36).substr(2, 9)}`;
 
   useEffect(() => {
-      const datePickerInput = $(datePickerRef.current);
-      datePickerInput.attr('id', inputId); // Set the unique id attribute for the input
-      datePickerInput.datepicker({
+    const datePickerInput = $(datePickerRef.current);
+    datePickerInput.attr('id', inputId); // Set the unique id attribute for the input
+    datePickerInput.datepicker({
       showButtonPanel: true,
       dateFormat: 'dd/mm/yy',
       changeMonth: true,
       changeYear: true,
-      yearRange: 'c-100:c+10',
+      yearRange: 'c:c+10',
       hidePrevNext: true,
       dayNamesMin: ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'],
-  // buttonText: 'Pick Date',
       showOtherMonths: true,
       stepMonths: 0,
       onSelect: function (dateText, inst) {
         $(this).data('selectedDate', dateText); // Store the selected date in the input element's data
       },
-      
+
       beforeShow: function (input, inst) {
         setTimeout(function () {
           const buttonPane = $(inst.dpDiv).find('.ui-datepicker-buttonpane');
@@ -55,7 +54,7 @@ const DatePicker = () => {
           });
         }, 0);
       },
-      
+
       onChangeMonthYear: function (year, month, inst) {
         setTimeout(function () {
           const buttonPane = $(inst.dpDiv).find('.ui-datepicker-buttonpane');
@@ -113,7 +112,7 @@ const DatePicker = () => {
           aria-label="Select Date"
           maxlength="15"
           size="15"
-          style={{ backgroundColor: '#373535', padding: '5px', border:"0", outline: "none", caretColor: "transparent", color: "#fff"}}
+          style={{ backgroundColor: '#373535', padding: '5px', border: "0", outline: "none", caretColor: "transparent", color: "#fff" }}
           onClick={() => $(datePickerRef.current).datepicker('show')}
         />
         <span className="correct-incorrect-icon"></span>
