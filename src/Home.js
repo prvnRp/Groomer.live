@@ -29,7 +29,7 @@ function Home() {
                             placeholder='Password'
                         />
                     </div>
-                    <NavLink to="/home" ><img src={login} alt="Logout" /></NavLink>
+                    <NavLink to="/mySalon" ><img src={login} alt="Logout" /></NavLink>
                 </div>
             </div>
 

@@ -9,7 +9,7 @@ function LeftNav() {
     return (
         <div className="flex1">
             <div className="flex4">
-                <NavLink to="/home" ><img className="image sep" alt="mySalon" src={mySalon} /><span style={{ paddingLeft: "10px" }} className='flex31'>My Salon</span></NavLink>
+                <NavLink to="/mySalon" ><img className="image sep" alt="mySalon" src={mySalon} /><span style={{ paddingLeft: "10px" }} className='flex31'>My Salon</span></NavLink>
             </div>
             <div className="flex4">
                 <NavLink to="/bookings"><img className="image sepb" alt="Bookings" src={Bookings} /><span className='flex31'>Bookings</span></NavLink>

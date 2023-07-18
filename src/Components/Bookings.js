@@ -5,6 +5,8 @@ import TableRow from './TableRow';
 import '../styles/Bookings.css';
 import BottomNav from './BottomNav';
 import BookingMobile from './BookingMobile';
+import Logo from './Logo';
+import Logout from './Logout';
 
 function Bookings() {
 
@@ -41,48 +43,52 @@ function Bookings() {
     var Status = { "Booked": "yellow", "Completed": "green", "Cancelled": "red" }
     // prev = ""
     return (
-        <div className="flex-container">
-            <LeftNav />
-            <div className='container'>
-                <div className="flex2">
-                    <div className='book'>
-                        <div className="salonname">{filterOption !== "Booked" ? filterOption : ""} Bookings</div>
-                        <div className="filtering" onClick={() => setElementVisible(true)}>
-                            <div onMouseLeave={() => setElementVisible(false)} className='options' style={{ display: elementVisible ? 'flex' : 'none' }}>
-                                <div className='row1' onClick={() => setFilterOption("Completed")}><div className='circle1 green'></div>Completed</div>
-                                <div className='row1' onClick={() => setFilterOption("Booked")}><div className='circle1 yellow'></div>Booked</div>
-                                <div className='row1' onClick={() => setFilterOption("Cancelled")}><div className='circle1 red'></div>Cancelled</div>
+        <>
+            <Logo />
+            <Logout />
+            <div className="flex-container">
+                <LeftNav />
+                <div className='container'>
+                    <div className="flex2">
+                        <div className='book'>
+                            <div className="salonname">{filterOption !== "Booked" ? filterOption : ""} Bookings</div>
+                            <div className="filtering" onClick={() => setElementVisible(true)}>
+                                <div onMouseLeave={() => setElementVisible(false)} className='options' style={{ display: elementVisible ? 'flex' : 'none' }}>
+                                    <div className='row1' onClick={() => setFilterOption("Completed")}><div className='circle1 green'></div>Completed</div>
+                                    <div className='row1' onClick={() => setFilterOption("Booked")}><div className='circle1 yellow'></div>Booked</div>
+                                    <div className='row1' onClick={() => setFilterOption("Cancelled")}><div className='circle1 red'></div>Cancelled</div>
+                                </div>
+                                <div className="filter"><span className={elementVisible ? 'arrow arrow-right' : 'arrow arrow-left'}></span>
+                                    Filter<div className={'circle ' + Status[filterOption]}></div></div>
                             </div>
-                            <div className="filter"><span className={elementVisible ? 'arrow arrow-right' : 'arrow arrow-left'}></span>
-                                Filter<div className={'circle ' + Status[filterOption]}></div></div>
                         </div>
-                    </div>
-                    <div className='tableContainer'>
-                        <table id="bookings">
-                            <thead>
-                                <tr>
-                                    <th>Booking ID</th>
-                                    <th>Customer name</th>
-                                    <th>Slot details</th>
-                                    <th>Services</th>
-                                    <th>Pricing</th>
-                                    <th>Status</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {
-                                    <TableRow BookingDetails={BookingDetails} Color={Status[filterOption]} filterOption={filterOption} />
-                                }
-                            </tbody>
-                        </table>
-                        <div className='MobileView'>
-                            <BookingMobile BookingDetails={BookingDetails} Color={Status[filterOption]} filterOption={filterOption} />
+                        <div className='tableContainer'>
+                            <table id="bookings">
+                                <thead>
+                                    <tr>
+                                        <th>Booking ID</th>
+                                        <th>Customer name</th>
+                                        <th>Slot details</th>
+                                        <th>Services</th>
+                                        <th>Pricing</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {
+                                        <TableRow BookingDetails={BookingDetails} Color={Status[filterOption]} filterOption={filterOption} />
+                                    }
+                                </tbody>
+                            </table>
+                            <div className='MobileView'>
+                                <BookingMobile BookingDetails={BookingDetails} Color={Status[filterOption]} filterOption={filterOption} />
+                            </div>
                         </div>
-                    </div>
-                </div >
+                    </div >
+                </div>
+                <BottomNav />
             </div>
-            <BottomNav />
-        </div>
+        </>
     );
 }
 

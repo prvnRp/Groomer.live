@@ -9,7 +9,7 @@ import '../styles/BottomNav.css'
 function BottomNav() {
     return (
         <nav class="mobile-nav">
-            <NavLink to="/home" class="bloc-icon iconi">
+            <NavLink to="/mySalon" class="bloc-icon iconi">
                 <img src={mySalon} alt="" />
             </NavLink>
             <NavLink to="/bookings" class="bloc-icon">
