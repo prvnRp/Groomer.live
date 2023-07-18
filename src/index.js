@@ -6,13 +6,14 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import MySalon from './Components/MySalon';
 import Bookings from './Components/Bookings';
 import Revenue from './Components/Revenue';
+import Home from './Home'
 
 export default function Index() {
   return (
     <BrowserRouter>
       <Routes>
-        {/* <Route path="/home" element={<Home />} /> */}
-        <Route path="/" element={<App />}>
+        <Route path="/" element={<Home />} />
+        <Route path="/home" element={<App />}>
           <Route index element={<MySalon />} />
           <Route path="bookings" element={<Bookings />} />
           <Route path="revenue" element={<Revenue />} />

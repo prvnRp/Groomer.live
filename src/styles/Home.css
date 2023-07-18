@@ -1,0 +1,43 @@
+#containerhome {
+    display: flex;
+    flex-direction: row;     /* make main axis horizontal (default setting) */
+    justify-content: center; /* center items horizontally, in this case */
+    align-items: center;     /* center items vertically, in this case */
+    height: 100vh;
+    gap:20vh;
+}
+
+#containerhome input {
+    /* width: 300px; */
+    background: linear-gradient(#000, #fff) center bottom 5px /calc(100% - 10px) 2px no-repeat;
+    /* background-color: #fcfcfc; */
+    /* border: 1px solid; */
+    padding: 10px;
+    direction: center;
+    text-align: center;
+    border :0;
+    color:#FFF;
+  }
+
+#containerhome ::placeholder {
+    text-align: center;
+    font-size: 15px;
+    font-weight: 700;
+}
+.logobig {
+    transform: scale(3);
+    position: relative;
+    top:50%;
+    margin-right: 15vh;
+}
+/* input {
+    border-radius: 10px;
+    background: rgba(123, 123, 123, 0.25);
+    border : 0;
+    color : #fff;
+    padding: 5px 20px;
+} */
+#containerhome input:focus {
+    border: 0;
+    outline: none;
+}

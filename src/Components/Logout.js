@@ -1,13 +1,16 @@
 import '../App.css';
 import LogoutR from '../images/LogoutRounded.svg';
 import '../styles/logout.css';
+import { NavLink } from "react-router-dom";
 
 function Logout() {
     return (
-        <div className="logout">
-            Logout
-            <img src={LogoutR} alt="logout" />
-        </div>
+        <NavLink to="/" >
+            <div className="logout">
+                Logout
+                <img src={LogoutR} alt="logout" />
+            </div>
+        </NavLink>
     );
 }
 
