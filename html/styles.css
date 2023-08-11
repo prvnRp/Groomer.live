@@ -1,0 +1,145 @@
+body {
+    background: #000;
+    color: #FFF;
+}
+
+.banner-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 72vh;
+    margin: 0 4vw;
+  }
+
+  .left-arrow {
+    background: #FFF;
+    border-radius: 50%;
+    padding: 0 10px;
+    font-size: 30px;
+    color: #000;
+    /* font-weight: bold; */
+    cursor: pointer;
+  }
+
+  .banner {
+    background: #FF6548;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 70vw;
+    height: 60vh;
+    /* padding: 6vh 10vw; */
+    border-radius: 290px;
+  }
+
+  .scroll-symbol {
+    /* margin-bottom: 20px; */
+    /* transform: scale(0.5); */
+    position: fixed;
+    display: flex;
+    left: 22%;
+    bottom: 0;
+  }
+
+  .best-salons {
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    /* align-items: center; */
+    background: #1E1E1E;
+    border-radius: 100px;
+    margin: 6vw;
+  }
+
+  
+.text-salon {
+    padding: 20px 5vw;
+    font-size: 40px;
+  }
+
+  .best-salon
+  {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-right: 20px;
+  }
+
+  .best-salon-card {
+    /* Existing styles for the review card */
+  
+    /* Adjust width and margin to create a responsive grid layout */
+    width: calc(45% - 10px); /* Two cards per row, with a 10px margin between them */
+    margin-bottom: 20px; /* Add some spacing between cards */
+    /* background: rgba(109, 109, 109, 0.50); */
+    border-radius: 20px;
+    padding:15px;
+    margin-left: 20px;
+    transition: transform 0.3s ease;
+
+    /* Media query for one card per row on smaller screens */
+    @media (max-width: 1200px) {
+      width: 100%;
+    }
+  }
+
+  .best-salon-card :hover {
+    transform: scale(1.1);
+  }
+
+  .rating-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+  }
+
+  .explore-button {
+    margin-bottom: 60px;
+    margin-top: 30px;
+  }
+  
+  .explore-button button{
+    background: #FF6548;
+    border : 0;
+    color: #FFF;
+    padding: 10px 40px;
+    border-radius: 25px;
+    font-size: 30px;
+  }
+
+  .home-services {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: 8vw;
+    gap: 5vw;
+  }
+
+  .button-salon-book button{
+    background: #FF6548;
+    border: 0;
+    padding: 10px 50px;
+    color: #FFF;
+    border-radius: 38px;
+    font-size: 30px;
+  }
+  
+  .content12 {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    margin-top: 10vh;
+    gap: 50px;
+    /* justify-content: space-between; */
+  }
+
+  .one-card {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }

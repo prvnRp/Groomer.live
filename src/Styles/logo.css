@@ -1,0 +1,16 @@
+.logo {
+    transform: scale(0.8);
+    float: left;
+    padding-left: 34px;
+    padding-top: 20px;
+    /* position: fixed; */
+}
+
+@media screen and (max-width: 768px) {
+    .logo {
+        transform: scale(0.5);
+        float: left;
+        padding:0px;
+        /* position: fixed; */
+    }
+}
