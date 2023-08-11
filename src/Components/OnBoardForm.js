@@ -7,6 +7,7 @@ import Logout from './Logout';
 import Credentials from './Credentials';
 import Franchise from './Franchise';
 import SalonTimings from './SalonTimings';
+import LunchTimings from './LunchTimings';
 import NumSlots from './NumSlots';
 import Photos from './Photos';
 import Services from './Services';
@@ -176,6 +177,7 @@ function OnBoardForm(props) {
           <Franchise inputs={inputs} setInputs={setInputs} handleChange={handleChange} isReadOnly={isReadOnly} franchise={franchise} />
           <NumSlots inputs={inputs} setInputs={setInputs} handleChange={handleChange} isReadOnly={isReadOnly} />
           <SalonTimings inputs={inputs} setInputs={setInputs} isReadOnly={isReadOnly} />
+          <LunchTimings inputs={inputs} setInputs={setInputs} isReadOnly={isReadOnly} />
           <Photos isReadOnly={isReadOnly} />
           <Services services={services} setServices={setServices} isReadOnly={isReadOnly} serviceCount={serviceCount} setServiceCount={setServiceCount} />
           <Combos combos={combos} setCombos={setCombos} isReadOnly={isReadOnly} comboCount={comboCount} setComboCount={setComboCount} comboservicecount={comboservicecount} setComboServiceCount={setComboServiceCount} />
