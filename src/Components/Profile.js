@@ -26,7 +26,9 @@ function Avatar() {
         <div>
             <img style={{ transform: "scale(0.5)", position: "relative", top: "-16px" }} src={manCircle} alt="user" ref={dropdownRef} onClick={handleCircleClick} />
             {isDropdownVisible && (
-                <MenuBar />
+                <div>
+                    <MenuBar />
+                </div>
             )}
         </div>
     );

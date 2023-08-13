@@ -30,7 +30,7 @@ function Login() {
     };
 
     return (
-        <section className="container">
+        <section className="container11">
             <div className="bg-image"><div className='logo-display'><Logo /></div></div>
             <div className="contentt">
                 <div className='topnav-display'><TopNav /></div>

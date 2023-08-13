@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 
 function MenuBar() {
     return (
-        <div className="dropdown-menu">
+        <div className="dropdownMenu">
             <ul>
                 <li>
                     <NavLink to="/bookings">Bookings</NavLink>
