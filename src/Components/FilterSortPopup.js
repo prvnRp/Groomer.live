@@ -1,7 +1,7 @@
 import React from 'react';
 import '../App.css';
-import InputRange from 'react-input-range';
-import 'react-input-range/lib/css/index.css';
+// import InputRange from 'react-input-range';
+// import 'react-input-range/lib/css/index.css';
 import CustomDropdown from './CustomDropdown';
 import Rating from '@mui/material/Rating';
 import StarBorderIcon from '@mui/icons-material/StarBorder';
@@ -240,7 +240,7 @@ function FilterSortPopup({ close, filterOptions, setFilterOptions, CardData }) {
                     </div>
                     <div style={{ display: "flex", flexDirection: "row", justifyContent: "space-between", gap: "10px" }}>
                         <small>Min</small>
-                        <div style={{ marginTop: '3px', width: "100%" }}>
+                        {/* <div style={{ marginTop: '3px', width: "100%" }}>
                             <InputRange
                                 minValue={0}
                                 maxValue={1000} // Adjust the maximum value according to your requirement
@@ -249,7 +249,7 @@ function FilterSortPopup({ close, filterOptions, setFilterOptions, CardData }) {
                                 onChange={(value) => handlePriceSliderChange(value.min, value.max)}
                                 formatLabel={() => ''}
                             />
-                        </div>
+                        </div> */}
                         <small>Max</small>
                     </div>
                     <div style={{ display: "flex", flexDirection: "row", gap: "15px" }}>
