@@ -54,13 +54,13 @@ function SquareCard({ id, content, imageSrc, distance, ratings, NoR, services, s
     // }, [services, currentServiceIndex]);
 
     const currentService = services[currentServiceIndex];
-    const currentImageSrc = imageSrc[currentServiceIndex];
+    // const currentImageSrc = imageSrc[currentServiceIndex];
     // const currentService = services[currentServiceIndex];
     const nextService = services[nextServiceIndex];
     return (
         <div className="square-card sliding-content-container" style={{ position: "relative" }}>
             <div style={{ position: "relative", overflow: "hidden" }}>
-                <div style={{ display: "flex", width: "200%", transform: `translateX(-${slidingDirection === 'slide-in' ? currentServiceIndex * 50 : nextServiceIndex * 50}%)`, transition: "transform 0.5s ease" }}>
+                <div style={{ display: "flex", width: "200%", transform: `translateX(-${slidingDirection === 'slide-in' ? 0 * 50 : 1 * 50}%)`, transition: "transform 0.5s ease" }}>
                     {currentService && (
                         <div className="image-container">
                             {imageSrc[currentServiceIndex] && <img src={imageSrc[currentServiceIndex]} alt="Card Image" className="card-image" />}

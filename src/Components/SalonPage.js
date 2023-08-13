@@ -552,6 +552,7 @@ function SalonPage() {
                                     <button className="checkout-button" onClick={handlePayNow}>
                                         Pay Now
                                     </button>
+                                    <div style={{ fontSize: "12px" }}>Please be at the salon 5 minutes before your selected time.</div>
                                     {Reschedule && <div style={{ fontSize: "10px", marginTop: "5px" }}>10% of Rescheduling charges are applicable</div>}
                                 </div>
                                 <span className="close-button" onClick={() => Reschedule ? navigate(-1) : setCheckoutStage('services')}>

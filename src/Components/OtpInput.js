@@ -1,9 +1,13 @@
 import React, { useState, useRef, useEffect } from 'react';
 // import { MdLock } from 'react-icons/md';
+import { useNavigate } from 'react-router-dom';
 
-const OTPInput = () => {
+const OTPInput = ({ isincorrect, setIsIncorrect }) => {
+    const navigate = useNavigate();
     const [otp, setOTP] = useState(['', '', '', '']);
     const otpBoxesRef = useRef([]);
+    const OTP = 1234;
+    const [iscorrect, setIsCorrect] = useState(false);
 
     const handleChange = (index, value) => {
         if (isNaN(value)) return;
@@ -19,6 +23,22 @@ const OTPInput = () => {
         }
     };
 
+    useEffect(() => {
+        const otpString = otp.join('');
+        if (otpString.length === 4) {
+            if (parseInt(otpString) === OTP) {
+                setIsIncorrect(false);
+                setIsCorrect(true);
+            } else {
+                setIsIncorrect(true);
+            }
+        }
+    }, [otp])
+    useEffect(() => {
+        if (iscorrect) {
+            navigate(-1);
+        }
+    }, [iscorrect])
     const handlePaste = (e) => {
         e.preventDefault();
         const pasteData = e.clipboardData.getData('text/plain').trim().slice(0, 4);

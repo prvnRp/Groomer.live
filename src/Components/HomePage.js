@@ -58,25 +58,16 @@ const colors = [
 ]
 
 const HomePage = () => {
-    const [currentBanner, setCurrentBanner] = useState(0);
     const contentRef = useRef(null);
     const [showScroll, setShowScroll] = useState(true);
     const prevScrollY = useRef(0);
 
-    const handlePrevBanner = () => {
-        setCurrentBanner((prevBanner) => (prevBanner === 0 ? banners.length - 1 : prevBanner - 1));
-    };
-
-    const handleNextBanner = () => {
-        setCurrentBanner((prevBanner) => (prevBanner === banners.length - 1 ? 0 : prevBanner + 1));
-    };
-
-    const handleScrollClick = () => {
-        if (contentRef.current) {
-            contentRef.current.classList.toggle('content-slide-up');
-            document.getElementById('scroll-symbol').style.display = 'none';
-        }
-    };
+    // const handleScrollClick = () => {
+    //     if (contentRef.current) {
+    //         contentRef.current.classList.toggle('content-slide-up');
+    //         document.getElementById('scroll-symbol').style.display = 'none';
+    //     }
+    // };
 
     const handleScroll = () => {
         const currentScrollY = window.scrollY;
@@ -96,18 +87,46 @@ const HomePage = () => {
     return (
         <div>
             <Header />
-            <div className="banner-container">
-                <div className="left-arrow" onClick={handlePrevBanner}>
-                    &larr;
+            <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active" data-bs-interval="3000">
+                        <div style={{ display: "flex", justifyContent: "center", alignItems: "center", height: "70vh" }}>
+                            <div class="banner" style={{ background: colors[0] }}>
+                                <img src={images[0]} style={{ height: "100%" }} />
+                                <div className='content-banner'>{banners[0]}</div>
+                                <div><button className='book-now'>Book Now</button></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item" data-bs-interval="3000">
+                        <div style={{ display: "flex", justifyContent: "center", alignItems: "center", height: "70vh" }}>
+                            <div class="banner" style={{ background: colors[1] }}>
+                                <img src={images[1]} style={{ height: "100%" }} />
+                                <div className='content-banner'>{banners[1]}</div>
+                                <div><button className='book-now'>Book Now</button></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item" data-bs-interval="3000">
+                        <div style={{ display: "flex", justifyContent: "center", alignItems: "center", height: "70vh" }}>
+                            <div class="banner" style={{ background: colors[2] }}>
+                                <img src={images[2]} style={{ height: "100%" }} />
+                                <div className='content-banner'>{banners[2]}</div>
+                                <div><button className='book-now'>Book Now</button></div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div style={{ background: colors[currentBanner] }} className="banner">
-                    <img src={images[currentBanner]} style={{ height: "100%" }} />
-                    <div className='content-banner'>{banners[currentBanner]}</div>
-                    <div><button className='book-now'>Book Now</button></div>
-                </div>
-                <div className="left-arrow" onClick={handleNextBanner}>
-                    &rarr;
-                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying"
+                    data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying"
+                    data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
             </div>
             {showScroll && (
                 <div className='scroll-symbol'>

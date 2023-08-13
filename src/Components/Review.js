@@ -8,10 +8,13 @@ import React, { useState, useEffect } from 'react';
 import { Rating } from '@mui/material';
 import StarBorderIcon from '@mui/icons-material/StarBorder';
 import envolope from '../images/envelope-with-checkmark-icon.svg';
+import Box from '@mui/material/Box';
 
 function Review() {
     const navigate = useNavigate();
     const location = useLocation();
+    const [value, setValue] = React.useState(0);
+    const [hover, setHover] = React.useState(-1);
     const [message, setMessage] = useState('');
     const maxCharacterCount = 500;
     const handleMessageChange = (event) => {
@@ -38,6 +41,22 @@ function Review() {
         //     setCancelPage('moneyRefund');
         // }, 2000);
     };
+    const labels = {
+        // 0.5: 'Useless',
+        0: '',
+        1: 'Terrible',
+        // 1.5: 'Poor',
+        2: 'Bad',
+        // 2.5: 'Ok',
+        3: 'Ok',
+        // 3.5: 'Good',
+        4: 'Good',
+        // 4.5: 'Excellent',
+        5: 'Excellent',
+    };
+    function getLabelText(value) {
+        return `${value} Star${value !== 1 ? 's' : ''}, ${labels[value]}`;
+    }
     return (
         <div style={{ width: "100vw", height: "100vh", display: "flex", justifyContent: "center", alignItems: "center", flexDirection: "column", gap: "25px" }}>
             {Cancelpage === 'confirmation' && <>
@@ -48,13 +67,31 @@ function Review() {
                 <div className='reschedule'>Rate and Write a review</div>
                 <div className='rating-card'>
                     <div>
-                        <Rating
-                            size="large"
-                            // value={salonData.ratings}
-                            // precision={0.25}
-                            // readOnly
-                            emptyIcon={<StarBorderIcon style={{ color: 'white', fontSize: '30px' }} />}
-                        />
+                        <Box
+                            sx={{
+                                width: 200,
+                                display: 'flex',
+                                alignItems: 'center',
+                            }}
+                        >
+                            <Rating
+                                size="large"
+                                getLabelText={getLabelText}
+                                // value={salonData.ratings}
+                                // precision={0.25}
+                                // readOnly
+                                onChange={(event, newValue) => {
+                                    setValue(newValue);
+                                }}
+                                onChangeActive={(event, newHover) => {
+                                    setHover(newHover);
+                                }}
+                                emptyIcon={<StarBorderIcon style={{ color: 'white', fontSize: '30px' }} />}
+                            />
+                            {value !== null && (
+                                <Box sx={{ ml: 2 }}>{labels[hover !== -1 ? hover : value]}</Box>
+                            )}
+                        </Box>
                     </div>
                     <div style={{ position: 'relative' }}>
                         <textarea

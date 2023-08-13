@@ -49,7 +49,7 @@ export let cardData = [
         distance: '1.2 KM',
         ratings: 4.5,
         NoR: 260,
-        services: [{ ServiceName: 'Pedicure', DiscountedPrice: 150, OriginalPrice: 200 }, { ServiceName: 'Haircut', DiscountedPrice: 200, OriginalPrice: 90 }, { ServiceName: 'Haircut', DiscountedPrice: 200, OriginalPrice: 90 }], Combos: [{ ComboName: 'Combo1', ComboPrice: 1000, ComboServices: ['Haircut', 'Pedicure'] }, { ComboName: 'Combo2', ComboPrice: 1000, ComboServices: ['Haircut', 'Haircut'] }],
+        services: [{ ServiceName: 'Pedicure', DiscountedPrice: 150, OriginalPrice: 200 }, { ServiceName: 'Haircut', DiscountedPrice: 200, OriginalPrice: 90 }, { ServiceName: 'Manicure', DiscountedPrice: 200, OriginalPrice: 90 }, { ServiceName: 'fhduibfi', DiscountedPrice: 150, OriginalPrice: 200 }], Combos: [{ ComboName: 'Combo1', ComboPrice: 1000, ComboServices: ['Haircut', 'Pedicure'] }, { ComboName: 'Combo2', ComboPrice: 1000, ComboServices: ['Haircut', 'Haircut'] }],
         reviewData: [
             { id: 1, user: 'John Doe', rating: 4, review: 'Great service and friendly staff!' },
             { id: 2, user: 'Jane Smith', rating: 5, review: 'Amazing experience! Highly recommended!' },
