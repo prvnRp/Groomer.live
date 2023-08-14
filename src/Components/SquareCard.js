@@ -9,37 +9,31 @@ function SquareCard({ id, content, imageSrc, distance, ratings, NoR, services, s
 
     const [currentServiceIndex, setCurrentServiceIndex] = useState(0);
     // const [currentServiceIndex, setCurrentServiceIndex] = useState(0);
-    const [nextServiceIndex, setNextServiceIndex] = useState(1);
+    // const [nextServiceIndex, setNextServiceIndex] = useState(1);
 
     // useEffect(() => {
     //     const interval = setInterval(() => {
-    //         setTimeout(() => {
-    //             setCurrentServiceIndex((prevIndex) => (prevIndex + 1) % services.length);
-    //             setNextServiceIndex((prevIndex) => (prevIndex + 2) % services.length);
-    //         }, 500);
+    //         setCurrentServiceIndex((prevIndex) => (prevIndex + 1) % services.length);
+    //         setNextServiceIndex((prevIndex) => (prevIndex + 2) % services.length);
     //     }, 3000);
 
     //     return () => clearInterval(interval);
     // }, [services.length]);
 
-    const goToPrevService = () => {
-        setTimeout(() => {
-            setCurrentServiceIndex((prevIndex) => (prevIndex - 1 + services.length) % services.length);
-            setNextServiceIndex((prevIndex) => (prevIndex) % services.length);
-        }, 500);
-    };
+    // const goToPrevService = () => {
+    //     setCurrentServiceIndex((prevIndex) => (prevIndex - 1 + services.length) % services.length);
+    //     setNextServiceIndex((prevIndex) => (prevIndex) % services.length);
+    // };
 
-    const goToNextService = () => {
-        setTimeout(() => {
-            setCurrentServiceIndex((prevIndex) => (prevIndex + 1) % services.length);
-            setNextServiceIndex((prevIndex) => (prevIndex + 2) % services.length);
-        }, 500);
-    };
+    // const goToNextService = () => {
+    //     setCurrentServiceIndex((prevIndex) => (prevIndex + 1) % services.length);
+    //     setNextServiceIndex((prevIndex) => (prevIndex + 2) % services.length);
+    // };
 
     const currentService = services[currentServiceIndex];
     return (
         <div className="square-card" style={{ position: "relative" }}>
-            <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
+            <div id={id} class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner">
                     {services.map((service, index) => (
                         <div class={index === 0 ? "carousel-item active" : "carousel-item"} data-bs-interval="3000">
@@ -91,13 +85,13 @@ function SquareCard({ id, content, imageSrc, distance, ratings, NoR, services, s
                 </span>
                 <span style={{ fontSize: "12px" }}>{currentService.ServiceName}</span>
             </div>
-            <div class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying"
+            <div class="carousel-control-prev" type="button" data-bs-target={"#" + id}
                 data-bs-slide="prev">
-                <span onClick={goToPrevService} className='arrow left'></span>
+                <span className='arrow left'></span>
             </div>
-            <div class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying"
+            <div class="carousel-control-next" type="button" data-bs-target={"#" + id}
                 data-bs-slide="next">
-                <span onClick={goToNextService} className='arrow right'></span>
+                <span className='arrow right'></span>
             </div>
             {/* <i className='arrow left' style={{ position: "absolute", top: "50%", left: "3px", padding: "3px" }} onClick={goToPrevService}></i> */}
             {/* <i className='arrow right' style={{ position: "absolute", top: "50%", right: "3px", padding: "3px" }} onClick={goToNextService}></i> */}
