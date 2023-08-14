@@ -10,67 +10,46 @@ function SquareCard({ id, content, imageSrc, distance, ratings, NoR, services, s
     const [currentServiceIndex, setCurrentServiceIndex] = useState(0);
     // const [currentServiceIndex, setCurrentServiceIndex] = useState(0);
     const [nextServiceIndex, setNextServiceIndex] = useState(1);
-    const [slidingDirection, setSlidingDirection] = useState('');
 
-    useEffect(() => {
-        setSlidingDirection('slide-in');
-        const interval = setInterval(() => {
-            setSlidingDirection('slide-out');
-            setTimeout(() => {
-                setCurrentServiceIndex((prevIndex) => (prevIndex + 1) % services.length);
-                setNextServiceIndex((prevIndex) => (prevIndex + 2) % services.length);
-                setSlidingDirection('slide-in');
-            }, 500);
-        }, 3000);
+    // useEffect(() => {
+    //     const interval = setInterval(() => {
+    //         setTimeout(() => {
+    //             setCurrentServiceIndex((prevIndex) => (prevIndex + 1) % services.length);
+    //             setNextServiceIndex((prevIndex) => (prevIndex + 2) % services.length);
+    //         }, 500);
+    //     }, 3000);
 
-        return () => clearInterval(interval);
-    }, [services.length]);
+    //     return () => clearInterval(interval);
+    // }, [services.length]);
 
     const goToPrevService = () => {
-        setSlidingDirection('slide-out');
         setTimeout(() => {
             setCurrentServiceIndex((prevIndex) => (prevIndex - 1 + services.length) % services.length);
             setNextServiceIndex((prevIndex) => (prevIndex) % services.length);
-            setSlidingDirection('slide-in');
-        }, 500); // Wait for 500ms before changing the index
+        }, 500);
     };
 
     const goToNextService = () => {
-        setSlidingDirection('slide-out');
         setTimeout(() => {
             setCurrentServiceIndex((prevIndex) => (prevIndex + 1) % services.length);
             setNextServiceIndex((prevIndex) => (prevIndex + 2) % services.length);
-            setSlidingDirection('slide-in');
-        }, 500); // Wait for 500ms before changing the index
+        }, 500);
     };
 
-    // const slideServices = (increment) => {
-    //     setCurrentServiceIndex((prevIndex) => (prevIndex + increment + services.length) % services.length);
-    // };
-
-    // useEffect(() => {
-    //     const interval = setInterval(() => slideServices(1), 3000); // Adjust the sliding interval as desired (milliseconds)
-    //     return () => clearInterval(interval);
-    // }, [services, currentServiceIndex]);
-
     const currentService = services[currentServiceIndex];
-    // const currentImageSrc = imageSrc[currentServiceIndex];
-    // const currentService = services[currentServiceIndex];
-    const nextService = services[nextServiceIndex];
     return (
-        <div className="square-card sliding-content-container" style={{ position: "relative" }}>
-            <div style={{ position: "relative", overflow: "hidden" }}>
-                <div style={{ display: "flex", width: "200%", transform: `translateX(-${slidingDirection === 'slide-in' ? 0 * 50 : 1 * 50}%)`, transition: "transform 0.5s ease" }}>
-                    {currentService && (
-                        <div className="image-container">
-                            {imageSrc[currentServiceIndex] && <img src={imageSrc[currentServiceIndex]} alt="Card Image" className="card-image" />}
+        <div className="square-card" style={{ position: "relative" }}>
+            <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    {services.map((service, index) => (
+                        <div class={index === 0 ? "carousel-item active" : "carousel-item"} data-bs-interval="3000">
+                            <div style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
+                                <div className="image-container">
+                                    {imageSrc[index] && <img src={imageSrc[index]} alt="Card Image" className="card-image" />}
+                                </div>
+                            </div>
                         </div>
-                    )}
-                    {nextService && (
-                        <div className="image-container">
-                            {imageSrc[nextServiceIndex] && <img src={imageSrc[nextServiceIndex]} alt="Card Image" className="card-image" />}
-                        </div>
-                    )}
+                    ))}
                 </div>
             </div>
             <div className="card-details" style={{ height: '42%' }}>
@@ -86,34 +65,14 @@ function SquareCard({ id, content, imageSrc, distance, ratings, NoR, services, s
                     </span>
                 )}
                 <span style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', marginTop: '8px' }}>
-                    {/* <div style={{ position: "relative", overflow: "hidden" }}>
-                    <div style={{ display: "flex", width: "200%", transform: `translateX(-${slidingDirection === 'slide-in' ? currentServiceIndex * 50 : nextServiceIndex * 50}%)`, transition: "transform 0.5s ease" }}>
-                        {currentService && (
-                            <div>
-                                <span style={{ fontSize: '20px', fontWeight: '700' }}>₹{currentService.DiscountedPrice}&nbsp;</span>
-                                <s style={{ fontSize: "15px" }}>₹{currentService.OriginalPrice}</s>&nbsp;
-                                <span style={{ fontSize: '7px' }}>
-                                    {(((currentService.OriginalPrice - currentService.DiscountedPrice) / currentService.OriginalPrice) * 100).toFixed(0)}% off</span>
-                            </div>
-                        )}
-                        {nextService && (
-                            <div>
-                                <span style={{ fontSize: '20px', fontWeight: '700' }}>₹{nextService.DiscountedPrice}&nbsp;</span>
-                                <s style={{ fontSize: "15px" }}>₹{nextService.OriginalPrice}</s>&nbsp;
-                                <span style={{ fontSize: '7px' }}>
-                                    {(((nextService.OriginalPrice - nextService.DiscountedPrice) / nextService.OriginalPrice) * 100).toFixed(0)}% off</span>
-                            </div>
-                        )}
+                    {/* {currentService.DiscountedPrice && ( */}
+                    <div>
+                        <span style={{ fontSize: '20px', fontWeight: '700' }}>₹{currentService.DiscountedPrice}&nbsp;</span>
+                        <s style={{ fontSize: "15px" }}>₹{currentService.OriginalPrice}</s>&nbsp;
+                        <span style={{ fontSize: '7px' }}>
+                            {(((currentService.OriginalPrice - currentService.DiscountedPrice) / currentService.OriginalPrice) * 100).toFixed(0)}% off</span>
                     </div>
-                    </div> */}
-                    {currentService.DiscountedPrice && (
-                        <div>
-                            <span style={{ fontSize: '20px', fontWeight: '700' }}>₹{currentService.DiscountedPrice}&nbsp;</span>
-                            <s style={{ fontSize: "15px" }}>₹{currentService.OriginalPrice}</s>&nbsp;
-                            <span style={{ fontSize: '7px' }}>
-                                {(((currentService.OriginalPrice - currentService.DiscountedPrice) / currentService.OriginalPrice) * 100).toFixed(0)}% off</span>
-                        </div>
-                    )}
+                    {/* )} */}
                     <span style={{ fontSize: '15px' }}>
                         <b>{ratings}</b>
                         <span style={{ position: 'relative', top: '2.5px', margin: '2px' }}>
@@ -132,8 +91,16 @@ function SquareCard({ id, content, imageSrc, distance, ratings, NoR, services, s
                 </span>
                 <span style={{ fontSize: "12px" }}>{currentService.ServiceName}</span>
             </div>
-            <i className='arrow left' style={{ position: "absolute", top: "50%", left: "3px", padding: "3px" }} onClick={goToPrevService}></i>
-            <i className='arrow right' style={{ position: "absolute", top: "50%", right: "3px", padding: "3px" }} onClick={goToNextService}></i>
+            <div class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying"
+                data-bs-slide="prev">
+                <span onClick={goToPrevService} className='arrow left'></span>
+            </div>
+            <div class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying"
+                data-bs-slide="next">
+                <span onClick={goToNextService} className='arrow right'></span>
+            </div>
+            {/* <i className='arrow left' style={{ position: "absolute", top: "50%", left: "3px", padding: "3px" }} onClick={goToPrevService}></i> */}
+            {/* <i className='arrow right' style={{ position: "absolute", top: "50%", right: "3px", padding: "3px" }} onClick={goToNextService}></i> */}
         </div >
     );
 }

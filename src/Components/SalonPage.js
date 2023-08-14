@@ -18,7 +18,7 @@ import { useParams } from 'react-router-dom';
 import { cardData } from './Data';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import PlaceMarker from '../images/place-marker.svg';
-import { Avatar } from '@mui/material';
+// import { Avatar } from '@mui/material';
 import Hamburger from './Hamburger';
 import Profile from './Profile';
 import Logo from './Logo';
@@ -26,7 +26,7 @@ import { useLocation } from 'react-router-dom';
 import { BookingDetails } from './Data';
 import { useNavigate } from 'react-router-dom';
 import DatePicker from './DatePicker';
-import CustomTimeDropdown from './CustomTimeDropdown';
+// import CustomTimeDropdown from './CustomTimeDropdown';
 import hourglass from '../images/hourglass-with-glasmorphism-effect.svg';
 import TimePicker from './TimePicker';
 

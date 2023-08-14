@@ -286,12 +286,15 @@ padding: 5px;
 
 .best-salon-card {
   /* Existing styles for the review card */
-
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
   /* Adjust width and margin to create a responsive grid layout */
   width: calc(45% - 10px); /* Two cards per row, with a 10px margin between them */
   margin-bottom: 20px; /* Add some spacing between cards */
   /* background: rgba(109, 109, 109, 0.50); */
-  border-radius: 20px;
+  border-radius: 10px;
   padding:15px;
   margin-left: 20px;
   transition: transform 0.3s ease;
@@ -317,6 +320,10 @@ padding: 10px 50px;
 color: #FFF;
 border-radius: 38px;
 font-size: 30px;
+}
+
+.button-salon-book {
+  text-align: right;
 }
 
 .best-salon-card :hover {
@@ -360,7 +367,7 @@ flex-direction: column;
 /* justify-content: center; */
 /* align-items: center; */
 background: #1E1E1E;
-border-radius: 100px;
+border-radius: 50px;
 margin: 6vw;
 }
 .best-salon
@@ -600,7 +607,7 @@ p {
   background: #FF6548;
   border : 0;
   /* width: 8vw; */
-  padding: 5px 15px;
+  padding: 0px 15px;
   border-radius: 25px;
   color: #FFF;
   font-weight: 700;
@@ -708,7 +715,7 @@ position: absolute;
   transform: rotate(-135deg);
   -webkit-transform: rotate(-135deg);
   position: relative;
-  top: 5px;
+  top: 6px;
 }
 
 .down {
@@ -1507,7 +1514,7 @@ border-radius: 15px;
 }
 
 .locationdropdown input {
-  padding: 5px 0px;
+  padding: 4px 0px;
   border-radius: 25px;
   border: 0;
   background: url(images/search1.svg) no-repeat scroll;

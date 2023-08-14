@@ -12,55 +12,17 @@ import vector from '../images/vector-1.svg'
 import home from '../images/home.svg'
 import clockSearch from '../images/clock-search.svg'
 import socialMedia from '../images/social-media.svg'
-
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import FavoriteIcon from '@mui/icons-material/Favorite';
 import Footer from './Footer';
 
-const banners = [
-    <div className='f55'>
-        <div>
-            <b>Great salon</b> <span className='f30'>services</span>
-        </div>
-        <div className='f30'>that won't</div>
-        <div>
-            <b>empty your pockets</b>
-        </div>
-    </div>,
-    <div className='f55'>
-        <div>
-            <b>Time</b> <span className='f30'>is journey</span>
-        </div>
-        <div className='f30'>Let's not</div>
-        <div>
-            <b>waste either!</b>
-        </div>
-    </div>,
-    <div className='f55'>
-        <div>
-            The future of
-        </div>
-        <div className='f30'>hair is</div>
-        <div>
-            <b>DIGITAL!</b>
-        </div>
-    </div>,
-];
-
-const images = [
-    rectangle7,
-    clockSearch,
-    socialMedia
-]
-
-const colors = [
-    '#FF6548',
-    '#B4A9F7',
-    '#DF7AF2'
-]
 
 const HomePage = () => {
     const contentRef = useRef(null);
     const [showScroll, setShowScroll] = useState(true);
+    const [isFavourite, setIsFavourite] = useState(false);
     const prevScrollY = useRef(0);
+    const [wishlistMessage, setWishlistMessage] = useState('');
 
     // const handleScrollClick = () => {
     //     if (contentRef.current) {
@@ -68,6 +30,59 @@ const HomePage = () => {
     //         document.getElementById('scroll-symbol').style.display = 'none';
     //     }
     // };
+    const banners = [
+        {
+            content: <div className='f55'>
+                <div>
+                    <b>Great salon</b> <span className='f30'>services</span>
+                </div>
+                <div className='f30'>that won't</div>
+                <div>
+                    <b>empty your pockets</b>
+                </div>
+            </div>,
+            image: rectangle7,
+            color: '#FF6548'
+        },
+        {
+            content: <div className='f55'>
+                <div>
+                    <b>Time</b> <span className='f30'>is journey</span>
+                </div>
+                <div className='f30'>Let's not</div>
+                <div>
+                    <b>waste either!</b>
+                </div>
+            </div>,
+            image: clockSearch,
+            color: '#B4A9F7'
+        },
+        {
+            content: <div className='f55'>
+                <div>
+                    The future of
+                </div>
+                <div className='f30'>hair is</div>
+                <div>
+                    <b>DIGITAL!</b>
+                </div>
+            </div>,
+            image: socialMedia,
+            color: '#DF7AF2'
+        },
+    ];
+
+    const images = [
+        rectangle7,
+        clockSearch,
+        socialMedia
+    ]
+
+    const colors = [
+        '#FF6548',
+        '#B4A9F7',
+        '#DF7AF2'
+    ]
 
     const handleScroll = () => {
         const currentScrollY = window.scrollY;
@@ -83,13 +98,25 @@ const HomePage = () => {
             window.removeEventListener('scroll', handleScroll);
         };
     }, []);
-
+    const handleToggleWishlist = () => {
+        setIsFavourite((prevState) => !prevState);
+        setWishlistMessage(isFavourite ? "Removed from wishlist" : "Added to wishlist");
+        setTimeout(() => {
+            setWishlistMessage('');
+        }, 5000);
+    };
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            setWishlistMessage('');
+        }, 5000);
+        return () => clearTimeout(timer);
+    }, [wishlistMessage]);
     return (
         <div>
             <Header />
             <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner">
-                    <div class="carousel-item active" data-bs-interval="3000">
+                    {/* <div class="carousel-item active" data-bs-interval="3000">
                         <div style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
                             <div class="banner" style={{ background: colors[0] }}>
                                 <img src={images[0]} style={{ height: "100%" }} />
@@ -97,8 +124,19 @@ const HomePage = () => {
                                 <div><button className='book-now'>Book Now</button></div>
                             </div>
                         </div>
-                    </div>
-                    <div class="carousel-item" data-bs-interval="3000">
+                    </div> */}
+                    {banners.map((banner, index) => (
+                        <div class={index === 0 ? "carousel-item active" : "carousel-item"} data-bs-interval="3000">
+                            <div style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
+                                <div class="banner" style={{ background: banner.color }}>
+                                    <img src={banner.image} style={{ height: "100%" }} />
+                                    <div className='content-banner'>{banner.content}</div>
+                                    <div><button className='book-now'>Book Now</button></div>
+                                </div>
+                            </div>
+                        </div>
+                    ))}
+                    {/* <div class="carousel-item" data-bs-interval="3000">
                         <div style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
                             <div class="banner" style={{ background: colors[1] }}>
                                 <img src={images[1]} style={{ height: "100%" }} />
@@ -115,7 +153,7 @@ const HomePage = () => {
                                 <div><button className='book-now'>Book Now</button></div>
                             </div>
                         </div>
-                    </div>
+                    </div> */}
                 </div>
                 <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying"
                     data-bs-slide="prev">
@@ -183,51 +221,55 @@ const HomePage = () => {
                 <div style={{ paddingTop: "0px" }} className='text-salon'>Best groomer in <b>city</b></div>
                 <div className='best-salon'>
                     <div className='best-salon-card'>
-                        <div className='rating-container'>
-                            <div style={{ flex: 1, marginRight: "20px" }}>
-                                <img src={rectangle4} style={{ width: "100%" }} />
+                        <div style={{ flex: 1, marginRight: "20px", position: "relative" }}>
+                            <img src={rectangle4} style={{ width: "100%" }} />
+                            <div style={{ position: "absolute", top: "0px", right: "0px", cursor: "pointer", color: "#000", background: "#FFF", padding: "0px 3px", borderRadius: "100%" }}>
+                                {isFavourite ? <FavoriteIcon onClick={handleToggleWishlist} style={{ fontSize: "35px", position: "relative", top: "2px" }} /> : <FavoriteBorderIcon onClick={handleToggleWishlist} style={{ fontSize: "35px", position: "relative", top: "2px" }} />}
                             </div>
-                            <div style={{ flex: 1 }}>
-                                <div className='f40'>#1</div>
-                                <div className='f40 salon-groomer' style={{ marginBottom: "20px" }}>Groomer salon</div>
-                                <div className='f20'>the saloon with two best in class groomers in the same salon gives you b est style and look with master level talent.</div>
-                            </div>
+                        </div>
+                        <div style={{ flex: 1 }}>
+                            <div className='f40'>#1</div>
+                            <div className='f40 salon-groomer' style={{ marginBottom: "20px" }}>Groomer salon</div>
+                            <div className='f20'>the saloon with two best in class groomers in the same salon gives you b est style and look with master level talent.</div>
                         </div>
                     </div>
                     <div className='best-salon-card'>
-                        <div className='rating-container'>
-                            <div style={{ flex: 1, marginRight: "20px" }}>
-                                <img src={rectangle4} style={{ width: "100%", height: "100%" }} />
+                        <div style={{ flex: 1, marginRight: "20px", position: "relative" }}>
+                            <img src={rectangle4} style={{ width: "100%" }} />
+                            <div style={{ position: "absolute", top: "0px", right: "0px", cursor: "pointer", color: "#000", background: "#FFF", padding: "0px 3px", borderRadius: "100%" }}>
+                                {isFavourite ? <FavoriteIcon onClick={handleToggleWishlist} style={{ fontSize: "35px", position: "relative", top: "2px" }} /> : <FavoriteBorderIcon onClick={handleToggleWishlist} style={{ fontSize: "35px", position: "relative", top: "2px" }} />}
                             </div>
-                            <div style={{ flex: 1 }}>
-                                <div className='f40'>#1</div>
-                                <div className='f40 salon-groomer' style={{ marginBottom: "20px" }}>Groomer salon</div>
-                                <div className='f20'>the saloon with two best in class groomers in the same salon gives you b est style and look with master level talent.</div>
-                            </div>
+                        </div>
+                        <div style={{ flex: 1 }}>
+                            <div className='f40'>#1</div>
+                            <div className='f40 salon-groomer' style={{ marginBottom: "20px" }}>Groomer salon</div>
+                            <div className='f20'>the saloon with two best in class groomers in the same salon gives you b est style and look with master level talent.</div>
                         </div>
                     </div>
                     <div className='best-salon-card'>
-                        <div className='rating-container'>
-                            <div style={{ flex: 1, marginRight: "20px" }}>
-                                <img src={rectangle4} style={{ width: "100%", height: "100%" }} />
+                        <div style={{ flex: 1, marginRight: "20px", position: "relative" }}>
+                            <img src={rectangle4} style={{ width: "100%" }} />
+                            <div style={{ position: "absolute", top: "0px", right: "0px", cursor: "pointer", color: "#000", background: "#FFF", padding: "0px 3px", borderRadius: "100%" }}>
+                                {isFavourite ? <FavoriteIcon onClick={handleToggleWishlist} style={{ fontSize: "35px", position: "relative", top: "2px" }} /> : <FavoriteBorderIcon onClick={handleToggleWishlist} style={{ fontSize: "35px", position: "relative", top: "2px" }} />}
                             </div>
-                            <div style={{ flex: 1 }}>
-                                <div className='f40'>#1</div>
-                                <div className='f40 salon-groomer' style={{ marginBottom: "20px" }}>Groomer salon</div>
-                                <div className='f20'>the saloon with two best in class groomers in the same salon gives you b est style and look with master level talent.</div>
-                            </div>
+                        </div>
+                        <div style={{ flex: 1 }}>
+                            <div className='f40'>#1</div>
+                            <div className='f40 salon-groomer' style={{ marginBottom: "20px" }}>Groomer salon</div>
+                            <div className='f20'>the saloon with two best in class groomers in the same salon gives you b est style and look with master level talent.</div>
                         </div>
                     </div>
                     <div className='best-salon-card'>
-                        <div className='rating-container'>
-                            <div style={{ flex: 1, marginRight: "20px" }}>
-                                <img src={rectangle4} style={{ width: "100%", height: "100%" }} />
+                        <div style={{ flex: 1, marginRight: "20px", position: "relative" }}>
+                            <img src={rectangle4} style={{ width: "100%" }} />
+                            <div style={{ position: "absolute", top: "0px", right: "0px", cursor: "pointer", color: "#000", background: "#FFF", padding: "0px 3px", borderRadius: "100%" }}>
+                                {isFavourite ? <FavoriteIcon onClick={handleToggleWishlist} style={{ fontSize: "35px", position: "relative", top: "2px" }} /> : <FavoriteBorderIcon onClick={handleToggleWishlist} style={{ fontSize: "35px", position: "relative", top: "2px" }} />}
                             </div>
-                            <div style={{ flex: 1 }}>
-                                <div className='f40'>#1</div>
-                                <div className='f40 salon-groomer' style={{ marginBottom: "20px" }}>Groomer salon</div>
-                                <div className='f20'>the saloon with two best in class groomers in the same salon gives you b est style and look with master level talent.</div>
-                            </div>
+                        </div>
+                        <div style={{ flex: 1 }}>
+                            <div className='f40'>#1</div>
+                            <div className='f40 salon-groomer' style={{ marginBottom: "20px" }}>Groomer salon</div>
+                            <div className='f20'>the saloon with two best in class groomers in the same salon gives you b est style and look with master level talent.</div>
                         </div>
                     </div>
                 </div>
@@ -257,6 +299,13 @@ const HomePage = () => {
             </div>
 
             <Footer />
+            {wishlistMessage && (
+                <div className="popup-wishlist">
+                    <div className="popup-content-wishlist">
+                        <span className='wishlistmessage'>{wishlistMessage}</span>
+                    </div>
+                </div>
+            )}
         </div>
     );
 };

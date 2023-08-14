@@ -1,30 +1,27 @@
 .flex-container {
-    display: flex;
-    height: 100%;
-    align-items: center;
-    padding-right: 6%;
+    display: flex !important;
+    height: 100% !important;
+    align-items: center !important;
+    /* padding-right: 6% !important; */
+    margin: 0 4% !important;
+    justify-content: center !important;
 }
 
 .container1 {
     width: 100%;
     /* padding-top: 60px; */
-    padding-right: 4%;
-    padding-left: 4%;
+    /* padding-right: 4%; */
+    /* padding-left: 4%; */
     /* height: 100vh; */
 }
 
 .flex2 {
-    /* background-color: #211E1E; */
     width: 100%;
-    /* padding: 38px; */
     border-radius: 45px;
-    /* background: #211E1E; */
     display: flex;
     flex-direction: column;
     padding-left: 40px;
-    /* padding-top: 40px; */
     padding-right: 40px;
-    /* height: 68vh; */
 }
 
 .salonname {
@@ -115,8 +112,8 @@
     position: relative;
     top: 7px;
     left: -20px;
-    width: 8px;
-    height: 8px;
+    width: 15px;
+    height: 15px;
     border-top: 2px solid #FFF;
     border-right: 2px solid #FFF;
     cursor: pointer;
