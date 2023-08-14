@@ -90,7 +90,7 @@ const HomePage = () => {
             <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner">
                     <div class="carousel-item active" data-bs-interval="3000">
-                        <div style={{ display: "flex", justifyContent: "center", alignItems: "center", height: "70vh" }}>
+                        <div style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
                             <div class="banner" style={{ background: colors[0] }}>
                                 <img src={images[0]} style={{ height: "100%" }} />
                                 <div className='content-banner'>{banners[0]}</div>
@@ -99,7 +99,7 @@ const HomePage = () => {
                         </div>
                     </div>
                     <div class="carousel-item" data-bs-interval="3000">
-                        <div style={{ display: "flex", justifyContent: "center", alignItems: "center", height: "70vh" }}>
+                        <div style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
                             <div class="banner" style={{ background: colors[1] }}>
                                 <img src={images[1]} style={{ height: "100%" }} />
                                 <div className='content-banner'>{banners[1]}</div>
@@ -108,7 +108,7 @@ const HomePage = () => {
                         </div>
                     </div>
                     <div class="carousel-item" data-bs-interval="3000">
-                        <div style={{ display: "flex", justifyContent: "center", alignItems: "center", height: "70vh" }}>
+                        <div style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
                             <div class="banner" style={{ background: colors[2] }}>
                                 <img src={images[2]} style={{ height: "100%" }} />
                                 <div className='content-banner'>{banners[2]}</div>
