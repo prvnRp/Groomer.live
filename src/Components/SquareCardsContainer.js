@@ -164,7 +164,7 @@ function SquareCardsContainer() {
 
     return (
         <>
-            <div className='upnav' style={{ display: "flex", flexDirection: "row", justifyContent: "space-between", alignItems: "center", padding: "0vw 10vw", marginTop: "10px" }}>
+            <div className='upnav' style={{ display: "flex", flexDirection: "row", justifyContent: "space-between", alignItems: "center", marginTop: "10px" }}>
                 <div className="filter-sort">
                     {showFilters ? (
                         <button className='buttonapply' onClick={handleFilterApply}>Apply</button>
