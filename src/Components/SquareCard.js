@@ -85,14 +85,18 @@ function SquareCard({ id, content, imageSrc, distance, ratings, NoR, services, s
                 </span>
                 <span style={{ fontSize: "12px" }}>{currentService.ServiceName}</span>
             </div>
-            <div class="carousel-control-prev" type="button" data-bs-target={"#" + id}
-                data-bs-slide="prev">
-                <span className='arrow left'></span>
-            </div>
-            <div class="carousel-control-next" type="button" data-bs-target={"#" + id}
-                data-bs-slide="next">
-                <span className='arrow right'></span>
-            </div>
+            {services.length > 1 &&
+                <>
+                    <div class="carousel-control-prev" type="button" data-bs-target={"#" + id}
+                        data-bs-slide="prev">
+                        <span className='arrow left'></span>
+                    </div>
+                    <div class="carousel-control-next" type="button" data-bs-target={"#" + id}
+                        data-bs-slide="next">
+                        <span className='arrow right'></span>
+                    </div>
+                </>
+            }
             {/* <i className='arrow left' style={{ position: "absolute", top: "50%", left: "3px", padding: "3px" }} onClick={goToPrevService}></i> */}
             {/* <i className='arrow right' style={{ position: "absolute", top: "50%", right: "3px", padding: "3px" }} onClick={goToNextService}></i> */}
         </div >
