@@ -378,10 +378,12 @@ function SalonPage() {
                             </div>
                         </div>}
                         <div className='salon-wrapper1 desktopView'>
-                            <span>
-                                {isFavourite ? <FavoriteIcon onClick={handleToggleWishlist} style={{ fontSize: "35px", position: "relative", top: "10px", cursor: "pointer", marginRight: "2vw" }} /> : <FavoriteBorderIcon onClick={handleToggleWishlist} style={{ fontSize: "35px", position: "relative", top: "10px", cursor: "pointer", marginRight: "2vw" }} />}
-                            </span>
-                            <button className='book-button' onClick={handleOpenPopup}>Book slot</button>
+                            <div style={{ display: "flex", flexDirection: "row", justifyContent: "flex-start", alignItems: "center", marginTop: "20px" }}>
+                                <span>
+                                    {isFavourite ? <FavoriteIcon onClick={handleToggleWishlist} style={{ fontSize: "35px", cursor: "pointer", marginRight: "2vw" }} /> : <FavoriteBorderIcon onClick={handleToggleWishlist} style={{ fontSize: "35px", cursor: "pointer", marginRight: "2vw" }} />}
+                                </span>
+                                <button className='book-button' onClick={handleOpenPopup}>Book slot</button>
+                            </div>
                         </div>
                     </div>
                 </div>

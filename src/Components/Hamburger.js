@@ -19,11 +19,11 @@ function Hamburger() {
     return (
         <div>
             <Grid
-                style={{ padding: "1px 2px 0px 4px", background: "#FFF", cursor: "pointer", borderRadius: "50%", float: "right" }}
+                style={{ padding: "2px 4px", background: "#FFF", cursor: "pointer", borderRadius: "50%", float: "right" }}
                 item xs={1}
                 onClick={handleGridIconClick}
             >
-                <MenuIcon style={{ color: "#000", position: "relative", top: "1px", left: "-1px" }} />
+                <MenuIcon style={{ color: "#000" }} />
             </Grid>
         </div>
     );
