@@ -32,7 +32,7 @@ function SquareCard({ id, content, imageSrc, distance, ratings, NoR, services, s
 
     const currentService = services[currentServiceIndex];
     return (
-        <div className="square-card" style={{ position: "relative" }}>
+        <div className="square-card" style={{ position: "relative", cursor: "pointer" }} onClick={() => { navigate(`/salon/${id}`); }} >
             <div id={id} class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner">
                     {services.map((service, index) => (
@@ -47,9 +47,7 @@ function SquareCard({ id, content, imageSrc, distance, ratings, NoR, services, s
                 </div>
             </div>
             <div className="card-details" style={{ height: '42%' }}>
-                <div onClick={() => {
-                    navigate(`/salon/${id}`);
-                }} style={{ width: "100%", overflow: "hidden", cursor: "pointer" }}>
+                <div style={{ width: "100%", overflow: "hidden" }}>
                     <p style={{ fontSize: '20px', fontWeight: '400', whiteSpace: "nowrap" }}>{content}</p>
                 </div>
                 {distance && (
@@ -86,7 +84,7 @@ function SquareCard({ id, content, imageSrc, distance, ratings, NoR, services, s
                 <span style={{ fontSize: "12px" }}>{currentService.ServiceName}</span>
             </div>
             {services.length > 1 &&
-                <>
+                <div className='carousalButton'>
                     <div class="carousel-control-prev" type="button" data-bs-target={"#" + id}
                         data-bs-slide="prev">
                         <span className='arrow left'></span>
@@ -95,7 +93,7 @@ function SquareCard({ id, content, imageSrc, distance, ratings, NoR, services, s
                         data-bs-slide="next">
                         <span className='arrow right'></span>
                     </div>
-                </>
+                </div>
             }
             {/* <i className='arrow left' style={{ position: "absolute", top: "50%", left: "3px", padding: "3px" }} onClick={goToPrevService}></i> */}
             {/* <i className='arrow right' style={{ position: "absolute", top: "50%", right: "3px", padding: "3px" }} onClick={goToNextService}></i> */}
