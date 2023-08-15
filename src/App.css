@@ -1860,7 +1860,7 @@ font-size: 20px;
   font-size: 25px;
 }
 .f70 {
-  font-size: 50px;
+  font-size: 60px;
 }
 .f20 {
   font-size: 20px;
@@ -1897,6 +1897,10 @@ font-size: 20px;
 }
 .button-salon-book {
   text-align: right;
+}
+.button-salon-book button {
+  font-size: 20px;
+  padding: 0px 30px;
 }
 .header-info {
   flex-direction: column;
@@ -2031,6 +2035,14 @@ font-size: 20px;
   flex-direction: row;
   justify-content: space-evenly;
   align-items: center;
+}
+.explore-button {
+  margin: 20px;
+  margin-bottom: 40px;
+}
+.explore-button button {
+  font-size: 20px;
+  padding: 0px 30px;
 }
 
 }

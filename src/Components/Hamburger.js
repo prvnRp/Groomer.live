@@ -26,7 +26,7 @@ function Hamburger() {
                 item xs={1}
                 onClick={handleGridIconClick}
             >
-                {changeIcon ? <div style={{ fontSize: "50px", position: "relative", top: "-28px" }}>&times;</div> : <MenuIcon className='menu-icon' />}
+                {changeIcon ? <div style={{ fontSize: "50px", position: "relative", top: "-25px" }}>&times;</div> : <MenuIcon className='menu-icon' />}
             </Grid>
         </div>
     );

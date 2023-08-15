@@ -179,7 +179,7 @@ const HomePage = () => {
             <div className='header-info'>
                 <div>
                     <div className='f35'>We are</div>
-                    <div className='f70'>groomer</div>
+                    <div className='f70'>Groomer</div>
                 </div>
                 <div className='f35'>
                     Online salon apps make it easy to book salon appointments from home. Browse salons, read reviews, and book appointments in just a few taps. Many apps also offer discounts and promotions.
