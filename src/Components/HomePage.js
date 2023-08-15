@@ -8,6 +8,7 @@ import rectangle4 from '../images/rectangle-18.svg'
 import rectangle5 from '../images/rectangle-19.svg'
 import rectangle6 from '../images/rectangle-21.svg'
 import rectangle7 from '../images/rectangle-22.svg'
+import rectangle8 from '../images/rectangle-37.svg'
 import vector from '../images/vector-1.svg'
 import home from '../images/home.svg'
 import clockSearch from '../images/clock-search.svg'
@@ -111,6 +112,8 @@ const HomePage = () => {
         }, 5000);
         return () => clearTimeout(timer);
     }, [wishlistMessage]);
+
+    const isSmallScreen = window.innerWidth < 700;
     return (
         <div>
             <Header />
@@ -224,7 +227,7 @@ const HomePage = () => {
                         <div style={{ flex: 1, marginRight: "20px", position: "relative" }}>
                             <img src={rectangle4} style={{ width: "100%" }} />
                             <div style={{ position: "absolute", top: "0px", right: "0px", cursor: "pointer", color: "#000", background: "#FFF", borderRadius: "50%" }}>
-                                {isFavourite ? <FavoriteIcon onClick={handleToggleWishlist} style={{ fontSize: "35px" }} /> : <FavoriteBorderIcon onClick={handleToggleWishlist} style={{ fontSize: "35px" }} />}
+                                {isFavourite ? <FavoriteIcon onClick={handleToggleWishlist} className='heart-wishlist' /> : <FavoriteBorderIcon onClick={handleToggleWishlist} className='heart-wishlist' />}
                             </div>
                         </div>
                         <div style={{ flex: 1 }}>
@@ -250,7 +253,7 @@ const HomePage = () => {
                         <div style={{ flex: 1, marginRight: "20px", position: "relative" }}>
                             <img src={rectangle4} style={{ width: "100%" }} />
                             <div style={{ position: "absolute", top: "0px", right: "0px", cursor: "pointer", color: "#000", background: "#FFF", borderRadius: "50%" }}>
-                                {isFavourite ? <FavoriteIcon onClick={handleToggleWishlist} style={{ fontSize: "35px" }} /> : <FavoriteBorderIcon onClick={handleToggleWishlist} style={{ fontSize: "35px" }} />}
+                                {isFavourite ? <FavoriteIcon onClick={handleToggleWishlist} className='heart-wishlist' /> : <FavoriteBorderIcon onClick={handleToggleWishlist} className='heart-wishlist' />}
                             </div>
                         </div>
                         <div style={{ flex: 1 }}>
@@ -263,7 +266,7 @@ const HomePage = () => {
                         <div style={{ flex: 1, marginRight: "20px", position: "relative" }}>
                             <img src={rectangle4} style={{ width: "100%" }} />
                             <div style={{ position: "absolute", top: "0px", right: "0px", cursor: "pointer", color: "#000", background: "#FFF", borderRadius: "50%" }}>
-                                {isFavourite ? <FavoriteIcon onClick={handleToggleWishlist} style={{ fontSize: "35px" }} /> : <FavoriteBorderIcon onClick={handleToggleWishlist} style={{ fontSize: "35px" }} />}
+                                {isFavourite ? <FavoriteIcon onClick={handleToggleWishlist} className='heart-wishlist' /> : <FavoriteBorderIcon onClick={handleToggleWishlist} className='heart-wishlist' />}
                             </div>
                         </div>
                         <div style={{ flex: 1 }}>
@@ -276,7 +279,7 @@ const HomePage = () => {
                         <div style={{ flex: 1, marginRight: "20px", position: "relative" }}>
                             <img src={rectangle4} style={{ width: "100%" }} />
                             <div style={{ position: "absolute", top: "0px", right: "0px", cursor: "pointer", color: "#000", background: "#FFF", borderRadius: "50%" }}>
-                                {isFavourite ? <FavoriteIcon onClick={handleToggleWishlist} style={{ fontSize: "35px" }} /> : <FavoriteBorderIcon onClick={handleToggleWishlist} style={{ fontSize: "35px" }} />}
+                                {isFavourite ? <FavoriteIcon onClick={handleToggleWishlist} className='heart-wishlist' /> : <FavoriteBorderIcon onClick={handleToggleWishlist} className='heart-wishlist' />}
                             </div>
                         </div>
                         <div style={{ flex: 1 }}>
@@ -288,12 +291,12 @@ const HomePage = () => {
                 </div>
                 <div className='explore-button' style={{ textAlign: "center" }}><button>Explore more</button></div>
             </div>
-            <div className='home-services' style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '30px' }}>
+            <div className='home-services'>
                 <div className='home-service-img' style={{ flex: '1' }}>
-                    <img src={rectangle6} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                    <img src={isSmallScreen ? rectangle8 : rectangle6} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                 </div>
-                <div style={{ flex: '1', display: 'flex', flexDirection: 'column', gap: '30px' }}>
-                    <div className='homeee' style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'flex-start', gap: '10px' }}>
+                <div style={{ flex: '1', display: 'flex', flexDirection: 'column', gap: '25px' }}>
+                    {!isSmallScreen && <div className='homeee' style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'flex-start', gap: '10px' }}>
                         <img src={home} />
                         <div>
                             <div className='f40'>
@@ -303,14 +306,21 @@ const HomePage = () => {
                                 Follow us on Instagram and Twitter to get notified.
                             </div>
                         </div>
-                    </div>
+                    </div>}
+                    {isSmallScreen && <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', gap: '10px' }}>
+                        <div>
+                            <div style={{ fontSize: "25px", fontWeight: "bold" }}>Salon at your home</div>
+                        </div>
+                    </div>}
                     <div className='f30'>
                         The salon with two best in class groomers in the same salon gives you the best style and look with master level talent at your house. Prices are identical to the salon. No worries about timing and traffic. We will take all your pressure to give you the best service at your doorstep.
                     </div>
                     <div className='button-salon-book'><button>Book now</button></div>
                 </div>
             </div>
+            <div>
 
+            </div>
             <Footer />
             {wishlistMessage && (
                 <div className="popup-wishlist">

@@ -319,7 +319,7 @@ gap: 5vw;
 .button-salon-book button {
 background: #FF6548;
 border: 0;
-padding: 2px 50px;
+padding: 0px 50px;
 color: #FFF;
 border-radius: 38px;
 font-size: 30px;
@@ -359,7 +359,7 @@ margin-top: 30px;
 background: #FF6548;
 border : 0;
 color: #FFF;
-padding: 2px 40px;
+padding: 0px 40px;
 border-radius: 25px;
 font-size: 30px;
 }
@@ -1579,6 +1579,8 @@ display: none;
 }
 
 
+
+
 @media screen and (max-width: 768px) {
 
 .search-icon {
@@ -1791,8 +1793,31 @@ border: 0;
 .money-refund {
   flex-direction: row;
 }
+.termsConditions {
+  display: flex; 
+  flex-direction: column; 
+  gap: 20px; 
+  justify-content: center;
+}
+.termsandConditions {
+  display: none;
+}
+
+@media screen and (max-width: 1700px){
+  .banner img {
+    width: 35%;
+    height: auto !important;
+  }
+  .banner {
+    border-radius: 200px;
+  }
+}
 
 @media screen and (max-width: 1200px) {
+.banner {
+  height: 350px;
+  border-radius: 100px;
+}
 .f55 {
   font-size: 40px;
 }  
@@ -1958,25 +1983,73 @@ font-size: 20px;
   flex-direction: column-reverse;
   gap: 50px;
 }
+.termsConditions {
+  display: none !important;
+}
+.termsandConditions {
+  display : flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
 }
 
-@media screen and (max-width: 410px) {
-  .f55 {
+}
+
+@media screen and (max-width:430px){
+  .f40 {
     font-size: 18px;
   }
-  .f30 {
+  .f35 {
+    font-size: 18px;
+  }
+  .f70 {
+    font-size: 30px;
+  }
+  .f40 {
+    font-size: 18px;
+  }
+  .f20 {
+    font-size: 10px;
+  }
+  
+}
+
+@media screen and (max-width:365px){
+  .f40 {
     font-size: 15px;
   }
-  .custom-dropdown {
-    min-width: 100px;
-  }
-  .locationdropdown input {
-    width: 100px;
-  }
-  .buttonapply {
+  .f35 {
     font-size: 15px;
   }
-  .locationdropdown {
+  .f70 {
+    font-size: 25px;
+  }
+  .f40 {
     font-size: 15px;
   }
+  .f20 {
+    font-size: 10px;
+  }
+  
+  
+}
+
+@media screen and (max-width: 340px){
+  .f40 {
+    font-size: 12px;
+  }
+  .f35 {
+    font-size: 12px;
+  }
+  .f70 {
+    font-size: 20px;
+  }
+  .f40 {
+    font-size: 12px;
+  }
+  .f20 {
+    font-size: 10px;
+  }
+  
+  
 }

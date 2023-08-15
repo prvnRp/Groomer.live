@@ -47,16 +47,27 @@
     gap: 20px; 
     justify-content: center;
   }
-
+.footer-content {
+  margin: 7vh;
+}
   @media screen and (max-width: 768px) {
     .groomerLive {
       font-size: 20px; 
     }
     .groomerInfo {
       gap: 5px;
+      font-size: 15px;
     }
     .termsConditions {
       font-size: 15px;
+    }
+    .footer-content {
+      margin: 2vh;
+      margin-top: 12vh;
+      margin-bottom: 0px;
+    }
+    .footer1 {
+      gap: 20px;
     }
   }
   
