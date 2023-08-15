@@ -120,16 +120,32 @@ const HomePage = () => {
         <div>
             <Header />
             <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
+                <div className="carousel-indicators">
+                    <button
+                        style={{ backgroundColor: banners[0].color }}
+                        type="button"
+                        data-bs-target="#carouselExampleAutoplaying"
+                        data-bs-slide-to="0"
+                        className="active"
+                        aria-current="true"
+                        aria-label="Slide 1"
+                    ></button>
+                    <button
+                        style={{ backgroundColor: banners[1].color }}
+                        type="button"
+                        data-bs-target="#carouselExampleAutoplaying"
+                        data-bs-slide-to="1"
+                        aria-label="Slide 2"
+                    ></button>
+                    <button
+                        style={{ backgroundColor: banners[2].color }}
+                        type="button"
+                        data-bs-target="#carouselExampleAutoplaying"
+                        data-bs-slide-to="2"
+                        aria-label="Slide 3"
+                    ></button>
+                </div>
                 <div class="carousel-inner">
-                    {/* <div class="carousel-item active" data-bs-interval="3000">
-                        <div style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
-                            <div class="banner" style={{ background: colors[0] }}>
-                                <img src={images[0]} style={{ height: "100%" }} />
-                                <div className='content-banner'>{banners[0]}</div>
-                                <div><button className='book-now'>Book Now</button></div>
-                            </div>
-                        </div>
-                    </div> */}
                     {banners.map((banner, index) => (
                         <div class={index === 0 ? "carousel-item active" : "carousel-item"} data-bs-interval="3000">
                             <div style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
@@ -141,35 +157,19 @@ const HomePage = () => {
                             </div>
                         </div>
                     ))}
-                    {/* <div class="carousel-item" data-bs-interval="3000">
-                        <div style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
-                            <div class="banner" style={{ background: colors[1] }}>
-                                <img src={images[1]} style={{ height: "100%" }} />
-                                <div className='content-banner'>{banners[1]}</div>
-                                <div><button className='book-now'>Book Now</button></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="carousel-item" data-bs-interval="3000">
-                        <div style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
-                            <div class="banner" style={{ background: colors[2] }}>
-                                <img src={images[2]} style={{ height: "100%" }} />
-                                <div className='content-banner'>{banners[2]}</div>
-                                <div><button className='book-now'>Book Now</button></div>
-                            </div>
-                        </div>
-                    </div> */}
                 </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying"
-                    data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying"
-                    data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Next</span>
-                </button>
+                <div className='carousel-control'>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying"
+                        data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying"
+                        data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
             </div>
             {showScroll && (
                 <div className='scroll-symbol'>

@@ -126,15 +126,14 @@ function SquareCardsContainer() {
 
     function getCardsPerPage() {
         if (window.innerWidth < 980) {
-            return 4;
-        }
-        else if (window.innerWidth >= 980 && window.innerWidth < 1024) {
-            return 9;
-        }
-        else {
-            return 12;
+            return filteredCards.length; // Display all cards in one page
+        } else if (window.innerWidth >= 980 && window.innerWidth < 1024) {
+            return 9; // Display 9 cards per page
+        } else {
+            return 12; // Display 12 cards per page
         }
     }
+
 
     useEffect(() => {
         function handleResize() {

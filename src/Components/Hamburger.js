@@ -6,6 +6,8 @@ import { useNavigate } from 'react-router-dom';
 function Hamburger() {
     const navigate = useNavigate();
 
+    const changeIcon = window.location.pathname === "/menu";
+
     const handleGridIconClick = () => {
         if (window.location.pathname === "/menu") {
             navigate(-1);
@@ -24,7 +26,7 @@ function Hamburger() {
                 item xs={1}
                 onClick={handleGridIconClick}
             >
-                <MenuIcon className='menu-icon' />
+                {changeIcon ? <div style={{ fontSize: "50px", position: "relative", top: "-28px" }}>&times;</div> : <MenuIcon className='menu-icon' />}
             </Grid>
         </div>
     );
