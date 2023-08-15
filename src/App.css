@@ -600,6 +600,7 @@ p {
 
 .upnav {
   padding: 0vw 10vw;
+  margin : 0 10px;
 }
 
 .upnav .buttonapply {
@@ -1605,17 +1606,6 @@ justify-content: flex-start;
     padding-left: 0px;
     border: 0;
   }
-
-  .custom-dropdown {
-    /* position: relative; */
-    /* display: inline-block; */
-    width: 90px;
-  }
-
-  .locationdropdown input {
-    width: 90px;
-  }
-
   
 .login {
 font-size: 40px;
@@ -1644,12 +1634,9 @@ flex-direction: row;
 display: none;
 }
 .salon-details {
-/* display: flex; */
-/* flex-direction: column; */
+
 height:auto;
-/* overflow-y: auto; */
-/* margin:2px; */
-/* margin-right: 0px; */
+
 }
 .small-image {
 width: 90px; /* Adjust the width of small images as desired */
@@ -1889,14 +1876,28 @@ border: 0;
 .upnav {
   padding: 0vw 0vw;
 }
+.pagination {
+  display: none;
+}
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 410px) {
   .f55 {
     font-size: 18px;
   }
   .f30 {
     font-size: 15px;
   }
-  
+  .custom-dropdown {
+    min-width: 100px;
+  }
+  .locationdropdown input {
+    width: 100px;
+  }
+  .buttonapply {
+    font-size: 15px;
+  }
+  .locationdropdown {
+    font-size: 15px;
+  }
 }

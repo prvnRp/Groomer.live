@@ -4,6 +4,7 @@ import { useState } from 'react';
 import FilterSortPopup from './FilterSortPopup';
 import LocationDropdown from './LocationDropdown';
 import { cardData } from './Data';
+import { useSwipeable } from 'react-swipeable'; // Import the react-swipeable library
 
 function SquareCardsContainer() {
 
@@ -161,7 +162,12 @@ function SquareCardsContainer() {
     const handlePageChange = (pageNumber) => {
         setCurrentPage(pageNumber);
     };
-
+    const handlers = useSwipeable({
+        onSwipedLeft: handleNextPage,
+        onSwipedRight: handlePrevPage,
+        preventDefaultTouchmoveEvent: true, // Prevent vertical scrolling during swipe
+    });
+    const isSmallScreen = window.innerWidth < 700;
     return (
         <>
             <div className='upnav' style={{ display: "flex", flexDirection: "row", justifyContent: "space-between", alignItems: "center", marginTop: "10px" }}>
@@ -169,7 +175,7 @@ function SquareCardsContainer() {
                     {showFilters ? (
                         <button className='buttonapply' onClick={handleFilterApply}>Apply</button>
                     ) : (
-                        <button className='buttonapply' onClick={() => setShowFilters(true)}>Filter & sort</button>
+                        <button className='buttonapply' onClick={() => setShowFilters(true)}>{isSmallScreen ? 'Filter' : 'Filter & sort'}</button>
                     )}
                     {showFilters && (
                         <FilterSortPopup
@@ -192,7 +198,7 @@ function SquareCardsContainer() {
                     />
                 </div>
             </div>
-            <div className="square-cards-container">
+            <div className="square-cards-container" {...handlers}>
 
                 <div className="cards-wrapper">
                     {currentCards.map((card) => (

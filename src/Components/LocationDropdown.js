@@ -34,8 +34,8 @@ const LocationDropdown = ({ label, value, options, onChange, searchFilter, width
     return (
         <div className='locationdropdown'>
             <div className='location-conatiner'>
-                <span style={{ color: "#FFF", position: "relative", top: "2px" }}>{label}:</span>
-                <div className="custom-dropdown" style={{ minWidth: width }}>
+                <span style={{ color: "#FFF", position: "relative", top: "5px" }}>{label}:</span>
+                <div className="custom-dropdown" >
                     <div
                         className="dropdown-selected"
                     >
