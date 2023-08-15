@@ -8,6 +8,7 @@ import StarBorderIcon from '@mui/icons-material/StarBorder';
 import WestIcon from '@mui/icons-material/West';
 import EastIcon from '@mui/icons-material/East';
 import DatePicker from './DatePicker';
+import TimePicker from './TimePicker';
 
 function FilterSortPopup({ close, filterOptions, setFilterOptions, CardData }) {
     const handleFilterChange = (e) => {
@@ -156,64 +157,18 @@ function FilterSortPopup({ close, filterOptions, setFilterOptions, CardData }) {
                     </div>
                     <div style={{ display: "flex", flexDirection: "row" }}>
                         <label style={{ marginRight: "20px" }}>Time:</label>
-                        <div className='select-wrapper' >
-                            <select
-                                value={getTimeHour()}
-                                onChange={(event) =>
-                                    setFilterOptions((prevOptions) => ({
-                                        ...prevOptions,
-                                        time: `${event.target.value}:${getTimeMinute()} ${getTimePeriod()}`,
-                                    }))
-                                }
-                                style={{ backgroundColor: "#0F0F0F", outline: "none", border: "none", color: "#fff" }}
-                            >
-                                {hours.map((hour) => (
-                                    <option key={hour} value={hour}>
-                                        {hour.toString().padStart(2, "0")}
-                                    </option>
-                                ))}
-                            </select>
-                            :
-                            <select
-                                value={getTimeMinute()}
-                                onChange={(event) =>
-                                    setFilterOptions((prevOptions) => ({
-                                        ...prevOptions,
-                                        time: `${getTimeHour()}:${event.target.value} ${getTimePeriod()}`,
-                                    }))
-                                }
-                                style={{ backgroundColor: "#0F0F0F", outline: "none", border: "none", color: "#fff" }}
-                            >
-                                {minutes.map((minute) => (
-                                    <option key={minute} value={minute}>
-                                        {minute.toString().padStart(2, "0")}
-                                    </option>
-                                ))}
-                            </select>
-                            <select
-                                value={getTimePeriod()}
-                                onChange={(event) =>
-                                    setFilterOptions((prevOptions) => ({
-                                        ...prevOptions,
-                                        time: `${getTimeHour()}:${getTimeMinute()} ${event.target.value}`,
-                                    }))
-                                }
-                                style={{ backgroundColor: "#0F0F0F", outline: "none", border: "none", color: "#fff", marginLeft: "5px" }}
-                            >
-                                <option value="AM">AM</option>
-                                <option value="PM">PM</option>
-                            </select>
-                        </div>
+                        <TimePicker />
                     </div>
                     <div>
                         {/* <label htmlFor="distance">Distance:</label> */}
                         <CustomDropdown
                             label="Distance"
+                            Label={true}
                             value={filterOptions.distance}
                             options={distances}
                             onChange={(value) => handleDistanceFilterChange(value)}
                             searchFilter={false}
-                            width={"75px"}
+                            width={"90px"}
                         />
                     </div>
                     <div className='price'>

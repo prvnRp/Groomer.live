@@ -7,7 +7,7 @@ import { cardData } from './Data';
 import { useSwipeable } from 'react-swipeable'; // Import the react-swipeable library
 
 function SquareCardsContainer() {
-
+    const [issmallscreen, setIsSmallScreen] = useState(false);
     const calculateAverageRating = (reviewData) => {
         if (!reviewData || reviewData.length === 0) {
             return 0; // If there are no reviews or reviewData is undefined, return 0
@@ -167,7 +167,11 @@ function SquareCardsContainer() {
         onSwipedRight: handlePrevPage,
         preventDefaultTouchmoveEvent: true, // Prevent vertical scrolling during swipe
     });
-    const isSmallScreen = window.innerWidth < 700;
+    useEffect(() => {
+        setIsSmallScreen(window.innerWidth < 700)
+    }, [window.innerWidth])
+
+    // const isSmallScreen = window.innerWidth < 700;
     return (
         <>
             <div className='upnav' style={{ display: "flex", flexDirection: "row", justifyContent: "space-between", alignItems: "center", marginTop: "10px" }}>
@@ -175,7 +179,7 @@ function SquareCardsContainer() {
                     {showFilters ? (
                         <button className='buttonapply' onClick={handleFilterApply}>Apply</button>
                     ) : (
-                        <button className='buttonapply' onClick={() => setShowFilters(true)}>{isSmallScreen ? 'Filter' : 'Filter & sort'}</button>
+                        <button className='buttonapply' onClick={() => setShowFilters(true)}>{issmallscreen ? 'Filter' : 'Filter & sort'}</button>
                     )}
                     {showFilters && (
                         <FilterSortPopup

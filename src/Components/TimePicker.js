@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 
 const TimePicker = () => {
@@ -18,12 +18,14 @@ const TimePicker = () => {
 
     const togglePicker = () => {
         setShowPicker(!showPicker);
+        setShowCompleteDropdown(false);
     };
 
     const handleTimeSelect = () => {
         const time = `${selectedHour}:${selectedMinute} ${selectedTimePeriod}`;
         setSelectedTime(time);
         setShowPicker(false);
+        setShowCompleteDropdown(false);
     };
 
     const handleCompleteTimeChange = (timeOption) => {
@@ -32,11 +34,13 @@ const TimePicker = () => {
         setSelectedTimePeriod(timeOption.period);
         setSelectedTime(timeOption.label);
         setShowCompleteDropdown(false);
+        setShowPicker(false);
     };
 
 
     const handleCompleteDropdownClick = () => {
         setShowCompleteDropdown(!showCompleteDropdown);
+        setShowPicker(false);
     };
 
     const generateTimeOptions = () => {
@@ -63,9 +67,24 @@ const TimePicker = () => {
         minute,
         period,
     }));
+    const dropdownRef = useRef(null);
 
+    useEffect(() => {
+        const handleOutsideClick = (event) => {
+            if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+                setShowCompleteDropdown(false);
+                setShowPicker(false);
+            }
+        };
+
+        document.addEventListener('mousedown', handleOutsideClick);
+
+        return () => {
+            document.removeEventListener('mousedown', handleOutsideClick);
+        };
+    }, []);
     return (
-        <div className="time-picker-container">
+        <div className="time-picker-container" ref={dropdownRef}>
             <div className="time-picker-input">
                 <input
                     type="text"
@@ -131,7 +150,7 @@ const TimePicker = () => {
                         backgroundColor: '#525252',
                         borderRadius: '15px',
                         color: '#fff',
-                        zIndex: 999,
+                        zIndex: 9999,
                         padding: '5px 6px',
                     }}
                 >

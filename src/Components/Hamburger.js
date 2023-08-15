@@ -19,11 +19,12 @@ function Hamburger() {
     return (
         <div>
             <Grid
-                style={{ padding: "2px 4px", background: "#FFF", cursor: "pointer", borderRadius: "50%", float: "right" }}
+                className='hamburger-background'
+                style={{ padding: "2px 4px", cursor: "pointer", borderRadius: "50%", float: "right" }}
                 item xs={1}
                 onClick={handleGridIconClick}
             >
-                <MenuIcon style={{ color: "#000" }} />
+                <MenuIcon className='menu-icon' />
             </Grid>
         </div>
     );

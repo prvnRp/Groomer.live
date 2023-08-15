@@ -436,7 +436,7 @@ function SalonPage() {
                                     </button>
                                 </div>
                                 {selectedNavOption === 'info' && (
-                                    <div style={{ display: "flex", flexDirection: "column", gap: "20px", marginBottom: "20px", width: "60%" }}>
+                                    <div className='info-services' style={{ display: "flex", flexDirection: "column", gap: "20px", marginBottom: "20px" }}>
                                         {filteredServices.map((service) => (
                                             <div key={service.ServiceName}
                                                 onClick={() => (isServiceAdded(service.ServiceName) ? handleRemoveFromCart(service) : handleAddToCart(service))}
@@ -496,19 +496,19 @@ function SalonPage() {
                                     <b>{calculateTotalAmount()}</b>
                                     <span id="displayCart" style={{ fontSize: "15px" }}>{displayCartItems()}</span>
                                 </div>
-                                <div style={{ textAlign: "center" }}>
+                                <div style={{ textAlign: "center", marginBottom: "20px" }}>
                                     <button className="checkout-button" onClick={handleCheckout}>Checkout</button>
                                 </div>
                                 <span className="close-button" onClick={handleClosePopup}>
-                                    <WestIcon fontSize="medium" /><span style={{ position: "relative", top: "-5px", marginLeft: "4px" }}>Back</span>
+                                    <WestIcon fontSize="medium" /><span style={{ marginLeft: "4px" }}>Back</span>
                                 </span>
                             </div>
                         )}
                         {checkoutStage === 'userDetails' && (
                             <div className='popupContent'>
                                 <div className="user-details">
-                                    <h2><u>User Details</u></h2>
-                                    <div className='detailsuser' style={{ marginLeft: "40px", marginBottom: "25px" }}>
+                                    <h3><u>User Details</u></h3>
+                                    <div className='detailsuser' style={{ marginLeft: "40px", marginBottom: "20px" }}>
                                         <p>
                                             Name: <span style={{ marginLeft: "50px" }}><input value={userdetails.name} onChange={(e) => setUserDetails((prevDetails) => ({ ...prevDetails, name: e.target.value }))} /></span>
                                         </p>
@@ -519,9 +519,9 @@ function SalonPage() {
                                             Mobile: <span style={{ marginLeft: "45px" }}><input value={userdetails.phone} /></span>
                                         </p>
                                     </div>
-                                    <hr style={{ margin: "0 15%" }} />
-                                    <h2><u>Selected Services</u></h2>
-                                    <table id="servicesSelected" style={{ width: "70%" }}>
+                                    <hr style={{ margin: "0 15%", marginBottom: "20px" }} />
+                                    <h3><u>Selected Services</u></h3>
+                                    <table id="servicesSelected" style={{ marginLeft: "40px" }}>
                                         <tbody>
                                             {cartItems.map((item) => (
                                                 <tr key={item.ServiceName || item.ComboName}>
@@ -535,8 +535,8 @@ function SalonPage() {
                                             </tr>
                                         </tbody>
                                     </table>
-                                    <h2><u>Slot Details:</u></h2>
-                                    <table id="slotDetails" style={{ width: Reschedule ? '100%' : '60%' }}>
+                                    <h3><u>Slot Details:</u></h3>
+                                    <table id="slotDetails" style={{ width: Reschedule ? '100%' : '60%', marginLeft: "40px" }}>
                                         <tbody>
                                             <tr>
                                                 <td>Date:</td>
@@ -550,7 +550,7 @@ function SalonPage() {
                                         </tbody>
                                     </table>
                                 </div>
-                                <div style={{ textAlign: "center" }}>
+                                <div style={{ textAlign: "center", marginBottom: "20px" }}>
                                     <button className="checkout-button" onClick={handlePayNow}>
                                         Pay Now
                                     </button>
@@ -558,7 +558,7 @@ function SalonPage() {
                                     {Reschedule && <div style={{ fontSize: "10px", marginTop: "5px" }}>10% of Rescheduling charges are applicable</div>}
                                 </div>
                                 <span className="close-button" onClick={() => Reschedule ? navigate(-1) : setCheckoutStage('services')}>
-                                    <WestIcon fontSize="medium" /><span style={{ position: "relative", top: "-5px", marginLeft: "4px" }}>{Reschedule ? 'Close' : 'Back'}</span>
+                                    <WestIcon fontSize="medium" /><span style={{ marginLeft: "4px" }}>{Reschedule ? 'Close' : 'Back'}</span>
                                 </span>
                             </div>
                         )}

@@ -27,7 +27,7 @@ function Cancel() {
         }, 2000);
     };
     return (
-        <div style={{ width: "100vw", height: "100vh", display: "flex", justifyContent: "center", alignItems: "center", flexDirection: "column", gap: "25px" }}>
+        <div className='cancel-image' style={{ width: "100vw", height: "100vh", display: "flex", justifyContent: "center", alignItems: "center", gap: "25px", textAlign: "center" }}>
             {Cancelpage === 'confirmation' && <><div>
                 <div style={{ position: "fixed", top: "0", left: "0" }}><Logo /></div>
                 <div style={{ position: "fixed", top: "2vw", right: "6vh" }}><Hamburger /></div>
@@ -43,7 +43,7 @@ function Cancel() {
                     <div style={{ position: "fixed", top: "0", left: "0" }}><Logo /></div>
                     <div style={{ position: "fixed", top: "2vw", right: "6vh" }}><Hamburger /></div>
                 </div>
-                <div style={{ display: "flex", flexDirection: "row", justifyContent: "center", alignItems: "center" }}>
+                <div className='money-refund' style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
                     <div><img src={banking} /></div>
                     <div className='reschedule'>Your booking has been cancelled</div>
                 </div>
@@ -54,9 +54,9 @@ function Cancel() {
                 <div>
                     <div style={{ position: "fixed", top: "0", left: "0" }}><Logo /></div>
                     <div style={{ position: "fixed", top: "2vw", right: "6vh" }}><Hamburger /></div>
-                    <div style={{ position: "fixed", top: "8vw", right: "10vh", cursor: "pointer" }} onClick={() => { navigate(-1) }}><u>Close</u></div>
+                    <div className='close-review' style={{ position: "fixed", cursor: "pointer" }} onClick={() => { navigate(-1) }}><u>Close</u></div>
                 </div>
-                <div style={{ display: "flex", flexDirection: "row", justifyContent: "center", alignItems: "center" }}>
+                <div className='money-refund' style={{ display: "flex", justifyContent: "center", alignItems: "center", textAlign: "center" }}>
                     <div><img src={banking} /></div>
                     <div>
                         <div className='reschedule'>Your money will  be credited with in 24hours.</div>

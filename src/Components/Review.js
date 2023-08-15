@@ -123,7 +123,7 @@ function Review() {
                 <div>
                     <div style={{ position: "fixed", top: "0", left: "0" }}><Logo /></div>
                     <div style={{ position: "fixed", top: "2vw", right: "6vh" }}><Hamburger /></div>
-                    <div style={{ position: "fixed", top: "8vw", right: "10vh", cursor: "pointer" }} onClick={() => { navigate('/bookings') }}><u>Close</u></div>
+                    <div className='close-review' style={{ position: "fixed", cursor: "pointer" }} onClick={() => { navigate('/bookings') }}><u>Close</u></div>
                 </div>
                 <div className='rating-card'>
                     <div style={{ display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", gap: "25px" }}>

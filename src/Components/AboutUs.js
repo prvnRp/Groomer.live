@@ -12,20 +12,20 @@ import Envolope from '../images/envelope-with-checkmark-icon.svg'
 function AboutUs() {
     const [message, setMessage] = useState('');
     const maxCharacterCount = 500;
-    const [formSubmitted, setFormSubmitted] = useState(false);
-    const handleMessageChange = (event) => {
-        const inputMessage = event.target.value;
-        if (inputMessage.length <= maxCharacterCount) {
-            setMessage(inputMessage);
-        }
-    };
+    // const [formSubmitted, setFormSubmitted] = useState(false);
+    // const handleMessageChange = (event) => {
+    //     const inputMessage = event.target.value;
+    //     if (inputMessage.length <= maxCharacterCount) {
+    //         setMessage(inputMessage);
+    //     }
+    // };
 
-    useEffect(() => {
-        // Resize the textarea when the component mounts and whenever the message changes
-        const textarea = document.getElementById('messageTextarea');
-        textarea.style.height = 'auto';
-        textarea.style.height = `${textarea.scrollHeight}px`;
-    }, [message]);
+    // useEffect(() => {
+    //     // Resize the textarea when the component mounts and whenever the message changes
+    //     const textarea = document.getElementById('messageTextarea');
+    //     textarea.style.height = 'auto';
+    //     textarea.style.height = `${textarea.scrollHeight}px`;
+    // }, [message]);
 
     return (
         <section style={{ background: "#000" }} className="container-about">
@@ -44,7 +44,7 @@ function AboutUs() {
                     <div style={{ fontSize: "30px" }}><b>Where it all began</b></div>
                     <div style={{ fontSize: "20px" }} className='para'>Praveen and Sumath are the co-founders of the Salon Startup. Praveen is a veteran hairdresser with over 20 years of experience in the beauty industry. He has a passion for entrepreneurship and loves working with clients to create the perfect look. Sumath is an experienced businesswoman who has a knack for marketing and connecting with potential customers. With her talent for networking, she has helped many small businesses grow into successful companies. Together, Praveen and Sumath are committed to providing excellent customer service and creating an inviting atmosphere in their salon.</div>
                     <img src={Image} alt="about" className="image-about" />
-                    <div style={{ textAlign: "center", backgroundColor: "#1E1E1E", borderRadius: "100px" }}>
+                    {/* <div style={{ textAlign: "center", backgroundColor: "#1E1E1E", borderRadius: "100px" }}>
                         <div className='contact-form' style={{ textAlign: "left", padding: formSubmitted ? "5vw 12vw" : "" }}>
                             {!formSubmitted && <div>
                                 <div className='login'><b>Contact us</b></div>
@@ -95,9 +95,9 @@ function AboutUs() {
                             {!formSubmitted && <div style={{ textAlign: "center" }}>
                                 <button onClick={() => { setFormSubmitted(true) }} style={{ padding: "10px 10vw" }} className='LoginButton'>Sent</button>
                             </div>}
-                        </div>
+                        </div> 
 
-                    </div>
+                </div> */}
 
                 </div>
                 <Footer />

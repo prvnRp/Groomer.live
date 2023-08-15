@@ -32,12 +32,12 @@ function SquareCard({ id, content, imageSrc, distance, ratings, NoR, services, s
 
     const currentService = services[currentServiceIndex];
     return (
-        <div className="square-card" style={{ position: "relative", cursor: "pointer" }} onClick={() => { navigate(`/salon/${id}`); }} >
+        <div className="square-card" style={{ position: "relative", cursor: "pointer" }}>
             <div id={id} class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner">
                     {services.map((service, index) => (
                         <div class={index === 0 ? "carousel-item active" : "carousel-item"} data-bs-interval="3000">
-                            <div style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
+                            <div style={{ display: "flex", justifyContent: "center", alignItems: "center" }} onClick={() => { navigate(`/salon/${id}`); }} >
                                 <div className="image-container">
                                     {imageSrc[index] && <img src={imageSrc[index]} alt="Card Image" className="card-image" />}
                                 </div>
@@ -46,7 +46,7 @@ function SquareCard({ id, content, imageSrc, distance, ratings, NoR, services, s
                     ))}
                 </div>
             </div>
-            <div className="card-details" style={{ height: '42%' }}>
+            <div className="card-details" style={{ height: '42%' }} onClick={() => { navigate(`/salon/${id}`); }} >
                 <div style={{ width: "100%", overflow: "hidden" }}>
                     <p style={{ fontSize: '20px', fontWeight: '400', whiteSpace: "nowrap" }}>{content}</p>
                 </div>

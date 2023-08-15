@@ -1,10 +1,24 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
 const LocationDropdown = ({ label, value, options, onChange, searchFilter, width, fontSize }) => {
     const [isOpen, setIsOpen] = useState(false);
     const [selectedOption, setSelectedOption] = useState(value || options[0]);
     const [inputValue, setInputValue] = useState('');
+    const dropdownRef = useRef(null);
 
+    useEffect(() => {
+        const handleOutsideClick = (event) => {
+            if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+                setIsOpen(false);
+            }
+        };
+
+        document.addEventListener('mousedown', handleOutsideClick);
+
+        return () => {
+            document.removeEventListener('mousedown', handleOutsideClick);
+        };
+    }, []);
     const handleSelect = (option) => {
         setSelectedOption(option);
         setInputValue(option);
@@ -33,9 +47,9 @@ const LocationDropdown = ({ label, value, options, onChange, searchFilter, width
 
     return (
         <div className='locationdropdown'>
-            <div className='location-conatiner'>
+            <div className='location-conatiner' ref={dropdownRef}>
                 <span style={{ color: "#FFF", position: "relative", top: "5px" }}>{label}:</span>
-                <div className="custom-dropdown" >
+                <div className="custom-dropdown">
                     <div
                         className="dropdown-selected"
                     >
@@ -47,6 +61,7 @@ const LocationDropdown = ({ label, value, options, onChange, searchFilter, width
                             value={inputValue}
                             onChange={handleInputChange}
                             placeholder="Search"
+                            onClick={() => setIsOpen(true)}
                         />}
                     </div>
                     {isOpen && !showNotFound && (

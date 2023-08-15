@@ -3,7 +3,9 @@ body {
   overflow-x: hidden;
   /* font-size: 40px; */
 }
-
+input:focus{
+  outline: none;
+}
 .topNav {
 float: right;
 display: flex;
@@ -204,6 +206,7 @@ padding: 5px;
 .square-cards-container {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
   --card-size: 280px; /* Define the fixed width and height for the card */
   /* display: grid; */
@@ -228,6 +231,7 @@ padding: 5px;
   color:#fff;
   overflow: hidden;
   padding: 6px;
+  margin-left: 10px;
   /* font-size: 20px; */
   /* font-weight: bold; */
 }
@@ -384,6 +388,8 @@ font-size: 40px;
 @media (max-width: 767px) {
   .square-cards-container {
     gap: 10px; /* Adjust the gap value for smaller screens */
+    padding: 5px;
+    padding-right: 0px;
   }
 }
 
@@ -467,7 +473,7 @@ font-size: 40px;
   margin: 10px;
   margin-bottom: 0px;
   border-radius: 15px;
-  /* height: 125px; */
+  height: 125px;
 }
 
 
@@ -568,7 +574,7 @@ p {
   background: #FF6548;
   border : 0;
   color:#FFF;
-  padding: 2px 17px 0px 17px;
+  padding: 0px 17px 5px 17px;
   border-radius: 12px;
 }
 
@@ -588,7 +594,7 @@ p {
   position: absolute;
   top: 100%;
   left: 0;
-  z-index: 9999;
+  z-index: 50;
   background: #0F0F0F;
   color:#FFF;
   margin-top: 10px;
@@ -768,6 +774,7 @@ outline: none;
   flex-direction: column;
   overflow: hidden;
   text-align: center;
+  z-index: 9999;
 }
 
 .time-picker-partitions {
@@ -1289,7 +1296,9 @@ visibility: visible;
   visibility: visible;
 }
 
-
+.info-services {
+  width: 60%;
+}
 
 
 .popupContent table {
@@ -1440,6 +1449,9 @@ visibility: visible;
 .pcontent input:focus {
   outline: none;
 }
+.hamburger-background {
+  background: #FFF;
+}
 
 .custom-date-dropdown {
   position: absolute;
@@ -1451,7 +1463,7 @@ visibility: visible;
   /* border: 1px solid #ccc; */
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   z-index: 9999;
-  padding: 5px 18px;
+  padding: 5px 10px;
   margin-left: 5px;
 }
 
@@ -1570,10 +1582,15 @@ display: none;
 @media screen and (max-width: 768px) {
 
 .search-icon {
-/* flex-direction: row; */
 flex-wrap: wrap;
+gap: 20px;
 justify-content: flex-start;
-/* flex-direction: row-reverse; */
+}
+
+.search {
+  position: fixed;
+  top: 55px;
+  right: 140px;
 }
 
   .combo-services {
@@ -1755,6 +1772,25 @@ display: none;
 border: 0;
 /* margin: 0 40px; */
 }
+.menu-icon {
+  color: #000;
+}
+.user-details {
+  margin-left: 40px;
+}
+#servicesSelected {
+  width: 70%;
+}
+.close-review {
+  top: 8vw; 
+  right: 10vh;
+}
+.cancel-image {
+  flex-direction: column;
+}
+.money-refund {
+  flex-direction: row;
+}
 
 @media screen and (max-width: 1200px) {
 .f55 {
@@ -1802,7 +1838,10 @@ border: 0;
   background: rgba(30, 30, 30, 0.50);
 }
 
-
+.close-review {
+  top: 15vw; 
+  right: 5vh;
+}
 
 .image-content {
   display: none;
@@ -1878,6 +1917,46 @@ border: 0;
 }
 .pagination {
   display: none;
+}
+.image-container {
+  height: 200px;
+}
+.square-card {
+  width: 280px;
+  height: 350px;
+  /* margin-left: 10px; */
+}
+.hamburger-background {
+  background: none;
+}
+.menu-icon {
+  color: #FFF;
+  font-size: 35px !important;
+  position: relative;
+  top: -3px;
+}
+.info-services {
+  width: 80%;
+}
+#servicesSelected {
+  width: 40%;
+}
+.rating-card img {
+  width: 50%;
+}
+.rating-card {
+  margin: 20px;
+}
+.cancel-image img{
+  width: 100%;
+}
+.reschedule {
+font-size: 20px;
+}
+
+.money-refund {
+  flex-direction: column-reverse;
+  gap: 50px;
 }
 }
 
