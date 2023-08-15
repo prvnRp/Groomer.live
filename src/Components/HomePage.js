@@ -9,6 +9,8 @@ import rectangle5 from '../images/rectangle-19.svg'
 import rectangle6 from '../images/rectangle-21.svg'
 import rectangle7 from '../images/rectangle-22.svg'
 import rectangle8 from '../images/rectangle-37.svg'
+import imageee from '../images/Salons/OIP.jpg'
+import imageee1 from '../images/Salons/image1.jpg'
 import vector from '../images/vector-1.svg'
 import home from '../images/home.svg'
 import clockSearch from '../images/clock-search.svg'
@@ -224,8 +226,17 @@ const HomePage = () => {
                 <div style={{ paddingTop: "0px" }} className='text-salon'>Best groomer in <b>city</b></div>
                 <div className='best-salon'>
                     <div className='best-salon-card'>
-                        <div style={{ flex: 1, marginRight: "20px", position: "relative" }}>
-                            <img src={rectangle4} style={{ width: "100%" }} />
+                        <div style={{ flex: 1, marginRight: "20px", position: "relative", height: "100%" }}>
+                            <img
+                                src={imageee1}
+                                style={{
+                                    width: "100%",
+                                    height: "100%",
+                                    objectFit: "cover",
+                                    borderRadius: "35px"
+                                }}
+                                alt="Salon"
+                            />
                             <div style={{ position: "absolute", top: "0px", right: "0px", cursor: "pointer", color: "#000", background: "#FFF", borderRadius: "50%" }}>
                                 {isFavourite ? <FavoriteIcon onClick={handleToggleWishlist} className='heart-wishlist' /> : <FavoriteBorderIcon onClick={handleToggleWishlist} className='heart-wishlist' />}
                             </div>
@@ -233,7 +244,7 @@ const HomePage = () => {
                         <div style={{ flex: 1 }}>
                             <div className='f40'>#1</div>
                             <div className='f40 salon-groomer' style={{ marginBottom: "20px" }}>Groomer salon</div>
-                            <div className='f20'>the saloon with two best in class groomers in the same salon gives you b est style and look with master level talent.</div>
+                            <div className='f20'>the salon with two best in class groomers in the same salon gives you the best style and look with master level talent.</div>
                         </div>
                     </div>
                     {/* <div className='best-salon-card'>
@@ -250,6 +261,28 @@ const HomePage = () => {
                         </div>
                     </div> */}
                     <div className='best-salon-card'>
+                        <div style={{ flex: 1, marginRight: "20px", position: "relative", height: "100%" }}>
+                            <img
+                                src={imageee1}
+                                style={{
+                                    width: "100%",
+                                    height: "100%",
+                                    objectFit: "cover",
+                                    borderRadius: "35px"
+                                }}
+                                alt="Salon"
+                            />
+                            <div style={{ position: "absolute", top: "0px", right: "0px", cursor: "pointer", color: "#000", background: "#FFF", borderRadius: "50%" }}>
+                                {isFavourite ? <FavoriteIcon onClick={handleToggleWishlist} className='heart-wishlist' /> : <FavoriteBorderIcon onClick={handleToggleWishlist} className='heart-wishlist' />}
+                            </div>
+                        </div>
+                        <div style={{ flex: 1 }}>
+                            <div className='f40'>#1</div>
+                            <div className='f40 salon-groomer' style={{ marginBottom: "20px" }}>Groomer salon</div>
+                            <div className='f20'>the salon with two best in class groomers in the same salon gives you the best style and look with master level talent.</div>
+                        </div>
+                    </div>
+                    {/* <div className='best-salon-card'>
                         <div style={{ flex: 1, marginRight: "20px", position: "relative" }}>
                             <img src={rectangle4} style={{ width: "100%" }} />
                             <div style={{ position: "absolute", top: "0px", right: "0px", cursor: "pointer", color: "#000", background: "#FFF", borderRadius: "50%" }}>
@@ -260,11 +293,42 @@ const HomePage = () => {
                             <div className='f40'>#1</div>
                             <div className='f40 salon-groomer' style={{ marginBottom: "20px" }}>Groomer salon</div>
                             <div className='f20'>the saloon with two best in class groomers in the same salon gives you b est style and look with master level talent.</div>
+                        </div>
+                    </div> */}
+                    <div className='best-salon-card'>
+                        <div style={{ flex: 1, marginRight: "20px", position: "relative", height: "100%" }}>
+                            <img
+                                src={imageee1}
+                                style={{
+                                    width: "100%",
+                                    height: "100%",
+                                    objectFit: "cover",
+                                    borderRadius: "35px"
+                                }}
+                                alt="Salon"
+                            />
+                            <div style={{ position: "absolute", top: "0px", right: "0px", cursor: "pointer", color: "#000", background: "#FFF", borderRadius: "50%" }}>
+                                {isFavourite ? <FavoriteIcon onClick={handleToggleWishlist} className='heart-wishlist' /> : <FavoriteBorderIcon onClick={handleToggleWishlist} className='heart-wishlist' />}
+                            </div>
+                        </div>
+                        <div style={{ flex: 1 }}>
+                            <div className='f40'>#1</div>
+                            <div className='f40 salon-groomer' style={{ marginBottom: "20px" }}>Groomer salon</div>
+                            <div className='f20'>the salon with two best in class groomers in the same salon gives you the best style and look with master level talent.</div>
                         </div>
                     </div>
                     <div className='best-salon-card'>
-                        <div style={{ flex: 1, marginRight: "20px", position: "relative" }}>
-                            <img src={rectangle4} style={{ width: "100%" }} />
+                        <div style={{ flex: 1, marginRight: "20px", position: "relative", height: "100%" }}>
+                            <img
+                                src={imageee1}
+                                style={{
+                                    width: "100%",
+                                    height: "100%",
+                                    objectFit: "cover",
+                                    borderRadius: "35px"
+                                }}
+                                alt="Salon"
+                            />
                             <div style={{ position: "absolute", top: "0px", right: "0px", cursor: "pointer", color: "#000", background: "#FFF", borderRadius: "50%" }}>
                                 {isFavourite ? <FavoriteIcon onClick={handleToggleWishlist} className='heart-wishlist' /> : <FavoriteBorderIcon onClick={handleToggleWishlist} className='heart-wishlist' />}
                             </div>
@@ -272,20 +336,7 @@ const HomePage = () => {
                         <div style={{ flex: 1 }}>
                             <div className='f40'>#1</div>
                             <div className='f40 salon-groomer' style={{ marginBottom: "20px" }}>Groomer salon</div>
-                            <div className='f20'>the saloon with two best in class groomers in the same salon gives you b est style and look with master level talent.</div>
-                        </div>
-                    </div>
-                    <div className='best-salon-card'>
-                        <div style={{ flex: 1, marginRight: "20px", position: "relative" }}>
-                            <img src={rectangle4} style={{ width: "100%" }} />
-                            <div style={{ position: "absolute", top: "0px", right: "0px", cursor: "pointer", color: "#000", background: "#FFF", borderRadius: "50%" }}>
-                                {isFavourite ? <FavoriteIcon onClick={handleToggleWishlist} className='heart-wishlist' /> : <FavoriteBorderIcon onClick={handleToggleWishlist} className='heart-wishlist' />}
-                            </div>
-                        </div>
-                        <div style={{ flex: 1 }}>
-                            <div className='f40'>#1</div>
-                            <div className='f40 salon-groomer' style={{ marginBottom: "20px" }}>Groomer salon</div>
-                            <div className='f20'>the saloon with two best in class groomers in the same salon gives you b est style and look with master level talent.</div>
+                            <div className='f20'>the salon with two best in class groomers in the same salon gives you the best style and look with master level talent.</div>
                         </div>
                     </div>
                 </div>

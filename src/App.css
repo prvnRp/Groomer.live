@@ -1416,7 +1416,9 @@ visibility: visible;
   justify-content: flex-start;
   align-items: center;
 }
-
+.heart-wishlist {
+  font-size: 35px !important;
+}
 .imageInratings {
   /* width: 20px; */
   /* height: 20px; */
@@ -1811,6 +1813,9 @@ border: 0;
   .banner {
     border-radius: 200px;
   }
+  .f40 {
+    font-size: 35px;
+  }
 }
 
 @media screen and (max-width: 1200px) {
@@ -1836,6 +1841,9 @@ border: 0;
 .f70 {
   font-size: 50px;
 }
+.f20 {
+  font-size: 20px;
+}
 .one-card img {
   width: 50%;
 }
@@ -1845,6 +1853,9 @@ border: 0;
 }
 
 @media screen and (max-width:700px) {
+  .heart-wishlist {
+    font-size: 25px !important;
+  }
   .carousalButton {
     display: none;
   }
@@ -1886,9 +1897,6 @@ border: 0;
 .f30 {
   font-size: 20px;
 }
-.f40 {
-  font-size: 20px;
-}
 .f18 {
   font-size: 12px;
 }
@@ -1899,10 +1907,10 @@ border: 0;
   font-size: 40px;
 }
 .f40 {
-  font-size: 22px;
+  font-size: 25px;
 }
 .f20 {
-  font-size:12px;
+  font-size:18px;
 }
 .banner img {
   width: 70%;
@@ -1995,7 +2003,71 @@ font-size: 20px;
 
 }
 
+@media screen and (max-width:560px){
+  .f35 {
+    font-size: 20px;
+  }
+  .f70 {
+    font-size: 40px;
+  }
+  .f40 {
+    font-size: 20px;
+  }
+  .f20 {
+    font-size: 15px;
+  }
+  .f55 {
+    font-size: 20px;
+  }
+  .f30 {
+    font-size: 15px;
+  }
+  .f18 {
+    font-size: 10px;
+  }
+
+  
+}
+
+@media screen and (max-width:480px){
+  .f35 {
+    font-size: 18px;
+  }
+  .f70 {
+    font-size: 30px;
+  }
+  .f40 {
+    font-size: 18px;
+  }
+  .f20 {
+    font-size: 12px;
+  }
+  .f55 {
+    font-size: 18px;
+  }
+  .f30 {
+    font-size: 12px;
+  }
+  .f18 {
+    font-size: 8px;
+  }
+
+  
+}
+
 @media screen and (max-width:430px){
+  .custom-dropdown {
+    min-width: 100px;
+  }
+  .locationdropdown input {
+    width: 100px;
+  }
+  .buttonapply {
+    font-size: 15px;
+  }
+  .locationdropdown {
+    font-size: 15px;
+  }
   .f40 {
     font-size: 18px;
   }
@@ -2010,6 +2082,28 @@ font-size: 20px;
   }
   .f20 {
     font-size: 10px;
+  }
+  .f55 {
+    font-size: 18px;
+  }
+  .f30 {
+    font-size: 15px;
+  }
+  
+}
+
+@media screen and (max-width:380px){
+  .f40 {
+    font-size: 12px;
+  }
+  .f35 {
+    font-size: 15px;
+  }
+  .f70 {
+    font-size: 25px;
+  }
+  .f20 {
+    font-size: 8px;
   }
   
 }
