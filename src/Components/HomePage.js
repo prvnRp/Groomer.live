@@ -7,7 +7,7 @@ import rectangle3 from '../images/rectangle-7.svg'
 // import rectangle4 from '../images/rectangle-18.svg'
 // import rectangle5 from '../images/rectangle-19.svg'
 import rectangle6 from '../images/rectangle-21.svg'
-// import rectangle7 from '../images/rectangle-22.svg'
+import rectangle7 from '../images/rectangle-22.svg'
 import rectangle8 from '../images/rectangle-37.svg'
 // import imageee from '../images/Salons/OIP.jpg'
 import imageee1 from '../images/Salons/image1.jpg'
@@ -87,32 +87,32 @@ const HomePage = () => {
     );
 
     const banners = [
-        // {
-        //     content: <div className='f55'>
-        //         <div>
-        //             <b>Great salon</b> <span className='f30'>services</span>
-        //         </div>
-        //         <div className='f30'>that won't</div>
-        //         <div>
-        //             <b>empty your pockets</b>
-        //         </div>
-        //     </div>,
-        //     image: rectangle7,
-        //     color: '#FF6548'
-        // },
         {
             content: <div className='f55'>
                 <div>
-                    We build <b>Groomer</b> for
+                    <b>Great salon</b> <span className='f30'>services</span>
                 </div>
-                <div><b>Adepts</b> & <b>Ernsts</b>, not for</div>
+                <div className='f30'>that won't</div>
                 <div>
-                    lazy people
+                    <b>empty your pockets</b>
                 </div>
             </div>,
-            image: Brain,
+            image: rectangle7,
             color: '#FF6548'
         },
+        // {
+        //     content: <div className='f55'>
+        //         <div>
+        //             We build <b>Groomer</b> <span className='f30'>for</span>
+        //         </div>
+        //         <div><b>Adepts</b> & <b>Ernsts</b>, <span className='f30'>not for</span></div>
+        //         <div>
+        //             <span className='f30'>lazy people</span>
+        //         </div>
+        //     </div>,
+        //     image: Brain,
+        //     color: '#FF6548'
+        // },
         {
             content: <div className='f55'>
                 <div>
