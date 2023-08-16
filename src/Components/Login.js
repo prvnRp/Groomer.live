@@ -50,7 +50,7 @@ function Login() {
         <div class="container11">
             <div class="image-section">
                 <Logo />
-                {isMobileView && <div style={{ marginRight: "40px", marginTop: "40px" }} className='topnav-display'><Hamburger /></div>}
+                {isMobileView && <div style={{ marginRight: "20px", marginTop: "25px" }} className='topnav-display'><Hamburger /></div>}
             </div>
             <div class="login-section">
                 {!isMobileView && <div style={{ marginRight: "40px", marginTop: "40px" }} className='topnav-display'><Hamburger /></div>}

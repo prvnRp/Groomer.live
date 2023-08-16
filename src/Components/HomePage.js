@@ -4,12 +4,12 @@ import React, { useState, useRef, useEffect } from 'react';
 import rectangle1 from '../images/rectangle-5.svg'
 import rectangle2 from '../images/rectangle-6.svg'
 import rectangle3 from '../images/rectangle-7.svg'
-import rectangle4 from '../images/rectangle-18.svg'
-import rectangle5 from '../images/rectangle-19.svg'
+// import rectangle4 from '../images/rectangle-18.svg'
+// import rectangle5 from '../images/rectangle-19.svg'
 import rectangle6 from '../images/rectangle-21.svg'
-import rectangle7 from '../images/rectangle-22.svg'
+// import rectangle7 from '../images/rectangle-22.svg'
 import rectangle8 from '../images/rectangle-37.svg'
-import imageee from '../images/Salons/OIP.jpg'
+// import imageee from '../images/Salons/OIP.jpg'
 import imageee1 from '../images/Salons/image1.jpg'
 import vector from '../images/vector-1.svg'
 import home from '../images/home.svg'
@@ -18,6 +18,7 @@ import socialMedia from '../images/social-media.svg'
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import Footer from './Footer';
+import Brain from '../images/line-brain-idea.svg'
 
 const Description = (<div>
     Groomer is a human centric beauty company. <br /><br />
@@ -86,17 +87,30 @@ const HomePage = () => {
     );
 
     const banners = [
+        // {
+        //     content: <div className='f55'>
+        //         <div>
+        //             <b>Great salon</b> <span className='f30'>services</span>
+        //         </div>
+        //         <div className='f30'>that won't</div>
+        //         <div>
+        //             <b>empty your pockets</b>
+        //         </div>
+        //     </div>,
+        //     image: rectangle7,
+        //     color: '#FF6548'
+        // },
         {
             content: <div className='f55'>
                 <div>
-                    <b>Great salon</b> <span className='f30'>services</span>
+                    We build <b>Groomer</b> for
                 </div>
-                <div className='f30'>that won't</div>
+                <div><b>Adepts</b> & <b>Ernsts</b>, not for</div>
                 <div>
-                    <b>empty your pockets</b>
+                    lazy people
                 </div>
             </div>,
-            image: rectangle7,
+            image: Brain,
             color: '#FF6548'
         },
         {
@@ -127,22 +141,10 @@ const HomePage = () => {
         },
     ];
 
-    const images = [
-        rectangle7,
-        clockSearch,
-        socialMedia
-    ]
-
-    const colors = [
-        '#FF6548',
-        '#B4A9F7',
-        '#DF7AF2'
-    ]
-
     const handleScroll = () => {
         const currentScrollY = window.scrollY;
         setShowScroll(currentScrollY > prevScrollY.current ? false : showScroll);
-        if (currentScrollY == 0) {
+        if (currentScrollY === 0) {
             setShowScroll(true);
         }
     };
