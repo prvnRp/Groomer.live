@@ -18,22 +18,21 @@ import socialMedia from '../images/social-media.svg'
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import Footer from './Footer';
-import ReactDOMServer from 'react-dom/server';
 
 const Description = (<div>
-    Groomer is a human centric beauty company. <br />
-    <b>Origin :</b>
+    Groomer is a human centric beauty company. <br /><br />
+    <b>Origin : </b>
     We are in search of how we can reinvent human beauty to bring out his or her unique style. So
     we met, hair defines human beauty just as leaves define the beauty of a tree. The result we get
     is that human beauty lies in the hair.
     That's why we started working on the hair.. After our in-depth research, we concluded that
-    people spend most of their time in salons to redesign their style.  <br />
-    <b>Problem:</b>
+    people spend most of their time in salons to redesign their style.  <br /><br />
+    <b>Problem: </b>
     We face our challenges, Of course. The biggest one being that 70% of people still book their
     hair and Beauty offline. Like Phoning the salon or walking straight in. That means, not only do
     we need a great product and the right kind of marketing. We need to actually change the
-    mindset of the majority. <br />
-    <b>Vision :</b>
+    mindset of the majority. <br /><br />
+    <b>Vision : </b>
     So, we have taken it as a mission to solve the problems of the salon market in India. And we
     recognize this as the first phase of our business.
     We spend our days working toward our mission to transform the unorganized hair and beauty
@@ -64,7 +63,7 @@ const HomePage = () => {
         }
     };
 
-    const truncatedDescriptionLength = 2;
+    const truncatedDescriptionLength = 5;
 
     const fullDescription = (
         <div>
