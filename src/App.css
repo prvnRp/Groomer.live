@@ -14,6 +14,8 @@ body {
   width: 60px;
   position: relative;
   border-radius: 14px;
+  /* border-top-left-radius: 5px;
+  border-bottom-right-radius: 5px; */
   top: 60px;
   /* background-color: #b4a9f7 !important; */
 }
