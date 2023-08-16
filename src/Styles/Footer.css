@@ -4,7 +4,7 @@
     position: relative;
     background-color: #000;
     background: linear-gradient(to bottom, transparent 50%, #1E1E1E 50%);
-    height: 350px; /* Adjust the height of the footer as needed */
+    height: 350px;
     overflow: hidden;
     z-index: -1;
   }
@@ -15,8 +15,8 @@
     left: 0;
     bottom: 0;
     width: 100%;
-    height: 350px; /* Adjust the height to create the arc shape */
-    border-radius: 100%;
+    height: 350px;
+    border-radius: 70%/100px 100px 0 0;
     background: linear-gradient(to bottom, #1E1E1E 50%, #1E1E1E 50%);
     background-color: #000; /* Match the background color of the footer */
     z-index:-1;
@@ -63,11 +63,17 @@
     }
     .footer-content {
       margin: 2vh;
-      margin-top: 12vh;
+      margin-top: 7vh;
       margin-bottom: 0px;
     }
     .footer1 {
       gap: 20px;
+    }
+    .footer {
+      height: 300px;
+    }
+    .footer::before {
+      height: 300px;
     }
   }
   

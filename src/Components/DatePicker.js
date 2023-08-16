@@ -79,7 +79,7 @@ const DatePicker = ({ color, date }) => {
                     aria-label="Select Date"
                     maxlength="11"
                     size="6"
-                    style={{ backgroundColor: color, padding: '5px', border: "0", outline: "none", caretColor: "transparent", color: "#fff", fontSize: "15px" }}
+                    style={{ backgroundColor: color, padding: '5px', border: "0", outline: "none", caretColor: "transparent", color: "#fff", fontSize: "15px", position: "relative", top: "-3px" }}
                     readOnly
                 />
                 <span className="correct-incorrect-icon"></span>

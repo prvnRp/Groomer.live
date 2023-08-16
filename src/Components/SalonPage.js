@@ -456,7 +456,7 @@ function SalonPage() {
                                     </div>
                                 )}
                                 {selectedNavOption === "combo" && (
-                                    <div style={{ display: "flex", flexDirection: "column", gap: "20px", marginBottom: "20px", width: "60%" }}>
+                                    <div className='info-services' style={{ display: "flex", flexDirection: "column", gap: "20px", marginBottom: "20px" }}>
                                         {filteredCombos.map((combo) => (
                                             <div key={combo.ComboName} style={{
                                                 background: isComboAdded(combo.ComboName)
@@ -491,7 +491,7 @@ function SalonPage() {
                                     </div>
                                 )}
                                 <hr style={{ width: "60%" }} />
-                                <div style={{ display: "flex", flexDirection: "row", justifyContent: "space-between", marginBottom: "20px", width: "70%" }}>
+                                <div className='info-services' style={{ display: "flex", flexDirection: "row", justifyContent: "space-between", marginBottom: "20px" }}>
                                     <b style={{ marginLeft: "5vw" }}>Total amount:</b>
                                     <b>{calculateTotalAmount()}</b>
                                     <span id="displayCart" style={{ fontSize: "15px" }}>{displayCartItems()}</span>
@@ -508,18 +508,23 @@ function SalonPage() {
                             <div className='popupContent'>
                                 <div className="user-details">
                                     <h3><u>User Details</u></h3>
-                                    <div className='detailsuser' style={{ marginLeft: "40px", marginBottom: "20px" }}>
-                                        <p>
-                                            Name: <span style={{ marginLeft: "50px" }}><input value={userdetails.name} onChange={(e) => setUserDetails((prevDetails) => ({ ...prevDetails, name: e.target.value }))} /></span>
-                                        </p>
-                                        <p>
-                                            Email: <span style={{ marginLeft: "55px" }}><input value={userdetails.email} /></span>
-                                        </p>
-                                        <p>
-                                            Mobile: <span style={{ marginLeft: "45px" }}><input value={userdetails.phone} /></span>
-                                        </p>
-                                    </div>
-                                    <hr style={{ margin: "0 15%", marginBottom: "20px" }} />
+                                    <table id="slotDetails" style={{ width: "90%", marginLeft: "40px" }}>
+                                        <tbody className='detailsuser'>
+                                            <tr>
+                                                <td>Name:</td>
+                                                <td><input value={userdetails.name} onChange={(e) => setUserDetails((prevDetails) => ({ ...prevDetails, name: e.target.value }))} /></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Email:</td>
+                                                <td><input value={userdetails.email} /></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Mobile:</td>
+                                                <td><input value={userdetails.phone} /></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <hr style={{ margin: "0 15%", marginBottom: "20px", color: "#FFF" }} />
                                     <h3><u>Selected Services</u></h3>
                                     <table id="servicesSelected" style={{ marginLeft: "40px" }}>
                                         <tbody>
@@ -530,7 +535,7 @@ function SalonPage() {
                                                 </tr>
                                             ))}
                                             <tr>
-                                                <td style={{ textAlign: "right", paddingRight: "15px" }}><b>Total amount:</b></td>
+                                                <td style={{ textAlign: "right", paddingRight: "15px" }}><b>Total&nbsp;amount:</b></td>
                                                 <td>{calculateTotalAmount()}</td>
                                             </tr>
                                         </tbody>

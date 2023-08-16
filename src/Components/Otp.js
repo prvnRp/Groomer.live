@@ -15,9 +15,6 @@ const Otp = () => {
                 <OtpInput isincorrect={isincorrect} setIsIncorrect={setIsIncorrect} />
                 <div style={{ fontSize: "15px", color: "red", marginTop: "5px", opacity: isincorrect ? '1' : '0' }}>The entered OTP is incorrect. Please try again</div>
             </div>
-            <div>
-                {/* <button className='LoginButton'>Login</button> */}
-            </div>
         </div>
     );
 };

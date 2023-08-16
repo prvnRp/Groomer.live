@@ -18,7 +18,30 @@ import socialMedia from '../images/social-media.svg'
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import Footer from './Footer';
+import ReactDOMServer from 'react-dom/server';
 
+const Description = (<div>
+    Groomer is a human centric beauty company. <br />
+    <b>Origin :</b>
+    We are in search of how we can reinvent human beauty to bring out his or her unique style. So
+    we met, hair defines human beauty just as leaves define the beauty of a tree. The result we get
+    is that human beauty lies in the hair.
+    That's why we started working on the hair.. After our in-depth research, we concluded that
+    people spend most of their time in salons to redesign their style.  <br />
+    <b>Problem:</b>
+    We face our challenges, Of course. The biggest one being that 70% of people still book their
+    hair and Beauty offline. Like Phoning the salon or walking straight in. That means, not only do
+    we need a great product and the right kind of marketing. We need to actually change the
+    mindset of the majority. <br />
+    <b>Vision :</b>
+    So, we have taken it as a mission to solve the problems of the salon market in India. And we
+    recognize this as the first phase of our business.
+    We spend our days working toward our mission to transform the unorganized hair and beauty
+    community (Whole Indian salon market) into a completely digitized one.
+    We young people aspire to change the salon industry from 0 to 1 and began the journey Of
+    Groomer to make the world a better place to Live.
+    We began to believe deeply that the future of hair is digital and we took this as our vision
+</div>);
 
 const HomePage = () => {
     const contentRef = useRef(null);
@@ -26,13 +49,43 @@ const HomePage = () => {
     const [isFavourite, setIsFavourite] = useState(false);
     const prevScrollY = useRef(0);
     const [wishlistMessage, setWishlistMessage] = useState('');
+    const [isDescriptionExpanded, setIsDescriptionExpanded] = useState(false);
+    const scrollPositionRef = useRef(0); // Store scroll position
 
-    // const handleScrollClick = () => {
-    //     if (contentRef.current) {
-    //         contentRef.current.classList.toggle('content-slide-up');
-    //         document.getElementById('scroll-symbol').style.display = 'none';
-    //     }
-    // };
+    const handleToggleDescription = () => {
+        if (!isDescriptionExpanded) {
+            scrollPositionRef.current = window.scrollY;
+        }
+
+        setIsDescriptionExpanded(prevState => !prevState);
+
+        if (isDescriptionExpanded) {
+            window.scrollTo({ top: scrollPositionRef.current, behavior: 'smooth' });
+        }
+    };
+
+    const truncatedDescriptionLength = 2;
+
+    const fullDescription = (
+        <div>
+            {Description.props.children} {/* Assuming your content is direct children of Description */}
+            <span className="show-more" onClick={handleToggleDescription}>
+                {isDescriptionExpanded ? ' ...Less' : ' ...More'}
+            </span>
+        </div>
+    );
+
+    const truncatedDescription = (
+        <div>
+            {Description.props.children.slice(0, truncatedDescriptionLength)}
+            {isDescriptionExpanded ? (
+                <span className="show-more" onClick={handleToggleDescription}> ...Less</span>
+            ) : (
+                <span className="show-more" onClick={handleToggleDescription}> ...More</span>
+            )}
+        </div>
+    );
+
     const banners = [
         {
             content: <div className='f55'>
@@ -178,11 +231,11 @@ const HomePage = () => {
             )}
             <div className='header-info'>
                 <div>
-                    <div className='f35'>We are</div>
+                    <div className='f35'>This is</div>
                     <div className='f70'>Groomer</div>
                 </div>
                 <div className='f35'>
-                    Online salon apps make it easy to book salon appointments from home. Browse salons, read reviews, and book appointments in just a few taps. Many apps also offer discounts and promotions.
+                    {isDescriptionExpanded ? fullDescription : truncatedDescription}
                 </div>
             </div>
             <div className="content12" ref={contentRef}>

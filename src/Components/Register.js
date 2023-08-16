@@ -35,7 +35,7 @@ function Register({ setStatus }) {
         //     <div className="contentt">
         //         <TopNav />
         <>
-            <form className='inforegister' onSubmit={handleSubmit}>
+            {!isRegistered && <form className='inforegister' onSubmit={handleSubmit}>
                 <div>
                     <div className='login'><b>Register</b></div>
                     <p>{isMobileNumberRegistered ? 'This account already exists. Please ' : 'Already have an account?'} <span className='register' onClick={() => setStatus('login')}>Login</span></p>
@@ -64,7 +64,7 @@ function Register({ setStatus }) {
                 <div>
                     <button type="submit" className='LoginButton'>Register</button>
                 </div>
-            </form>
+            </form>}
             {isRegistered && <Otp />}
         </>
         //     </div>
