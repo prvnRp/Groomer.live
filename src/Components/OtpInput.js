@@ -75,7 +75,7 @@ const OTPInput = ({ isincorrect, setIsIncorrect }) => {
                         size="1"
                         key={index}
                         ref={(ref) => (otpBoxesRef.current[index] = ref)}
-                        type="text"
+                        type="number"
                         maxLength={1}
                         value={value}
                         onChange={(e) => handleChange(index, e.target.value)}
