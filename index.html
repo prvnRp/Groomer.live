@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap');
+    </style>
+    <style>
+        * {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: #1E1E1E;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 95vh;
+            overflow-x: hidden;
+        }
+
+
+        .header {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            color: #FFF;
+        }
+
+        .header img {
+            width: 90px;
+            height: 90px;
+            margin-right: 10px;
+        }
+
+        .header div {
+            font-size: 40px;
+            text-align: center;
+        }
+
+        .heading {
+            flex-shrink: 0;
+            font-size: 130px;
+            font-style: normal;
+            line-height: normal;
+            letter-spacing: 1.75px;
+            text-transform: uppercase;
+            text-align: center;
+        }
+
+        .launching {
+            flex-shrink: 0;
+            color: #FF6548;
+            font-size: 50px;
+            font-style: normal;
+            line-height: normal;
+            letter-spacing: 0.72px;
+            text-shadow: 0px 5px 2.5px rgba(0, 0, 0, 0.25);
+            text-align: center;
+        }
+
+        .inputemail {
+            width: 30vw;
+            color: #000;
+            font-family: Poppins;
+            font-size: 20px;
+            font-style: normal;
+            line-height: normal;
+            letter-spacing: 0.2px;
+            border-radius: 400px 0px 0px 400px;
+            padding: 10px;
+            border: 0;
+        }
+
+        .buttonSubscribe {
+            background: #FF6548;
+            border-radius: 0px 400px 400px 0px;
+            border: 0;
+            color: #FFF;
+            padding: 0 20px;
+            cursor: pointer;
+        }
+
+        button:focus {
+            outline: none;
+        }
+
+        input:focus {
+            outline: none;
+        }
+
+        .emailField {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+        }
+
+        ::placeholder {
+            font-size: 15px;
+        }
+
+        .contactUs {
+            /* flex: 1 0 0; */
+            color: #FFF;
+            font-family: Poppins;
+            font-size: 16px;
+            font-style: normal;
+            letter-spacing: 0.16px;
+            margin: 40px 0;
+        }
+
+        .copyRight {
+            color: var(--gray-3, #828282);
+            text-align: center;
+
+        }
+
+        .icons {
+            display: flex;
+            flex-direction: row;
+            gap: 25px;
+            margin: 40px 0;
+        }
+
+        #text1 {
+            /* font: 800 40px Arial; */
+            -webkit-text-fill-color: transparent;
+            -webkit-text-stroke: 1px;
+            /* color: #05649c; */
+            /* font-size: 100pt; */
+            /* font-family: Arial, Helvetica, Sans-serif; */
+            /* text-shadow: -11px 0px 0 black; */
+            -webkit-text-stroke-width: 2px;
+        }
+
+        @media screen and (max-width: 600px) {
+            .heading {
+                font-size: 60px;
+            }
+
+            .launching {
+                font-size: 30px;
+            }
+
+            .inputemail {
+                width: 50vw;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <img src="images/logo.svg" />
+        <div>Groomer</div>
+    </div>
+    <div style="position: relative;width:100%;color:#565656;z-index: 1;" id="text1" class="heading">Draft your
+        Vogue
+        <div style="position: absolute;width:100%;top: 0px;left:15px;color: #343434;z-index: -1" id="text1"
+            class="heading">Draft
+            your Vogue
+        </div>
+    </div>
+    <div class="launching">We Are Launching In Hyderabad Soon...</div>
+    <div class="contactUs">
+        <div>Get notified when we launch</div>
+        <div class="emailField">
+            <input class="inputemail" type="text" placeholder="Email" />
+            <button class="buttonSubscribe">Subscribe</button>
+        </div>
+    </div>
+    <div class="icons">
+        <a href="https://instagram.com/groomer_official?igshid=MzRlODBiNWFlZA==" target="_blank">
+            <img src="images/instagram.svg" />
+        </a>
+        <a href="https://www.linkedin.com/company/groomer-official/" target="_blank">
+            <img src="images/linkedin.svg" />
+        </a>
+    </div>
+    <div class="copyRight">Copy right ©2023 groomer vogue and beauty pvt limited. All the rights are reserved
+        ®grooomer.live.</div>
+</body>
+
+</html>
