@@ -99,6 +99,17 @@ function Combos({ combos, setCombos, isReadOnly, comboCount, setComboCount, comb
                                         readOnly={isReadOnly}
                                     />
                                 </label>
+                                <label>
+                                    <span style={{ marginRight: "2vw", marginLeft: "3vw" }}>Duration:</span>
+                                    <input
+                                        type="text"
+                                        value={combo.duation}
+                                        onChange={(event) =>
+                                            handleComboPriceChange(event, comboIndex)
+                                        }
+                                        readOnly={isReadOnly}
+                                    />
+                                </label>
                                 {!isReadOnly && <button style={{ position: "relative", top: "4px" }}
                                     className="delete-button"
                                     type="button"

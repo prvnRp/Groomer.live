@@ -163,6 +163,42 @@ function OnBoardForm(props) {
             </div>
           </div>
           <div className="form-group">
+            <label className="label">Area:</label>
+            <div className='input1'>
+              <input style={{ width: "100%" }}
+                type="text"
+                name="area"
+                value={inputs.area || ""}
+                onChange={handleChange}
+                readOnly={isReadOnly}
+              />
+            </div>
+          </div>
+          <div className="form-group">
+            <label className="label">City:</label>
+            <div className='input1'>
+              <input style={{ width: "100%" }}
+                type="text"
+                name="city"
+                value={inputs.city || ""}
+                onChange={handleChange}
+                readOnly={isReadOnly}
+              />
+            </div>
+          </div>
+          <div className="form-group">
+            <label className="label">State:</label>
+            <div className='input1'>
+              <input style={{ width: "100%" }}
+                type="text"
+                name="state"
+                value={inputs.state || ""}
+                onChange={handleChange}
+                readOnly={isReadOnly}
+              />
+            </div>
+          </div>
+          <div className="form-group">
             <label className="label">Location:</label>
             <div className='input1'>
               <input style={{ width: "100%" }}
@@ -191,7 +227,7 @@ function OnBoardForm(props) {
               <div className='input' style={{ marginTop: "40px", marginBottom: "40px" }}><DatePicker /></div>
             </div>
           }
-          <div style={{ textAlign: "center", display: "flex", flexDirection: "row", gap: "80px", justifyContent: "center", alignItems: "center" }}>
+          <div style={{ textAlign: "center", display: "flex", flexDirection: "row", gap: "80px", justifyContent: "center", alignItems: "center", marginBottom: "10vh" }}>
             {!isReadOnly && <button className='submit' type="submit" disabled={isReadOnly} >{!props.search ? "Save" : "Save Changes"}</button>
             }
             {!isReadOnly && props.search &&

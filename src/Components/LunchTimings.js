@@ -1,8 +1,9 @@
 import '../App.css';
+import TimePicker from './TimePicker';
 
 function LunchTimings({ inputs, setInputs, isReadOnly }) {
-    const hours = Array.from({ length: 12 }, (_, i) => i + 1);
-    const minutes = Array.from({ length: 60 }, (_, i) => i);
+    // const hours = Array.from({ length: 12 }, (_, i) => i + 1);
+    // const minutes = Array.from({ length: 60 }, (_, i) => i);
 
     return (
         <div className="form-group">
@@ -10,8 +11,9 @@ function LunchTimings({ inputs, setInputs, isReadOnly }) {
             <div className="input" style={{ display: "flex", flexDirection: "row" }}>
                 <div style={{ display: "flex", flexDirection: "row" }}>
                     {/* <label style={{ marginRight: "20px" }}>Opening Time</label> */}
-                    <div className='select-wrapper' style={{ background: "rgba(123, 123, 123, 0.25)", padding: "0px 10px 4px 10px", borderRadius: "20px" }}>
-                        <select
+                    <div className='select-wrapper' style={{ background: "rgba(123, 123, 123, 0.25)", padding: "0px 5px 0px 10px", borderRadius: "20px" }}>
+                        <TimePicker timeperiods={['AM', 'PM']} />
+                        {/* <select
                             value={inputs.openingTimeHour}
                             onChange={(event) =>
                                 setInputs((values) => ({
@@ -46,13 +48,14 @@ function LunchTimings({ inputs, setInputs, isReadOnly }) {
                                 </option>
                             ))}
                         </select>
-                        <span style={{ marginLeft: "5px" }}>{inputs.openingTimePeriod || "AM"}</span>
+                        <span style={{ marginLeft: "5px" }}>{inputs.openingTimePeriod || "AM"}</span> */}
                     </div>
                 </div>
                 <div style={{ display: "flex", flexDirection: "row" }}>
                     <label style={{ marginLeft: "20px", marginRight: "20px" }}>To</label>
-                    <div className='select-wrapper' style={{ background: "rgba(123, 123, 123, 0.25)", padding: "0px 10px 4px 10px", borderRadius: "20px" }}>
-                        <select
+                    <div className='select-wrapper' style={{ background: "rgba(123, 123, 123, 0.25)", padding: "0px 5px 0px 10px", borderRadius: "20px" }}>
+                        <TimePicker timeperiods={['AM', 'PM']} />
+                        {/* <select
                             value={inputs.closingTimeHour}
                             onChange={(event) =>
                                 setInputs((values) => ({
@@ -87,7 +90,7 @@ function LunchTimings({ inputs, setInputs, isReadOnly }) {
                                 </option>
                             ))}
                         </select>
-                        <span style={{ marginLeft: "5px" }}>{inputs.closingTimePeriod || "PM"}</span>
+                        <span style={{ marginLeft: "5px" }}>{inputs.closingTimePeriod || "PM"}</span> */}
                     </div>
                 </div>
             </div>

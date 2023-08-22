@@ -47,6 +47,19 @@ function Services({ services, setServices, isReadOnly, serviceCount, setServiceC
                                 />
                             </label>
                             <label style={{ marginLeft: "10px" }}>
+                                Original Price:
+                                <input style={{ marginLeft: "40px" }}
+                                    type="text"
+                                    value={service.originalPrice}
+                                    placeholder='Enter price'
+                                    size="9"
+                                    onChange={(event) =>
+                                        handleServiceChange(event, index, 'originalPrice')
+                                    }
+                                    readOnly={isReadOnly}
+                                />
+                            </label>
+                            <label style={{ marginLeft: "10px" }}>
                                 Discounted Price:
                                 <input style={{ marginLeft: "40px" }}
                                     type="text"
@@ -60,14 +73,14 @@ function Services({ services, setServices, isReadOnly, serviceCount, setServiceC
                                 />
                             </label>
                             <label style={{ marginLeft: "10px" }}>
-                                Original Price:
+                                Duration:
                                 <input style={{ marginLeft: "40px" }}
                                     type="text"
-                                    value={service.originalPrice}
-                                    placeholder='Enter price'
+                                    value={service.duration}
                                     size="9"
+                                    placeholder='Enter duration'
                                     onChange={(event) =>
-                                        handleServiceChange(event, index, 'originalPrice')
+                                        handleServiceChange(event, index, 'duration')
                                     }
                                     readOnly={isReadOnly}
                                 />
