@@ -1,5 +1,6 @@
 import '../App.css';
 import React from 'react';
+import Duration from './Duration';
 
 function Services({ services, setServices, isReadOnly, serviceCount, setServiceCount }) {
 
@@ -72,18 +73,8 @@ function Services({ services, setServices, isReadOnly, serviceCount, setServiceC
                                     readOnly={isReadOnly}
                                 />
                             </label>
-                            <label style={{ marginLeft: "10px" }}>
-                                Duration:
-                                <input style={{ marginLeft: "40px" }}
-                                    type="text"
-                                    value={service.duration}
-                                    size="9"
-                                    placeholder='Enter duration'
-                                    onChange={(event) =>
-                                        handleServiceChange(event, index, 'duration')
-                                    }
-                                    readOnly={isReadOnly}
-                                />
+                            <label style={{ marginLeft: "10px", display: "flex", flexDirection: "row" }}>
+                                Duration: <span style={{ marginLeft: "20px" }}><Duration /></span>
                             </label>
                             {!isReadOnly && <button className="delete-button" type="button" onClick={() => handleDeleteService(index)}>
                                 &times;

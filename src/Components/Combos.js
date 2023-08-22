@@ -1,4 +1,5 @@
 import '../App.css';
+import Duration from './Duration';
 
 function Combos({ combos, setCombos, isReadOnly, comboCount, setComboCount, comboservicecount, setComboServiceCount }) {
 
@@ -87,7 +88,7 @@ function Combos({ combos, setCombos, isReadOnly, comboCount, setComboCount, comb
                                     </button>
                                 </div>
                             </div>
-                            <div>
+                            <div style={{ display: "flex", flexDirection: "row" }}>
                                 <label>
                                     <span style={{ marginRight: "2vw" }}>Combo Price:</span>
                                     <input
@@ -99,18 +100,18 @@ function Combos({ combos, setCombos, isReadOnly, comboCount, setComboCount, comb
                                         readOnly={isReadOnly}
                                     />
                                 </label>
-                                <label>
-                                    <span style={{ marginRight: "2vw", marginLeft: "3vw" }}>Duration:</span>
-                                    <input
+                                <label style={{ marginLeft: "20px", display: "flex", flexDirection: "row" }}>
+                                    <span>Duration:</span>
+                                    <span style={{ marginLeft: "20px" }}><Duration /></span>                                    {/* <input
                                         type="text"
                                         value={combo.duation}
                                         onChange={(event) =>
                                             handleComboPriceChange(event, comboIndex)
                                         }
                                         readOnly={isReadOnly}
-                                    />
+                                    /> */}
                                 </label>
-                                {!isReadOnly && <button style={{ position: "relative", top: "4px" }}
+                                {!isReadOnly && <button
                                     className="delete-button"
                                     type="button"
                                     onClick={() => handleDeleteCombo(comboIndex)}
