@@ -5,10 +5,12 @@ import InstagramIcon from '../images/instagram.svg'
 import PlaceMarker from '../images/place-marker.svg'
 import GmailLogo from '../images/gmail-logo.svg'
 import WhatsApp from '../images/whats-app.svg'
+import { useBlur } from '../context/blurContext';
 
 function Footer() {
+    const { isBlur } = useBlur();
     return (
-        <div className="footer">
+        <div style={{ filter: isBlur ? 'blur(10px)' : 'none' }} className="footer">
             <div className='footer1' style={{ display: "flex", flexDirection: "column", justifyContent: "center" }}>
                 <div className='footer-content' style={{ display: "flex", flexDirection: "row", justifyContent: "space-evenly" }}>
                     <div className='groomerLive'><b>Groomer.live</b></div>

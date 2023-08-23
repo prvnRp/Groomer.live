@@ -5,7 +5,6 @@ import { useNavigate } from 'react-router-dom';
 
 function BookingMobile(props) {
     const navigate = useNavigate();
-
     const [expandedCard, setExpandedCard] = useState(null);
     var Status = { "Booked": "yellow", "Completed": "green", "Cancelled": "red" }
 

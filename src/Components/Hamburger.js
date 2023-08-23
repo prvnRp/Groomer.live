@@ -4,8 +4,10 @@ import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
 import { useNavigate } from 'react-router-dom';
 import React, { useEffect, useState } from 'react';
+import { useBlur } from '../context/blurContext';
 
 function Hamburger() {
+    const { isBlur } = useBlur();
     const navigate = useNavigate();
     const [isMobileView, setIsMobileView] = useState(false);
 
@@ -36,7 +38,7 @@ function Hamburger() {
 
 
     return (
-        <div>
+        <div style={{ filter: isBlur ? 'blur(10px)' : 'none' }}>
             {isMobileView && <Grid
                 className='hamburger-background'
                 style={{ padding: "2px 4px", cursor: "pointer", borderRadius: "50%", float: "right" }}

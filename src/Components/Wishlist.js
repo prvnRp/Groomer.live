@@ -10,9 +10,10 @@ import Header from './Header';
 // import Logout from './Logout';
 import { useState } from 'react';
 import { wishlistItems } from './Data';
+import { useBlur } from '../context/blurContext';
 
 function Wishlist() {
-
+    const { isBlur } = useBlur();
     const [wishlist, setWishlist] = useState(wishlistItems);
     const removeFromWishlist = (itemId) => {
         // Filter out the item with the given ID from the wishlist
@@ -23,7 +24,7 @@ function Wishlist() {
     return (
         <>
             <Header />
-            <div className="flex-container">
+            <div style={{ filter: isBlur ? 'blur(10px)' : 'none' }} className="flex-container">
 
                 <div className='container1'>
                     <div className="flex2 desktop-flex2">

@@ -9,10 +9,11 @@ import '../Styles/Login.css';
 import '../Styles/Footer.css';
 // import Envolope from '../images/envelope-with-checkmark-icon.svg'
 import mobileImage from '../images/rectangle-45.svg'
+import { useBlur } from '../context/blurContext';
 
 function AboutUs() {
     const [isMobileView, setIsMobileView] = useState(false);
-
+    const { isBlur } = useBlur();
     useEffect(() => {
         const handleResize = () => {
             setIsMobileView(window.innerWidth <= 768);
@@ -30,8 +31,8 @@ function AboutUs() {
     return (
         <section style={{ background: "#000" }} className="container-about">
             <div className="top-image-container">
-                <img src={isMobileView ? mobileImage : image} alt="Top Image" />
-                <div className="centered-text">About&nbsp;Us</div>
+                <img style={{ filter: isBlur ? 'blur(10px)' : 'none' }} src={isMobileView ? mobileImage : image} alt="Top Image" />
+                <div style={{ filter: isBlur ? 'blur(10px)' : 'none' }} className="centered-text">About&nbsp;Us</div>
                 <div className='top-logo'>
                     <Logo />
                 </div>
@@ -39,7 +40,7 @@ function AboutUs() {
                     <TopNav />
                 </div>
             </div>
-            <div className="content-about">
+            <div style={{ filter: isBlur ? 'blur(10px)' : 'none' }} className="content-about">
                 <div className='info-about'>
                     <div style={{ fontSize: "30px" }}><b>Where it all began</b></div>
                     <div style={{ fontSize: "20px" }} className='para'>

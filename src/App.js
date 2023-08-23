@@ -1,9 +1,12 @@
 import './App.css';
 import Login from './Components/Login';
+import { BlurProvider } from './context/blurContext';
 
 function App() {
   return (
-    <Login />
+    <BlurProvider>
+      <Login />
+    </BlurProvider>
   );
 }
 

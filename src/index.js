@@ -16,27 +16,30 @@ import Cancel from './Components/Cancel';
 import Review from './Components/Review';
 import HomePage from './Components/HomePage';
 import Login from './Components/Login';
+import { BlurProvider } from './context/blurContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="login" element={<Login />} />
-        <Route path="register" element={<Register />} />
-        <Route path="bookings" element={<Bookings />} />
-        <Route path="wishlist" element={<Wishlist />} />
-        <Route path="menu" element={<MenuItems />} />
-        <Route path="aboutUs" element={<AboutUs />} />
-        <Route path="salons" element={<Salons />} />
-        <Route path="/salon/:id" element={<SalonPage />} />
-        <Route path="/reschedule/:id" element={<Reschedule />} />
-        <Route path="/cancel/:id" element={<Cancel />} />
-        <Route path="/review/:id" element={<Review />} />
-        <Route path="*" element={<h1>Not Found</h1>} />
-      </Routes>
-    </BrowserRouter>
+    <BlurProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="login" element={<Login />} />
+          <Route path="register" element={<Register />} />
+          <Route path="bookings" element={<Bookings />} />
+          <Route path="wishlist" element={<Wishlist />} />
+          <Route path="menu" element={<MenuItems />} />
+          <Route path="aboutUs" element={<AboutUs />} />
+          <Route path="salons" element={<Salons />} />
+          <Route path="/salon/:id" element={<SalonPage />} />
+          <Route path="/reschedule/:id" element={<Reschedule />} />
+          <Route path="/cancel/:id" element={<Cancel />} />
+          <Route path="/review/:id" element={<Review />} />
+          <Route path="*" element={<h1>Not Found</h1>} />
+        </Routes>
+      </BrowserRouter>
+    </BlurProvider>
   </React.StrictMode>
 );
 

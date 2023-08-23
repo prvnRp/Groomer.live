@@ -5,12 +5,15 @@ import '../Styles/Bookings.css';
 import Header from './Header';
 import { BookingDetails } from './Data';
 import BookingMobile from './BookingMobile';
+import { useBlur } from '../context/blurContext';
 
 function Bookings() {
+    const { isBlur } = useBlur();
+
     return (
         <>
             <Header />
-            <div className="flex-container">
+            <div style={{ filter: isBlur ? 'blur(10px)' : 'none' }} className="flex-container">
                 <div className='container1'>
                     <div className="flex2">
                         <div className='heading'>Bookings History</div>

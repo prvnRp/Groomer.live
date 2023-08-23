@@ -20,6 +20,7 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import Footer from './Footer';
 import Brain from '../images/line-brain-idea.svg'
 import FlickityCarousel from './FlickityCarousel';
+import { useBlur } from '../context/blurContext';
 
 const Description = (<div>
     Groomer is a human centric beauty company. <br /><br />
@@ -171,139 +172,142 @@ const HomePage = () => {
     }, [wishlistMessage]);
 
     const isSmallScreen = window.innerWidth < 700;
+    const { isBlur } = useBlur();
+
     return (
-        <div>
+        <>
             <Header />
-            <FlickityCarousel />
-            <div id="carouselExampleAutoplaying" className="carousel slide desktopView" data-bs-ride="carousel">
-                <div className="carousel-indicators">
-                    <button
-                        style={{ backgroundColor: banners[0].color }}
-                        type="button"
-                        data-bs-target="#carouselExampleAutoplaying"
-                        data-bs-slide-to="0"
-                        className="active"
-                        aria-current="true"
-                        aria-label="Slide 1"
-                    ></button>
-                    <button
-                        style={{ backgroundColor: banners[1].color }}
-                        type="button"
-                        data-bs-target="#carouselExampleAutoplaying"
-                        data-bs-slide-to="1"
-                        aria-label="Slide 2"
-                    ></button>
-                    <button
-                        style={{ backgroundColor: banners[2].color }}
-                        type="button"
-                        data-bs-target="#carouselExampleAutoplaying"
-                        data-bs-slide-to="2"
-                        aria-label="Slide 3"
-                    ></button>
-                </div>
-                <div class="carousel-inner">
-                    {banners.map((banner, index) => (
-                        <div class={index === 0 ? "carousel-item active" : "carousel-item"} data-bs-interval="3000">
-                            <div style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
-                                <div class="banner" style={{ background: banner.color }}>
-                                    <img src={banner.image} />
-                                    <div className='content-banner'>{banner.content}</div>
-                                    <div><button className='book-now'>Book Now</button></div>
+            <div style={{ filter: isBlur ? 'blur(10px)' : 'none' }}>
+                <FlickityCarousel />
+                <div id="carouselExampleAutoplaying" className="carousel slide desktopView" data-bs-ride="carousel">
+                    <div className="carousel-indicators">
+                        <button
+                            style={{ backgroundColor: banners[0].color }}
+                            type="button"
+                            data-bs-target="#carouselExampleAutoplaying"
+                            data-bs-slide-to="0"
+                            className="active"
+                            aria-current="true"
+                            aria-label="Slide 1"
+                        ></button>
+                        <button
+                            style={{ backgroundColor: banners[1].color }}
+                            type="button"
+                            data-bs-target="#carouselExampleAutoplaying"
+                            data-bs-slide-to="1"
+                            aria-label="Slide 2"
+                        ></button>
+                        <button
+                            style={{ backgroundColor: banners[2].color }}
+                            type="button"
+                            data-bs-target="#carouselExampleAutoplaying"
+                            data-bs-slide-to="2"
+                            aria-label="Slide 3"
+                        ></button>
+                    </div>
+                    <div class="carousel-inner">
+                        {banners.map((banner, index) => (
+                            <div class={index === 0 ? "carousel-item active" : "carousel-item"} data-bs-interval="3000">
+                                <div style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
+                                    <div class="banner" style={{ background: banner.color }}>
+                                        <img src={banner.image} />
+                                        <div className='content-banner'>{banner.content}</div>
+                                        <div><button className='book-now'>Book Now</button></div>
+                                    </div>
                                 </div>
                             </div>
+                        ))}
+                    </div>
+                    <div className='carousel-control'>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying"
+                            data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying"
+                            data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                    </div>
+                </div>
+                {showScroll && (
+                    <div className='scroll-symbol'>
+                        <img src={vector} />
+                    </div>
+                )}
+                <div className='header-info'>
+                    <div>
+                        <div className='f35'>This is</div>
+                        <div className='f70'>Groomer</div>
+                    </div>
+                    <div className='f35'>
+                        {isDescriptionExpanded ? fullDescription : truncatedDescription}
+                    </div>
+                </div>
+                <div className="content12" ref={contentRef}>
+                    <div className='one-card'>
+                        <img src={rectangle1} />
+                        <div className='image-content' style={{ fontSize: "60px" }}>
+                            <div style={{ fontSize: "30px" }}>We provide</div>
+                            <div><b>Best</b> salons</div>
+                            <div><b>service</b> in city</div>
                         </div>
-                    ))}
-                </div>
-                <div className='carousel-control'>
-                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying"
-                        data-bs-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Previous</span>
-                    </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying"
-                        data-bs-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Next</span>
-                    </button>
-                </div>
-            </div>
-            {showScroll && (
-                <div className='scroll-symbol'>
-                    <img src={vector} />
-                </div>
-            )}
-            <div className='header-info'>
-                <div>
-                    <div className='f35'>This is</div>
-                    <div className='f70'>Groomer</div>
-                </div>
-                <div className='f35'>
-                    {isDescriptionExpanded ? fullDescription : truncatedDescription}
-                </div>
-            </div>
-            <div className="content12" ref={contentRef}>
-                <div className='one-card'>
-                    <img src={rectangle1} />
-                    <div className='image-content' style={{ fontSize: "60px" }}>
-                        <div style={{ fontSize: "30px" }}>We provide</div>
-                        <div><b>Best</b> salons</div>
-                        <div><b>service</b> in city</div>
+                        <div className='down-content'>
+                            Best salon in city <span id="arrowww"> &rarr;</span>
+                        </div>
                     </div>
-                    <div className='down-content'>
-                        Best salon in city <span id="arrowww"> &rarr;</span>
+                    <div className='one-card'>
+                        <div className='image-content' style={{ fontSize: "60px" }}>
+                            <div style={{ fontSize: "30px" }}>We give</div>
+                            <div><b>Best</b> service</div>
+                            <div>in the city</div>
+                        </div>
+                        <img src={rectangle2} />
+                        <div className='down-content'>
+                            Best service in city <span id="arrowww"> &rarr;</span>
+                        </div>
+                    </div>
+                    <div className='one-card'>
+                        <img src={rectangle3} />
+                        <div className='image-content' style={{ fontSize: "60px" }}>
+                            <div style={{ fontSize: "30px" }}>We need</div>
+                            <div>A <b>happy Smile</b> </div>
+                            <div>and</div>
+                            <div>appreciations</div>
+                        </div>
+                        <div className='down-content'>
+                            Best service with love <span id="arrowww"> &rarr;</span>
+                        </div>
                     </div>
                 </div>
-                <div className='one-card'>
-                    <div className='image-content' style={{ fontSize: "60px" }}>
-                        <div style={{ fontSize: "30px" }}>We give</div>
-                        <div><b>Best</b> service</div>
-                        <div>in the city</div>
-                    </div>
-                    <img src={rectangle2} />
-                    <div className='down-content'>
-                        Best service in city <span id="arrowww"> &rarr;</span>
-                    </div>
-                </div>
-                <div className='one-card'>
-                    <img src={rectangle3} />
-                    <div className='image-content' style={{ fontSize: "60px" }}>
-                        <div style={{ fontSize: "30px" }}>We need</div>
-                        <div>A <b>happy Smile</b> </div>
-                        <div>and</div>
-                        <div>appreciations</div>
-                    </div>
-                    <div className='down-content'>
-                        Best service with love <span id="arrowww"> &rarr;</span>
-                    </div>
-                </div>
-            </div>
-            <div className='best-salons'>
-                <div style={{ paddingBottom: "0px", fontSize: "20px" }} className='text-salon'>The</div>
-                <div style={{ paddingTop: "0px" }} className='text-salon'>Best groomer in <b>city</b></div>
-                <div className='best-salon'>
-                    <div className='best-salon-card'>
-                        <div style={{ flex: 1, marginRight: "20px", position: "relative", height: "100%" }}>
-                            <img
-                                src={imageee1}
-                                style={{
-                                    width: "100%",
-                                    height: "100%",
-                                    objectFit: "cover",
-                                    borderRadius: "35px"
-                                }}
-                                alt="Salon"
-                            />
-                            <div style={{ position: "absolute", top: "0px", right: "0px", cursor: "pointer", color: "#000", background: "#FFF", borderRadius: "50%" }}>
-                                {isFavourite ? <FavoriteIcon onClick={handleToggleWishlist} className='heart-wishlist' /> : <FavoriteBorderIcon onClick={handleToggleWishlist} className='heart-wishlist' />}
+                <div className='best-salons'>
+                    <div style={{ paddingBottom: "0px", fontSize: "20px" }} className='text-salon'>The</div>
+                    <div style={{ paddingTop: "0px" }} className='text-salon'>Best groomer in <b>city</b></div>
+                    <div className='best-salon'>
+                        <div className='best-salon-card'>
+                            <div style={{ flex: 1, marginRight: "20px", position: "relative", height: "100%" }}>
+                                <img
+                                    src={imageee1}
+                                    style={{
+                                        width: "100%",
+                                        height: "100%",
+                                        objectFit: "cover",
+                                        borderRadius: "35px"
+                                    }}
+                                    alt="Salon"
+                                />
+                                <div style={{ position: "absolute", top: "0px", right: "0px", cursor: "pointer", color: "#000", background: "#FFF", borderRadius: "50%" }}>
+                                    {isFavourite ? <FavoriteIcon onClick={handleToggleWishlist} className='heart-wishlist' /> : <FavoriteBorderIcon onClick={handleToggleWishlist} className='heart-wishlist' />}
+                                </div>
+                            </div>
+                            <div style={{ flex: 1 }}>
+                                <div className='f40'>#1</div>
+                                <div className='f40 salon-groomer' style={{ marginBottom: "20px" }}>Groomer salon</div>
+                                <div className='f20'>the salon with two best in class groomers in the same salon gives you the best style and look with master level talent.</div>
                             </div>
                         </div>
-                        <div style={{ flex: 1 }}>
-                            <div className='f40'>#1</div>
-                            <div className='f40 salon-groomer' style={{ marginBottom: "20px" }}>Groomer salon</div>
-                            <div className='f20'>the salon with two best in class groomers in the same salon gives you the best style and look with master level talent.</div>
-                        </div>
-                    </div>
-                    {/* <div className='best-salon-card'>
+                        {/* <div className='best-salon-card'>
                         <div style={{ flex: 1, marginRight: "20px", position: "relative" }}>
                             <img src={rectangle4} style={{ width: "100%" }} />
                             <div style={{ position: "absolute", top: "0px", right: "0px", cursor: "pointer", color: "#000", background: "#FFF", padding: "0px 3px", borderRadius: "100%" }}>
@@ -316,29 +320,29 @@ const HomePage = () => {
                             <div className='f20'>the saloon with two best in class groomers in the same salon gives you b est style and look with master level talent.</div>
                         </div>
                     </div> */}
-                    <div className='best-salon-card'>
-                        <div style={{ flex: 1, marginRight: "20px", position: "relative", height: "100%" }}>
-                            <img
-                                src={imageee1}
-                                style={{
-                                    width: "100%",
-                                    height: "100%",
-                                    objectFit: "cover",
-                                    borderRadius: "35px"
-                                }}
-                                alt="Salon"
-                            />
-                            <div style={{ position: "absolute", top: "0px", right: "0px", cursor: "pointer", color: "#000", background: "#FFF", borderRadius: "50%" }}>
-                                {isFavourite ? <FavoriteIcon onClick={handleToggleWishlist} className='heart-wishlist' /> : <FavoriteBorderIcon onClick={handleToggleWishlist} className='heart-wishlist' />}
+                        <div className='best-salon-card'>
+                            <div style={{ flex: 1, marginRight: "20px", position: "relative", height: "100%" }}>
+                                <img
+                                    src={imageee1}
+                                    style={{
+                                        width: "100%",
+                                        height: "100%",
+                                        objectFit: "cover",
+                                        borderRadius: "35px"
+                                    }}
+                                    alt="Salon"
+                                />
+                                <div style={{ position: "absolute", top: "0px", right: "0px", cursor: "pointer", color: "#000", background: "#FFF", borderRadius: "50%" }}>
+                                    {isFavourite ? <FavoriteIcon onClick={handleToggleWishlist} className='heart-wishlist' /> : <FavoriteBorderIcon onClick={handleToggleWishlist} className='heart-wishlist' />}
+                                </div>
+                            </div>
+                            <div style={{ flex: 1 }}>
+                                <div className='f40'>#1</div>
+                                <div className='f40 salon-groomer' style={{ marginBottom: "20px" }}>Groomer salon</div>
+                                <div className='f20'>the salon with two best in class groomers in the same salon gives you the best style and look with master level talent.</div>
                             </div>
                         </div>
-                        <div style={{ flex: 1 }}>
-                            <div className='f40'>#1</div>
-                            <div className='f40 salon-groomer' style={{ marginBottom: "20px" }}>Groomer salon</div>
-                            <div className='f20'>the salon with two best in class groomers in the same salon gives you the best style and look with master level talent.</div>
-                        </div>
-                    </div>
-                    {/* <div className='best-salon-card'>
+                        {/* <div className='best-salon-card'>
                         <div style={{ flex: 1, marginRight: "20px", position: "relative" }}>
                             <img src={rectangle4} style={{ width: "100%" }} />
                             <div style={{ position: "absolute", top: "0px", right: "0px", cursor: "pointer", color: "#000", background: "#FFF", borderRadius: "50%" }}>
@@ -351,92 +355,93 @@ const HomePage = () => {
                             <div className='f20'>the saloon with two best in class groomers in the same salon gives you b est style and look with master level talent.</div>
                         </div>
                     </div> */}
-                    <div className='best-salon-card'>
-                        <div style={{ flex: 1, marginRight: "20px", position: "relative", height: "100%" }}>
-                            <img
-                                src={imageee1}
-                                style={{
-                                    width: "100%",
-                                    height: "100%",
-                                    objectFit: "cover",
-                                    borderRadius: "35px"
-                                }}
-                                alt="Salon"
-                            />
-                            <div style={{ position: "absolute", top: "0px", right: "0px", cursor: "pointer", color: "#000", background: "#FFF", borderRadius: "50%" }}>
-                                {isFavourite ? <FavoriteIcon onClick={handleToggleWishlist} className='heart-wishlist' /> : <FavoriteBorderIcon onClick={handleToggleWishlist} className='heart-wishlist' />}
+                        <div className='best-salon-card'>
+                            <div style={{ flex: 1, marginRight: "20px", position: "relative", height: "100%" }}>
+                                <img
+                                    src={imageee1}
+                                    style={{
+                                        width: "100%",
+                                        height: "100%",
+                                        objectFit: "cover",
+                                        borderRadius: "35px"
+                                    }}
+                                    alt="Salon"
+                                />
+                                <div style={{ position: "absolute", top: "0px", right: "0px", cursor: "pointer", color: "#000", background: "#FFF", borderRadius: "50%" }}>
+                                    {isFavourite ? <FavoriteIcon onClick={handleToggleWishlist} className='heart-wishlist' /> : <FavoriteBorderIcon onClick={handleToggleWishlist} className='heart-wishlist' />}
+                                </div>
+                            </div>
+                            <div style={{ flex: 1 }}>
+                                <div className='f40'>#1</div>
+                                <div className='f40 salon-groomer' style={{ marginBottom: "20px" }}>Groomer salon</div>
+                                <div className='f20'>the salon with two best in class groomers in the same salon gives you the best style and look with master level talent.</div>
                             </div>
                         </div>
-                        <div style={{ flex: 1 }}>
-                            <div className='f40'>#1</div>
-                            <div className='f40 salon-groomer' style={{ marginBottom: "20px" }}>Groomer salon</div>
-                            <div className='f20'>the salon with two best in class groomers in the same salon gives you the best style and look with master level talent.</div>
+                        <div className='best-salon-card'>
+                            <div style={{ flex: 1, marginRight: "20px", position: "relative", height: "100%" }}>
+                                <img
+                                    src={imageee1}
+                                    style={{
+                                        width: "100%",
+                                        height: "100%",
+                                        objectFit: "cover",
+                                        borderRadius: "35px"
+                                    }}
+                                    alt="Salon"
+                                />
+                                <div style={{ position: "absolute", top: "0px", right: "0px", cursor: "pointer", color: "#000", background: "#FFF", borderRadius: "50%" }}>
+                                    {isFavourite ? <FavoriteIcon onClick={handleToggleWishlist} className='heart-wishlist' /> : <FavoriteBorderIcon onClick={handleToggleWishlist} className='heart-wishlist' />}
+                                </div>
+                            </div>
+                            <div style={{ flex: 1 }}>
+                                <div className='f40'>#1</div>
+                                <div className='f40 salon-groomer' style={{ marginBottom: "20px" }}>Groomer salon</div>
+                                <div className='f20'>the salon with two best in class groomers in the same salon gives you the best style and look with master level talent.</div>
+                            </div>
                         </div>
                     </div>
-                    <div className='best-salon-card'>
-                        <div style={{ flex: 1, marginRight: "20px", position: "relative", height: "100%" }}>
-                            <img
-                                src={imageee1}
-                                style={{
-                                    width: "100%",
-                                    height: "100%",
-                                    objectFit: "cover",
-                                    borderRadius: "35px"
-                                }}
-                                alt="Salon"
-                            />
-                            <div style={{ position: "absolute", top: "0px", right: "0px", cursor: "pointer", color: "#000", background: "#FFF", borderRadius: "50%" }}>
-                                {isFavourite ? <FavoriteIcon onClick={handleToggleWishlist} className='heart-wishlist' /> : <FavoriteBorderIcon onClick={handleToggleWishlist} className='heart-wishlist' />}
+                    <div className='explore-button' style={{ textAlign: "center" }}><button>Explore more</button></div>
+                </div>
+                <div className='home-services'>
+                    <div className='home-service-img' style={{ flex: '1' }}>
+                        <img src={isSmallScreen ? rectangle8 : rectangle6} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                    </div>
+                    <div style={{ flex: '1', display: 'flex', flexDirection: 'column', gap: '25px' }}>
+                        {!isSmallScreen && <div className='homeee' style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'flex-start', gap: '10px' }}>
+                            <img src={home} />
+                            <div>
+                                <div className='f40'>
+                                    Home salon services <b>start very soon</b>.....
+                                </div>
+                                <div className='f18' style={{ fontWeight: '700' }}>
+                                    Follow us on Instagram and Twitter to get notified.
+                                </div>
                             </div>
+                        </div>}
+                        {isSmallScreen && <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', gap: '10px' }}>
+                            <div>
+                                <div style={{ fontSize: "25px", fontWeight: "bold" }}>Salon at your home</div>
+                            </div>
+                        </div>}
+                        <div className='f30'>
+                            The salon with two best in class groomers in the same salon gives you the best style and look with master level talent at your house. Prices are identical to the salon. No worries about timing and traffic. We will take all your pressure to give you the best service at your doorstep.
                         </div>
-                        <div style={{ flex: 1 }}>
-                            <div className='f40'>#1</div>
-                            <div className='f40 salon-groomer' style={{ marginBottom: "20px" }}>Groomer salon</div>
-                            <div className='f20'>the salon with two best in class groomers in the same salon gives you the best style and look with master level talent.</div>
-                        </div>
+                        <div className='button-salon-book'><button>Book now</button></div>
                     </div>
                 </div>
-                <div className='explore-button' style={{ textAlign: "center" }}><button>Explore more</button></div>
-            </div>
-            <div className='home-services'>
-                <div className='home-service-img' style={{ flex: '1' }}>
-                    <img src={isSmallScreen ? rectangle8 : rectangle6} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-                </div>
-                <div style={{ flex: '1', display: 'flex', flexDirection: 'column', gap: '25px' }}>
-                    {!isSmallScreen && <div className='homeee' style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'flex-start', gap: '10px' }}>
-                        <img src={home} />
-                        <div>
-                            <div className='f40'>
-                                Home salon services <b>start very soon</b>.....
-                            </div>
-                            <div className='f18' style={{ fontWeight: '700' }}>
-                                Follow us on Instagram and Twitter to get notified.
-                            </div>
-                        </div>
-                    </div>}
-                    {isSmallScreen && <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', gap: '10px' }}>
-                        <div>
-                            <div style={{ fontSize: "25px", fontWeight: "bold" }}>Salon at your home</div>
-                        </div>
-                    </div>}
-                    <div className='f30'>
-                        The salon with two best in class groomers in the same salon gives you the best style and look with master level talent at your house. Prices are identical to the salon. No worries about timing and traffic. We will take all your pressure to give you the best service at your doorstep.
-                    </div>
-                    <div className='button-salon-book'><button>Book now</button></div>
-                </div>
-            </div>
-            <div>
+                <div>
 
-            </div>
-            <Footer />
-            {wishlistMessage && (
-                <div className="popup-wishlist">
-                    <div className="popup-content-wishlist">
-                        <span className='wishlistmessage'>{wishlistMessage}</span>
-                    </div>
                 </div>
-            )}
-        </div>
+                <Footer />
+                {wishlistMessage && (
+                    <div className="popup-wishlist">
+                        <div className="popup-content-wishlist">
+                            <span className='wishlistmessage'>{wishlistMessage}</span>
+                        </div>
+                    </div>
+                )}
+            </div>
+        </>
     );
 };
 

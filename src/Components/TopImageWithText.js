@@ -6,8 +6,11 @@ import Header from './Header';
 import TopNav from './TopNav';
 import Logo from './Logo';
 import mobileImage from '../images/rectangle-46.svg'
+import { useBlur } from '../context/blurContext';
 
 function TopImageWithText() {
+    const { isBlur } = useBlur();
+
     const [isMobileView, setIsMobileView] = useState(false);
 
     useEffect(() => {
@@ -29,8 +32,8 @@ function TopImageWithText() {
             {/* <div>
                 <Header />
             </div> */}
-            <img src={isMobileView ? mobileImage : image} alt="Top Image" />
-            <div className="centered-text">Salons</div>
+            <img style={{ filter: isBlur ? 'blur(10px)' : 'none' }} src={isMobileView ? mobileImage : image} alt="Top Image" />
+            <div style={{ filter: isBlur ? 'blur(10px)' : 'none' }} className="centered-text">Salons</div>
             <div className='top-logo'>
                 <Logo />
             </div>

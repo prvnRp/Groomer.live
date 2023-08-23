@@ -5,8 +5,10 @@ import FilterSortPopup from './FilterSortPopup';
 import LocationDropdown from './LocationDropdown';
 import { cardData } from './Data';
 import { useSwipeable } from 'react-swipeable'; // Import the react-swipeable library
+import { useBlur } from '../context/blurContext';
 
 function SquareCardsContainer() {
+    const { isBlur } = useBlur();
     const [issmallscreen, setIsSmallScreen] = useState(false);
     const calculateAverageRating = (reviewData) => {
         if (!reviewData || reviewData.length === 0) {
@@ -173,7 +175,7 @@ function SquareCardsContainer() {
     // const isSmallScreen = window.innerWidth < 700;
     return (
         <>
-            <div className='upnav' style={{ display: "flex", flexDirection: "row", justifyContent: "space-between", alignItems: "center", marginTop: "10px" }}>
+            <div className='upnav' style={{ display: "flex", flexDirection: "row", justifyContent: "space-between", alignItems: "center", marginTop: "10px", filter: isBlur ? 'blur(10px)' : 'none' }}>
                 <div className="filter-sort">
                     {showFilters ? (
                         <button className='buttonapply' onClick={handleFilterApply}>Apply</button>
@@ -201,7 +203,7 @@ function SquareCardsContainer() {
                     />
                 </div>
             </div>
-            <div className="square-cards-container" {...handlers}>
+            <div style={{ filter: isBlur ? 'blur(10px)' : 'none' }} className="square-cards-container" {...handlers}>
 
                 <div className="cards-wrapper">
                     {currentCards.map((card) => (
