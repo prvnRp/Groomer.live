@@ -19,6 +19,7 @@ import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import Footer from './Footer';
 import Brain from '../images/line-brain-idea.svg'
+import FlickityCarousel from './FlickityCarousel';
 
 const Description = (<div>
     Groomer is a human centric beauty company. <br /><br />
@@ -173,7 +174,8 @@ const HomePage = () => {
     return (
         <div>
             <Header />
-            <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
+            <FlickityCarousel />
+            <div id="carouselExampleAutoplaying" className="carousel slide desktopView" data-bs-ride="carousel">
                 <div className="carousel-indicators">
                     <button
                         style={{ backgroundColor: banners[0].color }}
@@ -204,7 +206,7 @@ const HomePage = () => {
                         <div class={index === 0 ? "carousel-item active" : "carousel-item"} data-bs-interval="3000">
                             <div style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
                                 <div class="banner" style={{ background: banner.color }}>
-                                    <img src={banner.image} style={{ height: "100%" }} />
+                                    <img src={banner.image} />
                                     <div className='content-banner'>{banner.content}</div>
                                     <div><button className='book-now'>Book Now</button></div>
                                 </div>
@@ -248,7 +250,7 @@ const HomePage = () => {
                         <div><b>service</b> in city</div>
                     </div>
                     <div className='down-content'>
-                        Best salon in city &rarr;
+                        Best salon in city <span id="arrowww"> &rarr;</span>
                     </div>
                 </div>
                 <div className='one-card'>
@@ -259,7 +261,7 @@ const HomePage = () => {
                     </div>
                     <img src={rectangle2} />
                     <div className='down-content'>
-                        Best service in city &rarr;
+                        Best service in city <span id="arrowww"> &rarr;</span>
                     </div>
                 </div>
                 <div className='one-card'>
@@ -271,7 +273,7 @@ const HomePage = () => {
                         <div>appreciations</div>
                     </div>
                     <div className='down-content'>
-                        Best service with love &rarr;
+                        Best service with love <span id="arrowww"> &rarr;</span>
                     </div>
                 </div>
             </div>
