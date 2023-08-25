@@ -3,7 +3,7 @@ import $ from 'jquery';
 import 'jquery-ui/ui/widgets/datepicker';
 import 'jquery-ui/themes/base/all.css';
 import './DatePicker.css';
-import './DatepickerComponent.css'; // Import custom CSS for styling
+import './DatepickerComponent.css';
 
 const DatepickerComponent = () => {
     const datepickerRef = useRef(null);
@@ -48,7 +48,7 @@ const DatepickerComponent = () => {
                 } else {
                     selectedDates.current.splice(index, 1);
                 }
-                $(this).datepicker("setDate", new Date()); // Reset selected date to trigger immediate visual feedback
+                $(this).datepicker("setDate", new Date());
                 console.log(selectedDates.current);
             },
         });

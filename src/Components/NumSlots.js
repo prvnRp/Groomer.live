@@ -1,7 +1,7 @@
 import '../App.css';
 import React, { useState } from 'react';
 
-function Logo({ inputs, handleChange, isReadOnly }) {
+function NumSlots({ inputs, handleChange, isReadOnly }) {
     const [numSlots, setNumSlots] = useState('');
 
     return (
@@ -54,4 +54,4 @@ function Logo({ inputs, handleChange, isReadOnly }) {
     );
 }
 
-export default Logo;
+export default NumSlots;

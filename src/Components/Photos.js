@@ -1,7 +1,7 @@
 import '../App.css';
 import React, { useState, useRef } from 'react';
 
-function Logo({ isReadOnly }) {
+function Photos({ isReadOnly }) {
     const fileInputRef = useRef();
     const [uploadedPhotos, setUploadedPhotos] = useState([]);
     const [previewPhoto, setPreviewPhoto] = useState(null);
@@ -112,4 +112,4 @@ function Logo({ isReadOnly }) {
     );
 }
 
-export default Logo;
+export default Photos;
