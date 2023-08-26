@@ -21,6 +21,7 @@ import Footer from './Footer';
 import Brain from '../images/line-brain-idea.svg'
 import FlickityCarousel from './FlickityCarousel';
 import { useBlur } from '../context/blurContext';
+import EastIcon from '@mui/icons-material/East';
 
 const Description = (<div>
     Groomer is a human centric beauty company. <br /><br />
@@ -157,6 +158,7 @@ const HomePage = () => {
             window.removeEventListener('scroll', handleScroll);
         };
     }, []);
+
     const handleToggleWishlist = () => {
         setIsFavourite((prevState) => !prevState);
         setWishlistMessage(isFavourite ? "Removed from wishlist" : "Added to wishlist");
@@ -164,6 +166,7 @@ const HomePage = () => {
             setWishlistMessage('');
         }, 5000);
     };
+
     useEffect(() => {
         const timer = setTimeout(() => {
             setWishlistMessage('');
@@ -207,7 +210,7 @@ const HomePage = () => {
                     </div>
                     <div class="carousel-inner">
                         {banners.map((banner, index) => (
-                            <div class={index === 0 ? "carousel-item active" : "carousel-item"} data-bs-interval="3000">
+                            <div class={index === 0 ? "carousel-item active" : "carousel-item"} data-bs-interval="1000">
                                 <div style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
                                     <div class="banner" style={{ background: banner.color }}>
                                         <img src={banner.image} />
@@ -254,7 +257,7 @@ const HomePage = () => {
                             <div><b>service</b> in city</div>
                         </div>
                         <div className='down-content'>
-                            Best salon in city <span id="arrowww"> &rarr;</span>
+                            Best salon in city <span id="arrowww"><EastIcon /></span>
                         </div>
                     </div>
                     <div className='one-card'>
@@ -265,7 +268,7 @@ const HomePage = () => {
                         </div>
                         <img src={rectangle2} />
                         <div className='down-content'>
-                            Best service in city <span id="arrowww"> &rarr;</span>
+                            Best service in city <span id="arrowww"><EastIcon /></span>
                         </div>
                     </div>
                     <div className='one-card'>
@@ -277,7 +280,7 @@ const HomePage = () => {
                             <div>appreciations</div>
                         </div>
                         <div className='down-content'>
-                            Best service with love <span id="arrowww"> &rarr;</span>
+                            Best service with love <span id="arrowww"><EastIcon /></span>
                         </div>
                     </div>
                 </div>

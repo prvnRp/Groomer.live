@@ -189,7 +189,6 @@ function SquareCardsContainer() {
                             }}
                             filterOptions={filterOptions}
                             setFilterOptions={setFilterOptions}
-                            CardData={CardData}
                         />
                     )}
                 </div>

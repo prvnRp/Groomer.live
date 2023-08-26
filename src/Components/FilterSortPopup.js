@@ -1,16 +1,25 @@
 import React from 'react';
 import '../App.css';
-// import InputRange from 'react-input-range';
-// import 'react-input-range/lib/css/index.css';
 import CustomDropdown from './CustomDropdown';
+import MultiDropdown from './MultiDropdown';
 import Rating from '@mui/material/Rating';
 import StarBorderIcon from '@mui/icons-material/StarBorder';
 import WestIcon from '@mui/icons-material/West';
 import EastIcon from '@mui/icons-material/East';
 import DatePicker from './DatePicker';
 import TimePicker from './TimePicker';
+import { cardData } from './Data';
+import Slider from '@mui/material/Slider';
 
-function FilterSortPopup({ close, filterOptions, setFilterOptions, CardData }) {
+function FilterSortPopup({ close, filterOptions, setFilterOptions }) {
+    const uniqueServiceNames = Array.from(
+        new Set(
+            cardData
+                .flatMap(item => item.services)
+                .filter(service => service.ServiceName)
+                .map(service => service.ServiceName)
+        )
+    );
     const handleFilterChange = (e) => {
         const { name, value } = e.target;
         setFilterOptions((prevOptions) => ({
@@ -171,6 +180,16 @@ function FilterSortPopup({ close, filterOptions, setFilterOptions, CardData }) {
                             width={"90px"}
                         />
                     </div>
+                    <div>
+                        <MultiDropdown
+                            label="Services"
+                            Label={true}
+                            value={filterOptions.service}
+                            options={uniqueServiceNames}
+                            onChange={(value) => handleFilterServiceChange(value)}
+                            searchFilter={true}
+                        />
+                    </div>
                     <div className='price'>
                         <label style={{ marginRight: "25px" }} htmlFor="priceFrom">Price:</label>
                         <input
@@ -191,20 +210,26 @@ function FilterSortPopup({ close, filterOptions, setFilterOptions, CardData }) {
                             placeholder="To"
                         />
 
-                        {/* Add price slider here */}
                     </div>
-                    <div style={{ display: "flex", flexDirection: "row", justifyContent: "space-between", gap: "10px" }}>
+                    <div style={{ display: "flex", flexDirection: "row", justifyContent: "space-between", gap: "15px", alignItems: "center" }}>
                         <small>Min</small>
-                        {/* <div style={{ marginTop: '3px', width: "100%" }}>
-                            <InputRange
-                                minValue={0}
-                                maxValue={1000} // Adjust the maximum value according to your requirement
-                                step={10} // Adjust the step value according to your requirement
-                                value={{ min: filterOptions.priceFrom, max: filterOptions.priceTo }}
-                                onChange={(value) => handlePriceSliderChange(value.min, value.max)}
-                                formatLabel={() => ''}
+                        <div style={{ marginTop: '3px', width: "100%" }}>
+                            <Slider
+                                value={[filterOptions.priceFrom, filterOptions.priceTo]}
+                                onChange={(event, newValue) => {
+                                    handlePriceSliderChange(newValue[0], newValue[1]);
+                                }}
+                                valueLabelDisplay='auto'
+                                min={0}
+                                max={1000}
+                                sx={{
+                                    color: '#FFF',
+                                    '& .MuiSlider-thumb': {
+                                        backgroundColor: '#FF6548',
+                                    },
+                                }}
                             />
-                        </div> */}
+                        </div>
                         <small>Max</small>
                     </div>
                     <div style={{ display: "flex", flexDirection: "row", gap: "15px" }}>

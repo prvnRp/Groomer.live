@@ -13,6 +13,11 @@ body {
   /* counter-increment: gallery-cell; */
 }
 
+.SalonRatings {
+  font-size: 30px;
+  margin-right: 5px;
+}
+
 /* cell number */
 .carousel-cell:before {
   display: block;
@@ -71,13 +76,13 @@ body {
 }
 @keyframes arrowww{
 	0%{
-		margin-left: 40px;
+		margin-left: 10px;
 	}
 	50%{
-		margin-left: 30px;
+		margin-left: 25px;
 	}
 	100%{
-		margin-left: 40px;
+		margin-left: 10px;
 	}
 }
 @-webkit-keyframes arrowww{
@@ -1022,14 +1027,6 @@ p {
   gap: 10px;
 }
 
-/* .input-range {
-  width: 100%;
-  height: 4px;
-  background-color: #ddd;
-  border-radius: 4px;
-  position: relative;
-} */
-
 .salon-address {
   display: flex;
   flex-direction: row;
@@ -1070,40 +1067,6 @@ p {
   width: 70%;
 }
 
-.input-range .input-range__track {
-  /* position: absolute; */
-  /* top: 50%; */
-  /* transform: translateY(-50%); */
-  /* left: 0; */
-  /* height: 4px; */
-  height: 3px;
-  background-color: #FFFDFD;
-  /* Change this color to your desired color */
-  /* border-radius: 4px; */
-}
-
-.input-range .input-range__track--background {
-  background-color: #FFFDFD;
-  height: 1px;
-}
-
-.input-range .input-range__slider {
-  width: 18px;
-  height: 18px;
-  background-color: #FF6548;
-  /* Change this color to your desired color */
-  border: 0;
-  /* border-radius: 50%; */
-  /* position: absolute; */
-  /* top: 50%; */
-  /* transform: translateY(-50%); */
-  cursor: pointer;
-  /* box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2); */
-}
-
-/* .input-range .input-range__slider-container {
-  position: relative;
-} */
 .actions button {
   background: #FF6548;
   border: 0;
@@ -1749,6 +1712,17 @@ td {
   font-size: 12px;
   min-width: 8vw;
   /* margin-bottom: 10px; */
+}
+
+.multiDropdown input {
+  padding: 5px 1px;
+  border-radius: 25px;
+  border: 0;
+  background: url(images/search.svg) no-repeat scroll;
+  background-color: #2C2C2C;
+  padding-left: 30px;
+  font-size: 12px;
+  min-width: 8vw;
 }
 
 .locationdropdown input:focus {

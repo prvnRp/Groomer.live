@@ -5,6 +5,22 @@ import '../Styles/style.css';
 import calendar from '../images/tear-off-calendar1.svg';
 
 const DatePicker = ({ color, date }) => {
+    const dropdownRef = useRef(null);
+
+    useEffect(() => {
+        const handleOutsideClick = (event) => {
+            if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+                setShowCustomDropdown(false);
+            }
+        };
+
+        document.addEventListener('mousedown', handleOutsideClick);
+
+        return () => {
+            document.removeEventListener('mousedown', handleOutsideClick);
+        };
+    }, []);
+
     const datePickerRef = useRef(null);
     const inputId = `datepicker-input-${Math.random().toString(36).substr(2, 9)}`;
     const [showCustomDropdown, setShowCustomDropdown] = useState(false);
@@ -29,15 +45,17 @@ const DatePicker = ({ color, date }) => {
                 setSelectedDate(date);
             },
         });
-
-        // Disable next and previous buttons
         $('.ui-datepicker-next, .ui-datepicker-prev').addClass('ui-state-disabled');
     };
 
     useEffect(() => {
-        initializeDatePicker(); // Call the initialization function when the component mounts
+        initializeDatePicker();
     }, []);
-
+    useEffect(() => {
+        if (showCustomDropdown) {
+            $(datePickerRef.current).datepicker('hide');
+        }
+    }, [showCustomDropdown]);
 
     const handleIconClick = () => {
         setShowCustomDropdown(false);
@@ -84,24 +102,14 @@ const DatePicker = ({ color, date }) => {
                 />
                 <span className="correct-incorrect-icon"></span>
                 {showCustomDropdown && (
-                    <div className="custom-date-dropdown">
+                    <div className="custom-date-dropdown" ref={dropdownRef}>
                         {dropdownOptions.map((option, index) => (
                             <div className={selectedDate === option ? 'custom-date-option selected' : 'custom-date-option'} onClick={() => handleShortcutSelection(index, option)}>
                                 {option}
                             </div>
                         ))}
-                        {/* <div className={selectedDate === 'Today' ? 'custom-date-option selected' : 'custom-date-option'} onClick={() => handleShortcutSelection(0, 'Today')}>
-                            Today
-                        </div>
-                        <div className="custom-date-option" onClick={() => handleShortcutSelection(1, 'Tomorrow')}>
-                            Tomorrow
-                        </div>
-                        <div className="custom-date-option" onClick={() => handleShortcutSelection(2, '16 June')}>
-                            16 June
-                        </div> */}
                     </div>
                 )}
-                {/* <span style={{ marginLeft: "5px" }} onClick={() => setShowCustomDropdown(!showCustomDropdown)}><i className={showCustomDropdown ? 'arrow down' : 'arrow up'}></i></span> */}
             </div>
         </div>
     );

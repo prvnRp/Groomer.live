@@ -19,6 +19,7 @@ const LocationDropdown = ({ label, value, options, onChange, searchFilter, width
             document.removeEventListener('mousedown', handleOutsideClick);
         };
     }, []);
+
     const handleSelect = (option) => {
         setSelectedOption(option);
         setInputValue(option);

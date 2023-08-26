@@ -1,9 +1,24 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
 const CustomDropdown = ({ label, Label, value, options, onChange, searchFilter, width, fontSize }) => {
     const [isOpen, setIsOpen] = useState(false);
     const [selectedOption, setSelectedOption] = useState(value || options[0]);
     const [inputValue, setInputValue] = useState('');
+    const dropdownRef = useRef(null);
+
+    useEffect(() => {
+        const handleOutsideClick = (event) => {
+            if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+                setIsOpen(false);
+            }
+        };
+
+        document.addEventListener('mousedown', handleOutsideClick);
+
+        return () => {
+            document.removeEventListener('mousedown', handleOutsideClick);
+        };
+    }, []);
 
     const handleSelect = (option) => {
         setSelectedOption(option);
@@ -28,7 +43,7 @@ const CustomDropdown = ({ label, Label, value, options, onChange, searchFilter, 
     const showNotFound = searchFilter && isOpen && filteredOptions.length === 0;
 
     return (
-        <div className='locationdropdown'>
+        <div className='locationdropdown' ref={dropdownRef}>
             {searchFilter && <input
                 style={{ opacity: isOpen ? '1' : '0' }}
                 disabled={!isOpen}

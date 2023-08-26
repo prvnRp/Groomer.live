@@ -5,8 +5,10 @@ import 'flickity/css/flickity.css'; // Import Flickity CSS
 import rectangle7 from '../images/rectangle-22.svg'
 import clockSearch from '../images/clock-search.svg'
 import socialMedia from '../images/social-media.svg'
+import { useBlur } from '../context/blurContext';
 
 const FlickityCarousel = () => {
+    const { isBlur } = useBlur();
     const carouselRef = useRef(null);
     let flickityInstance = null;
     const banners = [
@@ -79,6 +81,18 @@ const FlickityCarousel = () => {
             document.removeEventListener('click', handleClick);
         };
     }, []);
+
+    useEffect(() => {
+        flickityInstance = new Flickity(carouselRef.current);
+        if (isBlur) {
+            flickityInstance.pausePlayer();
+        } else {
+            flickityInstance.playPlayer();
+        }
+        return () => {
+            flickityInstance.destroy();
+        };
+    }, [isBlur])
 
     return (
         <div className='mobileView11'>
