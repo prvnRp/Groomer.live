@@ -27,7 +27,7 @@ function OnBoardForm(props) {
     address: "",
     location: "",
     franchise: false,
-    area: "",
+    // area: "",
     city: "",
     state: "",
     franchiseSalons: [''],
@@ -89,14 +89,14 @@ function OnBoardForm(props) {
         service.originalPrice !== '' &&
         service.duration !== ''
     );
-    setInputs(current => ({ ...current, 'services': allFieldsFilled }));
-    console.log(allFieldsFilled);
-    console.log('Combo Services:');
+    // setInputs(current => ({ ...current, 'services': allFieldsFilled }));
+    // console.log(allFieldsFilled);
+    // console.log('Combo Services:');
     combos.forEach((combo, index) => {
       const nonEmptyServices = combo.services.filter((service) => service !== '');
       if (nonEmptyServices.length > 0) {
         const comboWithNonEmptyServices = { ...combo, services: nonEmptyServices };
-        console.log(`Combo ${index + 1}:`, comboWithNonEmptyServices);
+        // console.log(`Combo ${index + 1}:`, comboWithNonEmptyServices);
       }
     });
     // console.log('Selected Features:', selectedFeatures);
@@ -106,15 +106,47 @@ function OnBoardForm(props) {
     // for (arr of inputs) {
     //   formdata.append(arr[0], arr[1]);
     // }
-    for (let i = 0; i < inputs.length; i++) {
-      console.log(inputs);
-      formdata.append(inputs[i][0], inputs[i][1]);
+    // for (let i = 0; i < inputs.length; i++) {
+    //   console.log(inputs);
+    //   formdata.append(inputs[i][0], inputs[i][1]);
+    // }
+    for (let arr in inputs) {
+      formdata.append(arr, inputs[arr]);
     }
-    console.log(formdata);
-    formdata.append("username", "aman89");
-    formdata.append("password", "aman123");
-    formdata.append("code", "HYD001");
-    formdata.append("name", "Modern hair and spa Salon ");
+    // console.log(formdata.entries());
+    for (let arr in allFieldsFilled) {
+      formdata.append("services", allFieldsFilled[arr]);
+    }
+    // formdata.append("services", allFieldsFilled);
+    for (let arr in combos) {
+      formdata.append("combos", combos[arr]);
+    }
+    // formdata.append("combos", combos);
+    // formdata.append("code", "HYD001");
+    // formdata.append("name", "Modern hair and spa Salon ");
+    // console.log(formdata);
+    // for (var arr of formdata.entries()) {
+    //   console.log(arr[0] + ', ' + arr[1]);
+    // }
+    let myHeaders = {
+      "Accept": "*/*",
+      // "User-Agent": "Thunder Client (https://www.thunderclient.com)",
+      "Content-Type": "application/json",
+      "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InNhaGl0aHkiLCJlbWFpbCI6InR1bW1hc2FoaXRoeUBnbWFpbC5jb20iLCJpYXQiOjE2OTMyOTAwMDUsImV4cCI6MTY5Mzg5NDgwNX0.N8TibEMKHDAvix7DGWofyzAVARfd5ucGqhfkeCoSl0s"
+    }
+    var requestOptions = {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: myHeaders,
+      body: formdata,
+      redirect: 'follow'
+    };
+
+    fetch("http://127.0.0.1:8000/admin/add-new-salon", requestOptions)
+      .then(response => console.log(response.text()))
+      .then(result => console.log(result))
+      .catch(error => console.log('error', error));
+
 
     setIsReadOnly(true);
 
