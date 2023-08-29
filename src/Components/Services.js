@@ -9,6 +9,7 @@ function Services({ services, setServices, isReadOnly, serviceCount, setServiceC
             serviceName: '',
             discountedPrice: '',
             originalPrice: '',
+            duration: '',
         };
         setServices([...services, newService]);
         setServiceCount(serviceCount + 1)
@@ -74,7 +75,7 @@ function Services({ services, setServices, isReadOnly, serviceCount, setServiceC
                                 />
                             </label>
                             <label style={{ marginLeft: "10px", display: "flex", flexDirection: "row" }}>
-                                Duration: <span style={{ marginLeft: "20px" }}><Duration /></span>
+                                Duration: <span style={{ marginLeft: "20px" }}><Duration index={index} setServices={setServices} /></span>
                             </label>
                             {!isReadOnly && <button className="delete-button" type="button" onClick={() => handleDeleteService(index)}>
                                 &times;

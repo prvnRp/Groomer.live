@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import '../TimePicker.css';
 
-const TimePicker = ({ timeperiods }) => {
+const TimePicker = ({ timeperiods, inputs, setInputs, label }) => {
     const [showPicker, setShowPicker] = useState(false);
     const [selectedHour, setSelectedHour] = useState('01');
     const [selectedMinute, setSelectedMinute] = useState('00');
@@ -20,6 +20,11 @@ const TimePicker = ({ timeperiods }) => {
     const handleTimeSelect = () => {
         const time = `${selectedHour}:${selectedMinute} ${selectedTimePeriod}`;
         setSelectedTime(time);
+        setInputs((input) => ({ ...input, [label]: time }));
+        // setOpeningTime(time);
+        console.log(time);
+        console.log(label);
+        // console.log(inputs);
         setShowPicker(false);
     };
 

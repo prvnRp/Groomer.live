@@ -3,8 +3,10 @@ import logo from './images/groomerpsd.svg';
 import login from './images/login.svg';
 import './Home.css'
 import { NavLink } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
 
 function Home() {
+    const navigate = useNavigate();
     const handleSubmit = async (event) => {
         event.preventDefault();
         const { username, password } = event.target.elements;
@@ -15,18 +17,23 @@ function Home() {
         }
 
         let bodyContent = JSON.stringify({
-            "username": "sahithy",
-            "password": "password"
+            "username": username.value,
+            "password": password.value
         });
 
         let response = await fetch("http://127.0.0.1:8000/admin/login", {
             method: "POST",
+            mode: "cors",
             body: bodyContent,
             headers: headersList
         });
 
-        let data = await response.text();
+        let data = await response.json();
         console.log(data);
+        console.log(data['message']);
+        if (data.message === 'Logged in successfully') {
+            navigate('/admin');
+        }
 
         // const data = Array.from(event.target.elements)
         //     .filter((input) => input.name).reduce((obj, input) => Object.assign(obj, { [input.name]: input.value }), {})

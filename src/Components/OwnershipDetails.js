@@ -12,8 +12,8 @@ function OwnershipDetails({ inputs, setInputs, handleChange, isReadOnly }) {
                     <div className='label'>Owner name:</div>
                     <div className='input'><input
                         type="text"
-                        name="ownerName"
-                        value={inputs.ownerName || ""}
+                        name="owner_name"
+                        value={inputs.owner_name || ""}
                         onChange={handleChange}
                         readOnly={isReadOnly}
                     /></div>
@@ -22,8 +22,8 @@ function OwnershipDetails({ inputs, setInputs, handleChange, isReadOnly }) {
                     <div className='label'>Mobile number:</div>
                     <div className='input'><input
                         type="text"
-                        name="mobileNumber"
-                        value={inputs.mobileNumber || ""}
+                        name="owner_mobile"
+                        value={inputs.owner_mobile || ""}
                         onChange={handleChange}
                         readOnly={isReadOnly}
                     /></div>
@@ -32,8 +32,8 @@ function OwnershipDetails({ inputs, setInputs, handleChange, isReadOnly }) {
                     <div className='label'>Bank name:</div>
                     <div className='input'><input
                         type="text"
-                        name="bankName"
-                        value={inputs.bankName || ""}
+                        name="bank_name"
+                        value={inputs.bank_name || ""}
                         onChange={handleChange}
                         readOnly={isReadOnly}
                     /></div>
@@ -42,8 +42,8 @@ function OwnershipDetails({ inputs, setInputs, handleChange, isReadOnly }) {
                     <div className='label'>Account number:</div>
                     <div className='input'><input
                         type="text"
-                        name="accountNumber"
-                        value={inputs.accountNumber || ""}
+                        name="bank_account_number"
+                        value={inputs.bank_account_number || ""}
                         onChange={handleChange}
                         readOnly={isReadOnly}
                     /></div>
@@ -52,8 +52,8 @@ function OwnershipDetails({ inputs, setInputs, handleChange, isReadOnly }) {
                     <div className='label'>IFSC code:</div>
                     <div className='input'><input
                         type="text"
-                        name="ifscCode"
-                        value={inputs.ifscCode || ""}
+                        name="bank_IFSC_code"
+                        value={inputs.bank_IFSC_code || ""}
                         onChange={handleChange}
                         readOnly={isReadOnly}
                     /></div>
@@ -62,8 +62,8 @@ function OwnershipDetails({ inputs, setInputs, handleChange, isReadOnly }) {
                     <div className='label'>PAN Card number:</div>
                     <div className='input'><input
                         type="text"
-                        name="panCardNumber"
-                        value={inputs.panCardNumber || ""}
+                        name="owner_pancard_number"
+                        value={inputs.owner_pancard_number || ""}
                         onChange={handleChange}
                         readOnly={isReadOnly}
                     /></div>

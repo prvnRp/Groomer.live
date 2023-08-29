@@ -12,13 +12,13 @@ function SalonTimings({ inputs, setInputs, isReadOnly }) {
                 <div style={{ display: "flex", flexDirection: "row" }}>
                     <label style={{ marginRight: "20px" }}>Opening Time</label>
                     <div className='select-wrapper' style={{ background: "rgba(123, 123, 123, 0.25)", padding: "0px 5px 0px 10px", borderRadius: "20px" }}>
-                        <TimePicker timeperiods={['AM']} />
+                        <TimePicker timeperiods={['AM']} inputs={inputs} setInputs={setInputs} label="opening_time" />
                     </div>
                 </div>
                 <div style={{ display: "flex", flexDirection: "row" }}>
                     <label style={{ marginLeft: "40px", marginRight: "20px" }}>Closing Time</label>
                     <div className='select-wrapper' style={{ background: "rgba(123, 123, 123, 0.25)", padding: "0px 5px 0px 10px", borderRadius: "20px" }}>
-                        <TimePicker timeperiods={['PM']} />
+                        <TimePicker timeperiods={['PM']} inputs={inputs} setInputs={setInputs} label="closing_time" />
                     </div>
                 </div>
             </div>

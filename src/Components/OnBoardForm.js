@@ -20,25 +20,31 @@ function OnBoardForm(props) {
   const [isReadOnly, setIsReadOnly] = useState(props.isReadOnly);
 
   const [inputs, setInputs] = useState({
-    franchiseSalons: [''],
     username: "name",
     password: "***",
-    salonCode: "HYD001",
-    ownerName: "sumanth vartha",
-    mobileNumber: "9876543210",
-    bankName: "##### bak",
-    accountNumber: "3221655498746623",
-    ifscCode: "IFSC00123",
-    panCardNumber: "234WERT092",
-    openingTimeHour: "10",
-    openingTimeMinute: "0",
-    openingTimePeriod: "AM",
-    closingTimeHour: "6",
-    closingTimeMinute: "0",
-    closingTimePeriod: "PM",
+    code: "HYD001",
+    name: "",
+    address: "",
+    location: "",
+    franchise: false,
+    area: "",
+    city: "",
+    state: "",
+    franchiseSalons: [''],
+    slots_number: 0,
+    opening_time: "09:00 AM",
+    closing_time: "06:00 PM",
+    lunch_time: "01:00 PM",
+    features: { "wifi": false, "parking": false, "AC": false },
+    languages: { "hindi": false, "english": false, "telugu": false },
+    owner_name: "sumanth vartha",
+    owner_mobile: "9876543210",
+    owner_pancard_number: "234WERT092",
+    bank_name: "##### bak",
+    bank_account_number: "3221655498746623",
+    bank_IFSC_code: "IFSC00123",
   });
 
-  const [franchise, setFranchise] = useState('no');
   const [serviceCount, setServiceCount] = useState(3);
   const [services, setServices] = useState([]);
   const [comboCount, setComboCount] = useState(1);
@@ -52,6 +58,7 @@ function OnBoardForm(props) {
       serviceName: '',
       discountedPrice: '',
       originalPrice: '',
+      duration: '',
     }));
     setServices(initialServices);
   }, [serviceCount]);
@@ -60,37 +67,29 @@ function OnBoardForm(props) {
     const initialCombos = Array.from({ length: comboCount }, () => ({
       services: Array.from({ length: comboservicecount }, () => ''),
       price: '',
+      duration: '',
     }));
     setCombos(initialCombos);
   }, [comboCount]);
 
 
-  const handleFranchiseChange = (value) => {
-    if (value === 'no') {
-      setInputs((values) => ({ ...values, franchiseSalons: [''] }));
-    }
-    setFranchise(value);
-  };
-
   const handleChange = (event) => {
     const name = event.target.name;
     const value = event.target.value;
-    if (name === 'franchise') {
-      handleFranchiseChange(value);
-    }
     setInputs(values => ({ ...values, [name]: value }))
   }
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log(inputs);
 
     const allFieldsFilled = services.filter(
       (service) =>
         service.serviceName !== '' &&
         service.discountedPrice !== '' &&
-        service.originalPrice !== ''
+        service.originalPrice !== '' &&
+        service.duration !== ''
     );
+    setInputs(current => ({ ...current, 'services': allFieldsFilled }));
     console.log(allFieldsFilled);
     console.log('Combo Services:');
     combos.forEach((combo, index) => {
@@ -100,9 +99,25 @@ function OnBoardForm(props) {
         console.log(`Combo ${index + 1}:`, comboWithNonEmptyServices);
       }
     });
-    console.log('Selected Features:', selectedFeatures);
-    console.log('Selected Languages:', selectedLanguages);
+    // console.log('Selected Features:', selectedFeatures);
+    // console.log('Selected Languages:', selectedLanguages);
+    console.log(inputs);
+    var formdata = new FormData();
+    // for (arr of inputs) {
+    //   formdata.append(arr[0], arr[1]);
+    // }
+    for (let i = 0; i < inputs.length; i++) {
+      console.log(inputs);
+      formdata.append(inputs[i][0], inputs[i][1]);
+    }
+    console.log(formdata);
+    formdata.append("username", "aman89");
+    formdata.append("password", "aman123");
+    formdata.append("code", "HYD001");
+    formdata.append("name", "Modern hair and spa Salon ");
+
     setIsReadOnly(true);
+
 
   }
 
@@ -130,8 +145,8 @@ function OnBoardForm(props) {
             <div className="input">
               <input
                 type="text"
-                name="salonCode"
-                value={inputs.salonCode || ""}
+                name="code"
+                value={inputs.code || ""}
                 onChange={handleChange}
                 readOnly={isReadOnly}
               />
@@ -142,8 +157,8 @@ function OnBoardForm(props) {
             <div className="input1">
               <input style={{ width: "100%" }}
                 type="text"
-                name="salonName"
-                value={inputs.salonName || ""}
+                name="name"
+                value={inputs.name || ""}
                 onChange={handleChange}
                 size="50"
                 readOnly={isReadOnly}
@@ -210,15 +225,15 @@ function OnBoardForm(props) {
               />
             </div>
           </div>
-          <Franchise inputs={inputs} setInputs={setInputs} handleChange={handleChange} isReadOnly={isReadOnly} franchise={franchise} />
+          <Franchise inputs={inputs} setInputs={setInputs} isReadOnly={isReadOnly} />
           <NumSlots inputs={inputs} setInputs={setInputs} handleChange={handleChange} isReadOnly={isReadOnly} />
           <SalonTimings inputs={inputs} setInputs={setInputs} isReadOnly={isReadOnly} />
           <LunchTimings inputs={inputs} setInputs={setInputs} isReadOnly={isReadOnly} />
           <Photos isReadOnly={isReadOnly} />
           <Services services={services} setServices={setServices} isReadOnly={isReadOnly} serviceCount={serviceCount} setServiceCount={setServiceCount} />
           <Combos combos={combos} setCombos={setCombos} isReadOnly={isReadOnly} comboCount={comboCount} setComboCount={setComboCount} comboservicecount={comboservicecount} setComboServiceCount={setComboServiceCount} />
-          <Features selectedFeatures={selectedFeatures} setSelectedFeatures={setSelectedFeatures} isReadOnly={isReadOnly} />
-          <Languages selectedLanguages={selectedLanguages} setSelectedLanguages={setSelectedLanguages} isReadOnly={isReadOnly} />
+          <Features selectedFeatures={selectedFeatures} setInputs={setInputs} setSelectedFeatures={setSelectedFeatures} isReadOnly={isReadOnly} />
+          <Languages selectedLanguages={selectedLanguages} setInputs={setInputs} setSelectedLanguages={setSelectedLanguages} isReadOnly={isReadOnly} />
           <OwnershipDetails inputs={inputs} setInputs={setInputs} handleChange={handleChange} isReadOnly={isReadOnly} />
           {
             props.search &&

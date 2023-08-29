@@ -1,15 +1,24 @@
 import '../App.css';
 
-function Features({ selectedFeatures, setSelectedFeatures, isReadOnly }) {
+function Features({ selectedFeatures, setInputs, setSelectedFeatures, isReadOnly }) {
 
     const handleFeatureChange = (event) => {
         const selectedFeature = event.target.value;
+        console.log(selectedFeature);
         const updatedSelectedFeatures = [...selectedFeatures];
 
         if (updatedSelectedFeatures.includes(selectedFeature)) {
             updatedSelectedFeatures.splice(updatedSelectedFeatures.indexOf(selectedFeature), 1);
+            setInputs(prevInputs => ({
+                ...prevInputs,
+                features: { ...prevInputs.features, [selectedFeature]: false }
+            }));
         } else {
             updatedSelectedFeatures.push(selectedFeature);
+            setInputs(prevInputs => ({
+                ...prevInputs,
+                features: { ...prevInputs.features, [selectedFeature]: true }
+            }));
         }
 
         setSelectedFeatures(updatedSelectedFeatures);
@@ -23,8 +32,8 @@ function Features({ selectedFeatures, setSelectedFeatures, isReadOnly }) {
                     <label className="checkbox-label">
                         <input
                             type="checkbox"
-                            value="wi-fi"
-                            checked={selectedFeatures.includes('wi-fi')}
+                            value="wifi"
+                            checked={selectedFeatures.includes('wifi')}
                             onChange={handleFeatureChange}
                             disabled={isReadOnly}
                         />
@@ -36,8 +45,8 @@ function Features({ selectedFeatures, setSelectedFeatures, isReadOnly }) {
                     <label className="checkbox-label">
                         <input
                             type="checkbox"
-                            value="car-parking"
-                            checked={selectedFeatures.includes('car-parking')}
+                            value="parking"
+                            checked={selectedFeatures.includes('parking')}
                             onChange={handleFeatureChange}
                             disabled={isReadOnly}
                         />
@@ -49,8 +58,8 @@ function Features({ selectedFeatures, setSelectedFeatures, isReadOnly }) {
                     <label className="checkbox-label">
                         <input
                             type="checkbox"
-                            value="ac"
-                            checked={selectedFeatures.includes('ac')}
+                            value="AC"
+                            checked={selectedFeatures.includes('AC')}
                             onChange={handleFeatureChange}
                             disabled={isReadOnly}
                         />

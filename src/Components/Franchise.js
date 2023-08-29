@@ -1,7 +1,7 @@
 import '../App.css';
 import React, { useState } from 'react';
 
-function Franchise({ inputs, setInputs, handleChange, isReadOnly, franchise }) {
+function Franchise({ inputs, setInputs, isReadOnly }) {
     const Data = [
         { SalonCode: "HYD001", SalonName: "Hairstyles" },
         { SalonCode: "HYD002", SalonName: "Hairstyles" },
@@ -30,6 +30,27 @@ function Franchise({ inputs, setInputs, handleChange, isReadOnly, franchise }) {
     const filteredSalons = Data.filter(
         (salon) => salon.SalonCode.toLowerCase().includes(searchTerm.toLowerCase())
     );
+
+    const handleFranchiseChange = (value) => {
+        if (value === false) {
+            setInputs((values) => ({ ...values, franchiseSalons: [''] }));
+        }
+        // setFranchise(value);
+    };
+
+    const handleFranchiseChanges = (event) => {
+        // const name = event.target.name;
+        let value = event.target.value;
+        if (value === "yes")
+            value = true
+        else
+            value = false
+        console.log(value);
+        // if (name === 'franchise') {
+        handleFranchiseChange(value);
+        // }
+        setInputs(values => ({ ...values, 'franchise': value }))
+    }
 
     const handleSearchChange = (event) => {
         setSearchTerm(event.target.value);
@@ -72,21 +93,21 @@ function Franchise({ inputs, setInputs, handleChange, isReadOnly, franchise }) {
             <div className='input1'>
                 <button style={{ marginRight: "20px" }}
                     type="button" name="franchise" value="yes"
-                    onClick={handleChange}
-                    className={franchise === 'yes' ? 'active' : ''}
+                    onClick={handleFranchiseChanges}
+                    className={inputs.franchise === true ? 'active' : ''}
                     disabled={isReadOnly}
                 >
                     Yes
                 </button>
                 <button
                     type="button" name="franchise" value="no"
-                    onClick={handleChange}
-                    className={franchise === 'no' ? 'active' : ''}
+                    onClick={handleFranchiseChanges}
+                    className={inputs.franchise === false ? 'active' : ''}
                     disabled={isReadOnly}
                 >
                     No
                 </button>
-                {franchise === "yes" && <div style={{ float: "right" }}>
+                {inputs.franchise === true && <div style={{ float: "right" }}>
                     <div style={{ flex: 1 }}>
                         <button
                             type="button"
@@ -125,7 +146,7 @@ function Franchise({ inputs, setInputs, handleChange, isReadOnly, franchise }) {
                         </div>
                     </div>
                 </div>}
-                {franchise === "yes" && inputs.franchiseSalons.map((salonCode, index) => (
+                {inputs.franchise === true && inputs.franchiseSalons.map((salonCode, index) => (
                     <div className='fsalon' key={index} style={{ paddingTop: "10px" }}>
                         <label>
                             {`Salon ${index + 1}`}:

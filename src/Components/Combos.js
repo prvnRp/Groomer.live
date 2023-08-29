@@ -12,6 +12,7 @@ function Combos({ combos, setCombos, isReadOnly, comboCount, setComboCount, comb
         const newCombo = {
             services: Array.from({ length: comboservicecount }, () => ''),
             price: '',
+            duration: '',
         };
         setCombos([...combos, newCombo]);
         setComboCount(comboCount + 1);
@@ -102,7 +103,7 @@ function Combos({ combos, setCombos, isReadOnly, comboCount, setComboCount, comb
                                 </label>
                                 <label style={{ marginLeft: "20px", display: "flex", flexDirection: "row" }}>
                                     <span>Duration:</span>
-                                    <span style={{ marginLeft: "20px" }}><Duration /></span>                                    {/* <input
+                                    <span style={{ marginLeft: "20px" }}><Duration index={comboIndex} setCombos={setCombos} isCombos={true} /></span>                                    {/* <input
                                         type="text"
                                         value={combo.duation}
                                         onChange={(event) =>

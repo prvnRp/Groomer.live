@@ -1,6 +1,6 @@
 import '../App.css';
 
-function Languages({ selectedLanguages, setSelectedLanguages, isReadOnly }) {
+function Languages({ selectedLanguages, setInputs, setSelectedLanguages, isReadOnly }) {
 
     const handleLanguageChange = (event) => {
         const selectedLanguage = event.target.value;
@@ -8,8 +8,16 @@ function Languages({ selectedLanguages, setSelectedLanguages, isReadOnly }) {
 
         if (updatedSelectedLanguages.includes(selectedLanguage)) {
             updatedSelectedLanguages.splice(updatedSelectedLanguages.indexOf(selectedLanguage), 1);
+            setInputs(prevInputs => ({
+                ...prevInputs,
+                languages: { ...prevInputs.languages, [selectedLanguage]: false }
+            }));
         } else {
             updatedSelectedLanguages.push(selectedLanguage);
+            setInputs(prevInputs => ({
+                ...prevInputs,
+                languages: { ...prevInputs.languages, [selectedLanguage]: true }
+            }));
         }
 
         setSelectedLanguages(updatedSelectedLanguages);

@@ -1,8 +1,18 @@
 import '../App.css';
-import React, { useState } from 'react';
+import React from 'react';
 
-function NumSlots({ inputs, handleChange, isReadOnly }) {
-    const [numSlots, setNumSlots] = useState('');
+function NumSlots({ inputs, setInputs, handleChange, isReadOnly }) {
+    // const [slots_number, setNumSlots] = useState('');
+
+    const handleNumberSlots = (event) => {
+        const selectedValue = parseInt(event.target.value, 10);
+        if (inputs.slots_number === selectedValue) {
+            setInputs((prevState) => ({ ...prevState, slots_number: 0 }));
+        }
+        else
+            setInputs((prevState) => ({ ...prevState, slots_number: selectedValue }));
+        document.getElementById('slots_number').value = '';
+    }
 
     return (
         <div className="form-group">
@@ -11,42 +21,46 @@ function NumSlots({ inputs, handleChange, isReadOnly }) {
             <div className='input' style={{ display: "flex", flexDirection: "row", gap: "20px" }}>
                 <button
                     type="button"
-                    onClick={() => { inputs.numSlots = '1'; document.getElementById('numSlots').value = ''; setNumSlots('1'); }}
-                    className={numSlots === '1' ? 'active' : ''}
+                    value={1}
+                    onClick={handleNumberSlots}
+                    className={inputs.slots_number === 1 ? 'active' : ''}
                     disabled={isReadOnly}
                 >
                     1
                 </button>
                 <button
                     type="button"
-                    onClick={() => { inputs.numSlots = '2'; document.getElementById('numSlots').value = ''; setNumSlots('2'); }}
-                    className={numSlots === '2' ? 'active' : ''}
+                    value={2}
+                    onClick={handleNumberSlots}
+                    className={inputs.slots_number === 2 ? 'active' : ''}
                     disabled={isReadOnly}
                 >
                     2
                 </button>
                 <button
                     type="button"
-                    onClick={() => { inputs.numSlots = '3'; document.getElementById('numSlots').value = ''; setNumSlots('3'); }}
-                    className={numSlots === '3' ? 'active' : ''}
+                    value={3}
+                    onClick={handleNumberSlots}
+                    className={inputs.slots_number === 3 ? 'active' : ''}
                     disabled={isReadOnly}
                 >
                     3
                 </button>
                 <button
                     type="button"
-                    onClick={() => { inputs.numSlots = '4'; document.getElementById('numSlots').value = ''; setNumSlots('4'); }}
-                    className={numSlots === '4' ? 'active' : ''}
+                    value={4}
+                    onClick={handleNumberSlots}
+                    className={inputs.slots_number === 4 ? 'active' : ''}
                     disabled={isReadOnly}
                 >
                     4
                 </button>
                 <input
-                    id="numSlots"
+                    id="slots_number"
                     type="number"
                     min="5"
                     placeholder='Enter custom number'
-                    onChange={(event) => { inputs.numSlots = event.target.value; setNumSlots(event.target.value); }}
+                    onChange={(event) => { setInputs((prevState) => ({ ...prevState, slots_number: parseInt(event.target.value) })); }}
                     readOnly={isReadOnly}
                 />
             </div>
