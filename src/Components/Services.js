@@ -6,9 +6,9 @@ function Services({ services, setServices, isReadOnly, serviceCount, setServiceC
 
     const handleAddService = () => {
         const newService = {
-            serviceName: '',
-            discountedPrice: '',
-            originalPrice: '',
+            name: '',
+            discount: '',
+            price: '',
             duration: '',
         };
         setServices([...services, newService]);
@@ -39,11 +39,11 @@ function Services({ services, setServices, isReadOnly, serviceCount, setServiceC
                                 Service {index + 1}:
                                 <input style={{ marginLeft: "40px", paddingLeft: "8px", paddingRight: "8px" }}
                                     type="text"
-                                    value={service.serviceName}
+                                    value={service.name}
                                     size="9"
                                     placeholder='Service name'
                                     onChange={(event) =>
-                                        handleServiceChange(event, index, 'serviceName')
+                                        handleServiceChange(event, index, 'name')
                                     }
                                     readOnly={isReadOnly}
                                 />
@@ -52,11 +52,11 @@ function Services({ services, setServices, isReadOnly, serviceCount, setServiceC
                                 Original Price:
                                 <input style={{ marginLeft: "40px" }}
                                     type="text"
-                                    value={service.originalPrice}
+                                    value={service.price}
                                     placeholder='Enter price'
                                     size="9"
                                     onChange={(event) =>
-                                        handleServiceChange(event, index, 'originalPrice')
+                                        handleServiceChange(event, index, 'price')
                                     }
                                     readOnly={isReadOnly}
                                 />
@@ -65,11 +65,11 @@ function Services({ services, setServices, isReadOnly, serviceCount, setServiceC
                                 Discounted Price:
                                 <input style={{ marginLeft: "40px" }}
                                     type="text"
-                                    value={service.discountedPrice}
+                                    value={service.discount}
                                     size="9"
                                     placeholder='Enter price'
                                     onChange={(event) =>
-                                        handleServiceChange(event, index, 'discountedPrice')
+                                        handleServiceChange(event, index, 'discount')
                                     }
                                     readOnly={isReadOnly}
                                 />

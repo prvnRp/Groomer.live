@@ -10,8 +10,9 @@ function Combos({ combos, setCombos, isReadOnly, comboCount, setComboCount, comb
     };
     const handleAddCombo = () => {
         const newCombo = {
+            combo_name: 'Combo',
             services: Array.from({ length: comboservicecount }, () => ''),
-            price: '',
+            combo_price: '',
             duration: '',
         };
         setCombos([...combos, newCombo]);
@@ -26,7 +27,7 @@ function Combos({ combos, setCombos, isReadOnly, comboCount, setComboCount, comb
 
     const handleComboPriceChange = (event, comboIndex) => {
         const updatedCombos = [...combos];
-        updatedCombos[comboIndex].price = event.target.value;
+        updatedCombos[comboIndex].combo_price = event.target.value;
         setCombos(updatedCombos);
     };
 
@@ -94,7 +95,7 @@ function Combos({ combos, setCombos, isReadOnly, comboCount, setComboCount, comb
                                     <span style={{ marginRight: "2vw" }}>Combo Price:</span>
                                     <input
                                         type="text"
-                                        value={combo.price}
+                                        value={combo.combo_price}
                                         onChange={(event) =>
                                             handleComboPriceChange(event, comboIndex)
                                         }

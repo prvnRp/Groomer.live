@@ -55,9 +55,9 @@ function OnBoardForm(props) {
 
   useState(() => {
     const initialServices = Array.from({ length: serviceCount }, () => ({
-      serviceName: '',
-      discountedPrice: '',
-      originalPrice: '',
+      name: '',
+      discount: '',
+      price: '',
       duration: '',
     }));
     setServices(initialServices);
@@ -65,8 +65,9 @@ function OnBoardForm(props) {
 
   useState(() => {
     const initialCombos = Array.from({ length: comboCount }, () => ({
+      combo_name: 'Combo',
       services: Array.from({ length: comboservicecount }, () => ''),
-      price: '',
+      combo_price: '',
       duration: '',
     }));
     setCombos(initialCombos);
@@ -84,9 +85,9 @@ function OnBoardForm(props) {
 
     const allFieldsFilled = services.filter(
       (service) =>
-        service.serviceName !== '' &&
-        service.discountedPrice !== '' &&
-        service.originalPrice !== '' &&
+        service.name !== '' &&
+        service.discount !== '' &&
+        service.price !== '' &&
         service.duration !== ''
     );
     // setInputs(current => ({ ...current, 'services': allFieldsFilled }));
@@ -115,11 +116,11 @@ function OnBoardForm(props) {
     }
     // console.log(formdata.entries());
     for (let arr in allFieldsFilled) {
-      formdata.append("services", allFieldsFilled[arr]);
+      formdata.append("service", allFieldsFilled[arr]);
     }
     // formdata.append("services", allFieldsFilled);
     for (let arr in combos) {
-      formdata.append("combos", combos[arr]);
+      formdata.append("combo_service", combos[arr]);
     }
     // formdata.append("combos", combos);
     // formdata.append("code", "HYD001");
@@ -128,24 +129,64 @@ function OnBoardForm(props) {
     // for (var arr of formdata.entries()) {
     //   console.log(arr[0] + ', ' + arr[1]);
     // }
-    let myHeaders = {
+    // let myHeaders = {
+    //   "Accept": "*/*",
+    //   "Content-Type": "application/json",
+    //   "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InNhaGl0aHkiLCJlbWFpbCI6InR1bW1hc2FoaXRoeUBnbWFpbC5jb20iLCJpYXQiOjE2OTMyOTAwMDUsImV4cCI6MTY5Mzg5NDgwNX0.N8TibEMKHDAvix7DGWofyzAVARfd5ucGqhfkeCoSl0s"
+    // }
+    // var requestOptions = {
+    //   method: 'POST',
+    //   mode: 'no-cors',
+    //   headers: myHeaders,
+    //   body: formdata,
+    //   redirect: 'follow'
+    // };
+
+    // fetch("http://127.0.0.1:8000/admin/add-new-salon", requestOptions)
+    //   .then(response => console.log(response.text()))
+    //   .then(result => console.log(result))
+    //   .catch(error => console.log('error', error));
+    let headersList = {
       "Accept": "*/*",
-      // "User-Agent": "Thunder Client (https://www.thunderclient.com)",
-      "Content-Type": "application/json",
+      "User-Agent": "Thunder Client (https://www.thunderclient.com)",
       "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InNhaGl0aHkiLCJlbWFpbCI6InR1bW1hc2FoaXRoeUBnbWFpbC5jb20iLCJpYXQiOjE2OTMyOTAwMDUsImV4cCI6MTY5Mzg5NDgwNX0.N8TibEMKHDAvix7DGWofyzAVARfd5ucGqhfkeCoSl0s"
     }
-    var requestOptions = {
-      method: 'POST',
-      mode: 'no-cors',
-      headers: myHeaders,
-      body: formdata,
-      redirect: 'follow'
-    };
 
-    fetch("http://127.0.0.1:8000/admin/add-new-salon", requestOptions)
-      .then(response => console.log(response.text()))
-      .then(result => console.log(result))
-      .catch(error => console.log('error', error));
+    let bodyContent = new FormData();
+    bodyContent.append("username", "aman89");
+    bodyContent.append("password", "aman123");
+    bodyContent.append("code", "HYD002");
+    bodyContent.append("name", "Modern hair and spa Salon");
+    bodyContent.append("address", "Plot No 897, Kailash Vihar, Alkapuri, Gwalior - 474011 (Near Cafe Coffee Day)");
+    bodyContent.append("location", "26.207727, 78.190941");
+    bodyContent.append("franchise", "false");
+    bodyContent.append("slots_number", "4");
+    bodyContent.append("service", "{'name': 'hair cut', 'discount': 50, 'price': 200,'duration':'1' }");
+    // bodyContent.append("service", "{"name": "shaving ", "discount": 30, "price": 100, "duration":"2"}");
+    bodyContent.append("combo_service", "{'combo_name': 'Super saving', 'services': ['hair cutting', 'shaving'], 'combo_price': 170,'duration':'2'}");
+    // bodyContent.append("combo_service", "{"combo_name": "Face bright",  "services": ["shaving", "facial"], "combo_price": 200, "duration":"4"}");
+    bodyContent.append("opening_time", "10:00 AM");
+    bodyContent.append("closing_time", "6:00 PM");
+    bodyContent.append("lunch_time", "2:00 PM");
+    bodyContent.append("features", "{'wifi': true, 'parking': true, 'AC': false}");
+    bodyContent.append("languages", "{'hindi': true, 'english': true, 'telugu': false}");
+    bodyContent.append("owner_name", "Robin Rajput");
+    bodyContent.append("owner_mobile", "9856742351");
+    bodyContent.append("owner_pancard_number", "CVUPG1990U");
+    bodyContent.append("bank_name", "State bank of India");
+    bodyContent.append("bank_account_number", "789648545684564");
+    bodyContent.append("bank_IFSC_code", "SBIN0003491");
+    bodyContent.append("city", "gwalior");
+    bodyContent.append("state", "delhi");
+
+    let response = await fetch("http://127.0.0.1:8000/admin/add-new-salon", {
+      method: "POST",
+      body: formdata,
+      headers: headersList
+    });
+
+    let data = await response.text();
+    console.log(data);
 
 
     setIsReadOnly(true);
