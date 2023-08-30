@@ -15,43 +15,49 @@ import Combos from './Combos';
 import Features from './Features';
 import Languages from './Languages';
 import OwnershipDetails from './OwnershipDetails';
+import { useLocation } from 'react-router-dom';
 
 function OnBoardForm(props) {
   const [isReadOnly, setIsReadOnly] = useState(props.isReadOnly);
-
+  const location = useLocation();
+  // const { Salondata } = location;
+  const DataSalon = location.state?.Salondata;
+  const SalonLocation = DataSalon?.["salon_location"]['coordinates'].join(', ');
+  console.log(location.state?.Salondata);
   const [inputs, setInputs] = useState({
-    username: "name",
-    password: "***",
-    code: "HYD001",
-    name: "",
-    address: "",
-    location: "",
-    franchise: false,
+    username: DataSalon?.["salon_username"] || "name",
+    password: DataSalon?.["salon_password"] || "***",
+    code: DataSalon?.["salon_code"] || "HYD001",
+    name: DataSalon?.["salon_name"] || "",
+    address: DataSalon?.["salon_address"] || "",
+    location: SalonLocation || "",
+    franchise: DataSalon?.["salon_franchise"] || false,
     // area: "",
-    city: "",
-    state: "",
-    franchiseSalons: [''],
-    slots_number: 0,
-    opening_time: "09:00 AM",
-    closing_time: "06:00 PM",
-    lunch_time: "01:00 PM",
-    features: { "wifi": false, "parking": false, "AC": false },
-    languages: { "hindi": false, "english": false, "telugu": false },
-    owner_name: "sumanth vartha",
-    owner_mobile: "9876543210",
-    owner_pancard_number: "234WERT092",
-    bank_name: "##### bak",
-    bank_account_number: "3221655498746623",
-    bank_IFSC_code: "IFSC00123",
+    city: DataSalon?.["salon_city"] || "",
+    state: DataSalon?.["salon_state"] || "",
+    franchiseSalons: DataSalon?.["salon_franchise_list"] || [''],
+    slots_number: DataSalon?.["salon_slots"] || 0,
+    opening_time: DataSalon?.["salon_opening_time"] || "09:00 AM",
+    closing_time: DataSalon?.["salon_closing_time"] || "06:00 PM",
+    lunch_time: DataSalon?.["salon_lunch_time"] || "01:00 PM",
+    features: DataSalon?.["salon_features"] || { "wifi": false, "parking": false, "AC": false },
+    languages: DataSalon?.["salon_languages"] || { "hindi": false, "english": false, "telugu": false },
+    owner_name: DataSalon?.["salon_owner_name"] || "sumanth vartha",
+    owner_mobile: DataSalon?.["salon_owner_mobile"] || "9876543210",
+    owner_pancard_number: DataSalon?.["salon_owner_pancard_number"] || "234WERT092",
+    bank_name: DataSalon?.["salon_bank_name"] || "##### bak",
+    bank_account_number: DataSalon?.["salon_bank_account_number"] || "3221655498746623",
+    bank_IFSC_code: DataSalon?.["salon_bank_IFSC_code"] || "IFSC00123",
   });
 
   const [serviceCount, setServiceCount] = useState(3);
-  const [services, setServices] = useState([]);
+  const [services, setServices] = useState(DataSalon?.["salon_services"] || []);
   const [comboCount, setComboCount] = useState(1);
   const [comboservicecount, setComboServiceCount] = useState(2);
-  const [combos, setCombos] = useState([]);
+  const [combos, setCombos] = useState(DataSalon?.["salon_combo_services"] || []);
   const [selectedFeatures, setSelectedFeatures] = useState([]);
   const [selectedLanguages, setSelectedLanguages] = useState([]);
+  const [uploadedPhotos, setUploadedPhotos] = useState([]);
 
   useState(() => {
     const initialServices = Array.from({ length: serviceCount }, () => ({
@@ -93,17 +99,37 @@ function OnBoardForm(props) {
     // setInputs(current => ({ ...current, 'services': allFieldsFilled }));
     // console.log(allFieldsFilled);
     // console.log('Combo Services:');
-    combos.forEach((combo, index) => {
-      const nonEmptyServices = combo.services.filter((service) => service !== '');
-      if (nonEmptyServices.length > 0) {
-        const comboWithNonEmptyServices = { ...combo, services: nonEmptyServices };
-        // console.log(`Combo ${index + 1}:`, comboWithNonEmptyServices);
-      }
-    });
+    // combos.forEach((combo, index) => {
+    //   const nonEmptyServices = combo.services.filter((service) => service !== '');
+    //   if (nonEmptyServices.length > 0) {
+    //     const comboWithNonEmptyServices = { ...combo, services: nonEmptyServices };
+    //     // console.log(`Combo ${index + 1}:`, comboWithNonEmptyServices);
+    //   }
+    // });
     // console.log('Selected Features:', selectedFeatures);
     // console.log('Selected Languages:', selectedLanguages);
     console.log(inputs);
     var formdata = new FormData();
+    for (let arr in inputs) {
+      formdata.append(arr, inputs[arr]);
+    }
+    formdata.append('service', JSON.stringify(allFieldsFilled));
+    formdata.append('combo_service', JSON.stringify(combos));
+    formdata.append('photos', uploadedPhotos);
+    let headersList = {
+      "Accept": "*/*",
+      // "Content-Type": "multipart/form-data",
+      // "User-Agent": "Thunder Client (https://www.thunderclient.com)",
+      "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InNhaGl0aHkiLCJlbWFpbCI6InR1bW1hc2FoaXRoeUBnbWFpbC5jb20iLCJpYXQiOjE2OTMyOTAwMDUsImV4cCI6MTY5Mzg5NDgwNX0.N8TibEMKHDAvix7DGWofyzAVARfd5ucGqhfkeCoSl0s"
+    }
+    let response = await fetch("http://127.0.0.1:8000/admin/add-new-salon", {
+      method: "POST",
+      body: formdata,
+      headers: headersList
+    });
+
+    let data = await response.text();
+    console.log(data);
     // for (arr of inputs) {
     //   formdata.append(arr[0], arr[1]);
     // }
@@ -111,17 +137,41 @@ function OnBoardForm(props) {
     //   console.log(inputs);
     //   formdata.append(inputs[i][0], inputs[i][1]);
     // }
-    for (let arr in inputs) {
-      formdata.append(arr, inputs[arr]);
-    }
     // console.log(formdata.entries());
-    for (let arr in allFieldsFilled) {
-      formdata.append("service", allFieldsFilled[arr]);
-    }
+    // formdata.append("service", allFieldsFilled)
+    // if (allFieldsFilled.length === 1) {
+    //   for (let arr in allFieldsFilled) {
+    //     formdata.append("service", [JSON.stringify(allFieldsFilled[arr])]);
+    //   }
+    // }
+    // else {
+    //   for (let arr in allFieldsFilled) {
+    //     formdata.append("service", JSON.stringify(allFieldsFilled[arr]));
+    //   }
+    // }
+
+
     // formdata.append("services", allFieldsFilled);
-    for (let arr in combos) {
-      formdata.append("combo_service", combos[arr]);
-    }
+    // formdata.append("combo_service", combos)
+    console.log(combos.length);
+    // if (combos.length === 1) {
+    //   console.log("kk");
+    //   for (let arr in combos) {
+    //     formdata.append("combo_service", JSON.stringify([combos[arr]]));
+    //   }
+    // }
+    // else {
+    //   for (let arr in combos) {
+    //     formdata.append("combo_service", JSON.stringify(combos[arr]));
+    //   }
+    // }
+    // services.forEach((dict, index) => {
+    //   Object.keys(dict).forEach((key) => {
+    //     formdata.append(`service[${index}][${key}]`, dict[key]);
+    //   });
+    // });
+    // formdata.append('photos', uploadedPhotos);
+    console.log(formdata, " hiii ")
     // formdata.append("combos", combos);
     // formdata.append("code", "HYD001");
     // formdata.append("name", "Modern hair and spa Salon ");
@@ -146,47 +196,43 @@ function OnBoardForm(props) {
     //   .then(response => console.log(response.text()))
     //   .then(result => console.log(result))
     //   .catch(error => console.log('error', error));
-    let headersList = {
-      "Accept": "*/*",
-      "User-Agent": "Thunder Client (https://www.thunderclient.com)",
-      "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InNhaGl0aHkiLCJlbWFpbCI6InR1bW1hc2FoaXRoeUBnbWFpbC5jb20iLCJpYXQiOjE2OTMyOTAwMDUsImV4cCI6MTY5Mzg5NDgwNX0.N8TibEMKHDAvix7DGWofyzAVARfd5ucGqhfkeCoSl0s"
-    }
 
-    let bodyContent = new FormData();
-    bodyContent.append("username", "aman89");
-    bodyContent.append("password", "aman123");
-    bodyContent.append("code", "HYD002");
-    bodyContent.append("name", "Modern hair and spa Salon");
-    bodyContent.append("address", "Plot No 897, Kailash Vihar, Alkapuri, Gwalior - 474011 (Near Cafe Coffee Day)");
-    bodyContent.append("location", "26.207727, 78.190941");
-    bodyContent.append("franchise", "false");
-    bodyContent.append("slots_number", "4");
-    bodyContent.append("service", "{'name': 'hair cut', 'discount': 50, 'price': 200,'duration':'1' }");
-    // bodyContent.append("service", "{"name": "shaving ", "discount": 30, "price": 100, "duration":"2"}");
-    bodyContent.append("combo_service", "{'combo_name': 'Super saving', 'services': ['hair cutting', 'shaving'], 'combo_price': 170,'duration':'2'}");
-    // bodyContent.append("combo_service", "{"combo_name": "Face bright",  "services": ["shaving", "facial"], "combo_price": 200, "duration":"4"}");
-    bodyContent.append("opening_time", "10:00 AM");
-    bodyContent.append("closing_time", "6:00 PM");
-    bodyContent.append("lunch_time", "2:00 PM");
-    bodyContent.append("features", "{'wifi': true, 'parking': true, 'AC': false}");
-    bodyContent.append("languages", "{'hindi': true, 'english': true, 'telugu': false}");
-    bodyContent.append("owner_name", "Robin Rajput");
-    bodyContent.append("owner_mobile", "9856742351");
-    bodyContent.append("owner_pancard_number", "CVUPG1990U");
-    bodyContent.append("bank_name", "State bank of India");
-    bodyContent.append("bank_account_number", "789648545684564");
-    bodyContent.append("bank_IFSC_code", "SBIN0003491");
-    bodyContent.append("city", "gwalior");
-    bodyContent.append("state", "delhi");
 
-    let response = await fetch("http://127.0.0.1:8000/admin/add-new-salon", {
-      method: "POST",
-      body: formdata,
-      headers: headersList
-    });
+    setInputs((prevInputs) => {
+      return { ...prevInputs, 'features': JSON.stringify(prevInputs.features), 'languages': JSON.stringify(prevInputs.languages) }
+    })
+    // let bodyContent = { ...inputs }
+    // bodyContent['service'] = JSON.stringify(allFieldsFilled);
+    // bodyContent['combo_service'] = JSON.stringify(combos);
+    // console.log(bodyContent, ' body content ');
+    // bodyContent.append("username", "aman89");
+    // bodyContent.append("password", "aman123");
+    // bodyContent.append("code", "HYD002");
+    // bodyContent.append("name", "Modern hair and spa Salon");
+    // bodyContent.append("address", "Plot No 897, Kailash Vihar, Alkapuri, Gwalior - 474011 (Near Cafe Coffee Day)");
+    // bodyContent.append("location", "26.207727, 78.190941");
+    // bodyContent.append("franchise", "false");
+    // bodyContent.append("slots_number", "4");
+    // bodyContent.append("service", "{'name': 'hair cut', 'discount': 50, 'price': 200,'duration':'1' }");
+    // // bodyContent.append("service", "{"name": "shaving ", "discount": 30, "price": 100, "duration":"2"}");
+    // bodyContent.append("combo_service", "{'combo_name': 'Super saving', 'services': ['hair cutting', 'shaving'], 'combo_price': 170,'duration':'2'}");
+    // // bodyContent.append("combo_service", "{"combo_name": "Face bright",  "services": ["shaving", "facial"], "combo_price": 200, "duration":"4"}");
+    // bodyContent.append("opening_time", "10:00 AM");
+    // bodyContent.append("closing_time", "6:00 PM");
+    // bodyContent.append("lunch_time", "2:00 PM");
+    // bodyContent.append("features", "{'wifi': true, 'parking': true, 'AC': false}");
+    // bodyContent.append("languages", "{'hindi': true, 'english': true, 'telugu': false}");
+    // bodyContent.append("owner_name", "Robin Rajput");
+    // bodyContent.append("owner_mobile", "9856742351");
+    // bodyContent.append("owner_pancard_number", "CVUPG1990U");
+    // bodyContent.append("bank_name", "State bank of India");
+    // bodyContent.append("bank_account_number", "789648545684564");
+    // bodyContent.append("bank_IFSC_code", "SBIN0003491");
+    // bodyContent.append("city", "gwalior");
+    // bodyContent.append("state", "delhi");
 
-    let data = await response.text();
-    console.log(data);
+    // console.log(bodyContent);
+
 
 
     setIsReadOnly(true);
@@ -211,7 +257,7 @@ function OnBoardForm(props) {
           {isReadOnly && <button onClick={() => setIsReadOnly(false)} className='label' style={{ textAlign: "center", background: "#FF6548", fontWeight: "bold", marginBottom: "30px", fontSize: "17px" }}>Enable Edit</button>
           }
         </div>
-        <form onSubmit={handleSubmit}>
+        <form encType="multipart/form-data" onSubmit={handleSubmit}>
           <Credentials inputs={inputs} handleChange={handleChange} isReadOnly={isReadOnly} />
           <div className="form-group">
             <label className="label">Salon Code:</label>
@@ -302,7 +348,7 @@ function OnBoardForm(props) {
           <NumSlots inputs={inputs} setInputs={setInputs} handleChange={handleChange} isReadOnly={isReadOnly} />
           <SalonTimings inputs={inputs} setInputs={setInputs} isReadOnly={isReadOnly} />
           <LunchTimings inputs={inputs} setInputs={setInputs} isReadOnly={isReadOnly} />
-          <Photos isReadOnly={isReadOnly} />
+          <Photos uploadedPhotos={uploadedPhotos} setUploadedPhotos={setUploadedPhotos} isReadOnly={isReadOnly} />
           <Services services={services} setServices={setServices} isReadOnly={isReadOnly} serviceCount={serviceCount} setServiceCount={setServiceCount} />
           <Combos combos={combos} setCombos={setCombos} isReadOnly={isReadOnly} comboCount={comboCount} setComboCount={setComboCount} comboservicecount={comboservicecount} setComboServiceCount={setComboServiceCount} />
           <Features selectedFeatures={selectedFeatures} setInputs={setInputs} setSelectedFeatures={setSelectedFeatures} isReadOnly={isReadOnly} />

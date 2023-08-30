@@ -1,9 +1,8 @@
 import '../App.css';
 import React, { useState, useRef } from 'react';
 
-function Photos({ isReadOnly }) {
+function Photos({ uploadedPhotos, setUploadedPhotos, isReadOnly }) {
     const fileInputRef = useRef();
-    const [uploadedPhotos, setUploadedPhotos] = useState([]);
     const [previewPhoto, setPreviewPhoto] = useState(null);
     const [previewIndex, setPreviewIndex] = useState(null);
 
@@ -13,6 +12,7 @@ function Photos({ isReadOnly }) {
             URL.createObjectURL(file)
         );
         setUploadedPhotos([...uploadedPhotos, ...uploadedPhotoPreviews]);
+        console.log(uploadedPhotos);
     };
 
     const handleThumbnailClick = (index) => {
