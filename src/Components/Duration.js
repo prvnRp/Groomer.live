@@ -2,11 +2,11 @@ import React, { useState, useEffect, useRef } from 'react';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import '../TimePicker.css';
 
-const Duration = ({ index, setServices, setCombos, isCombos }) => {
+const Duration = ({ value, index, setServices, setCombos, isCombos }) => {
     const [showpicker, setshowpicker] = useState(false);
     const [selectedHour, setSelectedHour] = useState('01');
     const [selectedMinute, setSelectedMinute] = useState('00');
-    const [selectedTime, setSelectedTime] = useState(`${selectedHour} hr ${selectedMinute} min`);
+    const [selectedTime, setSelectedTime] = useState(value || `${selectedHour} hr ${selectedMinute} min`);
     const hours = Array.from({ length: 12 }, (_, i) => (i + 1).toString().padStart(2, '0'));
     const minutes = Array.from({ length: 60 }, (_, i) => i.toString().padStart(2, '0'));
 

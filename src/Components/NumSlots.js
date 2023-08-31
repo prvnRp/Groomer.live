@@ -1,7 +1,7 @@
 import '../App.css';
 import React from 'react';
 
-function NumSlots({ inputs, setInputs, handleChange, isReadOnly }) {
+function NumSlots({ number, inputs, setInputs, handleChange, isReadOnly }) {
     // const [slots_number, setNumSlots] = useState('');
 
     const handleNumberSlots = (event) => {

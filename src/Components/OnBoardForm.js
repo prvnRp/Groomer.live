@@ -22,7 +22,8 @@ function OnBoardForm(props) {
   const location = useLocation();
   // const { Salondata } = location;
   const DataSalon = location.state?.Salondata;
-  const SalonLocation = DataSalon?.["salon_location"]['coordinates'].join(', ');
+  console.log(location.state?.servicesRev);
+  const SalonLocation = DataSalon?.["salon_location"]?.['coordinates'].join(', ');
   console.log(location.state?.Salondata);
   const [inputs, setInputs] = useState({
     username: DataSalon?.["salon_username"] || "name",
@@ -36,12 +37,12 @@ function OnBoardForm(props) {
     city: DataSalon?.["salon_city"] || "",
     state: DataSalon?.["salon_state"] || "",
     franchiseSalons: DataSalon?.["salon_franchise_list"] || [''],
-    slots_number: DataSalon?.["salon_slots"] || 0,
+    slots_number: parseInt(DataSalon?.["salon_slots"]) || 0,
     opening_time: DataSalon?.["salon_opening_time"] || "09:00 AM",
     closing_time: DataSalon?.["salon_closing_time"] || "06:00 PM",
     lunch_time: DataSalon?.["salon_lunch_time"] || "01:00 PM",
-    features: DataSalon?.["salon_features"] || { "wifi": false, "parking": false, "AC": false },
-    languages: DataSalon?.["salon_languages"] || { "hindi": false, "english": false, "telugu": false },
+    features: { "wifi": DataSalon?.["salon_features"]?.["feature_wifi"] || false, "parking": DataSalon?.["salon_features"]?.["feature_parking"] || false, "AC": DataSalon?.["salon_features"]?.["feature_AC"] || false },
+    languages: { "hindi": DataSalon?.["salon_languages"]?.["language_hindi"] || false, "english": DataSalon?.["salon_languages"]?.["language_english"] || false, "telugu": DataSalon?.["salon_languages"]?.["language_telugu"] || false },
     owner_name: DataSalon?.["salon_owner_name"] || "sumanth vartha",
     owner_mobile: DataSalon?.["salon_owner_mobile"] || "9876543210",
     owner_pancard_number: DataSalon?.["salon_owner_pancard_number"] || "234WERT092",
@@ -50,33 +51,40 @@ function OnBoardForm(props) {
     bank_IFSC_code: DataSalon?.["salon_bank_IFSC_code"] || "IFSC00123",
   });
 
-  const [serviceCount, setServiceCount] = useState(3);
-  const [services, setServices] = useState(DataSalon?.["salon_services"] || []);
+  console.log(inputs);
+
+  const [serviceCount, setServiceCount] = useState(DataSalon?.["salon_services"]?.length || 3);
+  const [services, setServices] = useState(location.state?.servicesRev || []);
   const [comboCount, setComboCount] = useState(1);
   const [comboservicecount, setComboServiceCount] = useState(2);
-  const [combos, setCombos] = useState(DataSalon?.["salon_combo_services"] || []);
+  const [combos, setCombos] = useState(location.state?.combosRev || []);
   const [selectedFeatures, setSelectedFeatures] = useState([]);
   const [selectedLanguages, setSelectedLanguages] = useState([]);
   const [uploadedPhotos, setUploadedPhotos] = useState([]);
+  console.log(combos, "combos");
 
   useState(() => {
-    const initialServices = Array.from({ length: serviceCount }, () => ({
-      name: '',
-      discount: '',
-      price: '',
-      duration: '',
-    }));
-    setServices(initialServices);
+    if (!DataSalon) {
+      const initialServices = Array.from({ length: serviceCount }, () => ({
+        name: '',
+        discount: '',
+        price: '',
+        duration: '',
+      }));
+      setServices(initialServices);
+    }
   }, [serviceCount]);
 
   useState(() => {
-    const initialCombos = Array.from({ length: comboCount }, () => ({
-      combo_name: 'Combo',
-      services: Array.from({ length: comboservicecount }, () => ''),
-      combo_price: '',
-      duration: '',
-    }));
-    setCombos(initialCombos);
+    if (!DataSalon) {
+      const initialCombos = Array.from({ length: comboCount }, () => ({
+        combo_name: `Combo ${comboCount}`,
+        services: Array.from({ length: comboservicecount }, () => ''),
+        combo_price: '',
+        duration: '',
+      }));
+      setCombos(initialCombos);
+    }
   }, [comboCount]);
 
 
@@ -108,28 +116,58 @@ function OnBoardForm(props) {
     // });
     // console.log('Selected Features:', selectedFeatures);
     // console.log('Selected Languages:', selectedLanguages);
+    // console.log(inputs);
+    setInputs((prevInputs) => {
+      return { ...prevInputs, 'features': JSON.stringify(prevInputs.features), 'languages': JSON.stringify(prevInputs.languages) }
+    })
+    // setInputs((prevInputs) => {
+    //   return { ...prevInputs, 'features': JSON.stringify(prevInputs.features), 'languages': JSON.stringify(prevInputs.languages) }
+    // })
     console.log(inputs);
+    if (DataSalon) {
+      console.log("heyyy");
+    }
     var formdata = new FormData();
     for (let arr in inputs) {
+      // if (arr !== 'languages' || arr !== 'features')
       formdata.append(arr, inputs[arr]);
     }
     formdata.append('service', JSON.stringify(allFieldsFilled));
     formdata.append('combo_service', JSON.stringify(combos));
-    formdata.append('photos', uploadedPhotos);
+    // formdata.append('photos', uploadedPhotos);
+    uploadedPhotos.forEach((image, index) => {
+      formdata.append(`photos`, image);
+    });
+    if (DataSalon) {
+      formdata.append('uuid', DataSalon['salon_uuid']);
+    }
     let headersList = {
       "Accept": "*/*",
       // "Content-Type": "multipart/form-data",
       // "User-Agent": "Thunder Client (https://www.thunderclient.com)",
       "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InNhaGl0aHkiLCJlbWFpbCI6InR1bW1hc2FoaXRoeUBnbWFpbC5jb20iLCJpYXQiOjE2OTMyOTAwMDUsImV4cCI6MTY5Mzg5NDgwNX0.N8TibEMKHDAvix7DGWofyzAVARfd5ucGqhfkeCoSl0s"
     }
-    let response = await fetch("http://127.0.0.1:8000/admin/add-new-salon", {
-      method: "POST",
-      body: formdata,
-      headers: headersList
-    });
 
-    let data = await response.text();
-    console.log(data);
+    if (DataSalon) {
+      let response = await fetch("http://127.0.0.1:8000/admin/salon/update", {
+        method: "PATCH",
+        body: formdata,
+        headers: headersList
+      });
+
+      let data = await response.text();
+      console.log(data);
+    }
+    else {
+      let response = await fetch("http://127.0.0.1:8000/admin/add-new-salon", {
+        method: "POST",
+        body: formdata,
+        headers: headersList
+      });
+
+      let data = await response.text();
+      console.log(data);
+    }
     // for (arr of inputs) {
     //   formdata.append(arr[0], arr[1]);
     // }
@@ -196,11 +234,6 @@ function OnBoardForm(props) {
     //   .then(response => console.log(response.text()))
     //   .then(result => console.log(result))
     //   .catch(error => console.log('error', error));
-
-
-    setInputs((prevInputs) => {
-      return { ...prevInputs, 'features': JSON.stringify(prevInputs.features), 'languages': JSON.stringify(prevInputs.languages) }
-    })
     // let bodyContent = { ...inputs }
     // bodyContent['service'] = JSON.stringify(allFieldsFilled);
     // bodyContent['combo_service'] = JSON.stringify(combos);
@@ -345,14 +378,14 @@ function OnBoardForm(props) {
             </div>
           </div>
           <Franchise inputs={inputs} setInputs={setInputs} isReadOnly={isReadOnly} />
-          <NumSlots inputs={inputs} setInputs={setInputs} handleChange={handleChange} isReadOnly={isReadOnly} />
+          <NumSlots number={inputs.slots_number} inputs={inputs} setInputs={setInputs} handleChange={handleChange} isReadOnly={isReadOnly} />
           <SalonTimings inputs={inputs} setInputs={setInputs} isReadOnly={isReadOnly} />
           <LunchTimings inputs={inputs} setInputs={setInputs} isReadOnly={isReadOnly} />
           <Photos uploadedPhotos={uploadedPhotos} setUploadedPhotos={setUploadedPhotos} isReadOnly={isReadOnly} />
-          <Services services={services} setServices={setServices} isReadOnly={isReadOnly} serviceCount={serviceCount} setServiceCount={setServiceCount} />
-          <Combos combos={combos} setCombos={setCombos} isReadOnly={isReadOnly} comboCount={comboCount} setComboCount={setComboCount} comboservicecount={comboservicecount} setComboServiceCount={setComboServiceCount} />
-          <Features selectedFeatures={selectedFeatures} setInputs={setInputs} setSelectedFeatures={setSelectedFeatures} isReadOnly={isReadOnly} />
-          <Languages selectedLanguages={selectedLanguages} setInputs={setInputs} setSelectedLanguages={setSelectedLanguages} isReadOnly={isReadOnly} />
+          <Services SalonServices={DataSalon?.["salon_services"]} services={services} setServices={setServices} isReadOnly={isReadOnly} serviceCount={serviceCount} setServiceCount={setServiceCount} />
+          <Combos ComboServices={DataSalon?.["salon_combo_services"]} combos={combos} setCombos={setCombos} isReadOnly={isReadOnly} comboCount={comboCount} setComboCount={setComboCount} comboservicecount={comboservicecount} setComboServiceCount={setComboServiceCount} />
+          <Features inputs={inputs} setInputs={setInputs} isReadOnly={isReadOnly} />
+          <Languages inputs={inputs} setInputs={setInputs} isReadOnly={isReadOnly} />
           <OwnershipDetails inputs={inputs} setInputs={setInputs} handleChange={handleChange} isReadOnly={isReadOnly} />
           {
             props.search &&

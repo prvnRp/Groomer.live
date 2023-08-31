@@ -1,28 +1,19 @@
 import '../App.css';
 
-function Languages({ selectedLanguages, setInputs, setSelectedLanguages, isReadOnly }) {
-
+function Languages({ inputs, setInputs, isReadOnly }) {
     const handleLanguageChange = (event) => {
         const selectedLanguage = event.target.value;
-        const updatedSelectedLanguages = [...selectedLanguages];
+        const updatedLanguages = {
+            ...inputs.languages,
+            [selectedLanguage]: !inputs.languages[selectedLanguage]
+        };
 
-        if (updatedSelectedLanguages.includes(selectedLanguage)) {
-            updatedSelectedLanguages.splice(updatedSelectedLanguages.indexOf(selectedLanguage), 1);
-            setInputs(prevInputs => ({
-                ...prevInputs,
-                languages: { ...prevInputs.languages, [selectedLanguage]: false }
-            }));
-        } else {
-            updatedSelectedLanguages.push(selectedLanguage);
-            setInputs(prevInputs => ({
-                ...prevInputs,
-                languages: { ...prevInputs.languages, [selectedLanguage]: true }
-            }));
-        }
-
-        setSelectedLanguages(updatedSelectedLanguages);
+        setInputs(prevInputs => ({
+            ...prevInputs,
+            languages: updatedLanguages
+        }));
     };
-
+    console.log(inputs.languages, "languages");
     return (
         <div className="form-group" style={{ display: "flex", flexDirection: "row" }}>
             <label className="label">Languages:</label>
@@ -32,7 +23,7 @@ function Languages({ selectedLanguages, setInputs, setSelectedLanguages, isReadO
                         <input
                             type="checkbox"
                             value="telugu"
-                            checked={selectedLanguages.includes('telugu')}
+                            checked={inputs.languages['telugu']}
                             onChange={handleLanguageChange}
                             disabled={isReadOnly}
                         />
@@ -45,7 +36,7 @@ function Languages({ selectedLanguages, setInputs, setSelectedLanguages, isReadO
                         <input
                             type="checkbox"
                             value="hindi"
-                            checked={selectedLanguages.includes('hindi')}
+                            checked={inputs.languages['hindi']}
                             onChange={handleLanguageChange}
                             disabled={isReadOnly}
                         />
@@ -58,7 +49,7 @@ function Languages({ selectedLanguages, setInputs, setSelectedLanguages, isReadO
                         <input
                             type="checkbox"
                             value="english"
-                            checked={selectedLanguages.includes('english')}
+                            checked={inputs.languages['english']}
                             onChange={handleLanguageChange}
                             disabled={isReadOnly}
                         />

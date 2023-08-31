@@ -2,7 +2,7 @@ import '../App.css';
 import React from 'react';
 import Duration from './Duration';
 
-function Services({ services, setServices, isReadOnly, serviceCount, setServiceCount }) {
+function Services({ SalonServices, services, setServices, isReadOnly, serviceCount, setServiceCount }) {
 
     const handleAddService = () => {
         const newService = {
@@ -27,6 +27,7 @@ function Services({ services, setServices, isReadOnly, serviceCount, setServiceC
         setServices(updatedServices);
         setServiceCount(serviceCount - 1)
     };
+    console.log(services, "kieoknl");
 
     return (
         <>
@@ -75,7 +76,7 @@ function Services({ services, setServices, isReadOnly, serviceCount, setServiceC
                                 />
                             </label>
                             <label style={{ marginLeft: "10px", display: "flex", flexDirection: "row" }}>
-                                Duration: <span style={{ marginLeft: "20px" }}><Duration index={index} setServices={setServices} /></span>
+                                Duration: <span style={{ marginLeft: "20px" }}><Duration value={service.duration} index={index} setServices={setServices} isCombos={false} /></span>
                             </label>
                             {!isReadOnly && <button className="delete-button" type="button" onClick={() => handleDeleteService(index)}>
                                 &times;

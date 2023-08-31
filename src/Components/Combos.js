@@ -1,7 +1,7 @@
 import '../App.css';
 import Duration from './Duration';
 
-function Combos({ combos, setCombos, isReadOnly, comboCount, setComboCount, comboservicecount, setComboServiceCount }) {
+function Combos({ ComboServices, combos, setCombos, isReadOnly, comboCount, setComboCount, comboservicecount, setComboServiceCount }) {
 
     const handleDeleteCombo = (index) => {
         const updatedCombos = [...combos];
@@ -10,7 +10,7 @@ function Combos({ combos, setCombos, isReadOnly, comboCount, setComboCount, comb
     };
     const handleAddCombo = () => {
         const newCombo = {
-            combo_name: 'Combo',
+            combo_name: `Combo ${comboCount + 1}`,
             services: Array.from({ length: comboservicecount }, () => ''),
             combo_price: '',
             duration: '',
@@ -28,6 +28,12 @@ function Combos({ combos, setCombos, isReadOnly, comboCount, setComboCount, comb
     const handleComboPriceChange = (event, comboIndex) => {
         const updatedCombos = [...combos];
         updatedCombos[comboIndex].combo_price = event.target.value;
+        setCombos(updatedCombos);
+    };
+
+    const handleComboNameChange = (event, comboIndex) => {
+        const updatedCombos = [...combos];
+        updatedCombos[comboIndex].combo_name = event.target.value;
         setCombos(updatedCombos);
     };
 
@@ -51,7 +57,10 @@ function Combos({ combos, setCombos, isReadOnly, comboCount, setComboCount, comb
                 <div className='input'>
                     {combos.map((combo, comboIndex) => (
                         <div key={comboIndex} className='combo' style={{ display: "flex", flexDirection: "column", gap: "10px", marginBottom: "10px" }}>
-                            Combo {comboIndex + 1}:
+                            <input style={{ background: "none", padding: "0px", fontSize: "16px" }} size="15" type="text" name="username" onChange={(event) =>
+                                handleComboNameChange(event, comboIndex)
+                            } value={combo.combo_name} readOnly={isReadOnly} />
+                            {/* Combo {comboIndex + 1}: */}
                             <div style={{ display: "flex", flexDirection: "row", flexWrap: "nowrap", width: "70vw" }}>
                                 <span style={{ marginRight: "3vw" }}>Services:</span>
                                 <div>
@@ -104,7 +113,7 @@ function Combos({ combos, setCombos, isReadOnly, comboCount, setComboCount, comb
                                 </label>
                                 <label style={{ marginLeft: "20px", display: "flex", flexDirection: "row" }}>
                                     <span>Duration:</span>
-                                    <span style={{ marginLeft: "20px" }}><Duration index={comboIndex} setCombos={setCombos} isCombos={true} /></span>                                    {/* <input
+                                    <span style={{ marginLeft: "20px" }}><Duration value={combo.duration} index={comboIndex} setCombos={setCombos} isCombos={true} /></span>                                    {/* <input
                                         type="text"
                                         value={combo.duation}
                                         onChange={(event) =>

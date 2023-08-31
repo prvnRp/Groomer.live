@@ -11,7 +11,7 @@ function Photos({ uploadedPhotos, setUploadedPhotos, isReadOnly }) {
         const uploadedPhotoPreviews = files.map((file) =>
             URL.createObjectURL(file)
         );
-        setUploadedPhotos([...uploadedPhotos, ...uploadedPhotoPreviews]);
+        setUploadedPhotos([...uploadedPhotos, ...files]);
         console.log(uploadedPhotos);
     };
 
