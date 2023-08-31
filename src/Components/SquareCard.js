@@ -1,13 +1,22 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Rating from '@mui/material/Rating';
 import StarBorderIcon from '@mui/icons-material/StarBorder';
 import placeMarker from '../images/place-marker.svg';
 import { useNavigate } from 'react-router-dom';
+import FlickitySalons from './FlickitySalons';
+import Flickity from 'flickity';
+import '../App.css';
+import 'flickity/css/flickity.css'; // Import Flickity CSS
+import rectangle7 from '../images/rectangle-22.svg'
+import clockSearch from '../images/clock-search.svg'
+import socialMedia from '../images/social-media.svg'
+import { useBlur } from '../context/blurContext';
 
 function SquareCard({ id, content, imageSrc, distance, ratings, NoR, services, salonData }) {
     const navigate = useNavigate();
 
     const [currentServiceIndex, setCurrentServiceIndex] = useState(0);
+    const [currentService, setCurrentService] = useState(services[currentServiceIndex]);
     // const [currentServiceIndex, setCurrentServiceIndex] = useState(0);
     // const [nextServiceIndex, setNextServiceIndex] = useState(1);
 
@@ -29,11 +38,91 @@ function SquareCard({ id, content, imageSrc, distance, ratings, NoR, services, s
     //     setCurrentServiceIndex((prevIndex) => (prevIndex + 1) % services.length);
     //     setNextServiceIndex((prevIndex) => (prevIndex + 2) % services.length);
     // };
+    const { isBlur } = useBlur();
+    const carouselRef = useRef(null);
+    let flickityInstance = null;
+    useEffect(() => {
+        // window.location.reload(false);
+        flickityInstance = new Flickity(carouselRef.current, {
+            autoPlay: true,
+        });
 
-    const currentService = services[currentServiceIndex];
+        const handleChange = (index) => {
+            setCurrentServiceIndex(index);
+            setCurrentService(services[index]);
+        };
+
+        flickityInstance.on('change', handleChange);
+
+        const handleClick = () => {
+            flickityInstance.playPlayer();
+        };
+
+        document.addEventListener('click', handleClick);
+
+        return () => {
+            flickityInstance.off('change', handleChange);
+            flickityInstance.destroy();
+            document.removeEventListener('click', handleClick);
+        };
+    }, []);
+
+
+    useEffect(() => {
+        flickityInstance = new Flickity(carouselRef.current);
+        if (isBlur) {
+            flickityInstance.pausePlayer();
+        } else {
+            flickityInstance.playPlayer();
+        }
+        return () => {
+            flickityInstance.destroy();
+        };
+    }, [isBlur])
+
+    const handlePrev = () => {
+        flickityInstance = new Flickity(carouselRef.current);
+        flickityInstance.pausePlayer(); // Pause the carousel
+        flickityInstance.previous(); // Move to the previous slide
+        setTimeout(() => {
+            flickityInstance.playPlayer(); // Resume the carousel after 3 seconds
+        }, 3000);
+        return () => {
+            flickityInstance.destroy();
+        };
+    };
+
+    const handleNext = () => {
+        flickityInstance = new Flickity(carouselRef.current);
+        flickityInstance.pausePlayer(); // Pause the carousel
+        flickityInstance.next(); // Move to the next slide
+        setTimeout(() => {
+            flickityInstance.playPlayer(); // Resume the carousel after 3 seconds
+        }, 3000);
+        return () => {
+            flickityInstance.destroy();
+        };
+    };
+
+    // const currentService = services[currentServiceIndex];
     return (
         <div className="square-card" style={{ position: "relative", cursor: "pointer" }}>
-            <div id={id} class="carousel slide" data-bs-ride="carousel">
+            {/* <FlickitySalons /> */}
+            <div ref={carouselRef} className="carousel">
+                {/* <div className="carousel-cell"></div> */}
+                {/* <div className="carousel-cell"></div> */}
+                {/* <div className="carousel-cell"></div> */}
+                {services.map((service, index) => (
+                    // <div class={index === 0 ? "carousel-item active" : "carousel-item"} data-bs-interval="3000">
+                    <div style={{ display: "flex", justifyContent: "center", alignItems: "center" }} onClick={() => { navigate(`/salon/${id}`); }} >
+                        <div className="image-container">
+                            {imageSrc[index] && <img src={imageSrc[index]} alt="Card Image" className="card-image" />}
+                        </div>
+                    </div>
+                    // </div>
+                ))}
+            </div>
+            {/* <div id={id} class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner">
                     {services.map((service, index) => (
                         <div class={index === 0 ? "carousel-item active" : "carousel-item"} data-bs-interval="3000">
@@ -45,7 +134,7 @@ function SquareCard({ id, content, imageSrc, distance, ratings, NoR, services, s
                         </div>
                     ))}
                 </div>
-            </div>
+            </div> */}
             <div className="card-details" style={{ height: '42%' }} onClick={() => { navigate(`/salon/${id}`); }} >
                 <div style={{ width: "100%", overflow: "hidden" }}>
                     <p style={{ fontSize: '20px', fontWeight: '400', whiteSpace: "nowrap" }}>{content}</p>
@@ -83,7 +172,7 @@ function SquareCard({ id, content, imageSrc, distance, ratings, NoR, services, s
                 </span>
                 <span style={{ fontSize: "12px" }}>{currentService.ServiceName}</span>
             </div>
-            {services.length > 1 &&
+            {/* {services.length > 1 &&
                 <div className='carousalButton'>
                     <div class="carousel-control-prev" type="button" data-bs-target={"#" + id}
                         data-bs-slide="prev">
@@ -94,7 +183,22 @@ function SquareCard({ id, content, imageSrc, distance, ratings, NoR, services, s
                         <span className='arrow right'></span>
                     </div>
                 </div>
+            } */}
+            {services.length > 1 &&
+                <div className='carousalButton'>
+                    {(currentServiceIndex !== 0) &&
+                        <div className="carousel-control-prev" onClick={handlePrev}>
+                            <span className='arrow left'></span>
+                        </div>
+                    }
+                    {(currentServiceIndex !== services.length - 1) &&
+                        <div className="carousel-control-next" onClick={handleNext}>
+                            <span className='arrow right'></span>
+                        </div>
+                    }
+                </div>
             }
+
             {/* <i className='arrow left' style={{ position: "absolute", top: "50%", left: "3px", padding: "3px" }} onClick={goToPrevService}></i> */}
             {/* <i className='arrow right' style={{ position: "absolute", top: "50%", right: "3px", padding: "3px" }} onClick={goToNextService}></i> */}
         </div >

@@ -20,6 +20,7 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import Footer from './Footer';
 import Brain from '../images/line-brain-idea.svg'
 import FlickityCarousel from './FlickityCarousel';
+import FlickityFull from './FlickityFull';
 import { useBlur } from '../context/blurContext';
 import EastIcon from '@mui/icons-material/East';
 
@@ -182,7 +183,8 @@ const HomePage = () => {
             <Header />
             <div style={{ filter: isBlur ? 'blur(10px)' : 'none' }}>
                 <FlickityCarousel />
-                <div id="carouselExampleAutoplaying" className="carousel slide desktopView" data-bs-ride="carousel">
+                <FlickityFull />
+                {/* <div id="carouselExampleAutoplaying" className="carousel slide desktopView" data-bs-ride="carousel">
                     <div className="carousel-indicators">
                         <button
                             style={{ backgroundColor: banners[0].color }}
@@ -233,7 +235,7 @@ const HomePage = () => {
                             <span class="visually-hidden">Next</span>
                         </button>
                     </div>
-                </div>
+                </div> */}
                 {showScroll && (
                     <div className='scroll-symbol'>
                         <img src={vector} />
