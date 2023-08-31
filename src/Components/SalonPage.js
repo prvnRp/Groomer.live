@@ -328,7 +328,7 @@ function SalonPage() {
                         {salonData.reviewData && <div>
                             <div className='ratings-review'>
                                 <div style={{ fontSize: "25px", fontWeight: "bold", marginBottom: "30px" }}>Ratings and Reviews<hr style={{ margin: "0 50% 0 2%", border: "2px solid #FF6548" }} /></div>
-                                <div className="ratings">
+                                <div className="ratings desktopView">
                                     <div className="star-rating">
                                         <div style={{ display: "flex", flexDirection: "row", justifyContent: "center", alignItems: "center" }}>
                                             <div className='SalonRatings'>{salonData.ratings}</div>
@@ -342,6 +342,21 @@ function SalonPage() {
                                         </div>
                                         <div style={{ fontSize: "12px", position: "relative", top: "-5px" }}>of {salonData.reviewData.length} reviews</div>
                                     </div>
+                                </div>
+                                <div style={{ display: "flex", flexDirection: "row", justifyContent: "space-between", width: "100%", alignItems: "center" }} className="ratings MobileView">
+                                    <div className="star-rating MobileView">
+                                        <div style={{ display: "flex", flexDirection: "row", justifyContent: "center", alignItems: "center" }}>
+                                            <Rating
+                                                size="large"
+                                                value={salonData.ratings}
+                                                precision={0.25}
+                                                readOnly
+                                                emptyIcon={<StarBorderIcon style={{ color: 'white', fontSize: '30px' }} />}
+                                            />
+                                        </div>
+                                        <div style={{ fontSize: "12px", position: "relative", top: "-5px" }}>of {salonData.reviewData.length} reviews</div>
+                                    </div>
+                                    <div className='SalonRatings MobileView'>{salonData.ratings}</div>
                                 </div>
                             </div>
                             <div className="reviews">
