@@ -108,7 +108,7 @@ function SquareCard({ id, content, imageSrc, distance, ratings, NoR, services, s
     return (
         <div className="square-card" style={{ position: "relative", cursor: "pointer" }}>
             {/* <FlickitySalons /> */}
-            <div ref={carouselRef} className="carousel">
+            <div ref={carouselRef} className="carousel customCarousel">
                 {/* <div className="carousel-cell"></div> */}
                 {/* <div className="carousel-cell"></div> */}
                 {/* <div className="carousel-cell"></div> */}
