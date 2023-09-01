@@ -3,6 +3,7 @@ import '../Styles/TableRow.css';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import { useNavigate } from 'react-router-dom';
 
+// The WishlistTable component is responsible for rendering wishlist items.
 function WishlistTable(props) {
     const navigate = useNavigate();
 
@@ -11,6 +12,8 @@ function WishlistTable(props) {
     const handleRemoveFromWishlist = (item) => {
         removeFromWishlist(item.ID);
     };
+
+    // Generate the list of wishlist items to be displayed
     const bookings = BookingDetails.map(item => {
 
         return (
@@ -20,6 +23,7 @@ function WishlistTable(props) {
                         navigate(`/salon/${item.SalonId}`);
                     }}><b>{item.SalonName}</b></span></td>
                     <td style={{ width: "10vw" }}>{item.Location}</td>
+                    {/* Render the favorite icon to allow removing items from the wishlist */}
                     <td width="5px" style={{ textAlign: "right" }}><FavoriteIcon style={{ marginRight: "2vw" }} onClick={() => handleRemoveFromWishlist(item)} /></td>
                 </tr>
             </React.Fragment>

@@ -8,6 +8,7 @@ import BookingMobile from './BookingMobile';
 import { useBlur } from '../context/blurContext';
 
 function Bookings() {
+    // Access blur state from context using custom hook
     const { isBlur } = useBlur();
 
     return (
@@ -25,8 +26,10 @@ function Bookings() {
                             <div className="grid-item-h">Services</div>
                             <div className="grid-item-h">Pricing</div>
                             <div className="grid-item-h">Status</div>
+                            {/* Render individual rows using TableRow component */}
                             <TableRow BookingDetails={BookingDetails} />
                         </div>
+                        {/* Display mobile view of bookings */}
                         <div className='MobileView'>
                             <BookingMobile BookingDetails={BookingDetails} />
                         </div>

@@ -3,27 +3,16 @@ import '../Styles/BookingMobile.css';
 import '../Styles/TableRow.css';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 
+// The WishlistMobile component is responsible for rendering wishlist items in a mobile view.
 function WishlistMobile(props) {
     const { BookingDetails, removeFromWishlist } = props;
 
-    const [expandedCard, setExpandedCard] = useState(null);
-    var Status = { "Booked": "yellow", "Completed": "green", "Cancelled": "red" }
     const handleRemoveFromWishlist = (item) => {
         removeFromWishlist(item.ID);
     };
-    const handleCardClick = (index) => {
-        setExpandedCard(index === expandedCard ? null : index);
-    };
 
+    // Generate the list of wishlist items to be displayed
     const bookings = BookingDetails.map((item, index) => {
-        // const currentDate = item.Date;
-        // let dateElement = null;
-
-        // if (index === 0 || props.BookingDetails[index - 1].Date !== currentDate) {
-        //     dateElement = <div className='date'>{currentDate}</div>;
-        // }
-
-        const isExpanded = index === expandedCard;
 
         return (
             <React.Fragment key={item.ID}>

@@ -9,6 +9,7 @@ function App() {
     const navigate = useNavigate();
     const location = useLocation();
 
+    // Extract id and booking ID from route parameters and location state respectively
     var { id } = useParams();
     console.log(id);
     id = parseInt(id, 10);
@@ -24,6 +25,7 @@ function App() {
             <div className='reschedule-buttons'>
                 <button onClick={() => { navigate(-1) }} className='button-cancel'>NO</button>
                 <button onClick={() => {
+                    // Navigate to the salon page with Reschedule status and BookingID
                     navigate(`/salon/${id}`, { state: { Reschedule: true, BookingID: BookingID } });
                 }} className='button-reschedule'>YES</button>
             </div>

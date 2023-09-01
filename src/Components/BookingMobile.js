@@ -6,25 +6,22 @@ import { useNavigate } from 'react-router-dom';
 function BookingMobile(props) {
     const navigate = useNavigate();
     const [expandedCard, setExpandedCard] = useState(null);
+
+    // Mapping of status values to their respective colors
     var Status = { "Booked": "yellow", "Completed": "green", "Cancelled": "red" }
 
+    // Function to handle clicking on a card to expand or collapse it
     const handleCardClick = (index) => {
         setExpandedCard(index === expandedCard ? null : index);
     };
 
+    // Create an array of JSX elements representing booking details
     const bookings = props.BookingDetails.map((item, index) => {
-        // const currentDate = item.Date;
-        // let dateElement = null;
-
-        // if (index === 0 || props.BookingDetails[index - 1].Date !== currentDate) {
-        //     dateElement = <div className='date'>{currentDate}</div>;
-        // }
 
         const isExpanded = index === expandedCard;
 
         return (
             <React.Fragment key={item.BookingID}>
-                {/* {dateElement} */}
                 <div className='Card' onClick={() => handleCardClick(index)}>
                     <div style={{ flexDirection: isExpanded ? "column" : "row" }} className='Card-item'>
                         {isExpanded ? null : (
@@ -41,6 +38,7 @@ function BookingMobile(props) {
                         </div>
                         {isExpanded ? (
                             <>
+                                {/* Display additional details in a table */}
                                 <table style={{ position: "relative", top: "-12px" }}>
                                     <tbody>
                                         <tr>
@@ -65,6 +63,7 @@ function BookingMobile(props) {
                                         </tr>
                                     </tbody>
                                 </table>
+                                {/* Display user details and action buttons */}
                                 <div style={{ fontSize: "12px", padding: "0 9px", position: "relative", top: "-30px" }}>
                                     <div>User details:</div>
                                     <div style={{ display: "flex", flexDirection: "row", justifyContent: "space-between" }}>

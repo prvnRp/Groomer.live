@@ -1,3 +1,6 @@
+// React component for a carousel using the Flickity library
+// Displays a series of banner images and content with animations
+
 import React, { useRef, useEffect } from 'react';
 import Flickity from 'flickity';
 import '../App.css';
@@ -11,6 +14,8 @@ const FlickityCarousel = () => {
     const { isBlur } = useBlur();
     const carouselRef = useRef(null);
     let flickityInstance = null;
+
+    // Data for carousel banners
     const banners = [
         {
             content: <div className='f55'>
@@ -65,23 +70,28 @@ const FlickityCarousel = () => {
             color: '#DF7AF2'
         },
     ];
+
+    // Initialize Flickity carousel on component mount
     useEffect(() => {
         flickityInstance = new Flickity(carouselRef.current, {
             autoPlay: true,
         });
 
+        // Handle click event to start autoplay
         const handleClick = () => {
             flickityInstance.playPlayer();
         };
 
         document.addEventListener('click', handleClick);
 
+        // Cleanup: destroy Flickity instance and remove event listener
         return () => {
             flickityInstance.destroy();
             document.removeEventListener('click', handleClick);
         };
     }, []);
 
+    // Pause or play carousel autoplay based on blur context
     useEffect(() => {
         flickityInstance = new Flickity(carouselRef.current);
         if (isBlur) {
@@ -93,6 +103,8 @@ const FlickityCarousel = () => {
             flickityInstance.destroy();
         };
     }, [isBlur])
+
+
 
     return (
         <div className='mobileView11'>

@@ -6,12 +6,15 @@ import Header from './Header';
 import '../Styles/Login.css';
 // import Header from './Header';
 
+// The MenuItems component renders navigation links.
+
 function MenuItems() {
     return (
         <div>
             <Header />
             <div className='content'>
                 <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
+                    {/* Create navigation links for "Home," "Salons," "About us," and "Log out." */}
                     <NavLink to="/login"><span style={{ color: "#FFF", fontSize: "30px" }}>Home</span></NavLink>
                     <NavLink to="/salons"><span style={{ color: "#FFF", fontSize: "30px" }}>Salons</span></NavLink>
                     <NavLink to="/aboutUs"><span style={{ color: "#FFF", fontSize: "30px" }}>About us</span></NavLink>

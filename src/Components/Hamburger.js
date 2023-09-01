@@ -1,3 +1,5 @@
+// Hamburger component for displaying a menu icon or a close icon based on the window width and current route
+
 import '../App.css';
 import Grid from "@mui/material/Grid";
 import MenuIcon from '@mui/icons-material/Menu';
@@ -25,19 +27,25 @@ function Hamburger() {
             window.removeEventListener('resize', handleResize);
         };
     }, []);
+
+    // Check if the current route is '/menu' to determine the icon to display
     const changeIcon = window.location.pathname === "/menu";
 
+    // Handle the click event on the grid icon
     const handleGridIconClick = () => {
         if (window.location.pathname === "/menu") {
+            // If the current route is '/menu', navigate back (-1)
             navigate(-1);
         }
         else {
+            // Otherwise, navigate to '/menu'
             navigate("/menu");
         }
     };
 
 
     return (
+        // Apply blur effect to the hamburger icon when the isBlur state is true
         <div style={{ filter: isBlur ? 'blur(10px)' : 'none' }}>
             {isMobileView && <Grid
                 className='hamburger-background'

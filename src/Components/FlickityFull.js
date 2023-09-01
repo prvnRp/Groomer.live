@@ -1,3 +1,9 @@
+// React component for a full-page carousel using the Flickity library
+// Displays a series of banner images and content with animations
+// Supports autoplay, pause/play on blur, and navigation buttons
+
+// Reference : https://codepen.io/desandro/pen/RNQwaB
+
 import React, { useRef, useEffect, useState } from 'react';
 import Flickity from 'flickity';
 import '../App.css';
@@ -14,6 +20,8 @@ const FlickityCarousel = () => {
     const { isBlur } = useBlur();
     const carouselRef = useRef(null);
     let flickityInstance = null;
+
+    // Data for carousel banners
     const banners = [
         {
             content: <div className='f55'>
@@ -68,11 +76,14 @@ const FlickityCarousel = () => {
             color: '#DF7AF2'
         },
     ];
+
+    // Initialize Flickity carousel on component mount
     useEffect(() => {
         flickityInstance = new Flickity(carouselRef.current, {
             autoPlay: true,
         });
 
+        // Handle change event to update the current service index
         const handleChange = (index) => {
             setCurrentServiceIndex(index);
             // setCurrentService(services[index]);
@@ -80,12 +91,14 @@ const FlickityCarousel = () => {
 
         flickityInstance.on('change', handleChange);
 
+        // Handle click event to start autoplay
         const handleClick = () => {
             flickityInstance.playPlayer();
         };
 
         document.addEventListener('click', handleClick);
 
+        // Cleanup: destroy Flickity instance and remove event listeners
         return () => {
             flickityInstance.off('change', handleChange);
             flickityInstance.destroy();
@@ -93,6 +106,7 @@ const FlickityCarousel = () => {
         };
     }, []);
 
+    // Pause or play carousel autoplay based on blur context
     useEffect(() => {
         flickityInstance = new Flickity(carouselRef.current);
         if (isBlur) {
@@ -105,6 +119,7 @@ const FlickityCarousel = () => {
         };
     }, [isBlur])
 
+    // Handle previous slide button click
     const handlePrev = () => {
         flickityInstance = new Flickity(carouselRef.current);
         flickityInstance.pausePlayer(); // Pause the carousel
@@ -117,6 +132,7 @@ const FlickityCarousel = () => {
         };
     };
 
+    // Handle next slide button click
     const handleNext = () => {
         flickityInstance = new Flickity(carouselRef.current);
         flickityInstance.pausePlayer(); // Pause the carousel
@@ -132,9 +148,6 @@ const FlickityCarousel = () => {
     return (
         <div className='desktopView'>
             <div ref={carouselRef} className="carousel">
-                {/* <div className="carousel-cell"></div> */}
-                {/* <div className="carousel-cell"></div> */}
-                {/* <div className="carousel-cell"></div> */}
                 {banners.map((banner, index) => (
                     <div className='carousel-cell' style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
                         <div class="banner" style={{ background: banner.color, width: "90vw" }}>
@@ -145,6 +158,8 @@ const FlickityCarousel = () => {
                     </div>
                 ))}
             </div>
+
+            {/* Custom navigatiopn buttons */}
             {banners.length > 1 &&
                 <div className='carousalButton'>
                     {(currentServiceIndex !== 0) &&

@@ -1,11 +1,13 @@
 import React, { useState, useEffect, useRef } from 'react';
 
-const LocationDropdown = ({ label, values, options, onChange, searchFilter, width, fontSize }) => {
+const LocationDropdown = ({ values, options, onChange, searchFilter, fontSize }) => {
+    // State variables for managing the dropdown
     const [isOpen, setIsOpen] = useState(false);
     const [selectedOptions, setSelectedOptions] = useState(values || []);
     const [searchInput, setSearchInput] = useState('');
     const dropdownRef = useRef(null);
 
+    // Effect to handle clicks outside of the dropdown
     useEffect(() => {
         const handleOutsideClick = (event) => {
             if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
@@ -23,6 +25,7 @@ const LocationDropdown = ({ label, values, options, onChange, searchFilter, widt
         };
     }, [selectedOptions]);
 
+    // Function to toggle the selection of an option
     const toggleOption = (option) => {
         if (selectedOptions.includes(option)) {
             setSelectedOptions(selectedOptions.filter(item => item !== option));
@@ -31,6 +34,7 @@ const LocationDropdown = ({ label, values, options, onChange, searchFilter, widt
         }
     };
 
+    // Function to toggle the dropdown visibility
     const DropdownToggle = () => {
         setIsOpen(!isOpen);
         if (selectedOptions.length > 0) {
@@ -38,6 +42,7 @@ const LocationDropdown = ({ label, values, options, onChange, searchFilter, widt
         }
     }
 
+    // Function to handle input changes
     const handleInputChange = (event) => {
         setSearchInput(event.target.value);
         setIsOpen(true);
@@ -46,9 +51,10 @@ const LocationDropdown = ({ label, values, options, onChange, searchFilter, widt
         }
     };
 
+    // Filter options based on search input
     const filteredOptions = options.filter(option => option.toLowerCase().includes(searchInput.toLowerCase()));
-    // const sortedOptions = [...selectedOptions, ...filteredOptions.filter(option => !selectedOptions.includes(option))];
 
+    // Determine if a "Service Not Found" message should be displayed
     const showNotFound = searchFilter && isOpen && filteredOptions.length === 0;
 
     return (
@@ -60,9 +66,7 @@ const LocationDropdown = ({ label, values, options, onChange, searchFilter, widt
                         className="dropdown-selected"
                     >
                         {searchFilter && <input
-                            // style={{ opacity: isOpen ? '1' : '0' }}
                             style={{ backgroundColor: "#2C2C2C", color: "#FFF", position: "relative", top: "-2px" }}
-                            // disabled={!isOpen}
                             type="text"
                             value={searchInput}
                             onChange={handleInputChange}

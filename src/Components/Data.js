@@ -1,3 +1,5 @@
+// Demo data is taken from this file
+
 import image1 from '../images/Salons/image1.jpg'
 import image2 from '../images/Salons/image2.jpg'
 import image3 from '../images/Salons/image3.jpg'

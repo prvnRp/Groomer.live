@@ -8,19 +8,20 @@ const TimePicker = () => {
     const [selectedMinute, setSelectedMinute] = useState('00');
     const [selectedTimePeriod, setSelectedTimePeriod] = useState('AM');
     const [showCompleteDropdown, setShowCompleteDropdown] = useState(false);
-    // const [selectedHour, setSelectedHour] = useState(11);
-    // const [selectedMinute, setSelectedMinute] = useState(0);
-    // const [selectedPeriod, setSelectedPeriod] = useState('AM');
+
+    // Arrays for hours, minutes, and time periods
     const hours = Array.from({ length: 12 }, (_, i) => (i + 1).toString().padStart(2, '0'));
     const minutes = Array.from({ length: 60 }, (_, i) => i.toString().padStart(2, '0'));
 
     const timePeriods = ['AM', 'PM'];
 
+    // Function to toggle the time picker visibility
     const togglePicker = () => {
         setShowPicker(!showPicker);
         setShowCompleteDropdown(false);
     };
 
+    // Function to handle time selection
     const handleTimeSelect = () => {
         const time = `${selectedHour}:${selectedMinute} ${selectedTimePeriod}`;
         setSelectedTime(time);
@@ -28,6 +29,7 @@ const TimePicker = () => {
         setShowCompleteDropdown(false);
     };
 
+    // Function to handle complete time change
     const handleCompleteTimeChange = (timeOption) => {
         setSelectedHour(timeOption.hour.toString().padStart(2, '0'));
         setSelectedMinute(timeOption.minute.toString().padStart(2, '0'));
@@ -43,6 +45,7 @@ const TimePicker = () => {
         setShowPicker(false);
     };
 
+    // Generate an array of time options
     const generateTimeOptions = () => {
         const times = [];
         const startTime = 11; // Starting hour
@@ -67,8 +70,11 @@ const TimePicker = () => {
         minute,
         period,
     }));
+
+    // Ref for the dropdown container
     const dropdownRef = useRef(null);
 
+    // Effect to close dropdown on outside click
     useEffect(() => {
         const handleOutsideClick = (event) => {
             if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
@@ -98,6 +104,7 @@ const TimePicker = () => {
                     <AccessTimeIcon style={{ fontSize: "20px" }} />
                 </span>
             </div>
+            {/* Time picker dropdown */}
             {showPicker && (
                 <div className="time-picker-dropdown">
                     <div className='time-picker-partitions'>
@@ -135,11 +142,13 @@ const TimePicker = () => {
                             ))}
                         </div>
                     </div>
+                    {/* OK button to confirm the selected time */}
                     <button className="time-picker-ok-btn" onClick={handleTimeSelect}>
                         OK
                     </button>
                 </div>
             )}
+            {/* Complete time dropdown */}
             {showCompleteDropdown && (
                 <div
                     className='complete-time-dropdown'
@@ -166,8 +175,6 @@ const TimePicker = () => {
                     ))}
                 </div>
             )}
-            {/* <span style={{ marginLeft: "5px", position: "relative", top: "-1px" }} onClick={handleCompleteDropdownClick}><i className={showCompleteDropdown ? 'arrow down' : 'arrow up'}></i></span> */}
-
         </div>
     );
 };

@@ -24,6 +24,7 @@ root.render(
     <BlurProvider>
       <BrowserRouter>
         <Routes>
+          {/* Define routes for different pages */}
           <Route path="/" element={<HomePage />} />
           <Route path="login" element={<Login />} />
           <Route path="register" element={<Register />} />
@@ -36,6 +37,7 @@ root.render(
           <Route path="/reschedule/:id" element={<Reschedule />} />
           <Route path="/cancel/:id" element={<Cancel />} />
           <Route path="/review/:id" element={<Review />} />
+          {/* A catch-all route for handling unknown URLs */}
           <Route path="*" element={<h1>Not Found</h1>} />
         </Routes>
       </BrowserRouter>

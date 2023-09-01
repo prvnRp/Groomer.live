@@ -63,13 +63,9 @@ function SalonPage() {
             const booking = BookingDetails.find((booking) => booking.BookingID === BookingID);
 
             if (booking) {
-                // Split the services and combos from the string using comma as a separator
-                // const serviceNames = booking.Services?.split(',').map((serviceName) => serviceName.trim()) || [];
                 const serviceNames = booking.Services?.split(',').map((serviceName) => serviceName.trim());;
                 console.log("serviceNames:", serviceNames);
                 const ListSalon = salonData.services.filter((service) => serviceNames.includes(service.ServiceName));
-                // const Salon = cardData.find((Salon) => Salon.id === id);
-                // Set the initial cart items based on the services of the selected booking
                 const initialCartItems = [
                     ...ListSalon.map((service) => ({
                         ...service,
@@ -86,20 +82,6 @@ function SalonPage() {
             }
         }
     }, [BookingID, Reschedule]);
-
-
-    // const blockedDates = ['03/08/2023', '04/08/2023'];
-    // useEffect(() => {
-    //     const currentDate = new Date().toLocaleDateString('en-GB');
-    //     const nextDate = blockedDates.find((date) => new Date(date) > new Date(currentDate));
-
-    //     if (nextDate) {
-    //         setSalonBlockMessage(`Salon is open for bookings from 4th August 2023`);
-    //     } else if (blockedDates.includes(currentDate)) {
-    //         setSalonBlockMessage('The salon is closed today, Available from tomorrow');
-    //     }
-    // }, []);
-
 
 
     const [isPopupOpen, setIsPopupOpen] = useState(Reschedule);

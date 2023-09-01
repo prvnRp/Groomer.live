@@ -10,24 +10,25 @@ import banking from '../images/mobile-banking-cashback.svg';
 function Cancel() {
     const navigate = useNavigate();
     const location = useLocation();
-    const [Cancelpage, setCancelPage] = useState('confirmation');
-    var { id } = useParams();
+    const [Cancelpage, setCancelPage] = useState('confirmation'); // State to track the cancellation page stage
+    var { id } = useParams(); // Get the booking ID from the URL parameters
     console.log(id);
     id = parseInt(id, 10);
-    const BookingID = location.state?.BookingID;
+
+    // Function to handle the cancellation process
     const handleCancel = () => {
+        // Function to handle the cancellation process
         setCancelPage('cancelled');
         // Simulate the payment processing for 2 seconds
         setTimeout(() => {
+            // Once the processing is done, show money refund page
             setCancelPage('moneyRefund');
-            // Simulate booking confirmation for 1 second after payment completion
-            // setTimeout(() => {
-            //     setCheckoutStage('bookingConfirmed');
-            // }, 1000);
         }, 2000);
     };
     return (
+        // Render different content based on Cancelpage state
         <div className='cancel-image' style={{ width: "100vw", height: "100vh", display: "flex", justifyContent: "center", alignItems: "center", gap: "25px", textAlign: "center" }}>
+            {/* Display the confirmation page */}
             {Cancelpage === 'confirmation' && <><div>
                 <div style={{ position: "fixed", top: "0", left: "0" }}><Logo /></div>
                 <div style={{ position: "fixed", top: "2vw", right: "6vh" }}><Hamburger /></div>
@@ -38,6 +39,7 @@ function Cancel() {
                     <button onClick={handleCancel} className='button-reschedule'>YES</button>
                 </div>
                 <div style={{ fontSize: "10px" }}>15% of cancellation charges will be applicable on your booking . <b>Terms and conditions</b> </div></>}
+            {/* Display the cancellation completed page */}
             {Cancelpage === 'cancelled' && <>
                 <div>
                     <div style={{ position: "fixed", top: "0", left: "0" }}><Logo /></div>
@@ -47,9 +49,8 @@ function Cancel() {
                     <div><img src={banking} /></div>
                     <div className='reschedule'>Your booking has been cancelled</div>
                 </div>
-                {/* < className='reschedule-buttons'> */}
-                {/* <button onClick={() => { navigate(-1) }} className='button-cancel'>OK</button> */}
             </>}
+            {/* Display the money refund page */}
             {Cancelpage === 'moneyRefund' && <>
                 <div>
                     <div style={{ position: "fixed", top: "0", left: "0" }}><Logo /></div>
@@ -64,8 +65,6 @@ function Cancel() {
                         <div style={{ fontSize: "10px", marginTop: "20px" }}>The money will be credited to the same payment mode and same details . <b>Terms and conditions</b> </div>
                     </div>
                 </div>
-                {/* < className='reschedule-buttons'> */}
-                {/* <button onClick={() => { navigate(-1) }} className='button-cancel'>OK</button> */}
             </>}
         </div>
     );

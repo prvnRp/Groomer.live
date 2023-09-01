@@ -1,3 +1,6 @@
+// Footer component for displaying contact information and social media links
+// Also displays terms and conditions, privacy policy, and copyright information
+
 import '../App.css';
 import LinkedInIcon from '../images/linked-in.svg'
 import Twitter from '../images/twitter.svg'
@@ -10,6 +13,7 @@ import { useBlur } from '../context/blurContext';
 function Footer() {
     const { isBlur } = useBlur();
     return (
+        // Apply blur effect to the footer when the isBlur state is true
         <div style={{ filter: isBlur ? 'blur(10px)' : 'none' }} className="footer">
             <div className='footer1' style={{ display: "flex", flexDirection: "column", justifyContent: "center" }}>
                 <div className='footer-content' style={{ display: "flex", flexDirection: "row", justifyContent: "space-evenly" }}>

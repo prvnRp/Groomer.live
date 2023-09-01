@@ -17,18 +17,24 @@ function Review() {
     const [hover, setHover] = React.useState(-1);
     const [message, setMessage] = useState('');
     const maxCharacterCount = 500;
+
+    // Handle message change while respecting character limit
     const handleMessageChange = (event) => {
         const inputMessage = event.target.value;
         if (inputMessage.length <= maxCharacterCount) {
             setMessage(inputMessage);
         }
     };
+
+    // Auto-expand the textarea as the message grows
     useEffect(() => {
         // Resize the textarea when the component mounts and whenever the message changes
         const textarea = document.getElementById('messageTextarea');
         textarea.style.height = 'auto';
         textarea.style.height = `${textarea.scrollHeight}px`;
     }, [message]);
+
+    // Handle cancel and simulate payment processing
     const [Cancelpage, setCancelPage] = useState('confirmation');
     var { id } = useParams();
     console.log(id);
@@ -36,24 +42,19 @@ function Review() {
     const BookingID = location.state?.BookingID;
     const handleCancel = () => {
         setCancelPage('cancelled');
-        // Simulate the payment processing for 2 seconds
-        // setTimeout(() => {
-        //     setCancelPage('moneyRefund');
-        // }, 2000);
     };
+
+    // Labels for the star rating
     const labels = {
-        // 0.5: 'Useless',
         0: '',
         1: 'Terrible',
-        // 1.5: 'Poor',
         2: 'Bad',
-        // 2.5: 'Ok',
         3: 'Ok',
-        // 3.5: 'Good',
         4: 'Good',
-        // 4.5: 'Excellent',
         5: 'Excellent',
     };
+
+    // Get label text for the rating
     function getLabelText(value) {
         return `${value} Star${value !== 1 ? 's' : ''}, ${labels[value]}`;
     }
@@ -77,9 +78,6 @@ function Review() {
                             <Rating
                                 size="large"
                                 getLabelText={getLabelText}
-                                // value={salonData.ratings}
-                                // precision={0.25}
-                                // readOnly
                                 onChange={(event, newValue) => {
                                     setValue(newValue);
                                 }}

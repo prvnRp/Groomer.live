@@ -3,13 +3,13 @@ import Rating from '@mui/material/Rating';
 import StarBorderIcon from '@mui/icons-material/StarBorder';
 import placeMarker from '../images/place-marker.svg';
 import { useNavigate } from 'react-router-dom';
-import FlickitySalons from './FlickitySalons';
+// import FlickitySalons from './FlickitySalons';
 import Flickity from 'flickity';
 import '../App.css';
 import 'flickity/css/flickity.css'; // Import Flickity CSS
-import rectangle7 from '../images/rectangle-22.svg'
-import clockSearch from '../images/clock-search.svg'
-import socialMedia from '../images/social-media.svg'
+// import rectangle7 from '../images/rectangle-22.svg'
+// import clockSearch from '../images/clock-search.svg'
+// import socialMedia from '../images/social-media.svg'
 import { useBlur } from '../context/blurContext';
 
 function SquareCard({ id, content, imageSrc, distance, ratings, NoR, services, salonData }) {

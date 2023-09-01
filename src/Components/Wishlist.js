@@ -12,9 +12,12 @@ import { useState } from 'react';
 import { wishlistItems } from './Data';
 import { useBlur } from '../context/blurContext';
 
+// The Wishlist component displays a user's wishlist of salons.
 function Wishlist() {
     const { isBlur } = useBlur();
     const [wishlist, setWishlist] = useState(wishlistItems);
+
+    // Function to remove an item from the wishlist based on its ID
     const removeFromWishlist = (itemId) => {
         // Filter out the item with the given ID from the wishlist
         const updatedWishlist = wishlist.filter(item => item.ID !== itemId);
@@ -24,6 +27,7 @@ function Wishlist() {
     return (
         <>
             <Header />
+            {/* Render the main content of the Wishlist */}
             <div style={{ filter: isBlur ? 'blur(10px)' : 'none' }} className="flex-container">
 
                 <div className='container1'>
@@ -38,6 +42,7 @@ function Wishlist() {
                                     <th></th>
                                 </tr>
                             </thead>
+                            {/* Display the wishlist items using the WishlistTable component */}
                             <tbody>
                                 {
                                     <WishlistTable BookingDetails={wishlist} removeFromWishlist={removeFromWishlist} />
@@ -48,6 +53,7 @@ function Wishlist() {
                     <div className='flex2'>
                         <div className='MobileView'>
                             <div className="salonname"><b>Wishlist</b></div>
+                            {/* Display the mobile version of the wishlist using the WishlistMobile component */}
                             <WishlistMobile BookingDetails={wishlist} removeFromWishlist={removeFromWishlist} />
                         </div>
                     </div>

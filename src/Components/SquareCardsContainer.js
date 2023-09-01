@@ -1,3 +1,5 @@
+// This component manages the display of square cards representing salons on the "Salons" page.
+
 import React, { useEffect } from 'react';
 import SquareCard from './SquareCard';
 import { useState } from 'react';
@@ -18,11 +20,17 @@ function SquareCardsContainer() {
         const averageRating = totalRatings / reviewData.length;
         return Number(averageRating.toFixed(1)); // Round to 1 decimal place
     };
+
+    // Map and update salon data with average ratings
     const CardData = cardData.map((card) => ({
         ...card,
         ratings: calculateAverageRating(card.reviewData),
     }));
+
+    // Generate unique location options for filtering
     const locations = ['All', ...new Set(CardData.map((card) => card.Location))];
+
+    // State to manage filter options
     const [filterOptions, setFilterOptions] = useState({
         distance: 'All',
         priceFrom: 0,
@@ -34,11 +42,15 @@ function SquareCardsContainer() {
         combos: false,
     });
 
-    const [selectedLocation, setSelectedLocation] = useState('All');
-    const [showFilters, setShowFilters] = useState(false);
+    const [selectedLocation, setSelectedLocation] = useState('All'); // State to manage the selected location filter
+    const [showFilters, setShowFilters] = useState(false); // State to control filter popup visibility
+
+    // Function to toggle the filter popup
     const toggleFilterPopup = () => {
         setShowFilters(true);
     };
+
+    // Function to apply filter changes
     const handleFilterApply = () => {
         handleApplyFilters();
         setShowFilters(false);
@@ -163,16 +175,11 @@ function SquareCardsContainer() {
     const handlePageChange = (pageNumber) => {
         setCurrentPage(pageNumber);
     };
-    // const handlers = useSwipeable({
-    //     onSwipedLeft: handleNextPage,
-    //     onSwipedRight: handlePrevPage,
-    //     preventDefaultTouchmoveEvent: true, // Prevent vertical scrolling during swipe
-    // });
+
     useEffect(() => {
         setIsSmallScreen(window.innerWidth < 700);
     }, [window.innerWidth])
 
-    // const isSmallScreen = window.innerWidth < 700;
     return (
         <>
             <div className='upnav' style={{ display: "flex", flexDirection: "row", justifyContent: "space-between", alignItems: "center", marginTop: "10px", filter: isBlur ? 'blur(10px)' : 'none' }}>
@@ -202,6 +209,8 @@ function SquareCardsContainer() {
                     />
                 </div>
             </div>
+
+            {/* Display the cards */}
             <div style={{ filter: isBlur ? 'blur(10px)' : 'none' }} className="square-cards-container">
 
                 <div className="cards-wrapper">
@@ -214,6 +223,8 @@ function SquareCardsContainer() {
                         <div key={`empty_${index}`} className="empty-space" />
                     ))}
                 </div>
+
+                {/* Pagination */}
                 <div className="pagination">
                     <button className='navbutton' onClick={handlePrevPage} disabled={currentPage === 1}>
                         &lt;

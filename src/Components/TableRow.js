@@ -6,9 +6,11 @@ import { useNavigate } from 'react-router-dom';
 function TableRow(props) {
     const navigate = useNavigate();
 
+    // Define a mapping of booking statuses to their corresponding color codes
     var Status = { "Booked": "yellow", "Completed": "green", "Cancelled": "red" }
-    const [expandedRow, setExpandedRow] = useState(null);
+    const [expandedRow, setExpandedRow] = useState(null); // State to manage the expanded row
 
+    // Function to handle row click and toggle the expanded row
     const handleRowClick = (bookingID) => {
         if (expandedRow === bookingID) {
             setExpandedRow(null);
@@ -16,11 +18,14 @@ function TableRow(props) {
             setExpandedRow(bookingID);
         }
     };
+
+    // Generate JSX elements for each booking in the list
     const bookings = props.BookingDetails.map(item => {
-        const isExpanded = expandedRow === item.BookingID;
+        const isExpanded = expandedRow === item.BookingID; // Check if the current booking is expanded
 
         return (
             <React.Fragment key={item.BookingID}>
+                {/* Display booking details if expanded */}
                 {isExpanded && <div style={{ borderTopLeftRadius: "25px", borderTopRightRadius: "25px" }} className="grid-item item1"><u>Booking Details:</u><i onClick={() => handleRowClick(item.BookingID)} style={{ float: "right", position: "inherit" }} className={isExpanded ? 'arrow1 arrow-up' : 'arrow1 arrow-down'} /></div>}
                 <div style={{ marginBottom: isExpanded ? "0px" : "10px", borderTopLeftRadius: isExpanded ? "0px" : "25px", borderBottomLeftRadius: isExpanded ? "0px" : "25px" }} className="grid-item"><span style={{ paddingLeft: "20px" }}>{item.BookingID}</span></div>
                 <div style={{ marginBottom: isExpanded ? "0px" : "10px" }} className="grid-item">{item.SalonName}</div>
@@ -32,6 +37,7 @@ function TableRow(props) {
                 {
                     isExpanded &&
                     <>
+                        {/* Display additional details for expanded row */}
                         <span class="grid-item">
                             <span style={{ paddingLeft: "20px" }}>Name
                             </span>

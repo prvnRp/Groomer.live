@@ -1,6 +1,10 @@
 import '../App.css';
 import { NavLink } from 'react-router-dom';
 
+
+// The MenuBar component provides a dropdown menu for navigation.
+
+
 function MenuBar() {
     return (
         <div className="dropdownMenu">

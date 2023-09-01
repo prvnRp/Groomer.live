@@ -30,17 +30,11 @@ function Register({ setStatus }) {
     };
 
     return (
-        // <section className="container">
-        //     <div className="bg-image"><Logo /></div>
-        //     <div className="contentt">
-        //         <TopNav />
         <>
             {!isRegistered && <form className='inforegister' onSubmit={handleSubmit}>
                 <div>
                     <div className='login'><b>Register</b></div>
                     <p>{isMobileNumberRegistered ? 'This account already exists. Please ' : 'Already have an account?'} <span className='register' onClick={() => setStatus('login')}>Login</span></p>
-                    {/* <iv style={{ color: "red" }}>This mobile number already exists. Please log in</iv> */}
-                    {/* <p>{isMobileNumberRegistered ? 'This mobile number already exists. Please ' : 'Already have an account?'} <NavLink to='/login'><span className='register'>Login</span></NavLink></p> */}
                 </div>
                 <div>
                     <input type="text" placeholder="Username" className='Mobile Number' id="mobileNumber" />
@@ -60,15 +54,12 @@ function Register({ setStatus }) {
                         I accept the terms and conditions, including the Privacy
                     </label>
                 </div>
-                {/* <div><input type="radio" /></div> */}
                 <div>
                     <button type="submit" className='LoginButton'>Register</button>
                 </div>
             </form>}
             {isRegistered && <Otp />}
         </>
-        //     </div>
-        // </section>
     );
 }
 

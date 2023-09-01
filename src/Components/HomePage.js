@@ -24,6 +24,7 @@ import FlickityFull from './FlickityFull';
 import { useBlur } from '../context/blurContext';
 import EastIcon from '@mui/icons-material/East';
 
+// Description content
 const Description = (<div>
     Groomer is a human centric beauty company. <br /><br />
     <b>Origin : </b>
@@ -48,14 +49,15 @@ const Description = (<div>
 </div>);
 
 const HomePage = () => {
-    const contentRef = useRef(null);
-    const [showScroll, setShowScroll] = useState(true);
-    const [isFavourite, setIsFavourite] = useState(false);
-    const prevScrollY = useRef(0);
-    const [wishlistMessage, setWishlistMessage] = useState('');
-    const [isDescriptionExpanded, setIsDescriptionExpanded] = useState(false);
+    const contentRef = useRef(null); // Ref for content section
+    const [showScroll, setShowScroll] = useState(true); // State for showing/hiding scroll symbol
+    const [isFavourite, setIsFavourite] = useState(false); // State for favorite/wishlist icon
+    const prevScrollY = useRef(0); // Ref for previous scroll position
+    const [wishlistMessage, setWishlistMessage] = useState(''); // State for wishlist message
+    const [isDescriptionExpanded, setIsDescriptionExpanded] = useState(false); // State for expanding/collapsing description
     const scrollPositionRef = useRef(0); // Store scroll position
 
+    // Toggle description expansion
     const handleToggleDescription = () => {
         if (!isDescriptionExpanded) {
             scrollPositionRef.current = window.scrollY;
@@ -68,8 +70,10 @@ const HomePage = () => {
         }
     };
 
+    // Length to truncate description
     const truncatedDescriptionLength = 5;
 
+    // Full description with show/hide button
     const fullDescription = (
         <div>
             {Description.props.children} {/* Assuming your content is direct children of Description */}
@@ -79,6 +83,7 @@ const HomePage = () => {
         </div>
     );
 
+    // Truncated description with show/hide button
     const truncatedDescription = (
         <div>
             {Description.props.children.slice(0, truncatedDescriptionLength)}
@@ -90,61 +95,7 @@ const HomePage = () => {
         </div>
     );
 
-    const banners = [
-        {
-            content: <div className='f55'>
-                <div>
-                    <b>Great salon</b> <span className='f30'>services</span>
-                </div>
-                <div className='f30'>that won't</div>
-                <div>
-                    <b>empty your pockets</b>
-                </div>
-            </div>,
-            image: rectangle7,
-            color: '#FF6548'
-        },
-        // {
-        //     content: <div className='f55'>
-        //         <div>
-        //             We build <b>Groomer</b> <span className='f30'>for</span>
-        //         </div>
-        //         <div><b>Adepts</b> & <b>Ernsts</b>, <span className='f30'>not for</span></div>
-        //         <div>
-        //             <span className='f30'>lazy people</span>
-        //         </div>
-        //     </div>,
-        //     image: Brain,
-        //     color: '#FF6548'
-        // },
-        {
-            content: <div className='f55'>
-                <div>
-                    <b>Time</b> <span className='f30'>is journey</span>
-                </div>
-                <div className='f30'>Let's not</div>
-                <div>
-                    <b>waste either!</b>
-                </div>
-            </div>,
-            image: clockSearch,
-            color: '#B4A9F7'
-        },
-        {
-            content: <div className='f55'>
-                <div>
-                    The future of
-                </div>
-                <div className='f30'>hair is</div>
-                <div>
-                    <b>DIGITAL!</b>
-                </div>
-            </div>,
-            image: socialMedia,
-            color: '#DF7AF2'
-        },
-    ];
-
+    // Handle scroll event to show/hide scroll symbol
     const handleScroll = () => {
         const currentScrollY = window.scrollY;
         setShowScroll(currentScrollY > prevScrollY.current ? false : showScroll);
@@ -160,6 +111,7 @@ const HomePage = () => {
         };
     }, []);
 
+    // Toggle wishlist icon and display message
     const handleToggleWishlist = () => {
         setIsFavourite((prevState) => !prevState);
         setWishlistMessage(isFavourite ? "Removed from wishlist" : "Added to wishlist");
@@ -182,65 +134,17 @@ const HomePage = () => {
         <>
             <Header />
             <div style={{ filter: isBlur ? 'blur(10px)' : 'none' }}>
-                <FlickityCarousel />
-                <FlickityFull />
-                {/* <div id="carouselExampleAutoplaying" className="carousel slide desktopView" data-bs-ride="carousel">
-                    <div className="carousel-indicators">
-                        <button
-                            style={{ backgroundColor: banners[0].color }}
-                            type="button"
-                            data-bs-target="#carouselExampleAutoplaying"
-                            data-bs-slide-to="0"
-                            className="active"
-                            aria-current="true"
-                            aria-label="Slide 1"
-                        ></button>
-                        <button
-                            style={{ backgroundColor: banners[1].color }}
-                            type="button"
-                            data-bs-target="#carouselExampleAutoplaying"
-                            data-bs-slide-to="1"
-                            aria-label="Slide 2"
-                        ></button>
-                        <button
-                            style={{ backgroundColor: banners[2].color }}
-                            type="button"
-                            data-bs-target="#carouselExampleAutoplaying"
-                            data-bs-slide-to="2"
-                            aria-label="Slide 3"
-                        ></button>
-                    </div>
-                    <div class="carousel-inner">
-                        {banners.map((banner, index) => (
-                            <div class={index === 0 ? "carousel-item active" : "carousel-item"} data-bs-interval="1000">
-                                <div style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
-                                    <div class="banner" style={{ background: banner.color }}>
-                                        <img src={banner.image} />
-                                        <div className='content-banner'>{banner.content}</div>
-                                        <div><button className='book-now'>Book Now</button></div>
-                                    </div>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-                    <div className='carousel-control'>
-                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying"
-                            data-bs-slide="prev">
-                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Previous</span>
-                        </button>
-                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying"
-                            data-bs-slide="next">
-                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Next</span>
-                        </button>
-                    </div>
-                </div> */}
+                {/* Render FlickityCarousel and FlickityFull components */}
+                <FlickityCarousel /> {/* For mobile view */}
+                <FlickityFull /> {/* For desktop view */}
+
                 {showScroll && (
                     <div className='scroll-symbol'>
                         <img src={vector} />
                     </div>
                 )}
+
+                {/* Description */}
                 <div className='header-info'>
                     <div>
                         <div className='f35'>This is</div>
@@ -250,6 +154,8 @@ const HomePage = () => {
                         {isDescriptionExpanded ? fullDescription : truncatedDescription}
                     </div>
                 </div>
+
+                {/* Cards */}
                 <div className="content12" ref={contentRef}>
                     <div className='one-card'>
                         <img src={rectangle1} />
@@ -286,6 +192,9 @@ const HomePage = () => {
                         </div>
                     </div>
                 </div>
+
+
+                {/* Best Salons */}
                 <div className='best-salons'>
                     <div style={{ paddingBottom: "0px", fontSize: "20px" }} className='text-salon'>The</div>
                     <div style={{ paddingTop: "0px" }} className='text-salon'>Best groomer in <b>city</b></div>
@@ -312,19 +221,6 @@ const HomePage = () => {
                                 <div className='f20'>the salon with two best in class groomers in the same salon gives you the best style and look with master level talent.</div>
                             </div>
                         </div>
-                        {/* <div className='best-salon-card'>
-                        <div style={{ flex: 1, marginRight: "20px", position: "relative" }}>
-                            <img src={rectangle4} style={{ width: "100%" }} />
-                            <div style={{ position: "absolute", top: "0px", right: "0px", cursor: "pointer", color: "#000", background: "#FFF", padding: "0px 3px", borderRadius: "100%" }}>
-                                {isFavourite ? <FavoriteIcon onClick={handleToggleWishlist} style={{ fontSize: "35px", position: "relative", top: "2px" }} /> : <FavoriteBorderIcon onClick={handleToggleWishlist} style={{ fontSize: "35px", position: "relative", top: "2px" }} />}
-                            </div>
-                        </div>
-                        <div style={{ flex: 1 }}>
-                            <div className='f40'>#1</div>
-                            <div className='f40 salon-groomer' style={{ marginBottom: "20px" }}>Groomer salon</div>
-                            <div className='f20'>the saloon with two best in class groomers in the same salon gives you b est style and look with master level talent.</div>
-                        </div>
-                    </div> */}
                         <div className='best-salon-card'>
                             <div style={{ flex: 1, marginRight: "20px", position: "relative", height: "100%" }}>
                                 <img
@@ -347,19 +243,6 @@ const HomePage = () => {
                                 <div className='f20'>the salon with two best in class groomers in the same salon gives you the best style and look with master level talent.</div>
                             </div>
                         </div>
-                        {/* <div className='best-salon-card'>
-                        <div style={{ flex: 1, marginRight: "20px", position: "relative" }}>
-                            <img src={rectangle4} style={{ width: "100%" }} />
-                            <div style={{ position: "absolute", top: "0px", right: "0px", cursor: "pointer", color: "#000", background: "#FFF", borderRadius: "50%" }}>
-                                {isFavourite ? <FavoriteIcon onClick={handleToggleWishlist} className='heart-wishlist' /> : <FavoriteBorderIcon onClick={handleToggleWishlist} className='heart-wishlist' />}
-                            </div>
-                        </div>
-                        <div style={{ flex: 1 }}>
-                            <div className='f40'>#1</div>
-                            <div className='f40 salon-groomer' style={{ marginBottom: "20px" }}>Groomer salon</div>
-                            <div className='f20'>the saloon with two best in class groomers in the same salon gives you b est style and look with master level talent.</div>
-                        </div>
-                    </div> */}
                         <div className='best-salon-card'>
                             <div style={{ flex: 1, marginRight: "20px", position: "relative", height: "100%" }}>
                                 <img
@@ -407,6 +290,8 @@ const HomePage = () => {
                     </div>
                     <div className='explore-button' style={{ textAlign: "center" }}><button>Explore more</button></div>
                 </div>
+
+                {/* Home services */}
                 <div className='home-services'>
                     <div className='home-service-img' style={{ flex: '1' }}>
                         <img src={isSmallScreen ? rectangle8 : rectangle6} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />

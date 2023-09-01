@@ -1,3 +1,5 @@
+// Allows users to filter and sort card data
+
 import React from 'react';
 import '../App.css';
 import CustomDropdown from './CustomDropdown';
@@ -12,6 +14,7 @@ import { cardData } from './Data';
 import Slider from '@mui/material/Slider';
 
 function FilterSortPopup({ close, filterOptions, setFilterOptions }) {
+    // Get unique service names from card data
     const uniqueServiceNames = Array.from(
         new Set(
             cardData
@@ -20,6 +23,8 @@ function FilterSortPopup({ close, filterOptions, setFilterOptions }) {
                 .map(service => service.ServiceName)
         )
     );
+
+    // Handle change in filter options
     const handleFilterChange = (e) => {
         const { name, value } = e.target;
         setFilterOptions((prevOptions) => ({
@@ -28,6 +33,7 @@ function FilterSortPopup({ close, filterOptions, setFilterOptions }) {
         }));
     };
 
+    // Handle reset filters button
     const handleResetFilters = () => {
         // Reset filter options
         setFilterOptions({
@@ -43,40 +49,15 @@ function FilterSortPopup({ close, filterOptions, setFilterOptions }) {
             selectedDate: '',
         });
     };
+
     const handleDateChange = (selectedDate) => {
         setFilterOptions((prevOptions) => ({
             ...prevOptions,
             selectedDate: selectedDate, // Modify 'selectedDate' with the appropriate property name
         }));
     };
-    const handleSortByDistance = () => {
-        setFilterOptions((prevOptions) => ({
-            ...prevOptions,
-            sort: prevOptions.sort === 'distance' ? 'None' : 'distance',
-        }));
-    };
 
-    const handleSortByRatings = () => {
-        setFilterOptions((prevOptions) => ({
-            ...prevOptions,
-            sort: prevOptions.sort === 'ratings' ? 'None' : 'ratings',
-        }));
-    };
-
-    const handleSortByPopularity = () => {
-        setFilterOptions((prevOptions) => ({
-            ...prevOptions,
-            sort: prevOptions.sort === 'popularity' ? 'None' : 'popularity',
-        }));
-    };
-
-    const handleSortByPrice = () => {
-        setFilterOptions((prevOptions) => ({
-            ...prevOptions,
-            sort: prevOptions.sort === 'price' ? 'None' : 'price',
-        }));
-    };
-
+    // Handle change in sort option
     const handleSortChange = (e) => {
         const { value } = e.target;
         const newSort = filterOptions.sort === value ? 'None' : value;
@@ -102,6 +83,7 @@ function FilterSortPopup({ close, filterOptions, setFilterOptions }) {
         }));
     };
 
+    // Handle change in sort order
     const handleSortOrderChange = () => {
         // If the current sort order is 'asc', set it to 'desc', and vice versa
         const newSortOrder = filterOptions.sortOrder === 'asc' ? 'desc' : 'asc';
@@ -111,6 +93,7 @@ function FilterSortPopup({ close, filterOptions, setFilterOptions }) {
         }));
     };
 
+    // Handle change in price slider
     const handlePriceSliderChange = (priceFrom, priceTo) => {
         setFilterOptions((prevOptions) => ({
             ...prevOptions,
@@ -118,12 +101,16 @@ function FilterSortPopup({ close, filterOptions, setFilterOptions }) {
             priceTo: priceTo,
         }));
     };
+
+    // Handle change in distance filter
     const handleDistanceFilterChange = (value) => {
         setFilterOptions((prevOptions) => ({
             ...prevOptions,
             distance: value,
         }));
     };
+
+    // Handle change in service filter
     const handleFilterServiceChange = (value) => {
         setFilterOptions((prevOptions) => ({
             ...prevOptions,
@@ -131,27 +118,9 @@ function FilterSortPopup({ close, filterOptions, setFilterOptions }) {
         }));
     };
 
-    const handleComboServicesChange = () => {
-        setFilterOptions((prevOptions) => ({
-            ...prevOptions,
-            combos: !(prevOptions.combos), // Update the combos option in filterOptions
-        }));
-    };
-    const hours = Array.from({ length: 12 }, (_, i) => i + 1);
-    const minutes = Array.from({ length: 60 }, (_, i) => i);
 
     const distances = ['All', '0-1 KM', '1-2 KM', '2-3 KM'];
-    const getTimeHour = () => {
-        return filterOptions.time ? filterOptions.time.split(":")[0] : "";
-    };
 
-    const getTimeMinute = () => {
-        return filterOptions.time ? filterOptions.time.split(":")[1].split(" ")[0] : "";
-    };
-
-    const getTimePeriod = () => {
-        return filterOptions.time ? filterOptions.time.split(":")[1].split(" ")[1] : "AM";
-    };
     return (
         <div className='filter-sort-popup'>
             <div className="filter-popup-content">
@@ -169,7 +138,6 @@ function FilterSortPopup({ close, filterOptions, setFilterOptions }) {
                         <TimePicker />
                     </div>
                     <div>
-                        {/* <label htmlFor="distance">Distance:</label> */}
                         <CustomDropdown
                             label="Distance"
                             Label={true}

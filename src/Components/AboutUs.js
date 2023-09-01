@@ -28,10 +28,11 @@ function AboutUs() {
             window.removeEventListener('resize', handleResize);
         };
     }, []);
+
     return (
         <section style={{ background: "#000" }} className="container-about">
             <div className="top-image-container">
-                <img style={{ filter: isBlur ? 'blur(10px)' : 'none' }} src={isMobileView ? mobileImage : image} alt="Top Image" />
+                <img style={{ filter: isBlur ? 'blur(10px)' : 'none' }} src={isMobileView ? mobileImage : image} alt="Top" />
                 <div style={{ filter: isBlur ? 'blur(10px)' : 'none' }} className="centered-text">About&nbsp;Us</div>
                 <div className='top-logo'>
                     <Logo />
@@ -46,7 +47,7 @@ function AboutUs() {
                     <div style={{ fontSize: "20px" }} className='para'>
                         Praveen and Sumath are the co-founders of the Salon Startup. Praveen is a veteran hairdresser with over 20 years of experience in the beauty industry. He has a passion for entrepreneurship and loves working with clients to create the perfect look. Sumath is an experienced businesswoman who has a knack for marketing and connecting with potential customers
                     </div>
-                    <img src={Image} alt="about" className="image-about" />
+                    <img src={Image} alt="about" className="about" />
                     {/* <div style={{ textAlign: "center", backgroundColor: "#1E1E1E", borderRadius: "100px" }}>
                         <div className='contact-form' style={{ textAlign: "left", padding: formSubmitted ? "5vw 12vw" : "" }}>
                             {!formSubmitted && <div>

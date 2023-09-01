@@ -9,11 +9,12 @@ import mobileImage from '../images/rectangle-46.svg'
 import { useBlur } from '../context/blurContext';
 
 function TopImageWithText() {
-    const { isBlur } = useBlur();
+    const { isBlur } = useBlur(); // Access the blur context to determine if blur effect should be applied
 
-    const [isMobileView, setIsMobileView] = useState(false);
+    const [isMobileView, setIsMobileView] = useState(false); // State variable to track if the view is in mobile mode
 
     useEffect(() => {
+        // Function to handle window resize events
         const handleResize = () => {
             setIsMobileView(window.innerWidth <= 768);
         };
@@ -29,15 +30,13 @@ function TopImageWithText() {
     }, []);
     return (
         <div className="top-image-container">
-            {/* <div>
-                <Header />
-            </div> */}
+            {/* Conditional rendering of the background image based on mobile view */}
             <img style={{ filter: isBlur ? 'blur(10px)' : 'none' }} src={isMobileView ? mobileImage : image} alt="Top Image" />
             <div style={{ filter: isBlur ? 'blur(10px)' : 'none' }} className="centered-text">Salons</div>
             <div className='top-logo'>
                 <Logo />
             </div>
-            <div className='top-nav'>
+            <div className='top-nav'> {/* Displaying the top navigation */}
                 <TopNav />
             </div>
         </div>
