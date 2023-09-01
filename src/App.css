@@ -13,6 +13,12 @@ body {
   /* counter-increment: gallery-cell; */
 }
 
+.checkbox-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
 .SalonRatings {
   font-size: 40px;
   margin-right: 5px;

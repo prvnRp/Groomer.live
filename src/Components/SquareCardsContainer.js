@@ -4,7 +4,7 @@ import { useState } from 'react';
 import FilterSortPopup from './FilterSortPopup';
 import LocationDropdown from './LocationDropdown';
 import { cardData } from './Data';
-import { useSwipeable } from 'react-swipeable'; // Import the react-swipeable library
+// import { useSwipeable } from 'react-swipeable';
 import { useBlur } from '../context/blurContext';
 
 function SquareCardsContainer() {
@@ -163,13 +163,13 @@ function SquareCardsContainer() {
     const handlePageChange = (pageNumber) => {
         setCurrentPage(pageNumber);
     };
-    const handlers = useSwipeable({
-        onSwipedLeft: handleNextPage,
-        onSwipedRight: handlePrevPage,
-        preventDefaultTouchmoveEvent: true, // Prevent vertical scrolling during swipe
-    });
+    // const handlers = useSwipeable({
+    //     onSwipedLeft: handleNextPage,
+    //     onSwipedRight: handlePrevPage,
+    //     preventDefaultTouchmoveEvent: true, // Prevent vertical scrolling during swipe
+    // });
     useEffect(() => {
-        setIsSmallScreen(window.innerWidth < 700)
+        setIsSmallScreen(window.innerWidth < 700);
     }, [window.innerWidth])
 
     // const isSmallScreen = window.innerWidth < 700;
@@ -202,7 +202,7 @@ function SquareCardsContainer() {
                     />
                 </div>
             </div>
-            <div style={{ filter: isBlur ? 'blur(10px)' : 'none' }} className="square-cards-container" {...handlers}>
+            <div style={{ filter: isBlur ? 'blur(10px)' : 'none' }} className="square-cards-container">
 
                 <div className="cards-wrapper">
                     {currentCards.map((card) => (
