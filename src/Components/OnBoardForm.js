@@ -20,12 +20,14 @@ import { useLocation } from 'react-router-dom';
 function OnBoardForm(props) {
   const [isReadOnly, setIsReadOnly] = useState(props.isReadOnly);
   const location = useLocation();
-  // const { Salondata } = location;
   const DataSalon = location.state?.Salondata;
   console.log(location.state?.servicesRev);
   const SalonLocation = DataSalon?.["salon_location"]?.['coordinates'].join(', ');
   console.log(location.state?.Salondata);
+
+  // State to manage form inputs
   const [inputs, setInputs] = useState({
+    // Initialize input fields with data from DataSalon or default values
     username: DataSalon?.["salon_username"] || "name",
     password: DataSalon?.["salon_password"] || "***",
     code: DataSalon?.["salon_code"] || "HYD001",
@@ -53,6 +55,7 @@ function OnBoardForm(props) {
 
   console.log(inputs);
 
+  // Other state variables
   const [serviceCount, setServiceCount] = useState(DataSalon?.["salon_services"]?.length || 3);
   const [services, setServices] = useState(location.state?.servicesRev || []);
   const [comboCount, setComboCount] = useState(1);
@@ -87,13 +90,14 @@ function OnBoardForm(props) {
     }
   }, [comboCount]);
 
-
+  // Handle changes in form input fields
   const handleChange = (event) => {
     const name = event.target.name;
     const value = event.target.value;
     setInputs(values => ({ ...values, [name]: value }))
   }
 
+  // Handle form submission
   const handleSubmit = async (event) => {
     event.preventDefault();
 
@@ -104,37 +108,18 @@ function OnBoardForm(props) {
         service.price !== '' &&
         service.duration !== ''
     );
-    // setInputs(current => ({ ...current, 'services': allFieldsFilled }));
-    // console.log(allFieldsFilled);
-    // console.log('Combo Services:');
-    // combos.forEach((combo, index) => {
-    //   const nonEmptyServices = combo.services.filter((service) => service !== '');
-    //   if (nonEmptyServices.length > 0) {
-    //     const comboWithNonEmptyServices = { ...combo, services: nonEmptyServices };
-    //     // console.log(`Combo ${index + 1}:`, comboWithNonEmptyServices);
-    //   }
-    // });
-    // console.log('Selected Features:', selectedFeatures);
-    // console.log('Selected Languages:', selectedLanguages);
-    // console.log(inputs);
     setInputs((prevInputs) => {
       return { ...prevInputs, 'features': JSON.stringify(prevInputs.features), 'languages': JSON.stringify(prevInputs.languages) }
     })
-    // setInputs((prevInputs) => {
-    //   return { ...prevInputs, 'features': JSON.stringify(prevInputs.features), 'languages': JSON.stringify(prevInputs.languages) }
-    // })
     console.log(inputs);
-    if (DataSalon) {
-      console.log("heyyy");
-    }
+
+    // Prepare form data for submission
     var formdata = new FormData();
     for (let arr in inputs) {
-      // if (arr !== 'languages' || arr !== 'features')
       formdata.append(arr, inputs[arr]);
     }
     formdata.append('service', JSON.stringify(allFieldsFilled));
     formdata.append('combo_service', JSON.stringify(combos));
-    // formdata.append('photos', uploadedPhotos);
     uploadedPhotos.forEach((image, index) => {
       formdata.append(`photos`, image);
     });
@@ -168,108 +153,10 @@ function OnBoardForm(props) {
       let data = await response.text();
       console.log(data);
     }
-    // for (arr of inputs) {
-    //   formdata.append(arr[0], arr[1]);
-    // }
-    // for (let i = 0; i < inputs.length; i++) {
-    //   console.log(inputs);
-    //   formdata.append(inputs[i][0], inputs[i][1]);
-    // }
-    // console.log(formdata.entries());
-    // formdata.append("service", allFieldsFilled)
-    // if (allFieldsFilled.length === 1) {
-    //   for (let arr in allFieldsFilled) {
-    //     formdata.append("service", [JSON.stringify(allFieldsFilled[arr])]);
-    //   }
-    // }
-    // else {
-    //   for (let arr in allFieldsFilled) {
-    //     formdata.append("service", JSON.stringify(allFieldsFilled[arr]));
-    //   }
-    // }
 
-
-    // formdata.append("services", allFieldsFilled);
-    // formdata.append("combo_service", combos)
     console.log(combos.length);
-    // if (combos.length === 1) {
-    //   console.log("kk");
-    //   for (let arr in combos) {
-    //     formdata.append("combo_service", JSON.stringify([combos[arr]]));
-    //   }
-    // }
-    // else {
-    //   for (let arr in combos) {
-    //     formdata.append("combo_service", JSON.stringify(combos[arr]));
-    //   }
-    // }
-    // services.forEach((dict, index) => {
-    //   Object.keys(dict).forEach((key) => {
-    //     formdata.append(`service[${index}][${key}]`, dict[key]);
-    //   });
-    // });
-    // formdata.append('photos', uploadedPhotos);
-    console.log(formdata, " hiii ")
-    // formdata.append("combos", combos);
-    // formdata.append("code", "HYD001");
-    // formdata.append("name", "Modern hair and spa Salon ");
-    // console.log(formdata);
-    // for (var arr of formdata.entries()) {
-    //   console.log(arr[0] + ', ' + arr[1]);
-    // }
-    // let myHeaders = {
-    //   "Accept": "*/*",
-    //   "Content-Type": "application/json",
-    //   "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InNhaGl0aHkiLCJlbWFpbCI6InR1bW1hc2FoaXRoeUBnbWFpbC5jb20iLCJpYXQiOjE2OTMyOTAwMDUsImV4cCI6MTY5Mzg5NDgwNX0.N8TibEMKHDAvix7DGWofyzAVARfd5ucGqhfkeCoSl0s"
-    // }
-    // var requestOptions = {
-    //   method: 'POST',
-    //   mode: 'no-cors',
-    //   headers: myHeaders,
-    //   body: formdata,
-    //   redirect: 'follow'
-    // };
-
-    // fetch("http://127.0.0.1:8000/admin/add-new-salon", requestOptions)
-    //   .then(response => console.log(response.text()))
-    //   .then(result => console.log(result))
-    //   .catch(error => console.log('error', error));
-    // let bodyContent = { ...inputs }
-    // bodyContent['service'] = JSON.stringify(allFieldsFilled);
-    // bodyContent['combo_service'] = JSON.stringify(combos);
-    // console.log(bodyContent, ' body content ');
-    // bodyContent.append("username", "aman89");
-    // bodyContent.append("password", "aman123");
-    // bodyContent.append("code", "HYD002");
-    // bodyContent.append("name", "Modern hair and spa Salon");
-    // bodyContent.append("address", "Plot No 897, Kailash Vihar, Alkapuri, Gwalior - 474011 (Near Cafe Coffee Day)");
-    // bodyContent.append("location", "26.207727, 78.190941");
-    // bodyContent.append("franchise", "false");
-    // bodyContent.append("slots_number", "4");
-    // bodyContent.append("service", "{'name': 'hair cut', 'discount': 50, 'price': 200,'duration':'1' }");
-    // // bodyContent.append("service", "{"name": "shaving ", "discount": 30, "price": 100, "duration":"2"}");
-    // bodyContent.append("combo_service", "{'combo_name': 'Super saving', 'services': ['hair cutting', 'shaving'], 'combo_price': 170,'duration':'2'}");
-    // // bodyContent.append("combo_service", "{"combo_name": "Face bright",  "services": ["shaving", "facial"], "combo_price": 200, "duration":"4"}");
-    // bodyContent.append("opening_time", "10:00 AM");
-    // bodyContent.append("closing_time", "6:00 PM");
-    // bodyContent.append("lunch_time", "2:00 PM");
-    // bodyContent.append("features", "{'wifi': true, 'parking': true, 'AC': false}");
-    // bodyContent.append("languages", "{'hindi': true, 'english': true, 'telugu': false}");
-    // bodyContent.append("owner_name", "Robin Rajput");
-    // bodyContent.append("owner_mobile", "9856742351");
-    // bodyContent.append("owner_pancard_number", "CVUPG1990U");
-    // bodyContent.append("bank_name", "State bank of India");
-    // bodyContent.append("bank_account_number", "789648545684564");
-    // bodyContent.append("bank_IFSC_code", "SBIN0003491");
-    // bodyContent.append("city", "gwalior");
-    // bodyContent.append("state", "delhi");
-
-    // console.log(bodyContent);
-
-
 
     setIsReadOnly(true);
-
 
   }
 
@@ -291,6 +178,7 @@ function OnBoardForm(props) {
           }
         </div>
         <form encType="multipart/form-data" onSubmit={handleSubmit}>
+          {/* Render various form components */}
           <Credentials inputs={inputs} handleChange={handleChange} isReadOnly={isReadOnly} />
           <div className="form-group">
             <label className="label">Salon Code:</label>

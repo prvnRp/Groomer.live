@@ -2,23 +2,27 @@ import '../App.css';
 import React from 'react';
 
 function NumSlots({ number, inputs, setInputs, handleChange, isReadOnly }) {
-    // const [slots_number, setNumSlots] = useState('');
-
+    // Handle the selection of the number of slots
     const handleNumberSlots = (event) => {
         const selectedValue = parseInt(event.target.value, 10);
         if (inputs.slots_number === selectedValue) {
+            // If the selected value is the same as the current one, set it to 0 (unselected)
             setInputs((prevState) => ({ ...prevState, slots_number: 0 }));
         }
         else
+            // Otherwise, set the selected value
             setInputs((prevState) => ({ ...prevState, slots_number: selectedValue }));
+        // Clear the custom number input
         document.getElementById('slots_number').value = '';
     }
 
     return (
+        // Number of slots selection
         <div className="form-group">
             <label className="label">
                 Number of slots:</label>
             <div className='input' style={{ display: "flex", flexDirection: "row", gap: "20px" }}>
+                {/* Buttons for selecting predefined numbers */}
                 <button
                     type="button"
                     value={1}
@@ -55,6 +59,7 @@ function NumSlots({ number, inputs, setInputs, handleChange, isReadOnly }) {
                 >
                     4
                 </button>
+                {/* Input field for entering a custom number */}
                 <input
                     id="slots_number"
                     type="number"

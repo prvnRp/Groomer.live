@@ -4,6 +4,7 @@ function OwnershipDetails({ inputs, setInputs, handleChange, isReadOnly }) {
 
     return (
         <>
+            {/* Section for Ownership details */}
             <div className='form-group'>
                 <div className='label' style={{ textDecoration: "underline", fontWeight: "bold", marginBottom: "30px", fontSize: "20px", marginTop: "20px" }}>Ownership details</div>
             </div>

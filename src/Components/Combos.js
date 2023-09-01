@@ -3,11 +3,14 @@ import Duration from './Duration';
 
 function Combos({ ComboServices, combos, setCombos, isReadOnly, comboCount, setComboCount, comboservicecount, setComboServiceCount }) {
 
+    // Function to delete a combo from the combos list
     const handleDeleteCombo = (index) => {
         const updatedCombos = [...combos];
         updatedCombos.splice(index, 1);
         setCombos(updatedCombos);
     };
+
+    // Function to add a new combo to the combos list
     const handleAddCombo = () => {
         const newCombo = {
             combo_name: `Combo ${comboCount + 1}`,
@@ -19,24 +22,28 @@ function Combos({ ComboServices, combos, setCombos, isReadOnly, comboCount, setC
         setComboCount(comboCount + 1);
     };
 
+    // Function to handle changes in service names within a combo
     const handleServiceChangeCombo = (event, comboIndex, serviceIndex) => {
         const updatedCombos = [...combos];
         updatedCombos[comboIndex].services[serviceIndex] = event.target.value;
         setCombos(updatedCombos);
     };
 
+    // Function to handle changes in combo prices
     const handleComboPriceChange = (event, comboIndex) => {
         const updatedCombos = [...combos];
         updatedCombos[comboIndex].combo_price = event.target.value;
         setCombos(updatedCombos);
     };
 
+    // Function to handle changes in combo names
     const handleComboNameChange = (event, comboIndex) => {
         const updatedCombos = [...combos];
         updatedCombos[comboIndex].combo_name = event.target.value;
         setCombos(updatedCombos);
     };
 
+    // Function to add a new service to a combo
     const handleAddServiceCombo = (comboIndex) => {
         const updatedCombos = [...combos];
         updatedCombos[comboIndex].services.push('');
@@ -44,12 +51,14 @@ function Combos({ ComboServices, combos, setCombos, isReadOnly, comboCount, setC
         setComboServiceCount(comboservicecount + 1);
     };
 
+    // Function to delete a service from a combo
     const handleDeleteServiceCombo = (comboIndex, serviceIndex) => {
         const updatedCombos = [...combos];
         updatedCombos[comboIndex].services.splice(serviceIndex, 1);
         setCombos(updatedCombos);
     };
 
+    // Render the Combos component
     return (
         <>
             <div className="form-group">

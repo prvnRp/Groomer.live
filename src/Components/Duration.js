@@ -7,17 +7,22 @@ const Duration = ({ value, index, setServices, setCombos, isCombos }) => {
     const [selectedHour, setSelectedHour] = useState('01');
     const [selectedMinute, setSelectedMinute] = useState('00');
     const [selectedTime, setSelectedTime] = useState(value || `${selectedHour} hr ${selectedMinute} min`);
+
+    // Arrays for hours and minutes
     const hours = Array.from({ length: 12 }, (_, i) => (i + 1).toString().padStart(2, '0'));
     const minutes = Array.from({ length: 60 }, (_, i) => i.toString().padStart(2, '0'));
 
+    // Function to toggle the time picker visibility
     const togglePicker = () => {
         setshowpicker(!showpicker);
     };
 
+    // Function to handle time selection
     const handleTimeSelect = () => {
         const time = `${selectedHour} hr ${selectedMinute} min`;
         setSelectedTime(time);
         if (isCombos) {
+            // Update combo duration if used in Combos component
             setCombos((combo) => {
                 const updatedCombos = [...combo];
                 updatedCombos[index].duration = time;
@@ -25,6 +30,7 @@ const Duration = ({ value, index, setServices, setCombos, isCombos }) => {
             });
         }
         else {
+            // Update service duration if used in Services component
             setServices((service) => {
                 const updatedServices = [...service];
                 updatedServices[index].duration = time;
@@ -34,9 +40,10 @@ const Duration = ({ value, index, setServices, setCombos, isCombos }) => {
         setshowpicker(false);
     };
 
-
+    // Create a ref to detect clicks outside the time picker
     const dropdownRef = useRef(null);
 
+    // Effect to handle clicks outside the time picker
     useEffect(() => {
         const handleOutsideClick = (event) => {
             if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {

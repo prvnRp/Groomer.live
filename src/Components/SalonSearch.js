@@ -13,7 +13,6 @@ function SalonSearch() {
 
   const handleSubmit = async (event) => {
     setSearchOn(true);
-    // console.log(event.target.text)
     console.log(salonCode);
     let headersList = {
       "Accept": "*/*",

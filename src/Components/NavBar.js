@@ -1,8 +1,9 @@
 import '../App.css';
 import { NavLink } from "react-router-dom";
 
-function App() {
+function NavBar() {
   return (
+    // Navbar container
     <div className='Navbar'>
       <NavLink to="/admin" ><span>On board form</span></NavLink>
       <NavLink to="/search" ><span>Salon Search</span></NavLink>
@@ -10,4 +11,4 @@ function App() {
   );
 }
 
-export default App;
+export default NavBar;

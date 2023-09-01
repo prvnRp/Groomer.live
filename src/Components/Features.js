@@ -1,11 +1,12 @@
 import '../App.css';
 
 function Features({ inputs, setInputs, isReadOnly }) {
-
+    // Function to handle changes in feature selection
     const handleFeatureChange = (event) => {
         const selectedFeature = event.target.value;
         console.log(selectedFeature);
 
+        // Update the inputs state with the selected feature
         setInputs(prevInputs => ({
             ...prevInputs,
             features: {
@@ -20,6 +21,7 @@ function Features({ inputs, setInputs, isReadOnly }) {
             <label className="label">Features:</label>
             <div className='input'>
                 <div className="checkbox-group">
+                    {/* Checkbox input for Wi-Fi */}
                     <label className="checkbox-label">
                         <input
                             type="checkbox"
@@ -33,6 +35,7 @@ function Features({ inputs, setInputs, isReadOnly }) {
                     </label>
                 </div>
                 <div className="checkbox-group">
+                    {/* Checkbox input for Car Parking */}
                     <label className="checkbox-label">
                         <input
                             type="checkbox"
@@ -46,6 +49,7 @@ function Features({ inputs, setInputs, isReadOnly }) {
                     </label>
                 </div>
                 <div className="checkbox-group">
+                    {/* Checkbox input for AC */}
                     <label className="checkbox-label">
                         <input
                             type="checkbox"

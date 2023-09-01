@@ -1,23 +1,31 @@
 import '../App.css';
 
 function Languages({ inputs, setInputs, isReadOnly }) {
+
+    // Function to handle language checkbox change
     const handleLanguageChange = (event) => {
         const selectedLanguage = event.target.value;
+
+        // Update the selected language in the inputs state
         const updatedLanguages = {
             ...inputs.languages,
             [selectedLanguage]: !inputs.languages[selectedLanguage]
         };
 
+        // Update the state with the new language selection
         setInputs(prevInputs => ({
             ...prevInputs,
             languages: updatedLanguages
         }));
     };
+
+    // Log the selected languages (for debugging)
     console.log(inputs.languages, "languages");
     return (
         <div className="form-group" style={{ display: "flex", flexDirection: "row" }}>
             <label className="label">Languages:</label>
             <div className="languages-container">
+                {/* Checkbox for Telugu */}
                 <div className="checkbox-group">
                     <label className="checkbox-label">
                         <input
@@ -31,6 +39,7 @@ function Languages({ inputs, setInputs, isReadOnly }) {
                         Telugu
                     </label>
                 </div>
+                {/* Checkbox for Hindi */}
                 <div className="checkbox-group">
                     <label className="checkbox-label">
                         <input
@@ -44,6 +53,7 @@ function Languages({ inputs, setInputs, isReadOnly }) {
                         Hindi
                     </label>
                 </div>
+                {/* Checkbox for English */}
                 <div className="checkbox-group">
                     <label className="checkbox-label">
                         <input

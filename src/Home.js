@@ -2,25 +2,32 @@
 import logo from './images/groomerpsd.svg';
 import login from './images/login.svg';
 import './Home.css'
-import { NavLink } from "react-router-dom";
 import { useNavigate } from 'react-router-dom';
 
 function Home() {
     const navigate = useNavigate();
+
+    // Define the handleSubmit function to handle form submission
     const handleSubmit = async (event) => {
         event.preventDefault();
+
+        // Extract the username and password from the form elements
         const { username, password } = event.target.elements;
+
+        // Define headers for the HTTP request
         let headersList = {
             "Accept": "*/*",
             // "User-Agent": "Thunder Client (https://www.thunderclient.com)",
             "Content-Type": "application/json"
         }
 
+        // Create the request body in JSON format
         let bodyContent = JSON.stringify({
             "username": username.value,
             "password": password.value
         });
 
+        // Send a POST request to the server for login
         let response = await fetch("http://127.0.0.1:8000/admin/login", {
             method: "POST",
             mode: "cors",
@@ -28,29 +35,18 @@ function Home() {
             headers: headersList
         });
 
+        // Parse the response as JSON
         let data = await response.json();
         console.log(data);
         console.log(data['message']);
+
+        // If login is successful, navigate to the '/admin' route
         if (data.message === 'Logged in successfully') {
             navigate('/admin');
         }
-
-        // const data = Array.from(event.target.elements)
-        //     .filter((input) => input.name).reduce((obj, input) => Object.assign(obj, { [input.name]: input.value }), {})
-        // const data = { "username": username.value, "password": password.value };
-        // console.log(data);
-
-        // console.log(Password.value);
-        // await fetch('http://127.0.0.1:8000/admin/login', {
-        //     method: 'POST',
-        //     headers: {
-        //         'Content-Type': 'application/json'
-        //     },
-        //     body: JSON.stringify(data)
-        // })
-        // console.log("clicked")
     }
 
+    // Render the Home component
     return (
         <div id="containerhome">
 

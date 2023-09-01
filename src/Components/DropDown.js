@@ -2,12 +2,15 @@ import '../App.css'
 import React, { useState } from "react";
 
 const Dropdown = ({ options, selectedValues, onSelection }) => {
+    // Create state to manage the open/closed state of the dropdown
     const [dropdownOpen, setDropdownOpen] = useState(false);
 
+    // Function to toggle the dropdown open/closed state
     const toggleDropdown = () => {
         setDropdownOpen(!dropdownOpen);
     };
 
+    // Function to handle salon selection and close the dropdown
     const handleSalonSelection = (salonCode) => {
         onSelection(salonCode);
         toggleDropdown();
@@ -19,6 +22,7 @@ const Dropdown = ({ options, selectedValues, onSelection }) => {
                 Select Salons
             </button>
             <div className="dropdown-list">
+                {/* Render the dropdown list when it's open */}
                 {dropdownOpen && (
                     <table className="salon-table">
                         <tbody>

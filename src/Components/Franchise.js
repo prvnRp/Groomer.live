@@ -2,6 +2,7 @@ import '../App.css';
 import React, { useState } from 'react';
 
 function Franchise({ inputs, setInputs, isReadOnly }) {
+    // Data for salon options (Sample data)
     const Data = [
         { SalonCode: "HYD001", SalonName: "Hairstyles" },
         { SalonCode: "HYD002", SalonName: "Hairstyles" },
@@ -10,6 +11,8 @@ function Franchise({ inputs, setInputs, isReadOnly }) {
         { SalonCode: "HYD005", SalonName: "Hairstyles" },
         { SalonCode: "HYD006", SalonName: "Hairstyles" },
     ]
+
+    // Styles for the dropdown
     const dropdownStyles = {
         position: "absolute",
         marginTop: "5px",
@@ -21,53 +24,59 @@ function Franchise({ inputs, setInputs, isReadOnly }) {
         borderRadius: "20px",
     };
 
+    // Styles for the open dropdown
     const openDropdownStyles = {
         display: "block",
     };
+
+    // State variables to manage franchise selection, salon search, and dropdown visibility
     const [dropdownOpen, setDropdownOpen] = useState(false);
     const [searchTerm, setSearchTerm] = useState("");
 
+    // Filtered salon options based on search term
     const filteredSalons = Data.filter(
         (salon) => salon.SalonCode.toLowerCase().includes(searchTerm.toLowerCase())
     );
 
+    // Function to handle franchise selection change
     const handleFranchiseChange = (value) => {
         if (value === false) {
             setInputs((values) => ({ ...values, franchiseSalons: [''] }));
         }
-        // setFranchise(value);
     };
 
+    // Function to handle franchise selection (Yes/No)
     const handleFranchiseChanges = (event) => {
-        // const name = event.target.name;
         let value = event.target.value;
         if (value === "yes")
             value = true
         else
             value = false
         console.log(value);
-        // if (name === 'franchise') {
         handleFranchiseChange(value);
-        // }
         setInputs(values => ({ ...values, 'franchise': value }))
     }
 
+    // Function to handle search input change
     const handleSearchChange = (event) => {
         setSearchTerm(event.target.value);
     };
 
+    // Function to handle deletion of a selected salon
     const handleDeleteSalon = (index) => {
         const updatedSalonCodes = [...inputs.franchiseSalons];
         updatedSalonCodes.splice(index, 1);
         setInputs((values) => ({ ...values, franchiseSalons: updatedSalonCodes }));
     };
 
+    // Function to handle changes in salon input
     const handleSalonInputChange = (event, index) => {
         const updatedFranchiseSalons = [...inputs.franchiseSalons];
         updatedFranchiseSalons[index] = event.target.value;
         setInputs((values) => ({ ...values, franchiseSalons: updatedFranchiseSalons }));
     };
 
+    // Function to handle salon selection/deselection
     const handleSalonSelection = (salonCode) => {
         const isSelected = inputs.franchiseSalons.includes(salonCode);
         let updatedFranchiseSalons = [...inputs.franchiseSalons];
@@ -89,7 +98,9 @@ function Franchise({ inputs, setInputs, isReadOnly }) {
     return (
         <div className="form-group">
             <label className="label">
-                Franchise salon:</label>
+                Franchise salon:
+            </label>
+            {/* Buttons for franchise selection (Yes/No) */}
             <div className='input1'>
                 <button style={{ marginRight: "20px" }}
                     type="button" name="franchise" value="yes"
@@ -107,6 +118,7 @@ function Franchise({ inputs, setInputs, isReadOnly }) {
                 >
                     No
                 </button>
+                {/* Dropdown for selecting franchise salons */}
                 {inputs.franchise === true && <div style={{ float: "right" }}>
                     <div style={{ flex: 1 }}>
                         <button

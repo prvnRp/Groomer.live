@@ -8,15 +8,18 @@ const TimePicker = ({ timeperiods, inputs, setInputs, label }) => {
     const [selectedMinute, setSelectedMinute] = useState('00');
     const [selectedTimePeriod, setSelectedTimePeriod] = useState(timeperiods[0]);
     const [selectedTime, setSelectedTime] = useState(inputs[label] || `${selectedHour}:${selectedMinute} ${selectedTimePeriod}`);
+
+    // Arrays to represent hours, minutes, and time periods
     const hours = Array.from({ length: 12 }, (_, i) => (i + 1).toString().padStart(2, '0'));
     const minutes = Array.from({ length: 60 }, (_, i) => i.toString().padStart(2, '0'));
-
     const timePeriods = timeperiods;
 
+    // Function to toggle the visibility of the time picker
     const togglePicker = () => {
         setShowPicker(!showPicker);
     };
 
+    // Function to handle selecting a time
     const handleTimeSelect = () => {
         const time = `${selectedHour}:${selectedMinute} ${selectedTimePeriod}`;
         setSelectedTime(time);
@@ -28,12 +31,14 @@ const TimePicker = ({ timeperiods, inputs, setInputs, label }) => {
         setShowPicker(false);
     };
 
+    // Function to handle clicks outside the time picker to close it
     const handleCompleteDropdownClick = () => {
         setShowPicker(false);
     };
 
-    const dropdownRef = useRef(null);
+    const dropdownRef = useRef(null); // Ref to track clicks outside the time picker
 
+    // UseEffect to add an event listener for clicks outside the time picker
     useEffect(() => {
         const handleOutsideClick = (event) => {
             if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
@@ -47,6 +52,7 @@ const TimePicker = ({ timeperiods, inputs, setInputs, label }) => {
             document.removeEventListener('mousedown', handleOutsideClick);
         };
     }, []);
+
     return (
         <div className="time-picker-container" ref={dropdownRef}>
             <div className="time-picker-input">
