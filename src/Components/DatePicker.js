@@ -11,7 +11,7 @@ const DatePicker = () => {
     const datePickerInput = $(datePickerRef.current);
     datePickerInput.attr('id', inputId); // Set the unique id attribute for the input
     datePickerInput.datepicker({
-      // showButtonPanel: true,
+      // Configuration options for the datepicker
       dateFormat: 'dd/mm/yy',
       changeMonth: true,
       changeYear: true,
@@ -23,71 +23,6 @@ const DatePicker = () => {
       onSelect: function (dateText, inst) {
         $(this).data('selectedDate', dateText); // Store the selected date in the input element's data
       },
-
-      // beforeShow: function (input, inst) {
-      //   setTimeout(function () {
-      //     const buttonPane = $(inst.dpDiv).find('.ui-datepicker-buttonpane');
-      //     let buttonContainer = buttonPane.find('.custom-datepicker-buttons');
-
-      //     if (buttonContainer.length === 0) {
-      //       buttonContainer = $('<div class="custom-datepicker-buttons"></div>');
-      //       buttonContainer.append('<button type="button" class="ui-datepicker-cancel">Cancel</button>');
-      //       buttonContainer.append('<button type="button" class="ui-datepicker-setdate">Set Date</button>');
-      //       buttonPane.append(buttonContainer);
-      //     }
-
-      //     // Handle Cancel button click event
-      //     buttonContainer.on('click', '.ui-datepicker-cancel', function () {
-      //       $(input).datepicker('hide'); // Hide the datepicker
-      //       $(input).val(''); // Clear the input value
-      //     });
-
-      //     // Handle Set Date button click event
-      //     buttonContainer.on('click', '.ui-datepicker-setdate', function () {
-      //       const selectedDate = $(input).data('selectedDate'); // Get the selected date from the input element's data
-      //       if (selectedDate) {
-      //         // Do something with the selected date
-      //         console.log('Selected Date:', selectedDate);
-      //         $(input).val(selectedDate); // Set the selected date in the input element
-      //       }
-      //       $(input).datepicker('hide'); // Hide the datepicker
-      //     });
-      //   }, 0);
-      // },
-
-      // onChangeMonthYear: function (year, month, inst) {
-      //   setTimeout(function () {
-      //     const buttonPane = $(inst.dpDiv).find('.ui-datepicker-buttonpane');
-      //     let buttonContainer = buttonPane.find('.custom-datepicker-buttons');
-
-      //     if (buttonContainer.length === 0) {
-      //       buttonContainer = $('<div class="custom-datepicker-buttons"></div>');
-      //       buttonContainer.append('<button type="button" class="ui-datepicker-cancel">Cancel</button>');
-      //       buttonContainer.append('<button type="button" class="ui-datepicker-setdate">Set Date</button>');
-      //       buttonPane.append(buttonContainer);
-
-      //       // Handle Cancel button click event
-      //       buttonContainer.on('click', '.ui-datepicker-cancel', function () {
-      //         $(inst.input).datepicker('hide'); // Hide the datepicker
-      //         $(inst.input).val(''); // Clear the input value
-      //       });
-
-      //       // Handle Set Date button click event
-      //       buttonContainer.on('click', '.ui-datepicker-setdate', function () {
-      //         const selectedDate = $(inst.input).data('selectedDate'); // Get the selected date from the input element's data
-      //         if (selectedDate) {
-      //           // Do something with the selected date
-      //           console.log('Selected Date:', selectedDate);
-      //           $(inst.input).val(selectedDate); // Set the selected date in the input element
-      //         }
-      //         $(inst.input).datepicker('hide'); // Hide the datepicker
-      //       });
-      //     }
-      //   }, 0);
-      // },
-      // beforeShowDay: function (date) {
-      //   return [true, '', ''];
-      // },
     });
     datePickerInput.on('click', function () {
       const $datepicker = $(this).datepicker('widget');
@@ -99,6 +34,7 @@ const DatePicker = () => {
 
   return (
     <div className="datepicker-container">
+      {/* Input field for the datepicker */}
       <span className="outline-element-container">
         <input
           ref={datePickerRef}

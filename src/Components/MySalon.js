@@ -10,22 +10,26 @@ import Logout from './Logout';
 
 function MySalon() {
     const data = ['Slot 1', 'Slot 2'];
+
+    // State to manage the main toggle switch and individual slot toggles
     const [mainToggle, setMainToggle] = useState(false);
     const [toggleStatuses, setToggleStatuses] = useState(data.map(() => mainToggle));
 
     useEffect(() => {
+        // Update the main toggle based on individual slot toggles
         if (toggleStatuses.every((status) => !status)) {
             setMainToggle(false);
         }
     }, [toggleStatuses]);
 
-
+    // Function to toggle the main display status
     const handleToggleDisplay = () => {
         const updatedMainToggle = !mainToggle;
         setMainToggle(updatedMainToggle);
         setToggleStatuses(data.map(() => updatedMainToggle));
     };
 
+    // Function to toggle an individual slot
     const handleToggleItem = (index) => {
         const updatedToggleStatuses = [...toggleStatuses];
         updatedToggleStatuses[index] = !updatedToggleStatuses[index];
@@ -77,6 +81,7 @@ function MySalon() {
                                 </tr>
                             </thead>
                             <tbody>
+                                {/* Map through data to render slots */}
                                 {data.map((item, index) => (
                                     <tr key={item}>
                                         <td

@@ -5,7 +5,9 @@ import { NavLink } from "react-router-dom";
 
 function Logout() {
     return (
+        // Navigation link to the home page ("/")
         <NavLink to="/" >
+            {/* Logout button with an image */}
             <div className="logout">
                 Logout
                 <img src={LogoutR} alt="logout" />

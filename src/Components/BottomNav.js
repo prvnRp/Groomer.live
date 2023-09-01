@@ -8,6 +8,7 @@ import '../styles/BottomNav.css'
 
 function BottomNav() {
     return (
+        // Navigation bar for mobile view
         <nav class="mobile-nav">
             <NavLink to="/mySalon" class="bloc-icon iconi">
                 <img src={mySalon} alt="" />

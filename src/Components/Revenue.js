@@ -9,8 +9,10 @@ import Logout from './Logout';
 
 function Revenue() {
 
+    // State to manage the search status
     const [search, setSearch] = useState(false);
 
+    // Function to handle the "GO" button click and set search to true
     const handleClick = () => {
         setSearch(true);
     }

@@ -2,14 +2,18 @@ import React, { useState } from 'react';
 import '../styles/BookingMobile.css';
 import '../styles/TableRow.css';
 
+// Define the BookingMobile functional component
 function BookingMobile(props) {
-    const [expandedCard, setExpandedCard] = useState(null);
+    const [expandedCard, setExpandedCard] = useState(null); // State to track which card is expanded
 
+    // Function to handle card click and toggle expansion
     const handleCardClick = (index) => {
         setExpandedCard(index === expandedCard ? null : index);
     };
 
+    // Filter and map BookingDetails to create card elements
     const bookings = props.BookingDetails.filter(item => item.Status === props.filterOption).map((item, index) => {
+        // Check if the date should be displayed (only for the first item with a new date)
         const currentDate = item.Date;
         let dateElement = null;
 
@@ -17,8 +21,9 @@ function BookingMobile(props) {
             dateElement = <div className='date'>{currentDate}</div>;
         }
 
-        const isExpanded = index === expandedCard;
+        const isExpanded = index === expandedCard; // Check if the card is expanded
 
+        // Return JSX for each booking card
         return (
             <React.Fragment key={item.BookingID}>
                 {dateElement}
@@ -28,7 +33,7 @@ function BookingMobile(props) {
                             <div className={'circle3 ' + props.Color}></div>
                         )}
                         <div style={{ paddingTop: isExpanded ? "15px" : "6px", paddingLeft: isExpanded ? "8px" : "0px" }} className='Carditem'>
-                            <div style={{ fontSize: "14px", fontWeight: "700" }}>Booking ID: {item.BookingID}{!isExpanded ? null : (<span style={{ float: "right" }}>Status: <span style={{color:props.Color}}>{props.filterOption}</span></span>)}</div>
+                            <div style={{ fontSize: "14px", fontWeight: "700" }}>Booking ID: {item.BookingID}{!isExpanded ? null : (<span style={{ float: "right" }}>Status: <span style={{ color: props.Color }}>{props.filterOption}</span></span>)}</div>
                             {isExpanded ? null : (
                                 <React.Fragment>
                                     <div><span style={{ paddingRight: "15px" }}>{item.CustomerName}</span> <span>{item.SlotDetails}</span></div>
@@ -60,7 +65,8 @@ function BookingMobile(props) {
         );
     });
 
-    return bookings;
+    return bookings;     // Return the array of booking elements
 }
 
+// Export the BookingMobile component as the default export
 export default BookingMobile;

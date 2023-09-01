@@ -10,6 +10,7 @@ import Logout from './Logout';
 
 function Bookings() {
 
+    // Initial BookingDetails data
     var BookingDetails = [
         { Date: "June 11", BookingID: "123455", CustomerName: "1110100", SlotDetails: "4 july", Services: "Haircut, Haircut", Pricing: "₹300", Status: "Booked" },
         { Date: "June 11", BookingID: "234344", CustomerName: "1110100", SlotDetails: "5 july", Services: "Haircut", Pricing: "₹300", Status: "Booked" },
@@ -37,9 +38,12 @@ function Bookings() {
         { Date: "June 19", BookingID: "786248", CustomerName: "1110100", SlotDetails: "2 july", Services: "Haircut", Pricing: "₹300", Status: "Completed" },
         { Date: "June 20", BookingID: "892456", CustomerName: "1110100", SlotDetails: "6 july", Services: "Haircut", Pricing: "₹300", Status: "Completed" },
     ];
+
+    // State to manage element visibility and filter option
     const [elementVisible, setElementVisible] = useState(false);
     const [filterOption, setFilterOption] = useState("Booked");
 
+    // Define status colors
     var Status = { "Booked": "yellow", "Completed": "green", "Cancelled": "red" }
     // prev = ""
     return (
@@ -52,6 +56,7 @@ function Bookings() {
                     <div className="flex2">
                         <div className='book'>
                             <div className="salonname">{filterOption !== "Booked" ? filterOption : ""} Bookings</div>
+                            {/* Filter options */}
                             <div className="filtering" onClick={() => setElementVisible(true)}>
                                 <div onMouseLeave={() => setElementVisible(false)} className='options' style={{ display: elementVisible ? 'flex' : 'none' }}>
                                     <div className='row1' onClick={() => setFilterOption("Completed")}><div className='circle1 green'></div>Completed</div>
@@ -63,6 +68,7 @@ function Bookings() {
                             </div>
                         </div>
                         <div className='tableContainer'>
+                            {/* Booking table */}
                             <table id="bookings">
                                 <thead>
                                     <tr>
@@ -74,12 +80,14 @@ function Bookings() {
                                         <th>Status</th>
                                     </tr>
                                 </thead>
+                                {/* Render TableRow component */}
                                 <tbody>
                                     {
                                         <TableRow BookingDetails={BookingDetails} Color={Status[filterOption]} filterOption={filterOption} />
                                     }
                                 </tbody>
                             </table>
+                            {/* Mobile view */}
                             <div className='MobileView'>
                                 <BookingMobile BookingDetails={BookingDetails} Color={Status[filterOption]} filterOption={filterOption} />
                             </div>

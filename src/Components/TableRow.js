@@ -4,15 +4,18 @@ import '../styles/TableRow.css';
 function TableRow(props) {
     let prev = null;
 
+    // Filter and map the BookingDetails based on the selected filterOption
     const bookings = props.BookingDetails.filter(item => item.Status === props.filterOption).map(item => {
         const currentDate = item.Date;
         let dateElement = null;
 
+        // Check if the current date is different from the previous date
         if (prev !== currentDate) {
             dateElement = <div className='date'>{currentDate}</div>;
             prev = currentDate;
         }
 
+        // Return a fragment containing table rows for each booking
         return (
             <React.Fragment key={item.BookingID}>
                 {dateElement}
@@ -29,7 +32,7 @@ function TableRow(props) {
     });
 
     return (
-        bookings
+        bookings // Return the mapped bookings as table rows
     );
 }
 

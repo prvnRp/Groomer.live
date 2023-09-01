@@ -5,15 +5,19 @@ import Revenue from '../images/Rupee.svg';
 import { NavLink } from "react-router-dom";
 import '../styles/LeftNav.css';
 
+// Define the LeftNav functional component
 function LeftNav() {
     return (
         <div className="flex1">
+            {/* Navigation links for My Salon */}
             <div className="flex4">
                 <NavLink to="/mySalon" ><img className="image sep" alt="mySalon" src={mySalon} /><span style={{ paddingLeft: "10px" }} className='flex31'>My Salon</span></NavLink>
             </div>
+            {/* Navigation links for Bookings */}
             <div className="flex4">
                 <NavLink to="/bookings"><img className="image sepb" alt="Bookings" src={Bookings} /><span className='flex31'>Bookings</span></NavLink>
             </div>
+            {/* Navigation links for Revenue */}
             <div className="flex4">
                 <NavLink to="/revenue"><img className="image" alt="Revenue" src={Revenue} /><span className='flex31'>Revenue</span></NavLink>
             </div>

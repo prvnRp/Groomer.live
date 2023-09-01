@@ -5,6 +5,7 @@ import '../styles/logo.css'
 function Logo() {
 
     return (
+        // Render the logo image
         <img src={logo} alt="Logo" className="logo" />
     );
 }
